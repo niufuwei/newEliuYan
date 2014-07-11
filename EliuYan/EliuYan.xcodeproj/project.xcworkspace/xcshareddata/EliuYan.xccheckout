@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3741059E-5517-47D4-AB20-70935E14686F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>EliuYan</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B30B7FAE-0372-487E-8250-AE28AC4CB4F1</key>
+		<string>https://github.com/niufuwei/newEliuyan.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>EliuYan/EliuYan.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B30B7FAE-0372-487E-8250-AE28AC4CB4F1</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/niufuwei/newEliuyan.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B30B7FAE-0372-487E-8250-AE28AC4CB4F1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B30B7FAE-0372-487E-8250-AE28AC4CB4F1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>newEliuyan</string>
+		</dict>
+	</array>
+</dict>
+</plist>
