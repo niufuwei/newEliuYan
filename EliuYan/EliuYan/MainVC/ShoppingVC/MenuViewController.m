@@ -737,10 +737,15 @@
             {
 //                NSIndexPath *indexPath=[NSIndexPath indexPathForRow:indexPath.row inSection:0];
 //                [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
-                cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
                 isFirstSelected = FALSE;
+                cell.categoryLabel.textColor = eliuyan_color(0xe94f4f);
+                cell.backgroundColor = [UIColor whiteColor];
             }
-            
+            else
+            {
+                cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
+
+            }
             
         }
         if (_goodsArray.count==0) {
