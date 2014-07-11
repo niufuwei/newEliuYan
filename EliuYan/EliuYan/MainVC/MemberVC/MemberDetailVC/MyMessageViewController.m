@@ -120,7 +120,7 @@
                 aLabel.font=[UIFont systemFontOfSize:13];
                 aLabel.textAlignment=YES;
                 aLabel.textColor=[UIColor whiteColor];
-                
+                aLabel.backgroundColor = [UIColor clearColor];
                 aLabel.text=@"没有更多消息";
                 [_aView addSubview:aLabel];
                 [self.view addSubview:_aView];
@@ -346,7 +346,7 @@
     {
         cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
 
-        cell.backgroundColor = eliuyan_color(0xf6f4ef);
+        cell.backgroundColor = eliuyan_color(0xf5f5f5);
         if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Type"] isEqualToString:@"0"])
         {
             

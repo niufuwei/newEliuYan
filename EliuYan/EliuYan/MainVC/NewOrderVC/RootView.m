@@ -565,7 +565,7 @@
             Confirm.hidden=YES;
             //标题改变
             _statusLabel.textColor =[UIColor grayColor];
-            _statusLabel.text = @"订单已完成                                               订单完成";
+            _statusLabel.text = @"订单已完成";
 //            statusLabel.textAlignment=NSTextAlignmentLeft;
 
             httpRequest * http = [[httpRequest alloc] init];

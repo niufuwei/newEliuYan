@@ -50,7 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+     [self hideTabBar:YES];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
         
         NVersion = [[newVersion alloc] init];
@@ -607,10 +607,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    if (IOS_VERSION < 7)
-    {
-        [self setHidesBottomBarWhenPushed:YES];
-    }
+//    if (IOS_VERSION < 7)
+//    {
+//        [self setHidesBottomBarWhenPushed:YES];
+//    }
 
    BuyShopping* _buyShop=[_storeDetailArray objectAtIndex:indexPath.row];
     //进入店铺界面
@@ -644,11 +644,39 @@
     //商铺类型
     [[NSUserDefaults standardUserDefaults] setObject:_buyShop.storeTypeName forKey:@"storeTypeName"];
     
-    [self.tabBarController setHidesBottomBarWhenPushed:YES];
+    //[self.tabBarController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:menuVC animated:YES];
+}
+- (void) hideTabBar:(BOOL) hidden{
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0];
+    
+    for(UIView *view in self.tabBarController.view.subviews)
+    {
+        if([view isKindOfClass:[UITabBar class]])
+        {
+            if (hidden) {
+                [view setFrame:CGRectMake(view.frame.origin.x, iPhone5?568:480, view.frame.size.width, view.frame.size.height)];
+            } else {
+                [view setFrame:CGRectMake(view.frame.origin.x, iPhone5?568-49:480-49, view.frame.size.width, view.frame.size.height)];
+            }
+        }
+        else
+        {
+            if (hidden) {
+                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, iPhone5?568:480)];
+            } else {
+                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width,  iPhone5?568-49:480-49)];
+            }
+        }
+    }
+    
+    [UIView commitAnimations];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+   
     [appDelegate showTabbar];
     
     UIImageView * topTitleView = [[UIImageView alloc] initWithFrame:CGRectMake(130, 10, 60, 20)];

@@ -132,7 +132,7 @@
     loginBtn.frame=CGRectMake(40, 125, 240, 40);
     loginBtn.tag = 1111;
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-    [loginBtn setBackgroundColor:[UIColor redColor]];
+    [loginBtn setBackgroundColor:eliuyan_color(0xe94f4f)];
     [loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginBtn];
     

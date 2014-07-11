@@ -299,8 +299,10 @@
     detailStoreBtn.hidden=YES;
 
 }
+
 -(void)viewWillAppear:(BOOL)animated
-{
+{   
+
     detailStoreBtn.hidden=NO;
     [appDelegate hidenTabbar];
 

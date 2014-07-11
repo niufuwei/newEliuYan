@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
 //    self.nameLabel.text=@"修改密码";
-//    self.orderView.hidden = YES;
+    self.orderView.hidden = YES;
 //    self.navigationItem.title = @"修改密码";
     NavCustom *nav=[[NavCustom alloc] init];
     [nav setNav:@"修改密码" mySelf:self];

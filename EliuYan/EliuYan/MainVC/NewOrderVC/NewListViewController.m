@@ -168,7 +168,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     
     
     pageCount = [[UILabel alloc] initWithFrame:CGRectMake(270, 100, 50, 40)];
-    pageCount.backgroundColor = [UIColor redColor];
+    pageCount.backgroundColor = eliuyan_color(0xe94f4f);
     pageCount.textColor = [UIColor whiteColor];
     pageCount.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:pageCount];

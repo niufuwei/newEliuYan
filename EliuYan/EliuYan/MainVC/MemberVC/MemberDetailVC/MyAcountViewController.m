@@ -66,7 +66,7 @@
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"退出登录" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setBackgroundColor:[UIColor redColor]];
+    [button setBackgroundColor:eliuyan_color(0xe94f4f)];
     button.frame = CGRectMake(30, 120, self.view.frame.size.width-60, 40);
     [button addTarget:self action:@selector(doLogout:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
