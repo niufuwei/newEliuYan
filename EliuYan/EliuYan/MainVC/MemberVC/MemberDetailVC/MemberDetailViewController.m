@@ -467,7 +467,7 @@
         {
             UILabel *loginNameLabel;
             if (IOS_VERSION < 7) {
-               loginNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 6, 120, 28)];
+               loginNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 6, 120, 28)];
             }
             else
             {
@@ -487,7 +487,7 @@
         {
             UILabel *appelName;
             if (IOS_VERSION < 7) {
-                appelName = [[UILabel alloc] initWithFrame:CGRectMake(160, 6, 120, 28)];
+                appelName = [[UILabel alloc] initWithFrame:CGRectMake(155, 6, 120, 28)];
             }
             else
             {
@@ -755,11 +755,18 @@
 //        return 1;
 //    }
 //    return 0;
+    if (IOS_VERSION < 7) {
+        return 0;
+    }
     return 1;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *aView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+    if (IOS_VERSION < 7) {
+        aView.backgroundColor = [UIColor clearColor];
+        return aView;
+    }
     aView.backgroundColor = eliuyan_color(0xf2f2f2);
     
     return aView;
@@ -771,6 +778,10 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *aView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+    if (IOS_VERSION < 7) {
+        aView.backgroundColor = [UIColor clearColor];
+        return aView;
+    }
     aView.backgroundColor = eliuyan_color(0xf2f2f2);
     
     return aView;

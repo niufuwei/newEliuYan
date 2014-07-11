@@ -17,7 +17,6 @@
 		18F828BE19331E340071F40D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F828BC19331E340071F40D /* InfoPlist.strings */; };
 		1D1AA278193DC6BE00258134 /* newVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AA277193DC6BE00258134 /* newVersion.m */; };
 		1D2043DB19664E8D00476FF9 /* PayCostInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2043DA19664E8D00476FF9 /* PayCostInforViewController.m */; };
-		1D2043DF19666BD100476FF9 /* MaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2043DE19666BD100476FF9 /* MaintenanceViewController.m */; };
 		1D2043E519666EBA00476FF9 /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2043E419666EBA00476FF9 /* ContentCell.m */; };
 		1D6273BB196BC0B70062F9FF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D6273B9196BC0B70062F9FF /* Model.xcdatamodeld */; };
 		1D6273C4196BC1F10062F9FF /* CoreDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6273C3196BC1F10062F9FF /* CoreDataModel.m */; };
@@ -39,7 +38,6 @@
 		7112541C191632A7003F7D63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112541B191632A7003F7D63 /* UIKit.framework */; };
 		71125422191632A8003F7D63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71125420191632A8003F7D63 /* InfoPlist.strings */; };
 		71125424191632A8003F7D63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71125423191632A8003F7D63 /* main.m */; };
-		71125428191632A8003F7D63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71125427191632A8003F7D63 /* AppDelegate.m */; };
 		7112542A191632A8003F7D63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71125429191632A8003F7D63 /* Images.xcassets */; };
 		71125431191632A8003F7D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71125430191632A8003F7D63 /* XCTest.framework */; };
 		71125432191632A8003F7D63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71125417191632A7003F7D63 /* Foundation.framework */; };
@@ -70,7 +68,6 @@
 		7112558819163435003F7D63 /* NewListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711254DE19163435003F7D63 /* NewListViewController.m */; };
 		7112558919163435003F7D63 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 711254E019163435003F7D63 /* RootView.m */; };
 		7112558B19163435003F7D63 /* DeliveryInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711254E519163435003F7D63 /* DeliveryInformationViewController.m */; };
-		7112558E19163435003F7D63 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711254EB19163435003F7D63 /* MenuViewController.m */; };
 		7112558F19163435003F7D63 /* OldAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 711254ED19163435003F7D63 /* OldAddressCell.m */; };
 		7112559019163435003F7D63 /* OldAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711254EF19163435003F7D63 /* OldAddressViewController.m */; };
 		7112559119163435003F7D63 /* OrderSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711254F119163435003F7D63 /* OrderSuccessfulViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -107,6 +104,9 @@
 		711C9BB4196F7D4800832213 /* 搜索.png in Resources */ = {isa = PBXBuildFile; fileRef = 711C9BB3196F7D4800832213 /* 搜索.png */; };
 		711C9BB6196F7D6200832213 /* 主页.png in Resources */ = {isa = PBXBuildFile; fileRef = 711C9BB5196F7D6200832213 /* 主页.png */; };
 		711C9BB8196FB1A800832213 /* 切图_179.png in Resources */ = {isa = PBXBuildFile; fileRef = 711C9BB7196FB1A800832213 /* 切图_179.png */; };
+		711C9BBC196FEE9600832213 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C9BBB196FEE9600832213 /* AppDelegate.m */; };
+		711C9BBE196FEEAA00832213 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C9BBD196FEEAA00832213 /* MenuViewController.m */; };
+		711C9BC0196FEEC100832213 /* MaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C9BBF196FEEC100832213 /* MaintenanceViewController.m */; };
 		7149439F191A1A5A009E98D1 /* SecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7149439C191A1A5A009E98D1 /* SecretViewController.m */; };
 		7175D1EE196506F9000D2E89 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7175D1ED196506F9000D2E89 /* CommunityViewController.m */; };
 		7193B235196D3A1900070705 /* 上门维修-滚动背景-#ff9d9d.png in Resources */ = {isa = PBXBuildFile; fileRef = 7193B1E8196D3A1900070705 /* 上门维修-滚动背景-#ff9d9d.png */; };
@@ -437,7 +437,6 @@
 		1D2043D919664E8D00476FF9 /* PayCostInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCostInforViewController.h; sourceTree = "<group>"; };
 		1D2043DA19664E8D00476FF9 /* PayCostInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCostInforViewController.m; sourceTree = "<group>"; };
 		1D2043DD19666BD100476FF9 /* MaintenanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintenanceViewController.h; sourceTree = "<group>"; };
-		1D2043DE19666BD100476FF9 /* MaintenanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintenanceViewController.m; sourceTree = "<group>"; };
 		1D2043E019666EAB00476FF9 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		1D2043E119666EAB00476FF9 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		1D2043E319666EBA00476FF9 /* ContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCell.h; sourceTree = "<group>"; };
@@ -470,7 +469,6 @@
 		71125423191632A8003F7D63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		71125425191632A8003F7D63 /* EliuYan-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EliuYan-Prefix.pch"; sourceTree = "<group>"; };
 		71125426191632A8003F7D63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		71125427191632A8003F7D63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		71125429191632A8003F7D63 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7112542F191632A8003F7D63 /* EliuYanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EliuYanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71125430191632A8003F7D63 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -525,7 +523,6 @@
 		711254E419163435003F7D63 /* DeliveryInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryInformationViewController.h; sourceTree = "<group>"; };
 		711254E519163435003F7D63 /* DeliveryInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryInformationViewController.m; sourceTree = "<group>"; };
 		711254EA19163435003F7D63 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		711254EB19163435003F7D63 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		711254EC19163435003F7D63 /* OldAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldAddressCell.h; sourceTree = "<group>"; };
 		711254ED19163435003F7D63 /* OldAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldAddressCell.m; sourceTree = "<group>"; };
 		711254EE19163435003F7D63 /* OldAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldAddressViewController.h; sourceTree = "<group>"; };
@@ -586,6 +583,9 @@
 		711C9BB3196F7D4800832213 /* 搜索.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索.png"; sourceTree = "<group>"; };
 		711C9BB5196F7D6200832213 /* 主页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "主页.png"; sourceTree = "<group>"; };
 		711C9BB7196FB1A800832213 /* 切图_179.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "切图_179.png"; sourceTree = "<group>"; };
+		711C9BBB196FEE9600832213 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		711C9BBD196FEEAA00832213 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		711C9BBF196FEEC100832213 /* MaintenanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintenanceViewController.m; sourceTree = "<group>"; };
 		7149439B191A1A5A009E98D1 /* SecretViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecretViewController.h; sourceTree = "<group>"; };
 		7149439C191A1A5A009E98D1 /* SecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecretViewController.m; sourceTree = "<group>"; };
 		7175D1EC196506F9000D2E89 /* CommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityViewController.h; sourceTree = "<group>"; };
@@ -1029,7 +1029,7 @@
 			isa = PBXGroup;
 			children = (
 				1D2043DD19666BD100476FF9 /* MaintenanceViewController.h */,
-				1D2043DE19666BD100476FF9 /* MaintenanceViewController.m */,
+				711C9BBF196FEEC100832213 /* MaintenanceViewController.m */,
 				1DCEE9A2196A4BFA00307006 /* checkViewController.h */,
 				1DCEE9A3196A4BFA00307006 /* checkViewController.m */,
 				1D2043E019666EAB00476FF9 /* MenuCell.h */,
@@ -1106,7 +1106,7 @@
 				7193B1E7196D3A1900070705 /* images */,
 				EFA97BB819164A3400BACC9D /* Vendos */,
 				71125426191632A8003F7D63 /* AppDelegate.h */,
-				71125427191632A8003F7D63 /* AppDelegate.m */,
+				711C9BBB196FEE9600832213 /* AppDelegate.m */,
 				711254B319163435003F7D63 /* MainVC */,
 				711254AB19163435003F7D63 /* Customs */,
 				7112550119163435003F7D63 /* Models */,
@@ -1261,7 +1261,7 @@
 				711254F219163435003F7D63 /* ShoppingViewController.h */,
 				711254F319163435003F7D63 /* ShoppingViewController.m */,
 				711254EA19163435003F7D63 /* MenuViewController.h */,
-				711254EB19163435003F7D63 /* MenuViewController.m */,
+				711C9BBD196FEEAA00832213 /* MenuViewController.m */,
 				711254F419163435003F7D63 /* StoreDetailViewController.h */,
 				711254F519163435003F7D63 /* StoreDetailViewController.m */,
 				711254E419163435003F7D63 /* DeliveryInformationViewController.h */,
@@ -2037,7 +2037,6 @@
 				1DCEE9A0196A3C9600307006 /* MenuCell.m in Sources */,
 				7112557C19163435003F7D63 /* ChangeAppelViewController.m in Sources */,
 				71B8FCD71938125A008B4CE4 /* SDWebImagePrefetcher.m in Sources */,
-				7112558E19163435003F7D63 /* MenuViewController.m in Sources */,
 				71B8FCBA1938124E008B4CE4 /* ASIS3ObjectRequest.m in Sources */,
 				7112557319163435003F7D63 /* StoreCell.m in Sources */,
 				7112557719163435003F7D63 /* ChangePswViewController.m in Sources */,
@@ -2057,12 +2056,10 @@
 				7112559719163435003F7D63 /* MJRefreshFooterView.m in Sources */,
 				71B8FCB51938124E008B4CE4 /* ASICloudFilesRequest.m in Sources */,
 				7112557D19163435003F7D63 /* MemberDetailViewController.m in Sources */,
-				1D2043DF19666BD100476FF9 /* MaintenanceViewController.m in Sources */,
 				7112557F19163435003F7D63 /* MyMessageViewController.m in Sources */,
 				1D2043E519666EBA00476FF9 /* ContentCell.m in Sources */,
 				7112558619163435003F7D63 /* RegistViewController.m in Sources */,
 				7112558319163435003F7D63 /* OrderDetalCell.m in Sources */,
-				71125428191632A8003F7D63 /* AppDelegate.m in Sources */,
 				7112559019163435003F7D63 /* OldAddressViewController.m in Sources */,
 				71B8FCD21938125A008B4CE4 /* MKAnnotationView+WebCache.m in Sources */,
 				71B8FCD61938125A008B4CE4 /* SDWebImageManager.m in Sources */,
@@ -2075,6 +2072,7 @@
 				711255A919163435003F7D63 /* SBJSON.m in Sources */,
 				7112557919163435003F7D63 /* FindPswViewController.m in Sources */,
 				7112557219163435003F7D63 /* GoodsDetail.m in Sources */,
+				711C9BBE196FEEAA00832213 /* MenuViewController.m in Sources */,
 				7112558219163435003F7D63 /* MyOrderViewController.m in Sources */,
 				7112559B19163435003F7D63 /* GoodsTableViewCell.m in Sources */,
 				711255AB19163435003F7D63 /* LoadingView.m in Sources */,
@@ -2091,6 +2089,7 @@
 				7112559819163435003F7D63 /* MJRefreshHeaderView.m in Sources */,
 				71B8FCB71938124E008B4CE4 /* ASIS3Bucket.m in Sources */,
 				71B8FCD51938125A008B4CE4 /* SDWebImageDownloader.m in Sources */,
+				711C9BC0196FEEC100832213 /* MaintenanceViewController.m in Sources */,
 				71B8FCB81938124E008B4CE4 /* ASIS3BucketObject.m in Sources */,
 				1DC573A519625075001529E4 /* searchCell.m in Sources */,
 				71B8FCA61938124E008B4CE4 /* ASIAuthenticationDialog.m in Sources */,
@@ -2102,6 +2101,7 @@
 				71B8FCAF1938124E008B4CE4 /* ASICloudFilesCDNRequest.m in Sources */,
 				180CC7EE191B677100985416 /* LCVoiceHud.m in Sources */,
 				711255A619163435003F7D63 /* httpRequest.m in Sources */,
+				711C9BBC196FEE9600832213 /* AppDelegate.m in Sources */,
 				7112557A19163435003F7D63 /* MemberCenterViewController.m in Sources */,
 				71B8FCB31938124E008B4CE4 /* ASICloudFilesObject.m in Sources */,
 				71B8FCBB1938124E008B4CE4 /* ASIS3Request.m in Sources */,

@@ -44,6 +44,7 @@
     
     UILabel *acountLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 80, 30)];
     acountLabel.text = @"我的账号";
+    acountLabel.backgroundColor = [UIColor clearColor];
     acountLabel.font = [UIFont systemFontOfSize:17.0];
     [self.view addSubview:acountLabel];
     
@@ -51,6 +52,7 @@
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 20, 110, 30)];
     phoneLabel.font = [UIFont systemFontOfSize:17.0];
     phoneLabel.textAlignment = NSTextAlignmentRight;
+    phoneLabel.backgroundColor = [UIColor clearColor];
 
     phoneLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"LoginName"];
     [self.view addSubview:phoneLabel];
