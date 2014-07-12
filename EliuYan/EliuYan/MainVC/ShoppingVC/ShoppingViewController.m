@@ -300,12 +300,15 @@
     _storeDetailArray = [[NSMutableArray alloc] initWithCapacity:0];
     isRefresh = FALSE;
 
+    [_loadView removeFromSuperview];
     [_tableView setHidden:NO];
     //显示当前位置
     SBJSON *json=[[SBJSON alloc] init];
     NSMutableDictionary *dic=[json objectWithString:request.responseString error:nil];
     NSString *aLocation=[dic objectForKey:@"Address"];
     _locationLabel.font=[UIFont systemFontOfSize:15];
+        
+       
     
     NSRange range = [aLocation rangeOfString:@"市"];
     NSString *substring = [aLocation substringFromIndex:NSMaxRange(range)];
@@ -334,6 +337,7 @@
     
     else
     {
+        [_loadView removeFromSuperview];
         for (int i=0; i<[array count]; i++) {
             NSDictionary *detailDic=[array objectAtIndex:i];
           BuyShopping*_buyShop=[[BuyShopping alloc] init];
@@ -461,8 +465,9 @@
 
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
-    NSLog(@"请求失败");
+    NSLog(@"request tag is %d",request.tag);
     [activity stop];
+    isRefresh = FALSE;
     if (IOS_VERSION > 7) {
         _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-113-49) image:@"无信息页面.png"];
     }
