@@ -13,10 +13,9 @@
 
     UILabel *_contentLabel;
     UILabel *_timeLabel;
-    UIImageView *_lineImageView;
+    //UIImageView *_lineImageView;
 
 }
 @property (nonatomic,strong)UILabel *contentLabel;
 @property (nonatomic,strong)UILabel *timeLabel;
-@property (nonatomic,strong)UIImageView *lineImageView;
 @end
