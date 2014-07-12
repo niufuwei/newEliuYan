@@ -210,7 +210,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     [aView addSubview:aBackImage];
 
     //备注信息
-    _descriptionLabel = [[UILabel alloc ]initWithFrame:CGRectMake(10, _label5.frame.origin.y+_label5.frame.size.height-5,300, 60)] ;
+    _descriptionLabel = [[UILabel alloc ]initWithFrame:CGRectMake(10, _label5.frame.origin.y+_label5.frame.size.height+5,300, 60)] ;
     _descriptionLabel.font = [UIFont systemFontOfSize:13];
     [_descriptionLabel setNumberOfLines:0];
     _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -556,7 +556,7 @@ static NSString *selected_backImageName = @"back_selected.png";
         {
             _descriptionLabel.text = [NSString stringWithFormat:@"备注信息   无"];
         } else {
-            _descriptionLabel.numberOfLines = 3;
+//            _descriptionLabel.numberOfLines = 3;
             _descriptionLabel.text = [NSString stringWithFormat:@"备注信息   %@",self.description ];
         }
         

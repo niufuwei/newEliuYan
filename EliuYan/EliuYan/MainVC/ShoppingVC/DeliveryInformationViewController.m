@@ -374,6 +374,9 @@
                         
                       
                         NSLog(@">>>>>>>>>>>>%@",alldataDic);
+                        NSLog(@"....%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]);
+                        
+                        NSLog(@">>>>>%@",[self DICTOJSON:alldataDic]);
                         httpRequest * http =[[httpRequest alloc] init];
                         http.httpDelegate = self;
                         [http httpRequestSend:[NSString stringWithFormat:@"%@order/CreareOrder",SERVICE_ADD] parameter:[NSString stringWithFormat:@"StrJson=%@&Token=%@",[self DICTOJSON:alldataDic],[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
@@ -408,9 +411,7 @@
 //                                int count1 = [[[NSUserDefaults standardUserDefaults] objectForKey:@"newOrders"] intValue];
 //                                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",count1 +1] forKey:@"newOrders"];
 //                                [[NSNotificationCenter defaultCenter] postNotificationName:@"newOrderChangeCount" object:nil];
-//                                
-                                
-                                
+//
                                 
                                 OrderSuccessfulViewController * order = [[OrderSuccessfulViewController alloc] init];
                                 btn.userInteractionEnabled = YES;
