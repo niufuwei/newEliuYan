@@ -207,6 +207,7 @@
            [[NSUserDefaults standardUserDefaults] setObject:_CommunityName forKey:@"StoreName"];
            [[NSUserDefaults standardUserDefaults] setObject:_telPhone forKey:@"TelPhone"];
            [[NSUserDefaults standardUserDefaults] setObject:@"--" forKey:@"StoreDescription"];
+           [[NSUserDefaults standardUserDefaults] setObject:_stroeID forKey:@"storeId"];
            [self.navigationController pushViewController:main animated:YES];
        }
         else

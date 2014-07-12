@@ -177,7 +177,7 @@
     if([_dataArray count]==0)
     {
     
-        loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+        loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
         [loadView changeLabel:@"抱歉,没有搜到附近的小区"];
         [self.view addSubview:loadView];
         

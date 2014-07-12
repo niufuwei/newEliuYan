@@ -1166,8 +1166,8 @@
 			isa = PBXGroup;
 			children = (
 				7175D1EB1965069C000D2E89 /* CommunityService */,
-				711254B519163435003F7D63 /* MainViewController.mm */,
 				711254B419163435003F7D63 /* MainViewController.h */,
+				711254B519163435003F7D63 /* MainViewController.mm */,
 				711254B619163435003F7D63 /* MemberVC */,
 				711254DA19163435003F7D63 /* NewOrderVC */,
 				711254E119163435003F7D63 /* ShoppingVC */,
@@ -2269,7 +2269,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "343E5FD1-7F5C-42E2-9F3C-5A74588B023C";
+
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
@@ -2300,7 +2300,6 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "343E5FD1-7F5C-42E2-9F3C-5A74588B023C";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
