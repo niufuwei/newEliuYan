@@ -13,6 +13,9 @@
 #import "MessageCell.h"
 #import "MemberCenterViewController.h"
 #import "NavViewController.h"
+#import "LoadingView.h"
+
+
 @interface MyMessageViewController ()
 
 @end
@@ -225,17 +228,20 @@
                 
                 [self.messageTableView removeFromSuperview];
                 
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(110, 50, 100, 100)];
-                imageView.image = [UIImage imageNamed:@"无信息页面.png"];
-                [self.view addSubview:imageView];
-                
-                UILabel *noMessage = [[UILabel alloc] initWithFrame:CGRectMake(60,170, 200, 30)];
-                noMessage.text = @"您最近没有新消息哦";
-                noMessage.textColor = [UIColor grayColor];
-                noMessage.textAlignment = NSTextAlignmentCenter;
-                noMessage.backgroundColor = [UIColor clearColor];
-                [self.view addSubview:noMessage];
-                
+//                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(110, 50, 100, 100)];
+//                imageView.image = [UIImage imageNamed:@"无信息页面.png"];
+//                [self.view addSubview:imageView];
+//                
+//                UILabel *noMessage = [[UILabel alloc] initWithFrame:CGRectMake(60,170, 200, 30)];
+//                noMessage.text = @"您最近没有新消息哦";
+////                noMessage.textColor = [UIColor grayColor];
+//                noMessage.textAlignment = NSTextAlignmentCenter;
+//                noMessage.backgroundColor = [UIColor clearColor];
+//                [self.view addSubview:noMessage];
+                //提示没有最新消息
+                LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+                [loadView changeLabel:@"您最近没有新消息哦"];
+                [self.view addSubview:loadView];
                 return ;
             }
 

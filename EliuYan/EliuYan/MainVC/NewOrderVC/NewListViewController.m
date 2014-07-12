@@ -263,41 +263,43 @@ static NSString *selected_backImageName = @"back_selected.png";
             
             [backScrollview setContentSize:CGSizeMake(320*[isTotalPage intValue], self.view.frame.size.height-44)];
             
-            
+            NSLog(@"......%@",[dic objectForKey:@"OrderIds"]);
                        
-            if ([isTotalPage isEqualToString:@"0"])
+            if ([[dic objectForKey:@"List"] isKindOfClass:[NSString class]] )
             {
                 //提示没有最新订单
-                
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:nil message:@"您还没有最新订单哦，快去购物吧" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                alert.delegate=self;
-                alert.tag=1111;
-                [alert show];
+                LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+                [loadView changeLabel:@"您还没有最新订单，赶快去购物吧"];
+                [self.view addSubview:loadView];
                 [root removeFromSuperview];
                 [pageCount removeFromSuperview];
                 
             }
-            NSInteger currentPage = backScrollview.contentOffset.x/320  ;
-            [self.rootDelegate sendRequest:dic orderIdArray:_orderIdArray withTag:currentPage + 1];
-            
-            
-            
-            
-//            NSLog(@"....%@",[dic objectForKey:@"List"]);
-            int status=[[[dic objectForKey:@"List"] objectForKey:@"Status" ] intValue];
-            orderId = [[dic objectForKey:@"List"] objectForKey:@"Id"];
-            
-            NSLog(@"status is %d,order id is %@ ",status,orderId);
-            
-            if (status == 2 || status == 3)
-            {
-                
-                Confirm.hidden = NO;
-               
-            }
             else
             {
-                Confirm.hidden = YES;
+                NSInteger currentPage = backScrollview.contentOffset.x/320  ;
+                [self.rootDelegate sendRequest:dic orderIdArray:_orderIdArray withTag:currentPage + 1];
+                
+                
+                
+                
+                //            NSLog(@"....%@",[dic objectForKey:@"List"]);
+                int status=[[[dic objectForKey:@"List"] objectForKey:@"Status" ] intValue];
+                orderId = [[dic objectForKey:@"List"] objectForKey:@"Id"];
+                
+                NSLog(@"status is %d,order id is %@ ",status,orderId);
+                
+                if (status == 2 || status == 3)
+                {
+                    
+                    Confirm.hidden = NO;
+                    
+                }
+                else
+                {
+                    Confirm.hidden = YES;
+                }
+
             }
             
         }

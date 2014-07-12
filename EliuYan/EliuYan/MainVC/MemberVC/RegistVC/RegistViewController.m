@@ -210,7 +210,8 @@
             http.httpDelegate = self;
             [http httpRequestSend:[NSString stringWithFormat:@"%@user/SenderCode",SERVICE_ADD] parameter:[NSString stringWithFormat:@"TelPhoneNum=%@&CodeType=%@",_numberTF.text,@"0"] backBlock:(^(NSDictionary * dic) {
                 [activity stop];
-
+                
+                NSLog(@".....%@",dic);
                 if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
                 {
                     InputViewController *inputVC=[[InputViewController alloc] initWithPhoneNumber:_numberTF.text];

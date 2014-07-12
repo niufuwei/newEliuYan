@@ -262,16 +262,15 @@
     
     //        //解析数据
     NSMutableDictionary *arrayDetail=[allDic objectForKey:@"List"];
-    totalPage=[allDic objectForKey:@"TotalPage"];
+//    totalPage=[allDic objectForKey:@"TotalPage"];
 
     NSLog(@">>>>>%@",arrayDetail);
      
-    if (arrayDetail==nil) {
-        [_tableView removeFromSuperview];
-        
-        LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height)];
-        [loadView changeLabel:@"此订单已被商家处理，请到我的订单中查看"];
+    if ([arrayDetail count]==0) {
+        LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height) image:@"无信息页面.png"];
+        [loadView changeLabel:@"我尽力了，还是看不到"];
         [self addSubview:loadView];
+        
     }
     else
     {
