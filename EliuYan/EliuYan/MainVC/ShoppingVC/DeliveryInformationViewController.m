@@ -569,6 +569,8 @@
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         json=[jsonString stringByReplacingOccurrencesOfString:@"\\" withString:@""];
         json =[json stringByReplacingOccurrencesOfString:@"%" withString:@"%25"];
+        json =[json stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+        json =[json stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
     }
     
     
