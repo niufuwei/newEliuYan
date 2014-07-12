@@ -144,7 +144,8 @@
     //异步获取内容页面
     [self addFooter];
 
-    // Do any additional setup after loading the view.
+    
+       // Do any additional setup after loading the view.
 }
 
 -(void)loadRequestData
@@ -158,9 +159,9 @@
         //        NSLog(@">>>>%@",dataArray);
         if(menuArr.count==0)
         {
-            _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
-            [_loadView changeLabel:@"我尽力了，还是看不到"];
-            [self.view addSubview:_loadView];
+           LoadingView * _loadView2 = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+            [_loadView2 changeLabel:@"我尽力了，还是看不到"];
+            [self.view addSubview:_loadView2];
             
         }
         else
@@ -759,6 +760,12 @@
     searchTable.tag = 103;
     
     searchTable.hidden = YES;
+    
+    _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 45, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+    [_loadView changeLabel:@"没有搜索到数据"];
+    [self.view addSubview:_loadView];
+    _loadView.hidden = YES;
+
 }
 
 -(void)onChange
@@ -771,13 +778,17 @@
     {
         [self searchData:searchBar.text pageindex:_pageIndex];
     }
-    if([searchBar.text isEqualToString:@" "])
+    if([searchBar.text isEqualToString:@" "] && [searchBar.text length] ==1)
     {
         searchBar.text= @"";
+        [_loadView setHidden:NO];
+
     }
     if([searchBar.text length]==0)
     {
         [_ContentArray removeAllObjects];
+        [_loadView setHidden:NO];
+
     }
     
     [searchTable reloadData];
@@ -830,7 +841,7 @@
     [ContentTable reloadData];
     _footer.scrollView = ContentTable;
  
-    
+    [_loadView removeFromSuperview];
     [menuTable reloadData];
 }
 
@@ -860,7 +871,13 @@
         //刷新表
         if([_ContentArray count]!=0)
         {
+            [_loadView setHidden:YES];
             [searchTable reloadData];
+        }
+        else
+        {
+            [_loadView setHidden:NO];
+
         }
     })];
     
