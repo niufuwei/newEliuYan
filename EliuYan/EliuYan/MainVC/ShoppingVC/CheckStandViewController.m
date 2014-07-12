@@ -247,7 +247,7 @@
     {
         [VideoButtonPlayed setHidden:YES];
         [VideoButton setHidden:NO];
-        [VideoButton setBackgroundImage:[UIImage imageNamed:@"收银台_语音-按住.png"] forState:UIControlStateNormal];
+        [VideoButton setImage:[UIImage imageNamed:@"收银台_语音-按住.png"] forState:UIControlStateNormal];
         [self startRecord];
 
         
@@ -256,6 +256,8 @@
     if(gesture.state == UIGestureRecognizerStateEnded)
     {
         //录音结束
+        [VideoButton setImage:[UIImage imageNamed:@"tm.png"] forState:UIControlStateNormal];
+
         [self onClickRepeat:nil];
 
     }

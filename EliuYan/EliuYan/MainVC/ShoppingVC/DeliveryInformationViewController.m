@@ -566,6 +566,7 @@
         //把json数据转化为String类型
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         json=[jsonString stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+        json =[json stringByReplacingOccurrencesOfString:@"%" withString:@"%25"];
     }
     
     
