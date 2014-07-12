@@ -135,7 +135,7 @@
         
     }
 
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
     return YES;
 }
 
@@ -318,6 +318,7 @@
     NSString *count = [[userInfo objectForKey:@"aps"] objectForKey:@"badge"];
     
     int i = [count intValue];
+    NSLog(@"i is %d",i);
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"allCount"];
       [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
     
