@@ -5,13 +5,11 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CDE57DDB-8A29-40F8-AFA3-3BFEC90C9878</string>
+	<string>3741059E-5517-47D4-AB20-70935E14686F</string>
 	<key>IDESourceControlProjectName</key>
 	<string>EliuYan</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>108FC320-F6A9-45D7-AAFF-C8C8409A33BA</key>
-		<string>https://github.com/niufuwei/newEliuYan.git</string>
 		<key>B30B7FAE-0372-487E-8250-AE28AC4CB4F1</key>
 		<string>https://github.com/niufuwei/newEliuyan.git</string>
 	</dict>
@@ -19,17 +17,15 @@
 	<string>EliuYan/EliuYan.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>108FC320-F6A9-45D7-AAFF-C8C8409A33BA</key>
-		<string>../../..</string>
 		<key>B30B7FAE-0372-487E-8250-AE28AC4CB4F1</key>
-		<string>../../../../newEliuyan</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/niufuwei/newEliuyan.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>108FC320-F6A9-45D7-AAFF-C8C8409A33BA</string>
+	<string>B30B7FAE-0372-487E-8250-AE28AC4CB4F1</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -39,14 +35,6 @@
 			<string>B30B7FAE-0372-487E-8250-AE28AC4CB4F1</string>
 			<key>IDESourceControlWCCName</key>
 			<string>newEliuyan</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>108FC320-F6A9-45D7-AAFF-C8C8409A33BA</string>
-			<key>IDESourceControlWCCName</key>
-			<string>newEliuYan</string>
 		</dict>
 	</array>
 </dict>

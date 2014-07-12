@@ -108,6 +108,10 @@
     _tabbar = [[tabbarViewController alloc] init];
     _tabbar.viewControllers = @[nav, navList, navMember];
 
+    if(![_appDefault objectForKey:@"UserId"])
+    {
+        [_appDefault setObject:@"" forKey:@"UserId"];
+    }
     
     //监听网络
     [self ListenWork];

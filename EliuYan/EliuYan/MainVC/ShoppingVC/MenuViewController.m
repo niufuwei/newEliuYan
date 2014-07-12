@@ -403,8 +403,9 @@
     if([searchBar.text length]==0)
     {
         [_goodsArray removeAllObjects];
-        [searchTable reloadData];
     }
+    [searchTable reloadData];
+
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBard
 {
@@ -738,7 +739,7 @@
 //                NSIndexPath *indexPath=[NSIndexPath indexPathForRow:indexPath.row inSection:0];
 //                [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
                 isFirstSelected = FALSE;
-                cell.categoryLabel.textColor = eliuyan_color(0xe94f4f);
+                cell.categoryLabel.textColor =  eliuyan_color(0xe94f4f);
                 cell.backgroundColor = [UIColor whiteColor];
             }
             else

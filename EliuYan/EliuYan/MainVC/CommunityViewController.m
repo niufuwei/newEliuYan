@@ -181,10 +181,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (IOS_VERSION < 7)
-    {
-        [self setHidesBottomBarWhenPushed:YES];
-    }
+//    if (IOS_VERSION < 7)
+//    {
+//        [self setHidesBottomBarWhenPushed:YES];
+//    }
     if(indexPath.section ==0)
     {
         CommunityInforViewController * infor = [[CommunityInforViewController alloc] init];
@@ -228,7 +228,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated
-{
+{    self.tabBarController.tabBar.hidden = YES;
     [appDelegate showTabbar];
 }
 

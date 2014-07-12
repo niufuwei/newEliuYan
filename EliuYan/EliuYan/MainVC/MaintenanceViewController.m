@@ -554,6 +554,9 @@
         {
             [cell.number setHidden:YES];
             [cell.number setTitle:[ NSString stringWithFormat:@"%d",0] forState:UIControlStateNormal];
+            [_IDDictionary setObject:[NSString stringWithFormat:@"%d",0] forKey:[[_ContentArray objectAtIndex:row] objectForKey:@"GoodsCategoryId"]];
+
+            
         }
         else
         {
@@ -607,57 +610,65 @@
     }
     else
     {
-        
-        if(![[contentSelectDictionary objectForKey:[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Id"]] isEqualToString:@"isChoose"])
+        if([_menuIdArray count]==0 || [_ContentArray count]==0)
         {
-            [btn setBackgroundImage:[UIImage imageNamed:@"多选-选择.png"] forState:UIControlStateNormal];
-            [contentSelectDictionary setObject:@"isChoose" forKey:[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Id"]];
-            
-            [self setMenuNumber:1 row:btn.tag-1];
-            
-            mCountService ++;
-            if([Price.text length]==0)
-            {
-                Price.text = [[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Price"];
-            }
-            else
-            {
-                Price.text = [NSString stringWithFormat:@"%.2f",[Price.text floatValue] + [[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Price"] floatValue]];
-            }
-            
-            numberPrice.hidden = NO;
-            numberService.hidden = NO;
-            numberService.text = [NSString stringWithFormat:@"%d项服务",mCountService];
-            NSLog(@"%@",contentSelectDictionary);
+            NSLog(@"休息一会");
         }
         else
         {
-            [btn setBackgroundImage:[UIImage imageNamed:@"多选-未选 .png"] forState:UIControlStateNormal];
-            [contentSelectDictionary setObject:@"" forKey:[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Id"]];
-            [self setMenuNumber:-1 row:btn.tag-1];
-
-            
-            mCountService --;
-            if(mCountService<=0)
+            if(![[contentSelectDictionary objectForKey:[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Id"]] isEqualToString:@"isChoose"])
             {
-                Price.text = @"";
-                numberPrice.hidden = YES;
-                numberService.hidden = YES;
-                numberService.text = [NSString stringWithFormat:@"%d项服务",mCountService];
-                mCountService =0;
+                [btn setBackgroundImage:[UIImage imageNamed:@"多选-选择.png"] forState:UIControlStateNormal];
+                [contentSelectDictionary setObject:@"isChoose" forKey:[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Id"]];
                 
-            }
-            else
-            {
-                Price.text = [NSString stringWithFormat:@"%.2f",[Price.text floatValue] -[[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Price"] floatValue]];
+                [self setMenuNumber:1 row:btn.tag-1];
+                
+                mCountService ++;
+                if([Price.text length]==0)
+                {
+                    Price.text = [[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Price"];
+                }
+                else
+                {
+                    Price.text = [NSString stringWithFormat:@"%.2f",[Price.text floatValue] + [[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Price"] floatValue]];
+                }
+                
                 numberPrice.hidden = NO;
                 numberService.hidden = NO;
                 numberService.text = [NSString stringWithFormat:@"%d项服务",mCountService];
+                NSLog(@"%@",contentSelectDictionary);
+            }
+            else
+            {
+                [btn setBackgroundImage:[UIImage imageNamed:@"多选-未选 .png"] forState:UIControlStateNormal];
+                [contentSelectDictionary setObject:@"" forKey:[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Id"]];
+                [self setMenuNumber:-1 row:btn.tag-1];
+                
+                
+                mCountService --;
+                if(mCountService<=0)
+                {
+                    Price.text = @"";
+                    numberPrice.hidden = YES;
+                    numberService.hidden = YES;
+                    numberService.text = [NSString stringWithFormat:@"%d项服务",mCountService];
+                    mCountService =0;
+                    
+                }
+                else
+                {
+                    Price.text = [NSString stringWithFormat:@"%.2f",[Price.text floatValue] -[[[_ContentArray objectAtIndex:btn.tag-1] objectForKey:@"Price"] floatValue]];
+                    numberPrice.hidden = NO;
+                    numberService.hidden = NO;
+                    numberService.text = [NSString stringWithFormat:@"%d项服务",mCountService];
+                    
+                }
                 
             }
 
+            
         }
-
+        
     }
 }
 
@@ -738,7 +749,7 @@
 -(void)onChange
 {
     isAddFooter = FALSE;
-    
+    [_ContentArray removeAllObjects];
     searchTable.hidden = NO;
     _pageIndex =0;
     if([searchBar.text length]!=0 && ![searchBar.text isEqualToString:@" "])

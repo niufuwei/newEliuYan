@@ -73,7 +73,7 @@
     else
     {
     
-         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - 49-64) style:UITableViewStyleGrouped];
+         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - 49-44) style:UITableViewStyleGrouped];
     
     }
     
@@ -235,10 +235,9 @@
 
 }
 
-
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    self.tabBarController.tabBar.hidden = YES;
     [appDelegate showTabbar];
     
     [_tableView reloadData];
@@ -461,12 +460,22 @@
         cell.accessoryView = (UIView *)[[UIImageView alloc ] initWithImage:[UIImage imageNamed:@"未标题-3_12.png"]];
         [cell.accessoryView setFrame:CGRectMake(290, 12, 10, 10)];
         
-        cell.backgroundColor=eliuyan_color(0xf6f4ef);
+        cell.backgroundColor=eliuyan_color(0xf5f5f5);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         // cell.textLabel.font = [UIFont systemFontOfSize:13];
         if (indexPath.row == 0)
         {
-            UILabel *loginNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(170, 6, 120, 28)];
+            UILabel *loginNameLabel;
+            if (IOS_VERSION < 7) {
+               loginNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 6, 120, 28)];
+            }
+            else
+            {
+            
+               loginNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(170, 6, 120, 28)];
+            
+            }
+            
             loginNameLabel.tag = 111 + indexPath.row;
             //loginNameLabel.font = [UIFont systemFontOfSize:13.0];
             loginNameLabel.textAlignment = NSTextAlignmentRight;
@@ -476,8 +485,17 @@
         }
         else if(indexPath.row == 1)
         {
+            UILabel *appelName;
+            if (IOS_VERSION < 7) {
+                appelName = [[UILabel alloc] initWithFrame:CGRectMake(155, 6, 120, 28)];
+            }
+            else
+            {
+                
+                appelName = [[UILabel alloc] initWithFrame:CGRectMake(170, 6, 120, 28)];
+                
+            }
             
-            UILabel *appelName = [[UILabel alloc] initWithFrame:CGRectMake(170, 6, 120, 28)];
             appelName.textAlignment = NSTextAlignmentRight;
             appelName.tag = 222 + indexPath.row;
             //appelName.font = [UIFont systemFontOfSize:13.0];
@@ -575,7 +593,7 @@
         if(indexPath.row == 1)
         {
             
-            if([[[NSUserDefaults standardUserDefaults] objectForKey:@"unMsgCount"] isEqualToString:@"0"])
+            if(![[NSUserDefaults standardUserDefaults] objectForKey:@"unMsgCount"] ||[[[NSUserDefaults standardUserDefaults] objectForKey:@"unMsgCount"] isEqualToString:@"0"])
             {
                 [((UILabel *)[cell1 viewWithTag:100 +indexPath.row]) setHidden:YES];
             }
@@ -617,7 +635,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"hasLogIn"] isEqualToString:@""])
+    
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"hasLogIn"] isEqualToString:@"1"])
     {
         
         MemberCenterViewController *memCenter = [[MemberCenterViewController alloc] init];
@@ -630,11 +649,10 @@
     else
     {
     
-    
-    if (IOS_VERSION < 7)
-    {
-        [self setHidesBottomBarWhenPushed:YES];
-    }
+//        if (IOS_VERSION < 7)
+//        {
+//            [self setHidesBottomBarWhenPushed:YES];
+//        }
     
     if (indexPath.section == 0)
     {
@@ -737,11 +755,18 @@
 //        return 1;
 //    }
 //    return 0;
+    if (IOS_VERSION < 7) {
+        return 0;
+    }
     return 1;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *aView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+    if (IOS_VERSION < 7) {
+        aView.backgroundColor = [UIColor clearColor];
+        return aView;
+    }
     aView.backgroundColor = eliuyan_color(0xf2f2f2);
     
     return aView;
@@ -753,6 +778,10 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *aView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+    if (IOS_VERSION < 7) {
+        aView.backgroundColor = [UIColor clearColor];
+        return aView;
+    }
     aView.backgroundColor = eliuyan_color(0xf2f2f2);
     
     return aView;

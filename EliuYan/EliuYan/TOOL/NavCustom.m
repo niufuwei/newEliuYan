@@ -26,6 +26,7 @@
     [lab setFont:[UIFont systemFontOfSize:20]];
     lab.textColor = [UIColor blackColor];
     lab.text = NavTitile;
+    lab.textAlignment = NSTextAlignmentCenter;
     lab.backgroundColor = [UIColor clearColor];
     mySelf.navigationItem.titleView = lab;
     

@@ -372,14 +372,16 @@ static NSString *selected_backImageName = @"back_selected.png";
             self.descriptionType = [NSString stringWithFormat:@"%@",[self.myOrderDic objectForKey:@"DescriptonType"]];
             self.description =[self.myOrderDic objectForKey:@"Descripton"];
             self.detailsList = [self.myOrderDic objectForKey:@"DetailsList"];
-            [self changeValue];
+              [self changeValue];
             
             if ([self.detailsList count] == 0) {
                 [self.goodsListTableView removeFromSuperview];
             }
             else
             {
+              
                 [self.goodsListTableView reloadData];
+                
             }
             
             
@@ -510,16 +512,11 @@ static NSString *selected_backImageName = @"back_selected.png";
     _label3.text = [NSString stringWithFormat:@"%@",self.storeName];
     _label4.text = [NSString stringWithFormat:@"%@",self.telNumber];
     _label5.text = [NSString stringWithFormat:@"订单编号  %@",self.orderNumber];
-    if ([[[[self.detailsList objectAtIndex:0] objectForKey:@"BuyType"] stringValue] isEqualToString:@"0"]) {
-        _label6.text = [NSString stringWithFormat:@"订单金额  %@元",self.orderPrice];
-    }
-    else
-    {
-        _label6.text = @"订单金额   ——";
-    }
+    _label6.text = [NSString stringWithFormat:@"订单金额  %@元",self.orderPrice];
+    _label11.text =[NSString stringWithFormat:@"共%@元",_orderPrice];
     _label7.text = [NSString stringWithFormat:@"下单时间  %@", [self.createTime stringByReplacingOccurrencesOfString:@"T" withString:@" "]];
     //这里还有备注信息
-
+   
     
     if ([self.detailsList count] > 0)
     {
@@ -593,14 +590,14 @@ static NSString *selected_backImageName = @"back_selected.png";
         [self downLoadVoice];
     }
     
-    if ([[[[self.detailsList objectAtIndex:0] objectForKey:@"BuyType"] stringValue] isEqualToString:@"0"])
-    {
-       _label11.text =[NSString stringWithFormat:@"共%@元",_orderPrice];
-    }
-    else
-    {
-        _label11.text =@"——";
-    }
+//    if ([[[[self.detailsList objectAtIndex:0] objectForKey:@"BuyType"] stringValue] isEqualToString:@"0"])
+//    {
+//       
+//    }
+//    else
+//    {
+//       
+//    }
 
     
 }
@@ -776,7 +773,7 @@ static NSString *selected_backImageName = @"back_selected.png";
 
     
     
-    [((UIButton *)[self.view viewWithTag:2500]) setBackgroundImage:[UIImage imageNamed:@"确认收货-按下.png"] forState:UIControlStateNormal];
+    
     httpRequest *http = [[httpRequest alloc] init];
     http.httpDelegate = self;
     [http httpRequestSend:[NSString stringWithFormat:@"%@order/GainGoods",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&Token=%@",self.orderId,[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
@@ -855,18 +852,9 @@ static NSString *selected_backImageName = @"back_selected.png";
 
     NSLog(@"tableviewcell de fang fa diao yong1");
 
-    if (!self.detailsList || !self.detailsList.count)
-    {
-        NSLog(@"行数是0");
-        return 0;
-    }
-    else
-    {
-        NSLog(@"aaaaaaaaaaaaaaaaaa");
-        
-        
+    
     return [self.detailsList count];
-    }
+    
 
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -894,7 +882,12 @@ static NSString *selected_backImageName = @"back_selected.png";
     
     
     
-    
+    if ([self.detailsList count] == 0)
+    {
+        
+    }
+    else
+    {
     
     [cell.goodsImage setImageWithURL:[NSURL URLWithString:[[self.detailsList objectAtIndex:indexPath.row] objectForKey:@"Image"]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
     
@@ -922,7 +915,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     }
    
         
-    
+    }
     return cell;
 
 
