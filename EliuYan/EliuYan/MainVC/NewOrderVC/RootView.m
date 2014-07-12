@@ -66,7 +66,7 @@
         [backImage addSubview:_statusLabel];
         
         alarmLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, _statusLabel.frame.origin.y +_statusLabel.frame.size.height+10, 240, 15)];
-        alarmLabel.text = @"您可以直接通过电话给商户取消订单";
+//        alarmLabel.text = @"您可以直接通过电话给商户取消订单";
         alarmLabel.textColor=[UIColor whiteColor];
         alarmLabel.backgroundColor = [UIColor clearColor];
 //        alarmLabel.textAlignment = NSTextAlignmentCenter;
@@ -154,7 +154,7 @@
         
         
         //备注信息
-        Remarks = [[UILabel alloc ]initWithFrame:CGRectMake(10, OrderNumber.frame.origin.y+OrderNumber.frame.size.height-5,300, 60)] ;
+        Remarks = [[UILabel alloc ]initWithFrame:CGRectMake(10, OrderNumber.frame.origin.y+OrderNumber.frame.size.height+5,300, 60)] ;
         Remarks.font = [UIFont systemFontOfSize:13];
         [Remarks setNumberOfLines:0];
         Remarks.lineBreakMode = NSLineBreakByWordWrapping;
@@ -249,7 +249,9 @@
         
 
     }
+    
     _statusLabel.tag = tag;
+    alarmLabel.tag = 1000 + tag;
     
     NSLog(@"statuslabel tag is %d",_statusLabel.tag);
     //初始化数组
@@ -313,7 +315,7 @@
             {//等待送货
                 
                 _statusLabel.text = @"等待送货";
-//                statusLabel.textColor = eliuyan_color(0xff5d51);
+              alarmLabel.text = @"您可以直接通过电话给商户取消订单";
                 //确认收货按钮隐藏
                 Confirm.hidden=YES;
                 
@@ -323,6 +325,7 @@
                 
                 _statusLabel.text = @"送货中";
 //                statusLabel.textColor = eliuyan_color(0xff5d51);
+                 alarmLabel.text = @"送货中,请耐心等待";
                 Confirm=[UIButton buttonWithType:UIButtonTypeCustom];
                 Confirm.frame=CGRectMake(320-80+3, 10, 60, 22);
                 [Confirm setBackgroundImage:[UIImage imageNamed:@"确认收货.png"] forState:UIControlStateNormal];
@@ -348,11 +351,18 @@
             if (descriptonType==1)
             {   //文字信息
                 _VoiceBtn.hidden=YES;//隐藏语音按钮
-                Remarks.text = [NSString stringWithFormat:@"备注信息   %@",descripton];
-                Remarks.numberOfLines = 3;
-                CGRect mywidth = Remarks.frame;
-                mywidth.size.width = 300;
-                Remarks.frame = mywidth;
+                if ([descripton isEqualToString:@""]) {
+                    Remarks.text = [NSString stringWithFormat:@"备注信息   无"];
+                }
+                else
+                {
+                    Remarks.text = [NSString stringWithFormat:@"备注信息   %@",descripton];
+                    //Remarks.numberOfLines = 3;
+                    CGRect mywidth = Remarks.frame;
+                    mywidth.size.width = 300;
+                    Remarks.frame = mywidth;
+                }
+                
                 
             }
             else
@@ -566,8 +576,8 @@
             //隐藏btn
             Confirm.hidden=YES;
             //标题改变
-            _statusLabel.textColor =[UIColor grayColor];
-            _statusLabel.text = @"订单已完成";
+//            _statusLabel.textColor =[UIColor grayColor];
+            alarmLabel.text = @"您当前的订单已完成";
 //            statusLabel.textAlignment=NSTextAlignmentLeft;
 
             httpRequest * http = [[httpRequest alloc] init];

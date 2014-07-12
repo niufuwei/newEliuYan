@@ -406,8 +406,13 @@ static NSString *selected_backImageName = @"back_selected.png";
                     
                     //标题改变
                     NSLog(@"jjjjjjjjjjjjjjj%d",((UILabel*)[backScrollview viewWithTag:currentPage + 1]).tag);
-                    ((UILabel*)[backScrollview viewWithTag:currentPage +1]).textColor =[UIColor grayColor];
-                    ((UILabel*)[backScrollview viewWithTag:currentPage +1]).text = @"订单已完成";
+                    ((UILabel*)[backScrollview viewWithTag:currentPage +1]).textColor =[UIColor whiteColor];
+                    ((UILabel*)[backScrollview viewWithTag:currentPage +1]).text = @"订单完成";
+                    
+                    
+                    ((UILabel*)[backScrollview viewWithTag:currentPage + 1+1000]).textColor =[UIColor whiteColor];
+                    ((UILabel*)[backScrollview viewWithTag:currentPage +1+1000]).text = @"您当前的订单已完成";
+                    
                     
                 }
                 else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
@@ -549,9 +554,17 @@ static NSString *selected_backImageName = @"back_selected.png";
 
 {
 
-    backScrollview.userInteractionEnabled = NO;
+    
     
     contentOfSet = scrollView.contentOffset.x;
+    backScrollview.userInteractionEnabled = NO;
+    if (contentOfSet1/320 == contentOfSet/320)
+    {
+    
+    backScrollview.userInteractionEnabled = YES;
+        
+    
+    }
     
 
 
