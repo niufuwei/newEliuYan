@@ -489,7 +489,12 @@ static NSString *selected_backImageName = @"back_selected.png";
     NSLog(@"开始和结束的时候 %f.......%f",(contentOfSet1/320),(contentOfSet/320));
     if (contentOfSet1/320 == contentOfSet/320)
     {
+
+
+        backScrollview.userInteractionEnabled = YES;
+
         
+
     }
     
     //往回滑动
