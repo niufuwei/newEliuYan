@@ -470,6 +470,7 @@
 
 -(void)httpRequestError:(NSString *)str
 {
+    self.view.userInteractionEnabled = YES;
     [ac stop];
 }
 -(void)changeAppel
