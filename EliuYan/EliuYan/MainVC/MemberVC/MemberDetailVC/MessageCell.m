@@ -33,9 +33,7 @@
         [self addSubview:_timeLabel];
         
         
-        _lineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"消息中心_05.png"]];
-        _lineImageView.frame = CGRectMake(314, 0, 6, 90.0);
-        [self addSubview:_lineImageView];
+
         
               
     }

@@ -342,32 +342,48 @@
 
     static NSString *identifier = @"identifier";
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell)
+    if (cell==nil)
     {
         cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
 
         cell.backgroundColor = eliuyan_color(0xf5f5f5);
-        if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Type"] isEqualToString:@"0"])
-        {
-            
-            [cell.lineImageView setImage:[UIImage imageNamed:@"消息中心_03.png"]];
-            cell.lineImageView.tag = 100 +indexPath.row;
-            
-        }
-        else
-        {
-            [cell.lineImageView setImage:[UIImage imageNamed:@"消息中心_05.png"]];
-            cell.lineImageView.tag = 100 +indexPath.row;
-            
-            
-        }
-
-
-        cell.backgroundColor = eliuyan_color(0xf5f5f5);
+       
+//        cell.backgroundColor = eliuyan_color(0xf5f5f5);
 
 
     }
+    else
+    {
+        //删除cell的所有子视图
+        while ([cell.contentView.subviews lastObject] != nil)
+        {
+            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+        
+    }
+
     
+    if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Type"] isEqualToString:@"0"])
+    {
+        UIImageView *imageLine = [[UIImageView alloc] initWithFrame:CGRectMake(314, 0, 6, 90.0)];
+        [cell addSubview:imageLine];
+        
+        [imageLine setImage:[UIImage imageNamed:@"消息中心_03.png"]];
+        imageLine.tag = 100 +indexPath.row;
+        
+    }
+    else
+    {   UIImageView *imageLine = [[UIImageView alloc] initWithFrame:CGRectMake(314, 0, 6, 90.0)];
+        [cell addSubview:imageLine];
+        
+
+        [imageLine setImage:[UIImage imageNamed:@"消息中心_05.png"]];
+        imageLine.tag = 100 +indexPath.row;
+        
+        
+    }
+    
+
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     
@@ -408,7 +424,7 @@
     
     
         
-        ((MessageCell*)[tableView cellForRowAtIndexPath:indexPath]).lineImageView.hidden = NO;
+        [((MessageCell*)[tableView cellForRowAtIndexPath:indexPath]) viewWithTag:100 + indexPath.row].hidden = NO;
             NSLog(@"wwwwwwwwwwwwww");
     
 
@@ -434,14 +450,17 @@
             if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
             {
                 NSLog(@"删除成功");
-                _pageIndex = 0;
-                [self loadUI];
+                //_pageIndex = 0;
+                //[self loadUI];
+                int row = indexPath.row;
+                [_messageArray removeObjectAtIndex:row];
+                
+                // Delete the row from the data source.
+                [_messageTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 
             }
             else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
             {
-            
-                
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的账号在别处登录,请重新登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
                 alert.tag = 5;
                 alert.delegate = self;
@@ -455,11 +474,7 @@
             
         }];
         
-        int row = indexPath.row;
-        [_messageArray removeObjectAtIndex:row];
         
-        // Delete the row from the data source.
-        [_messageTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
     
         
