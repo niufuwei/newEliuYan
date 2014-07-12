@@ -261,7 +261,7 @@
     totalPage=[allDic objectForKey:@"TotalPage"];
 
     NSLog(@">>>>>%@",arrayDetail);
-    
+     
     if (arrayDetail==nil) {
         [_tableView removeFromSuperview];
         
