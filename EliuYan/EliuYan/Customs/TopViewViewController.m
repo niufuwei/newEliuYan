@@ -48,7 +48,7 @@
     [_orderView addSubview:_priceLabel];
     //添加右边的结账按钮
     _accountBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    _accountBtn.frame=CGRectMake(250, 5, 60, 30);
+    _accountBtn.frame=CGRectMake(250, 5.5, 60, 30);
     [_orderView addSubview:_accountBtn];
     
     [self.view addSubview:_orderView];
