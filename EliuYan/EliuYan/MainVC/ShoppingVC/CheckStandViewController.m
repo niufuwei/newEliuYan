@@ -177,12 +177,12 @@
     
     disTextPlaceHolder = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, Message.frame.size.width, 15)];
     disTextPlaceHolder.textAlignment = NSTextAlignmentCenter;
-    disTextPlaceHolder.text = @"给卖家说点什么吧";
+    disTextPlaceHolder.text = @"捎些话(100个字以内)";
     disTextPlaceHolder.backgroundColor = [UIColor clearColor];
     disTextPlaceHolder.textColor = [UIColor grayColor];
     [Message addSubview:disTextPlaceHolder];
     
-    UIImageView * lableHeng = [[UIImageView alloc] initWithFrame:CGRectMake(50, disTextPlaceHolder.frame.size.height, disTextPlaceHolder.frame.size.width-100, 1)];
+    UIImageView * lableHeng = [[UIImageView alloc] initWithFrame:CGRectMake(45, disTextPlaceHolder.frame.size.height, disTextPlaceHolder.frame.size.width-90, 1)];
     [lableHeng setBackgroundColor: [UIColor grayColor]];
     [disTextPlaceHolder addSubview:lableHeng];
     
