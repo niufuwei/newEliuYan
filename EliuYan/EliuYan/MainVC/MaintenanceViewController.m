@@ -244,6 +244,11 @@
     }
     [bottomView setBackgroundColor:[UIColor whiteColor]];
     
+    UIImageView *lineImageView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"线4.png"]];
+    lineImageView.frame=CGRectMake(0, 0, 320, 1);
+    [bottomView addSubview:lineImageView];
+
+    
     //购买的服务个数
     numberService = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 40)];
     numberService.backgroundColor = [UIColor clearColor];

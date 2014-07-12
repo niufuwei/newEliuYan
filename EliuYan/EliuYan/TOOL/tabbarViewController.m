@@ -104,12 +104,11 @@
 
     
     _countLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 8, 15, 15)];
-    _countLabel.textColor = [UIColor blackColor];
+    _countLabel.textColor = [UIColor whiteColor];
     _countLabel.layer.cornerRadius = 7.5;
     _countLabel.layer.masksToBounds = YES;
     _countLabel.tag = 3;
     _countLabel.textAlignment = NSTextAlignmentCenter;
-    _countLabel.textColor=[UIColor blackColor];
     _countLabel.font=[UIFont systemFontOfSize:12];
     _countLabel.backgroundColor = [UIColor redColor];
     _countLabel.hidden = YES;

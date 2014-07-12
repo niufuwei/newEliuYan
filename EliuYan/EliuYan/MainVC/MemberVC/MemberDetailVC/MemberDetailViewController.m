@@ -592,6 +592,7 @@
             else
             {
                 ((UILabel *)[cell1 viewWithTag:100 +indexPath.row]).text = [[NSUserDefaults standardUserDefaults] objectForKey:@"unMsgCount"];
+                ((UILabel *)[cell1 viewWithTag:100 +indexPath.row]).textColor = [UIColor whiteColor];
                 [((UILabel *)[cell1 viewWithTag:100 +indexPath.row]) setHidden:NO];
                 
             }
