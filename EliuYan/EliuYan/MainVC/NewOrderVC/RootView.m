@@ -239,17 +239,18 @@
 
 - (void) sendRequest:(NSDictionary *) allDic orderIdArray:(NSArray *)array withTag:(int)tag{
     
-//    if(![currentPage isEqualToString:@"0"])
-//    {
-//        
-//        
-//        CGRect hh = _tableView.frame;
-//        hh.size.height =self.frame.size.height-255 - 64;
-//        _tableView.frame = hh;
-//        
-//
-//    }
+    if(tag > 1)
+    {
+        
+        
+        CGRect hh = _tableView.frame;
+        hh.size.height =self.frame.size.height-255 - 64;
+        _tableView.frame = hh;
+        
+
+    }
     _statusLabel.tag = tag;
+    
     NSLog(@"statuslabel tag is %d",_statusLabel.tag);
     //初始化数组
     _goodsArray = [[NSMutableArray alloc] initWithCapacity:0];

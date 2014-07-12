@@ -490,6 +490,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     if (contentOfSet1/320 == contentOfSet/320)
     {
 
+        backScrollview.userInteractionEnabled = YES;
     }
     
     //往回滑动
