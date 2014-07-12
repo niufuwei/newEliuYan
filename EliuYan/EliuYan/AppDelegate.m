@@ -315,6 +315,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCount" object:nil userInfo:userInfo];
     
     
+    NSString *count = [[userInfo objectForKey:@"aps"] objectForKey:@"badge"];
+    
+    int i = [count intValue];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"allCount"];
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
+    
     if (application.applicationState == UIApplicationStateActive) {
         AudioServicesPlaySystemSound(1007);
     }
