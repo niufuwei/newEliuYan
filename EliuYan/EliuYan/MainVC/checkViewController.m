@@ -317,15 +317,15 @@
     {
         [_VideoButtonPlayed setHidden:YES];
         [_VideoButton setHidden:NO];
-        [_VideoButton setBackgroundImage:[UIImage imageNamed:@"收银台_语音-按住.png"] forState:UIControlStateNormal];
+        [_VideoButton setImage:[UIImage imageNamed:@"收银台_语音-按住.png"] forState:UIControlStateNormal];
         [self startRecord];
-        
         
         
     }
     if(gesture.state == UIGestureRecognizerStateEnded)
     {
         //录音结束
+        [_VideoButton setImage:[UIImage imageNamed:@"tm.png"] forState:UIControlStateNormal];
         [self onClickRepeat:nil];
         
     }
