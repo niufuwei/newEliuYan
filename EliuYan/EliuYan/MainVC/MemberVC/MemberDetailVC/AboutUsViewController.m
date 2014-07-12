@@ -134,9 +134,13 @@
         if(IOS_VERSION >= 6.0)
        {
            [myActivity start];
+           NSString *str = [NSString stringWithFormat:
+                            @"itms-apps://itunes.apple.com/app/id%d",
+                            768005105 ];
+           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+           [myActivity stop];
            
-           
-           [self evaluate];
+//           [self evaluate];
        }
         else
         {

@@ -322,8 +322,15 @@
         if(cell == nil)
         {
             cell = [[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strID];
+            UIImageView *backImage=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"水果店_分隔条.png"]];
+            backImage.frame=CGRectMake(0,59, 90, 1);
+            [cell.contentView addSubview:backImage];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        
+        
         if(isFirstRun && [_menuIdArray objectAtIndex:indexPath.row])
         {
             [menuSelectDictionary setObject:@"ok" forKey:[_menuIdArray objectAtIndex:0]];
