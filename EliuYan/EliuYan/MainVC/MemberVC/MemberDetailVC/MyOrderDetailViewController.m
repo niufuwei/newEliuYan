@@ -513,22 +513,19 @@ static NSString *selected_backImageName = @"back_selected.png";
      if([self.detailsList count] > 0)
        {
        
-           if ([[self.detailsList objectAtIndex:0] objectForKey:@"BuyType"] == 0)
+           if ([[[self.detailsList objectAtIndex:0] objectForKey:@"BuyType"] intValue] == 2)
            {
-               _label6.text = [NSString stringWithFormat:@"订单金额  %@元",self.orderPrice];
+               
+               _label6.text = [NSString stringWithFormat:@"订单金额  ——"];
+               
            }
        else
        {
-           _label6.text = [NSString stringWithFormat:@"订单金额  ——"];
-       }
-       
-       }
-       else
-       {
            _label6.text = [NSString stringWithFormat:@"订单金额  %@元",self.orderPrice];
-           
+       }
        
        }
+    
     
     _label7.text = [NSString stringWithFormat:@"下单时间  %@", [self.createTime stringByReplacingOccurrencesOfString:@"T" withString:@" "]];
     //这里还有备注信息
