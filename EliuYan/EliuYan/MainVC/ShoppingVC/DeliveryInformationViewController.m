@@ -201,12 +201,13 @@
 {
     NSLog(@">>>>>%@",request.responseString);
     
-    
+    self.view.userInteractionEnabled = NO;
     SBJSON *aJson=[[SBJSON alloc] init];
     NSDictionary *allDic=[aJson objectWithString:request.responseString error:nil];
     _returnValue = [allDic objectForKey:@"ReturnValues"];
     if ([_returnValue isEqualToString:@"0"])
     {
+        self.view.userInteractionEnabled = YES;
         _adress = [allDic objectForKey:@"Address"];
         //判断返回的地址是不是空 如果是空就给默认的地址 如果不是就给现在的地址
         if ([_adress isEqualToString:@""]) {
@@ -221,6 +222,7 @@
     }
     else if ([_returnValue isEqualToString:@"88"])
     {
+        self.view.userInteractionEnabled = YES;
         addressText.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"searchAddress"];
         
         
@@ -240,6 +242,12 @@
     
     
     }
+    else
+    {
+    
+        self.view.userInteractionEnabled = YES;
+    
+    }
      //菊花停止
     [ac stop];
 }
@@ -247,6 +255,7 @@
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
     NSLog(@"请求失败 原因%@",request.error);
+    self.view.userInteractionEnabled = YES;
 }
 
 #pragma mark -
@@ -313,12 +322,14 @@
             break;
         case 102:
         {
+
             if([self checkTel:phoneField.text])
             {
                 if(nameField.text.length !=0)
                 {
                     if(addressText.text.length !=0)
                     {
+                        self.view.userInteractionEnabled = NO;
                         ac = [[Activity alloc] initWithActivity:self.view];
                         [ac start];
                         NSMutableDictionary * alldataDic = [[NSMutableDictionary alloc] init];
@@ -367,6 +378,7 @@
                         http.httpDelegate = self;
                         [http httpRequestSend:[NSString stringWithFormat:@"%@order/CreareOrder",SERVICE_ADD] parameter:[NSString stringWithFormat:@"StrJson=%@&Token=%@",[self DICTOJSON:alldataDic],[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
                             
+                            NSLog(@"]]]]]]]]]]]%@",dic);
                             
                             [ac stop];
                             if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
@@ -401,12 +413,15 @@
                                 
                                 
                                 OrderSuccessfulViewController * order = [[OrderSuccessfulViewController alloc] init];
+                                btn.userInteractionEnabled = YES;
                                 [self.navigationController pushViewController:order animated:YES];
     
 
                             }
                             else if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
                             {
+                               self.view.userInteractionEnabled = YES;
+
                                 UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"警告" message:@"您的账号在别处登录,请重新登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
                                 alertView.delegate=self;
                                 alertView.tag=222;
@@ -416,10 +431,17 @@
                                 [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"Token"];
                                 [alertView show];
                             }
-                            else
+                            else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"99"])
                             {
+                                self.view.userInteractionEnabled = YES;
                                 UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"服务器异常，请重试" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                                 [alert show];
+                            }
+                            else
+                            {
+                            
+                                self.view.userInteractionEnabled = YES;
+                            
                             }
                             
                             })];

@@ -51,9 +51,11 @@ static NSString *selected_backImageName = @"back_selected.png";
 
     //店铺详情
     Confirm=[UIButton buttonWithType:UIButtonTypeCustom];
-    Confirm.frame=CGRectMake(320-80+3, 10, 60, 22);
-    [Confirm setBackgroundImage:[UIImage imageNamed:@"确认收货.png"] forState:UIControlStateNormal];
-    [Confirm setBackgroundColor:[UIColor blackColor]];
+    Confirm.frame=CGRectMake(320-80, 7, 80, 30);
+    
+    [Confirm setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [Confirm setTitle:@"确认收货" forState:UIControlStateNormal];
+    Confirm.titleLabel.font=[UIFont systemFontOfSize:16.0];
     [Confirm addTarget:self action:@selector(confirmationGoods:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:Confirm];
     Confirm.hidden = NO;

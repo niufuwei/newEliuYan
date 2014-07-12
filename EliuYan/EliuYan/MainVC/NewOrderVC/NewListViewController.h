@@ -12,7 +12,7 @@
 #import "MemberCenterViewController.h"
 typedef void (^block)(NSString *str);
 @protocol RootViewDelegate
-- (void)sendRequest:(NSDictionary *)allDic orderIdArray:(NSArray *)array;
+- (void)sendRequest:(NSDictionary *)allDic orderIdArray:(NSArray *)array withTag:(int)tag;
 @end
 
 @interface NewListViewController : TopViewViewController<UIScrollViewDelegate,NavCustomDelegate,httpRequestDelegate,UIAlertViewDelegate>

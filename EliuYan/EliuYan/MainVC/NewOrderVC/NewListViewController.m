@@ -127,7 +127,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     //店铺详情
     Confirm=[UIButton buttonWithType:UIButtonTypeCustom];
     Confirm.frame=CGRectMake(320-80, 7, 80, 30);
-//    [Confirm setBackgroundImage:[UIImage imageNamed:@"确认收货.png"] forState:UIControlStateNormal];
+
     [Confirm setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [Confirm setTitle:@"确认收货" forState:UIControlStateNormal];
     Confirm.titleLabel.font=[UIFont systemFontOfSize:16.0];
@@ -277,8 +277,9 @@ static NSString *selected_backImageName = @"back_selected.png";
                 [pageCount removeFromSuperview];
                 
             }
+            NSInteger currentPage = backScrollview.contentOffset.x/320  ;
+            [self.rootDelegate sendRequest:dic orderIdArray:_orderIdArray withTag:currentPage + 1];
             
-            [self.rootDelegate sendRequest:dic orderIdArray:_orderIdArray];
             
             
 //            NSLog(@"....%@",[dic objectForKey:@"List"]);
@@ -378,9 +379,10 @@ static NSString *selected_backImageName = @"back_selected.png";
         
         if (buttonIndex==0) {
             
+            
+            
             NSInteger currentPage = backScrollview.contentOffset.x/320;
-            
-            
+            NSLog(@"当前页的编号是%@",[_orderIdArray objectAtIndex:currentPage]);
             httpRequest * http = [[httpRequest alloc] init];
             [http httpRequestSend:[NSString stringWithFormat:@"%@order/GainGoods",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&Token=%@",[_orderIdArray objectAtIndex:currentPage],[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
                 NSLog(@"===>%@",dic);
@@ -393,6 +395,7 @@ static NSString *selected_backImageName = @"back_selected.png";
                     
                  NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary: [[newOrderRecord objectAtIndex:currentPage] objectForKey:@"List"]];
                     [dic setObject:@"5" forKey:@"Status"];
+                 NSLog(@"当前页的订单详情是%@",[newOrderRecord objectAtIndex:currentPage]);
                     [newOrderRecord replaceObjectAtIndex:currentPage withObject:dic];
                     
                     Confirm.hidden=YES;
@@ -401,21 +404,9 @@ static NSString *selected_backImageName = @"back_selected.png";
                     
                     
                     //标题改变
-                    root.statusLabel.textColor =[UIColor grayColor];
-                    root.statusLabel.text = @"订单已完成                                               订单完成";
-
-                    //用来标记确认收货
-//                    [];
-                    
-//                    int count = [[[NSUserDefaults standardUserDefaults] objectForKey:@"newOrders"] intValue];
-//                    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",count -1] forKey:@"newOrders"];
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"newOrderChangeCount" object:nil];
-                    
-                    
-                    
-//                    int count1 = [[[NSUserDefaults standardUserDefaults] objectForKey:@"allCount"] intValue];
-//                    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",count1 -1] forKey:@"allCount"];
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
+                    NSLog(@"jjjjjjjjjjjjjjj%d",((UILabel*)[backScrollview viewWithTag:currentPage + 1]).tag);
+                    ((UILabel*)[backScrollview viewWithTag:currentPage +1]).textColor =[UIColor grayColor];
+                    ((UILabel*)[backScrollview viewWithTag:currentPage +1]).text = @"订单已完成";
                     
                 }
                 else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
@@ -555,6 +546,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     backScrollview.userInteractionEnabled = NO;
     
     contentOfSet = scrollView.contentOffset.x;
+    
 
 
 
@@ -602,6 +594,7 @@ static NSString *selected_backImageName = @"back_selected.png";
                             {
             
                                 root=[[RootView alloc] initWithFrame:CGRectMake(currentPage*320, 0, 320, self.view.frame.size.height+64.2)];
+                                
                             }
                             self.rootDelegate=root;
             

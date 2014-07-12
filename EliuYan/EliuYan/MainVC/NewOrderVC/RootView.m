@@ -237,7 +237,7 @@
     [refreshView endRefreshing];
 }
 
-- (void) sendRequest:(NSDictionary *) allDic orderIdArray:(NSArray *)array{
+- (void) sendRequest:(NSDictionary *) allDic orderIdArray:(NSArray *)array withTag:(int)tag{
     
 //    if(![currentPage isEqualToString:@"0"])
 //    {
@@ -249,7 +249,8 @@
 //        
 //
 //    }
-    
+    _statusLabel.tag = tag;
+    NSLog(@"statuslabel tag is %d",_statusLabel.tag);
     //初始化数组
     _goodsArray = [[NSMutableArray alloc] initWithCapacity:0];
     

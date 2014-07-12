@@ -141,7 +141,6 @@
         
         
         [self.view addSubview:locationView];
-        locationView.hidden = YES;
         
         
         //添加表
@@ -319,7 +318,15 @@
     if(array.count==0)
     {
         [activity stop];
-        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+        if (IOS_VERSION > 7) {
+            _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-113-49) image:@"无信息页面.png"];
+        }
+        else
+        {
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-64-113-49 + 20) image:@"无信息页面.png"];
+            
+        }
+        
         [_loadView changeLabel:@"我尽力了，还是看不到"];
         [self.view addSubview:_loadView];
         
@@ -382,8 +389,10 @@
             
         }
         //刷新表
+        
         [_tableView reloadData];
-        locationView.hidden = NO;
+        [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+       
 
         [activity stop];
         
@@ -443,28 +452,6 @@
                 }
                 
             }
-//            else
-//            {
-//                [_Topic removeFromSuperview];
-//                
-//                locationView.frame =CGRectMake(0, 0, 320, 32);
-//                locationView.hidden = NO;
-//                
-//                //添加表
-//                if (IOS_VERSION >=7.0) {
-//                    _tableView.frame =CGRectMake(0, 33, 320, self.view.frame.size.height-44-33);
-//                }
-//                else
-//                {
-//                    _tableView.frame = CGRectMake(0, 33, 320, self.view.frame.size.height-33);
-//                }
-//                
-//                
-//                
-//                
-//                
-//                
-//            }
         }
         
         
@@ -476,7 +463,14 @@
 {
     NSLog(@"请求失败");
     [activity stop];
-    _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+    if (IOS_VERSION > 7) {
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-64-113-49) image:@"无信息页面.png"];
+    }
+    else
+    {
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-64-113-49 + 20) image:@"无信息页面.png"];
+        
+    }
     [_loadView changeLabel:@"我尽力了，还是看不到"];
     [self.view addSubview:_loadView];
 
@@ -490,6 +484,7 @@
 -(void)refreshBtnClick:(id)sender
 {
     NSLog(@"刷新按钮被点击了");
+    [_loadView removeFromSuperview];
     if(!isRefresh)
     {
         isRefresh = TRUE;
