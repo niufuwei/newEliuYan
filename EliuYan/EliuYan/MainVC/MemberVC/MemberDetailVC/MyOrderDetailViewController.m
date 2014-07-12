@@ -124,7 +124,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     
     
     _label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, _label2.frame.origin.y +_label2.frame.size.height+10, 240, 15)];
-    _label1.text = @"您可以直接通过电话给商户取消订单";
+//    _label1.text = @"您可以直接通过电话给商户取消订单";
     _label1.textColor=[UIColor whiteColor];
     _label1.backgroundColor = [UIColor clearColor];
     //        alarmLabel.textAlignment = NSTextAlignmentCenter;
@@ -565,7 +565,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     else if([self.descriptionType isEqualToString:@"2"])
     {
          //语音播放按钮
-        UIButton *voiceBtn = [[UIButton alloc] initWithFrame:CGRectMake(90, _label5.frame.origin.y+_label5.frame.size.height+15, 50, 20)];
+        UIButton *voiceBtn = [[UIButton alloc] initWithFrame:CGRectMake(90, _label5.frame.origin.y+_label5.frame.size.height+25, 50, 20)];
         
         [voiceBtn setBackgroundImage:[UIImage imageNamed:@"留言.png"] forState:UIControlStateNormal];
         [voiceBtn addTarget:self action:@selector(playVoice:) forControlEvents:UIControlEventTouchUpInside];
