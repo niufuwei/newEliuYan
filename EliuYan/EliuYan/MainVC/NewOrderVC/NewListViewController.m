@@ -282,6 +282,7 @@ static NSString *selected_backImageName = @"back_selected.png";
             
             
             
+            
 //            NSLog(@"....%@",[dic objectForKey:@"List"]);
             int status=[[[dic objectForKey:@"List"] objectForKey:@"Status" ] intValue];
             orderId = [[dic objectForKey:@"List"] objectForKey:@"Id"];
@@ -599,6 +600,7 @@ static NSString *selected_backImageName = @"back_selected.png";
                             self.rootDelegate=root;
             
                 [backScrollview addSubview:root];
+                [self.view bringSubviewToFront:pageCount];
                 [mutableDic setObject:@"ok" forKey:[NSString stringWithFormat:@"%d",currentPage]];
                 pageCount.text = [NSString stringWithFormat:@"%d/%@",tempIndex+1,isTotalPage];
             }

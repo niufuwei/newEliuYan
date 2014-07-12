@@ -464,7 +464,7 @@
     NSLog(@"请求失败");
     [activity stop];
     if (IOS_VERSION > 7) {
-        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-64-113-49) image:@"无信息页面.png"];
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-113-49) image:@"无信息页面.png"];
     }
     else
     {

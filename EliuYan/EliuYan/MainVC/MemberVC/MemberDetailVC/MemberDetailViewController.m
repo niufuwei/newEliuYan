@@ -114,6 +114,9 @@
     [_tableView reloadData];
     
     
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"allCount"];
+    
+    
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
 
@@ -171,6 +174,10 @@
             NSLog(@"消息的数量是%@",[NSString stringWithFormat:@"%d",count]);
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",count] forKey:@"unMsgCount"];
             [_tableView reloadData];
+            
+            
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",count] forKey:@"allCount"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
             
             
             _memberInfo = [NSMutableDictionary dictionaryWithDictionary:dic];
