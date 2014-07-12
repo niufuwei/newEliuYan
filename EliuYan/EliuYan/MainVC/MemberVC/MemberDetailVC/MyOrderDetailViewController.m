@@ -459,7 +459,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     if ([self.status isEqualToString:@"1"])
     {
         _label2.text = @"等待送货";
-        _label1.text = @"如需取消，请联系卖家";
+        _label1.text = @"您可以直接通过电话给商户取消订单";
 //        [_lineImageView setImage:[UIImage imageNamed:@"线4.png"]];
         [self.view viewWithTag:2500].hidden = YES;
 
@@ -490,9 +490,7 @@ static NSString *selected_backImageName = @"back_selected.png";
 
         
         _label2.text = @"订单完成";
-        _label2.textColor = [UIColor grayColor];
-        _label1.textColor = [UIColor grayColor];
-        _label1.text = @"订单已完成";
+        _label1.text = @"您当前的订单已完成";
 //        [_lineImageView setImage:[UIImage imageNamed:@"线5.png"]];
         [self.view viewWithTag:2500].hidden = YES;
 
@@ -503,8 +501,6 @@ static NSString *selected_backImageName = @"back_selected.png";
     {
         _label2.text = @"订单取消";
         _label1.text = [NSString stringWithFormat:@"%@",[self.myOrderDic objectForKey:@"OrderReason"]];
-        _label2.textColor = [UIColor grayColor];
-        _label1.textColor = [UIColor grayColor];
         [_lineImageView setImage:[UIImage imageNamed:@"线5.png"]];
         [self.view viewWithTag:2500].hidden = YES;
         
@@ -790,9 +786,7 @@ static NSString *selected_backImageName = @"back_selected.png";
             
             {
             
-                _label1.text = @"订单已完成";
-                _label1.textColor = [UIColor grayColor];
-                _label2.textColor = [UIColor grayColor];
+                _label1.text = @"您当前的订单已完成";
                 _label2.text = @"订单完成";
                 _lineImageView.image = [UIImage imageNamed:@"线5.png"];
                 [self.view viewWithTag:2500].hidden = YES;
