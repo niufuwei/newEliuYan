@@ -95,20 +95,11 @@
     
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeCount:) name:@"changeCount" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newOrderChangeCount:) name:@"newOrderChangeCount" object:nil];
     
 
 }
 
--(void)newOrderChangeCount:(NSNotification *)notitication
-{
- 
-    [_tableView reloadData];
-    
-    
-}
+
 -(void)changeCount:(NSNotification *)notitication
 {
     
@@ -118,18 +109,12 @@
     
     int i = [count intValue];
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"newMessageCount"];
-    //原有的消息的条数
-    int j = [[[NSUserDefaults standardUserDefaults] objectForKey:@"changeMessageCount"] intValue];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",i+j] forKey:@"changeMessageCount"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"unMsgCount"];
+   
     [_tableView reloadData];
     
     
-//    //最新订单和消息的总条数
-//    int sum = [[[NSUserDefaults standardUserDefaults] objectForKey:@"allCount"] intValue];
-//    sum += i;
-//    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",sum] forKey:@"allCount"];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
 
     
@@ -184,8 +169,8 @@
             
             int count = [[dic objectForKey:@"unMsgCount"] intValue];
             NSLog(@"消息的数量是%@",[NSString stringWithFormat:@"%d",count]);
-            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",count] forKey:@"allCount"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",count] forKey:@"unMsgCount"];
+            [_tableView reloadData];
             
             
             _memberInfo = [NSMutableDictionary dictionaryWithDictionary:dic];
