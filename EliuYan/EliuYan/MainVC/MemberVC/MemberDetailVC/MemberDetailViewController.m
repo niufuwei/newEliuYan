@@ -82,6 +82,7 @@
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.backgroundColor=eliuyan_color(0xf5f5f5);
+    _tableView.showsVerticalScrollIndicator=NO;
     [self.view addSubview:_tableView];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
