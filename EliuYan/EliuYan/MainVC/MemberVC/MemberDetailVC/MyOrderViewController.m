@@ -338,7 +338,8 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.orderNumberLabel.text = [[self.list objectAtIndex:indexPath.row] objectForKey:@"OrderNumber"];
-    if ([[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==1) {
+    if ([[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==1  || [[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==3)
+    {
         //超市
         cell.orderMoneyLabel.text =[NSString stringWithFormat:@"%@元",[[self.list objectAtIndex:indexPath.row] objectForKey:@"OrderPrice"]];
         cell.orderMoneyLabel.textColor=[UIColor blackColor];

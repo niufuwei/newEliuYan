@@ -510,8 +510,26 @@ static NSString *selected_backImageName = @"back_selected.png";
     _label3.text = [NSString stringWithFormat:@"%@",self.storeName];
     _label4.text = [NSString stringWithFormat:@"%@",self.telNumber];
     _label5.text = [NSString stringWithFormat:@"订单编号  %@",self.orderNumber];
-    _label6.text = [NSString stringWithFormat:@"订单金额  %@元",self.orderPrice];
-    _label11.text =[NSString stringWithFormat:@"共%@元",_orderPrice];
+     if([self.detailsList count] > 0)
+       {
+       
+           if ([[self.detailsList objectAtIndex:0] objectForKey:@"BuyType"] == 0)
+           {
+               _label6.text = [NSString stringWithFormat:@"订单金额  %@元",self.orderPrice];
+           }
+       else
+       {
+           _label6.text = [NSString stringWithFormat:@"订单金额  ——"];
+       }
+       
+       }
+       else
+       {
+           _label6.text = [NSString stringWithFormat:@"订单金额  %@元",self.orderPrice];
+           
+       
+       }
+    
     _label7.text = [NSString stringWithFormat:@"下单时间  %@", [self.createTime stringByReplacingOccurrencesOfString:@"T" withString:@" "]];
     //这里还有备注信息
    
