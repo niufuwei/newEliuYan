@@ -109,7 +109,6 @@
     _countLabel.layer.masksToBounds = YES;
     _countLabel.tag = 3;
     _countLabel.textAlignment = NSTextAlignmentCenter;
-    _countLabel.textColor=[UIColor blackColor];
     _countLabel.font=[UIFont systemFontOfSize:12];
     _countLabel.backgroundColor = [UIColor redColor];
     _countLabel.hidden = YES;
