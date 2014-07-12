@@ -282,14 +282,17 @@
     //下一步
     
     UIButton * nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.frame= CGRectMake(self.view.frame.size.width - 70, 7.5, 55, 25);
+    nextButton.frame= CGRectMake(self.view.frame.size.width - 70, 5.5, 60, 30);
 //    nextButton.layer.borderColor = [UIColor grayColor].CGColor;
 //    nextButton.layer.borderWidth=1;
 //    nextButton.backgroundColor = [UIColor clearColor];
 //    [nextButton setTitle:@"下一步" forState:UIControlStateNormal];
 //    [nextButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
-    [nextButton setBackgroundImage:[UIImage imageNamed:@"结算-未按.png"] forState:UIControlStateNormal];
-    [nextButton setBackgroundImage:[UIImage imageNamed:@"结算-未按.png"] forState:(UIControlStateHighlighted|UIControlStateSelected)];
+//    [nextButton setBackgroundImage:[UIImage imageNamed:@"结算-未按.png"] forState:UIControlStateNormal];
+//    [nextButton setBackgroundImage:[UIImage imageNamed:@"结算-未按.png"] forState:(UIControlStateHighlighted|UIControlStateSelected)];
+    [nextButton setTitle:@"结算" forState:UIControlStateNormal];
+    nextButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [nextButton setBackgroundColor:eliuyan_color(0xe94f4f)];
      nextButton.adjustsImageWhenHighlighted = NO;
     nextButton.tag = 103;
     [nextButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
