@@ -173,7 +173,7 @@
         
         //语音播放按钮
         _VoiceBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-        _VoiceBtn.frame = CGRectMake(90, OrderNumber.frame.origin.y+OrderNumber.frame.size.height+15, 50, 20);
+        _VoiceBtn.frame = CGRectMake(90, OrderNumber.frame.origin.y+OrderNumber.frame.size.height+25, 50, 20);
         [_VoiceBtn setBackgroundImage:[UIImage imageNamed:@"留言.png"] forState:UIControlStateNormal];
         [_VoiceBtn addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
         [_VoiceBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

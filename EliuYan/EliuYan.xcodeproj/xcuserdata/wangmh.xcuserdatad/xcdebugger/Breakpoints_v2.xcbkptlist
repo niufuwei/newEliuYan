@@ -29,51 +29,5 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EliuYan/MainVC/ShoppingVC/DeliveryInformationViewController.m"
-            timestampString = "426841818.940108"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
-            landmarkName = "-onClick:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DeliveryInformationViewController onClick:]"
-                  moduleName = "EliuYan"
-                  urlString = "file:///Users/wangmh/Desktop/newEliuyan/EliuYan/EliuYan/MainVC/ShoppingVC/DeliveryInformationViewController.m"
-                  timestampString = "426844846.248268"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "382"
-                  endingLineNumber = "382"
-                  offsetFromSymbolStart = "3656">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[DeliveryInformationViewController onClick:]_block_invoke264"
-                  moduleName = "EliuYan"
-                  urlString = "file:///Users/wangmh/Desktop/newEliuyan/EliuYan/EliuYan/MainVC/ShoppingVC/DeliveryInformationViewController.m"
-                  timestampString = "426844846.248519"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "382"
-                  endingLineNumber = "382"
-                  offsetFromSymbolStart = "42">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
