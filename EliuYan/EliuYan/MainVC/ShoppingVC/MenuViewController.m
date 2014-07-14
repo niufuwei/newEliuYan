@@ -1000,6 +1000,12 @@
 }
 -(void)httpRequestError:(NSString *)str
 {
+    //加载出错界面
+    LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无服务.png"];
+    [loadView changeLabel:@"您的网络出小差了哦"];
+    [self.view addSubview:loadView];
+    [self.view bringSubviewToFront:loadView];
+
     [activity stop];
 }
 #pragma mark_

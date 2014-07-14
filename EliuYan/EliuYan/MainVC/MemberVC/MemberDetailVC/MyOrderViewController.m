@@ -318,8 +318,8 @@
 
 -(void)httpRequestError:(NSString *)str;
 {
-    LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
-    [loadView changeLabel:@"我尽力了，还是看不到"];
+    LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无服务.png"];
+    [loadView changeLabel:@"您的网络出小差了哦"];
     [self.view addSubview:loadView];
     [self.view bringSubviewToFront:loadView];
     

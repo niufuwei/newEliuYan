@@ -215,6 +215,12 @@
 }
 -(void)httpRequestError:(NSString *)str
 {
+    //加载出错界面
+    LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无服务.png"];
+    [loadView changeLabel:@"您的网络出小差了哦"];
+    [self.view addSubview:loadView];
+    [self.view bringSubviewToFront:loadView];
+    
     [activity stop];
 }
 
@@ -264,7 +270,7 @@
     numberPrice.textAlignment = NSTextAlignmentCenter;
     numberPrice.textAlignment = NSTextAlignmentLeft;
     numberPrice.textColor = [UIColor colorWithRed:233.0/255.0 green:79.0/255.0 blue:79.0/255.0 alpha:1];
-    numberPrice.text = @"共                 元";
+    numberPrice.text = @"共                元";
     [bottomView addSubview:numberPrice];
     
     //购买的价格2222
@@ -445,6 +451,9 @@
 
         if(tableView.tag==101)
         {
+            
+            [ContentTable setContentOffset:CGPointMake(0, 0) animated:NO];
+            
             BOOL isSelected = FALSE;
             for(int i=0;i<[[menuSelectDictionary allKeys] count];i++)
             {
