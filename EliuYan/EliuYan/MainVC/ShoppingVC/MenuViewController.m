@@ -244,6 +244,7 @@
     _menuTableView.delegate=self;
     _menuTableView.tag=100;
     _menuTableView.dataSource=self;
+    _menuTableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:_menuTableView];
     
     
@@ -263,6 +264,8 @@
         self.priceLabel.hidden=YES;
         _fruitTableView.delegate=self;
         _fruitTableView.dataSource=self;
+        _fruitTableView.showsVerticalScrollIndicator = NO;
+
         [self.view addSubview:_fruitTableView];
         
     }
@@ -280,6 +283,8 @@
         _displayTableView.tag=101;
         _displayTableView.delegate=self;
         _displayTableView.dataSource=self;
+        _displayTableView.showsVerticalScrollIndicator = NO;
+
         [self.view addSubview:_displayTableView];
 //        self.countLab.hidden=YES;
     }
@@ -995,6 +1000,12 @@
 }
 -(void)httpRequestError:(NSString *)str
 {
+    //加载出错界面
+    LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无服务.png"];
+    [loadView changeLabel:@"您的网络出小差了哦"];
+    [self.view addSubview:loadView];
+    [self.view bringSubviewToFront:loadView];
+
     [activity stop];
 }
 #pragma mark_

@@ -1005,7 +1005,7 @@
         }
         else
         {
-            statistical.text = [NSString stringWithFormat:@"共%d件                    %.2f元",jianshu,jiage];
+            statistical.text = [NSString stringWithFormat:@"共%d件                 %.2f元",jianshu,jiage];
         }
 
         

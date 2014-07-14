@@ -123,6 +123,12 @@ static NSString *selected_backImageName = @"返回.png";
 -(void)httpRequestError:(NSString *)str
 {
     [ac stop];
+    //加载出错界面
+    LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无服务.png"];
+    [loadView changeLabel:@"您的网络出小差了哦"];
+    [self.view addSubview:loadView];
+    [self.view bringSubviewToFront:loadView];
+
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -409,6 +415,8 @@ static NSString *selected_backImageName = @"返回.png";
 {
     [appDelegate hidenTabbar];
     httpRequest * addRequest = [[httpRequest alloc] init];
+    
+    addRequest.httpDelegate=self;
     
     ac = [[Activity alloc] initWithActivity:self.view];
     [ac start];

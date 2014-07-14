@@ -213,11 +213,11 @@
     
     
     if (!iPhone5) {
-        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, 300, 80)];
+        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(10, 0, 300, 80)];
     }
     else
     {
-        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, 300, 80)];
+        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(10, 0, 300, 80)];
     }
     
     [_Topic setBackgroundColor:eliuyan_color(0xf5f5f5)];

@@ -192,10 +192,11 @@
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
     NSLog(@"请求失败");
-    loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
-    [loadView changeLabel:@"网络请求出错啦"];
-    [self.view addSubview:loadView];
-    
+    //加载出错界面
+    LoadingView *aLloadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无服务.png"];
+    [aLloadView changeLabel:@"您的网络出小差了哦"];
+    [self.view addSubview:aLloadView];
+    [self.view bringSubviewToFront:aLloadView];
 }
 
 #pragma mark_
