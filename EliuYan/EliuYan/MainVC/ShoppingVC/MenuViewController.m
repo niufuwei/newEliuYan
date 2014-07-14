@@ -691,7 +691,7 @@
                     cell.categoryLabel.textColor = eliuyan_color(0xe94f4f);
 //                    [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
                     [menuSelectOnly setObject:@"ok" forKey:@"0"];
-                    cell.backgroundColor = [UIColor whiteColor];
+                    cell.contentView.backgroundColor = [UIColor whiteColor];
                     isFirstSelected = FALSE;
                 }
                 
@@ -744,11 +744,11 @@
 //                [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
                 isFirstSelected = FALSE;
                 cell.categoryLabel.textColor =  eliuyan_color(0xe94f4f);
-                cell.backgroundColor = [UIColor whiteColor];
+                cell.contentView.backgroundColor = [UIColor whiteColor];
             }
             else
             {
-                cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
+                cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
 
             }
             
@@ -930,11 +930,11 @@
                 [menuSelectOnly setObject:@"" forKey:[[menuSelectOnly allKeys] objectAtIndex:i]];
                 
                 ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[[[menuSelectOnly allKeys] objectAtIndex:i] intValue] inSection:0]]).categoryLabel.textColor = [UIColor blackColor];
-                 ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[[[menuSelectOnly allKeys] objectAtIndex:i] intValue] inSection:0]]).backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
+                 ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[[[menuSelectOnly allKeys] objectAtIndex:i] intValue] inSection:0]]).contentView.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
             }
             ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).categoryLabel.textColor = eliuyan_color(0xe94f4f);
             [menuSelectOnly setObject:@"ok" forKey:[NSString stringWithFormat:@"%d",indexPath.row]];
-            ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).backgroundColor = [UIColor whiteColor];
+            ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).contentView.backgroundColor = [UIColor whiteColor];
             
         }
         else

@@ -349,14 +349,14 @@
         if([[menuSelectDictionary objectForKey:[_menuIdArray objectAtIndex:indexPath.row]] isEqualToString:@"ok"])
         {
             [menuSelectDictionary setObject:@"ok" forKey:[_menuIdArray objectAtIndex:indexPath.row]];
-            cell.backgroundColor = [UIColor whiteColor];
+            cell.contentView.backgroundColor = [UIColor whiteColor];
             cell.MenuName.textColor = [UIColor colorWithRed:233.0/255.0 green:79.0/255.0 blue:79.0/255.0 alpha:1];
 
         }
         else
         {
             [menuSelectDictionary setObject:@"no" forKey:[_menuIdArray objectAtIndex:indexPath.row]];
-            cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
              cell.MenuName.textColor = [UIColor blackColor];
         }
         cell.MenuName.text = [_menuNameArray objectAtIndex:indexPath.row];
@@ -461,7 +461,7 @@
                         NSIndexPath * index = [NSIndexPath indexPathForItem:selectMenuRow inSection:0];
                         [menuSelectDictionary removeObjectForKey:[[menuSelectDictionary allKeys] objectAtIndex:i]];
                         MenuCell * cell2 = (MenuCell*)[menuTable cellForRowAtIndexPath:index];
-                        [cell2 setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]]];
+                        [cell2.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]]];
                          cell2.MenuName.textColor = [UIColor blackColor];
                     }
                 }
@@ -470,7 +470,7 @@
             if(!isSelected)
             {
                 MenuCell * cell = (MenuCell*)[menuTable cellForRowAtIndexPath:indexPath];
-                cell.backgroundColor = [UIColor whiteColor];
+                cell.contentView.backgroundColor = [UIColor whiteColor];
                 cell.MenuName.textColor = [UIColor colorWithRed:233.0/255.0 green:79.0/255.0 blue:79.0/255.0 alpha:1];
                 [menuSelectDictionary setObject:@"ok" forKey:[_menuIdArray objectAtIndex:indexPath.row]];
                 

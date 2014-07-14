@@ -24,6 +24,7 @@
         MenuName.textColor = [UIColor blackColor];
         MenuName.numberOfLines = 0;
         MenuName.lineBreakMode = NSLineBreakByWordWrapping;
+        MenuName.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:MenuName];
         
         number = [[UIButton alloc] initWithFrame:CGRectMake(90-15, 3, 15, 15)];

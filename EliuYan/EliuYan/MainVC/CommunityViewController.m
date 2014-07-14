@@ -156,6 +156,7 @@
         [image2 setImage:[UIImage imageNamed:@"进入2.png"]];
         cell.accessoryView = image2;
         cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.font = [UIFont systemFontOfSize:16];
     }
     else
     {

@@ -243,6 +243,7 @@
  
     tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     cell.textLabel.text = [[_dataArray objectAtIndex:indexPath.row] objectForKey:@"StoreName"];
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
     return cell;
 }
 - (void)setExtraCellLineHidden: (UITableView *)tableView
