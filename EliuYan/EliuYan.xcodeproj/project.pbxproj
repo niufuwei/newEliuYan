@@ -219,7 +219,6 @@
 		71C2FB51196E8DE3007B99A7 /* 首页菜单栏-选中 (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 71C2FB4B196E8DE3007B99A7 /* 首页菜单栏-选中 (2).png */; };
 		71C2FB52196E8DE3007B99A7 /* 首页菜单栏-选中 (3).png in Resources */ = {isa = PBXBuildFile; fileRef = 71C2FB4C196E8DE3007B99A7 /* 首页菜单栏-选中 (3).png */; };
 		EF190B6F191B5D67000313A1 /* JCTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = EF190B6E191B5D67000313A1 /* JCTopic.m */; };
-		EF30CBF51971365100EEC7DC /* 首页-起送费.png in Resources */ = {isa = PBXBuildFile; fileRef = EF30CBF41971365100EEC7DC /* 首页-起送费.png */; };
 		EF5D93AB191A873E00CCD6B0 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		EF5D93AF191A89BB00CCD6B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		EF5D93B1191A89C200CCD6B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -746,7 +745,6 @@
 		71C2FB4C196E8DE3007B99A7 /* 首页菜单栏-选中 (3).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页菜单栏-选中 (3).png"; sourceTree = "<group>"; };
 		EF190B6D191B5D67000313A1 /* JCTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTopic.h; sourceTree = "<group>"; };
 		EF190B6E191B5D67000313A1 /* JCTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTopic.m; sourceTree = "<group>"; };
-		EF30CBF41971365100EEC7DC /* 首页-起送费.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-起送费.png"; sourceTree = "<group>"; };
 		EF6D4ACE194B04F700012777 /* CheckStandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckStandViewController.m; sourceTree = "<group>"; };
 		EF6D4ACF194B04F700012777 /* CheckStandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckStandViewController.h; sourceTree = "<group>"; };
 		EFA97AE5191645CF00BACC9D /* Contact_no_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contact_no_select.png; sourceTree = "<group>"; };
@@ -1593,7 +1591,6 @@
 		EFA97AE4191645CF00BACC9D /* 切图 */ = {
 			isa = PBXGroup;
 			children = (
-				EF30CBF41971365100EEC7DC /* 首页-起送费.png */,
 				1DBA41C619615C9100A5E47D /* alphaClean.png */,
 				1DBA41C119610B8100A5E47D /* chahao.png */,
 				71AB9F141938936A00F586BA /* 首页.png */,
@@ -1887,7 +1884,6 @@
 				EFA97B5C191645CF00BACC9D /* 分割线2.png in Resources */,
 				EFA97B51191645CF00BACC9D /* Contact_selected.png in Resources */,
 				7193B256196D3A1900070705 /* 登录-未按.png in Resources */,
-				EF30CBF51971365100EEC7DC /* 首页-起送费.png in Resources */,
 				EFA97B7D191645CF00BACC9D /* 结账-按下.png in Resources */,
 				EFA97BA2191645CF00BACC9D /* 详情介绍_杂货店图标.png in Resources */,
 				7193B272196D3A1900070705 /* 选择产品-添加.png in Resources */,
