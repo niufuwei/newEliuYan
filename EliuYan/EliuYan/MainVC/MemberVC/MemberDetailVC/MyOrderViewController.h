@@ -8,8 +8,8 @@
 
 #import "TopViewViewController.h"
 #import "MJRefresh.h"
-
-@interface MyOrderViewController : TopViewViewController<UITableViewDataSource,UITableViewDelegate,MJRefreshBaseViewDelegate,UIAlertViewDelegate>
+#import "httpRequest.h"
+@interface MyOrderViewController : TopViewViewController<UITableViewDataSource,UITableViewDelegate,MJRefreshBaseViewDelegate,UIAlertViewDelegate,httpRequestDelegate>
 {
 
     UITableView *_myOrderTableView;
@@ -24,6 +24,8 @@
     UIView *_aView;
     BOOL _isRemove;
     BOOL isRepeat;
+    
+    Activity *activity;
     
 }
 @property (nonatomic,assign)int totalCount;

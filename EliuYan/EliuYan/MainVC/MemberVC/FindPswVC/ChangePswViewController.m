@@ -74,7 +74,7 @@
     
     
        if (IOS_VERSION < 7.0) {
-        _newPswTF=[[UITextField alloc] initWithFrame:CGRectMake(40, 110, 270, 44)];
+        _newPswTF=[[UITextField alloc] initWithFrame:CGRectMake(50, 110, 270, 44)];
 
     } else {
         _newPswTF=[[UITextField alloc] initWithFrame:CGRectMake(40, 100, 270, 44)];

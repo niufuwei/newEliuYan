@@ -100,12 +100,13 @@
     
     
     
-    Activity *activity = [[Activity alloc] initWithActivity:self.view];
+    activity = [[Activity alloc] initWithActivity:self.view];
     [activity start];
     
     self.view.userInteractionEnabled = NO;
     
     httpRequest *http = [[httpRequest alloc] init];
+    http.httpDelegate = self;
     [http httpRequestSend:[NSString stringWithFormat:@"%@order/GetMyOrderList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&PageIndex=%d&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],_pageIndex,[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
         
         
@@ -225,7 +226,6 @@
         
         }
         
-        Activity *activity = [[Activity alloc] initWithActivity:self.view];
         [activity start];
         
         
@@ -314,6 +314,22 @@
     
     
 }
+
+
+-(void)httpRequestError:(NSString *)str;
+{
+    LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+    [loadView changeLabel:@"我尽力了，还是看不到"];
+    [self.view addSubview:loadView];
+    [self.view bringSubviewToFront:loadView];
+    
+    [activity stop];
+}
+
+
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

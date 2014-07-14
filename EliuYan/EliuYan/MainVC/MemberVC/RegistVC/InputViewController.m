@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "DefineModel.h"
 #import "MemberDetailViewController.h"
+#import "NavCustom.h"
 @interface InputViewController ()
 
 @end
@@ -33,10 +34,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.nameLabel.text=@"账号注册";
     [self.orderView removeFromSuperview];
-    self.navigationItem.title = @"账号注册";
 
+    
+    NavCustom *navCust = [[NavCustom alloc] init];
+    [navCust setNav:@"账号注册" mySelf:self];
     
    UILabel * headerLabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 250, 44)];
     headerLabel.text=@"请填写您收到的验证码及密码";
@@ -69,7 +71,7 @@
     
     _getAuth = [[UIButton alloc] initWithFrame:CGRectMake(200, 55, 100, 30)];
     [_getAuth setTitle:@"重新获取" forState:UIControlStateNormal];
-    [_getAuth setBackgroundColor:[UIColor redColor]];
+    [_getAuth setBackgroundColor:eliuyan_color(0xe94f4f)];
     [_getAuth addTarget:self action:@selector(getTheAuth:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_getAuth];
     
@@ -100,7 +102,7 @@
     
     UILabel *showLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 150, 70, 30)];
     showLabel.text = @"显示密码";
-    showLabel.textColor = [UIColor redColor];
+    showLabel.textColor = eliuyan_color(0xe94f4f);
     showLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:showLabel];
     
@@ -116,7 +118,7 @@
     UIButton * nextBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     nextBtn.frame=CGRectMake(40, 240, 240, 40);
     [nextBtn setTitle:@"提交" forState:UIControlStateNormal];
-    [nextBtn setBackgroundColor:[UIColor redColor]];
+    [nextBtn setBackgroundColor:eliuyan_color(0xe94f4f)];
     [nextBtn addTarget:self action:@selector(nextBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextBtn];
     

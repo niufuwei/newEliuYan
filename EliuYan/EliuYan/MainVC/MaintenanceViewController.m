@@ -227,12 +227,12 @@
         bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-44-40, self.view.frame.size.width, 40)];
         
         CGRect yy = menuTable.frame;
-        yy.size.height = self.view.frame.size.height-40 - 44;
+        yy.size.height = self.view.frame.size.height-40 - 44 - 40;
         menuTable.frame = yy;
         
         
         CGRect yy1 = ContentTable.frame;
-        yy1.size.height = self.view.frame.size.height-40 - 44;
+        yy1.size.height = self.view.frame.size.height-40 - 44 - 40;
         ContentTable.frame = yy1;
         
     }
@@ -913,7 +913,7 @@
                 aLabel.font=[UIFont systemFontOfSize:13];
                 aLabel.textAlignment=YES;
                 aLabel.textColor=[UIColor whiteColor];
-                
+                aLabel.backgroundColor = [UIColor clearColor];
                 aLabel.text=@"没有更多商品";
                 [_aView addSubview:aLabel];
                 [self.view addSubview:_aView];

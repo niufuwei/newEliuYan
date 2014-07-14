@@ -64,6 +64,7 @@ static NSString *selected_backImageName = @"返回.png";
 
     table.delegate =self;
     table.dataSource =self;
+    table.backgroundColor = eliuyan_color(0xf5f5f5);
     table.separatorColor = UITableViewCellSeparatorStyleNone;
     table.showsVerticalScrollIndicator=NO;
     table.hidden=YES;
