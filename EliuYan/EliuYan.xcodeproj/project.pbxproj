@@ -224,6 +224,8 @@
 		EF5D93B1191A89C200CCD6B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		EF5D93B3191A89DF00CCD6B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		EF5D93B5191A8D0D00CCD6B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		EF5FB5041973A4230087D5CD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5FB5021973A4230087D5CD /* Default@2x.png */; };
+		EF5FB5051973A4230087D5CD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5FB5031973A4230087D5CD /* Default-568h@2x.png */; };
 		EF6D4AD0194B04F700012777 /* CheckStandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6D4ACE194B04F700012777 /* CheckStandViewController.m */; };
 		EFA97B50191645CF00BACC9D /* Contact_no_select.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AE5191645CF00BACC9D /* Contact_no_select.png */; };
 		EFA97B51191645CF00BACC9D /* Contact_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AE6191645CF00BACC9D /* Contact_selected.png */; };
@@ -745,6 +747,8 @@
 		71C2FB4C196E8DE3007B99A7 /* 首页菜单栏-选中 (3).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页菜单栏-选中 (3).png"; sourceTree = "<group>"; };
 		EF190B6D191B5D67000313A1 /* JCTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTopic.h; sourceTree = "<group>"; };
 		EF190B6E191B5D67000313A1 /* JCTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTopic.m; sourceTree = "<group>"; };
+		EF5FB5021973A4230087D5CD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		EF5FB5031973A4230087D5CD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EF6D4ACE194B04F700012777 /* CheckStandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckStandViewController.m; sourceTree = "<group>"; };
 		EF6D4ACF194B04F700012777 /* CheckStandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckStandViewController.h; sourceTree = "<group>"; };
 		EFA97AE5191645CF00BACC9D /* Contact_no_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contact_no_select.png; sourceTree = "<group>"; };
@@ -1372,6 +1376,8 @@
 		7193B1E7196D3A1900070705 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EF5FB5021973A4230087D5CD /* Default@2x.png */,
+				EF5FB5031973A4230087D5CD /* Default-568h@2x.png */,
 				1DCAF0C9196FCCE50098203F /* nav_ios6_ios5.png */,
 				1DCAF0CA196FCCE50098203F /* nav_ios7.png */,
 				711C9BB7196FB1A800832213 /* 切图_179.png */,
@@ -1944,6 +1950,7 @@
 				7193B251196D3A1900070705 /* 物业费 缴费 叠加背景.png in Resources */,
 				EFA97BC21916823A00BACC9D /* Icon@2x.png in Resources */,
 				EFA97B73191645CF00BACC9D /* 找回密码-按住.png in Resources */,
+				EF5FB5051973A4230087D5CD /* Default-568h@2x.png in Resources */,
 				7193B26D196D3A1900070705 /* 进入2.png in Resources */,
 				7193B273196D3A1900070705 /* 错误页面.png in Resources */,
 				EFA97B9B191645CF00BACC9D /* 联华超市_10.png in Resources */,
@@ -1971,6 +1978,7 @@
 				EFA97B9A191645CF00BACC9D /* 消息中心_05.png in Resources */,
 				EFA97B89191645CF00BACC9D /* 显示密码-已选.png in Resources */,
 				7112542A191632A8003F7D63 /* Images.xcassets in Resources */,
+				EF5FB5041973A4230087D5CD /* Default@2x.png in Resources */,
 				7193B267196D3A1900070705 /* 语音-未按.png in Resources */,
 				7193B235196D3A1900070705 /* 上门维修-滚动背景-#ff9d9d.png in Resources */,
 				EFA97BA4191645CF00BACC9D /* 详情介绍_超市图标.png in Resources */,
@@ -2248,7 +2256,6 @@
 		71125441191632A8003F7D63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2279,7 +2286,6 @@
 		71125442191632A8003F7D63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
