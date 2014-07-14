@@ -629,117 +629,117 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"hasLogIn"] isEqualToString:@"1"])
+    if(indexPath.section == 2)
     {
         
-        MemberCenterViewController *memCenter = [[MemberCenterViewController alloc] init];
-        UINavigationController * nav = [[NavViewController alloc] initWithRootViewController:memCenter];
-        [self presentViewController:nav animated:YES completion:^{
-            
-        }];
-        
-    }
-    else
-    {
-    
-//        if (IOS_VERSION < 7)
-//        {
-//            [self setHidesBottomBarWhenPushed:YES];
-//        }
-    
-    if (indexPath.section == 0)
-    {
-        if (indexPath.row == 0) {
-            MyAcountViewController *myAcount = [[MyAcountViewController alloc] init];
-            [self.navigationController pushViewController:myAcount animated:YES];
-        }
-        else if(indexPath.row == 1)
-        {
-            NSLog(@"修改昵称");
-            ChangeAppelViewController *changeAppel = [[ChangeAppelViewController alloc] init];
-            [changeAppel getBackName:(^(NSString *str)
-                                      {
-                                          NSLog(@"=====>%@",str);
-                                          ((UILabel *)[tableView viewWithTag:222]).text = str;
-                                          
-                                      })];
-            
-            [self.navigationController pushViewController:changeAppel animated:YES];
-        }
-        else if (indexPath.row == 2)
-        {
-        
-            NSLog(@"修改密码");
-            ChangePswViewController *changeVC=[[ChangePswViewController alloc] init];
-            [self.navigationController pushViewController:changeVC animated:YES];
-
-            
-        
-        }
-    }
-    else if(indexPath.section == 1)
-    {
-    
-        if (indexPath.row == 0)
-        {
-            NewListViewController *newList = [[NewListViewController alloc] init];
-            [newList getBackOrder:^(NSString * str) {
-                
-            [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"newOrders"];
-            ((UILabel *)[tableView viewWithTag:100 +indexPath.row]).text = [[NSUserDefaults standardUserDefaults] objectForKey:@"newOrders"];
-
-                
-            }];
-            [self.navigationController pushViewController:newList animated:YES];
-        }
-        else if(indexPath.row == 1)
-        {
-        
-            NSLog(@"我的消息");
-            MyMessageViewController *myMessage = [[MyMessageViewController alloc] init];
-            [myMessage getBackName:(^(NSString *str)
-                                    {
-                                        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"unMsgCount"];
-                                        [((UILabel *)[tableView viewWithTag: 100 +indexPath.row]) setHidden:YES];
-                                    })];
-            [self.navigationController pushViewController:myMessage animated:YES];
-
-            
-            
-        
-        }
-        else if(indexPath.row == 2)
-        {
-        
-            
-            NSLog(@"我的订单");
-            MyOrderViewController *myOrderVC=[[MyOrderViewController alloc] init];
-            
-            [self.navigationController pushViewController:myOrderVC animated:YES];
-        
-        }
-    
-    
-    
-    
-    }
-    else if(indexPath.section == 2)
-    {
-    
         if (indexPath.row == 0)
         {
             NSLog(@"关于我们");
             AboutUsViewController *aboutUsVC=[[AboutUsViewController alloc] init];
             [self.navigationController pushViewController:aboutUsVC animated:YES];
-
+            
         }
-    
-    
-    
+        
     }
-    
+    else
+    {
+        if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"hasLogIn"] isEqualToString:@"1"])
+        {
+            
+            MemberCenterViewController *memCenter = [[MemberCenterViewController alloc] init];
+            UINavigationController * nav = [[NavViewController alloc] initWithRootViewController:memCenter];
+            [self presentViewController:nav animated:YES completion:^{
+                
+            }];
+            
+        }
+        else
+        {
+            
+            //        if (IOS_VERSION < 7)
+            //        {
+            //            [self setHidesBottomBarWhenPushed:YES];
+            //        }
+            
+            if (indexPath.section == 0)
+            {
+                if (indexPath.row == 0) {
+                    MyAcountViewController *myAcount = [[MyAcountViewController alloc] init];
+                    [self.navigationController pushViewController:myAcount animated:YES];
+                }
+                else if(indexPath.row == 1)
+                {
+                    NSLog(@"修改昵称");
+                    ChangeAppelViewController *changeAppel = [[ChangeAppelViewController alloc] init];
+                    [changeAppel getBackName:(^(NSString *str)
+                                              {
+                                                  NSLog(@"=====>%@",str);
+                                                  ((UILabel *)[tableView viewWithTag:222]).text = str;
+                                                  
+                                              })];
+                    
+                    [self.navigationController pushViewController:changeAppel animated:YES];
+                }
+                else if (indexPath.row == 2)
+                {
+                    
+                    NSLog(@"修改密码");
+                    ChangePswViewController *changeVC=[[ChangePswViewController alloc] init];
+                    [self.navigationController pushViewController:changeVC animated:YES];
+                    
+                    
+                    
+                }
+            }
+            else if(indexPath.section == 1)
+            {
+                
+                if (indexPath.row == 0)
+                {
+                    NewListViewController *newList = [[NewListViewController alloc] init];
+                    [newList getBackOrder:^(NSString * str) {
+                        
+                        [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"newOrders"];
+                        ((UILabel *)[tableView viewWithTag:100 +indexPath.row]).text = [[NSUserDefaults standardUserDefaults] objectForKey:@"newOrders"];
+                        
+                        
+                    }];
+                    [self.navigationController pushViewController:newList animated:YES];
+                }
+                else if(indexPath.row == 1)
+                {
+                    
+                    NSLog(@"我的消息");
+                    MyMessageViewController *myMessage = [[MyMessageViewController alloc] init];
+                    [myMessage getBackName:(^(NSString *str)
+                                            {
+                                                [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"unMsgCount"];
+                                                [((UILabel *)[tableView viewWithTag: 100 +indexPath.row]) setHidden:YES];
+                                            })];
+                    [self.navigationController pushViewController:myMessage animated:YES];
+                    
+                    
+                    
+                    
+                }
+                else if(indexPath.row == 2)
+                {
+                    
+                    
+                    NSLog(@"我的订单");
+                    MyOrderViewController *myOrderVC=[[MyOrderViewController alloc] init];
+                    
+                    [self.navigationController pushViewController:myOrderVC animated:YES];
+                    
+                }
+                
+                
+            }
+            
+        }
+
     }
+
 }
 
 

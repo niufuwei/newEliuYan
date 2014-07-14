@@ -77,12 +77,9 @@
     //判断userId 是否为空
 //    NSLog(@"...%@",UserId);
     
-   
-    NSLog(@"%@",[NSString stringWithFormat:@"UserId=%@&StoreId=%@",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId]);
     
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetCategoryList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&StoreId=%@",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId] backBlock:(^(NSDictionary *dic){
         //解析数据
-        NSLog(@">>>>%@",dic);
         
         dataArray=[dic objectForKey:@"List"];
 //        NSLog(@">>>>%@",dataArray);
@@ -146,11 +143,8 @@
     footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
         
         
-        NSLog(@"arry=%@",_goodsArray);
-        
         _pageIndex++;
         
-        NSLog(@"total=%@",totalPage);
         if (_pageIndex >= [totalPage intValue])
         {
             [refreshView endRefreshing];
@@ -176,7 +170,6 @@
             
             return;
         }
-        NSLog(@"pagecount is %d",_pageIndex);
         
         if(isSearchButtonPressed)
         {
@@ -431,11 +424,8 @@
     [_goodsArray removeAllObjects];
     isSearchButtonPressed = FALSE;
     [searchView removeFromSuperview];
-    NSLog(@"%@",_temp__goodsArray);
     _goodsArray = [NSMutableArray arrayWithArray:_temp__goodsArray];
     _pageIndex =0;
-
-    NSLog(@"%@",_countDic);
     
     if (![self.storeType isEqualToString:@"水果店"])
     {
@@ -452,7 +442,6 @@
 
     }
     
-    NSLog(@"%@",leftMenuID);
     [_loadView removeFromSuperview];
 
     [_menuTableView reloadData];
@@ -466,8 +455,6 @@
     httpRequest *request=[[httpRequest alloc] init];
     
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetSearchGoodsList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"StoreId=%@&GoodsValue=%@&PageIndex=%d",_storeId,searchBar.text,pageindex] backBlock:(^(NSDictionary *dic){
-        
-        NSLog(@"%@",dic);
         
         if(!isAddFooter)
         {
@@ -782,8 +769,6 @@
                 cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
                 cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
                 
-                NSLog(@"%@",_countDic);
-                NSLog(@"%@",goodsDetail.goodsId);
                 cell.countLabel.text=[_countDic objectForKey:goodsDetail.goodsId];
                 if([cell.countLabel.text intValue] ==0)
                 {
@@ -966,7 +951,6 @@
     request.httpDelegate=self;
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetGoodsList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&StoreId=%@&GoodsCategoryId=%@&PageIndex=%d",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId,[_goodsCategoryIdArray objectAtIndex:indexPath] ,aPage] backBlock:(^(NSDictionary *dic){
         //解析数据
-        NSLog(@"//////%@",dic);
         //总页数
         totalPage=[dic objectForKey:@"TotalPage"];
         listArray = [[NSArray alloc] init];
@@ -1018,7 +1002,6 @@
 //加号按钮
 -(void)plaseBtnClick:(id)sender
 {
-    NSLog(@"%@",_goodsArray);
     
     UIButton *btn=(UIButton *)sender;
     //判断所点击的是哪个类型
@@ -1067,7 +1050,6 @@
         
     }
     
-    NSLog(@"%@",_countDic);
     [_countDic setObject:cell.countLabel.text forKey:goodsDetail.goodsId];
     
     //计算价格
@@ -1120,8 +1102,6 @@
         
         //把点击过的数据放到字典并追加到可变数组
         NSMutableDictionary * saveToNextDic = [[NSMutableDictionary alloc] init];
-        NSLog(@"%@",listMutableArray);
-        NSLog(@"%@",goodsDetail.goodsId);
         
         for(int i =0;i<[listMutableArray count];i++)
         {
@@ -1142,8 +1122,6 @@
         }
         else
         {
-            
-            NSLog(@"shuji=%d",_goodsArray.count);
             //把点击过的数据放到字典并追加到可变数组
             NSMutableDictionary * saveToNextDic = [[NSMutableDictionary alloc] init];
             //[saveToNextDic setObject:[listMutableArray objectAtIndex:btn.tag - ((mCount+1)*1000)-1] forKey:goodsDetail.goodsId];
@@ -1161,8 +1139,8 @@
  
     }
     
-//    NSLog(@"%@",listMutableArray);
-
+    
+    NSLog(@"before plase totalCount is %d",totalCount);
 }
 
 //减号按钮
@@ -1227,13 +1205,12 @@
     if (count<1) {
         menuCell.detailImage.hidden=YES;
         menuCell.detailCount.hidden=YES;
-        self.priceLabel.hidden = YES;
-        
     }
     menuCell.detailCount.text=[NSString stringWithFormat:@"%d",count];
     self.countLab.text=[NSString stringWithFormat:@"%d件（斤/个）",totalCount];
     if (totalCount==0) {
         self.countLab.hidden=YES;
+        self.priceLabel.hidden = YES;
     }
     
     [leftMenuID setObject:[NSString stringWithFormat:@"%d",count] forKey:goodsDetail.storeID];
@@ -1254,6 +1231,7 @@
     }
     self.priceLabel.text = [NSString stringWithFormat:@"%.2f元",sumPrice];
     
+    NSLog(@" after min totalCount is %d",totalCount);
 }
 //结账按钮
 -(void)accountBtnClick:(id)sender
@@ -1275,8 +1253,6 @@
                         {
                             //斤或者个 是按照 个数的tag值来判断的
 //                            dataArr = [[NSArray alloc ]initWithObjects:[_countDic objectForKey:[NSString stringWithFormat:@"%d",myTag]],[jingeDic objectForKey:[NSString stringWithFormat:@"%d",myTag+1]],[[mutableArray objectAtIndex:i] objectForKey:[[[mutableArray objectAtIndex:i] allKeys] objectAtIndex:0]],nil];
-                            NSLog(@"%@",mutableArray);
-                            NSLog(@"%@",_countDic);
                             dataArr = [[NSArray alloc ]initWithObjects:[_countDic objectForKey:myTag],@"ge",[[mutableArray objectAtIndex:i] objectForKey:[[[mutableArray objectAtIndex:i] allKeys] objectAtIndex:0]],nil];
                         }
                         else
@@ -1288,9 +1264,7 @@
                         [dataMutableArray addObject:dataArr];
                         
                     }
-                    
-                    NSLog(@"%@",dataMutableArray);
-                    
+                
                     //记录所点击的单元格 保存商品名称，价格，图片
                     CheckStandViewController * check= [[CheckStandViewController alloc] init];
                     check.dataMutableArray = dataMutableArray;
@@ -1300,8 +1274,6 @@
             else
             {
 
-                NSLog(@"%@",mutableArray);
-                NSLog(@"%@",_countDic);
                 NSString *sumPr=[NSString stringWithFormat:@"%.2f",sumPrice];
                 sumPrice = [sumPr floatValue];
                 if (sumPrice<[[[NSUserDefaults standardUserDefaults] objectForKey:@"MinBuy"] floatValue]) {
@@ -1332,8 +1304,6 @@
                         [dataMutableArray addObject:dataArr];
                         
                     }
-                    
-                    NSLog(@"%@",dataMutableArray);
                     
                     //记录所点击的单元格 保存商品名称，价格，图片
                     CheckStandViewController * check= [[CheckStandViewController alloc] init];
