@@ -9,7 +9,7 @@
 #import "RegistViewController.h"
 #import "InputViewController.h"
 #import "SecretViewController.h"
-
+#import "NavCustom.h"
 
 @interface RegistViewController ()
 {
@@ -42,9 +42,11 @@
 //创建UI
 -(void)createUI
 {
-    self.nameLabel.text=@"账号注册";
-    self.navigationItem.title = @"账号注册";
-
+    
+    NavCustom *navCust = [[NavCustom alloc] init];
+    [navCust setNav:@"账号注册" mySelf:self];
+    
+   
     //请填写手机号码
     _headerLabel=[[UILabel alloc] initWithFrame:CGRectMake(20, 10, 200, 44)];
     _headerLabel.text=@"请填写手机号码";
@@ -112,7 +114,7 @@
     _nextBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     _nextBtn.frame=CGRectMake(40, 150, 240, 40);
     [_nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
-    [_nextBtn setBackgroundColor:[UIColor redColor]];
+    [_nextBtn setBackgroundColor:eliuyan_color(0xe94f4f)];
     [_nextBtn addTarget:self action:@selector(nextBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_nextBtn];
 

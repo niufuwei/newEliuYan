@@ -8,7 +8,7 @@
 
 #import "FindPswViewController.h"
 #import "FindNextViewController.h"
-
+#import "NavCustom.h"
 
 
 
@@ -33,9 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.nameLabel.text=@"找回密码";
     [self.orderView removeFromSuperview];
-    self.navigationItem.title = @"找回密码";
+    
+    NavCustom *navCust = [[NavCustom alloc] init];
+    [navCust setNav:@"找回密码" mySelf:self];
+    
+    
+   // self.navigationItem.title = @"找回密码";
 
     //请填写手机号码
     _headerLabel=[[UILabel alloc] initWithFrame:CGRectMake(20, 10, 200, 44)];
@@ -72,7 +76,7 @@
     _nextBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     _nextBtn.frame=CGRectMake(40, 120, 240, 40);
     [_nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
-    [_nextBtn setBackgroundColor:[UIColor redColor]];
+    [_nextBtn setBackgroundColor:eliuyan_color(0xe94f4f)];
     [_nextBtn addTarget:self action:@selector(nextBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_nextBtn];
     

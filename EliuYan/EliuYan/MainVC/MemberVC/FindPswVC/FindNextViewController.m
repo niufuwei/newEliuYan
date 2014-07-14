@@ -10,6 +10,7 @@
 #import "httpRequest.h"
 #import "MemberDetailViewController.h"
 #import "AppDelegate.h"
+#import "NavCustom.h"
 @interface FindNextViewController ()
 
 @end
@@ -32,7 +33,13 @@
     [super viewDidLoad];
     self.nameLabel.text=@"找回密码";
     [self.orderView removeFromSuperview];
-    self.navigationItem.title = @"找回密码";
+    
+    
+    NavCustom *navCust = [[NavCustom alloc] init];
+    [navCust setNav:@"找回密码" mySelf:self];
+    
+    
+    //self.navigationItem.title = @"找回密码";
 
     
     NSLog(@"初始化的时候humber is %@",_phone1);
@@ -62,7 +69,7 @@
     
     _getAuth1 = [[UIButton alloc] initWithFrame:CGRectMake(200, 55, 100, 30)];
     [_getAuth1 setTitle:@"重新获取" forState:UIControlStateNormal];
-    [_getAuth1 setBackgroundColor:[UIColor redColor]];
+    [_getAuth1 setBackgroundColor:eliuyan_color(0xe94f4f)];
     _getAuth1.tag = 1000;
     [_getAuth1 addTarget:self action:@selector(getTheAuth1:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_getAuth1];
@@ -109,7 +116,7 @@
     UIButton * nextBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     nextBtn.frame=CGRectMake(40, 240, 240, 40);
     [nextBtn setTitle:@"提交" forState:UIControlStateNormal];
-    [nextBtn setBackgroundColor:[UIColor redColor]];
+    [nextBtn setBackgroundColor:eliuyan_color(0xe94f4f)];
     [nextBtn addTarget:self action:@selector(nextBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextBtn];
     
