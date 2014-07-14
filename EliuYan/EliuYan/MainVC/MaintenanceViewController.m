@@ -210,6 +210,8 @@
         //刷新表
         [ContentTable reloadData];
 
+        [ContentTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+
     })];
     
 }
@@ -480,7 +482,6 @@
                 
             }
             selectMenuRow = indexPath.row;
-            [ContentTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 
         }
         else

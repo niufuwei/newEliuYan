@@ -395,7 +395,7 @@
         //刷新表
         
         [_tableView reloadData];
-        [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
        
 
         [activity stop];
