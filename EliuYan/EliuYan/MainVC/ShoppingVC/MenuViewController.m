@@ -158,7 +158,7 @@
                 aLabel.font=[UIFont systemFontOfSize:13];
                 aLabel.textAlignment=YES;
                 aLabel.textColor=[UIColor whiteColor];
-                
+                aLabel.backgroundColor = [UIColor clearColor];
                 aLabel.text=@"没有更多商品";
                 [_aView addSubview:aLabel];
                 [self.view addSubview:_aView];
