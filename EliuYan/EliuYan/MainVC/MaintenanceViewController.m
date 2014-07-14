@@ -453,9 +453,6 @@
 
         if(tableView.tag==101)
         {
-            
-            [ContentTable setContentOffset:CGPointMake(0, 0) animated:NO];
-            
             BOOL isSelected = FALSE;
             for(int i=0;i<[[menuSelectDictionary allKeys] count];i++)
             {
