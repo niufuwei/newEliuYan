@@ -326,7 +326,7 @@
         }
         else
         {
-        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-64-113-49 + 20) image:@"无信息页面.png"];
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-113-49) image:@"无信息页面.png"];
             
         }
         
@@ -473,7 +473,7 @@
     }
     else
     {
-        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-64-113-49 + 20) image:@"无信息页面.png"];
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-113-49) image:@"无信息页面.png"];
         
     }
     [_loadView changeLabel:@"我尽力了，还是看不到"];

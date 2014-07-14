@@ -69,13 +69,19 @@ static NSString *selected_backImageName = @"返回.png";
     table.showsVerticalScrollIndicator=NO;
     table.hidden=YES;
     [self.view addSubview:table];
-    
+    [self setExtraCellLineHidden:table];
     
     //加载左边按钮
     
     [self setLeftItem:self];
     
     // Do any additional setup after loading the view.
+}
+- (void)setExtraCellLineHidden: (UITableView *)tableView
+{
+    UIView *view =[ [UIView alloc]init];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
 }
 -(void) setLeftItem: (UIViewController *)VC{
     
