@@ -18,7 +18,7 @@
     if (self) {
         // Initialization code
         
-        MenuName = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, 90,40)];
+        MenuName = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 90,40)];
         MenuName.font = [UIFont systemFontOfSize:13];
         MenuName.textAlignment = NSTextAlignmentCenter;
         MenuName.textColor = [UIColor blackColor];

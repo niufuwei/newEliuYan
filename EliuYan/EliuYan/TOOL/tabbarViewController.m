@@ -119,6 +119,13 @@
         self.countLabel.hidden = NO;
         self.countLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"allCount"];
     }
+    else
+    {
+    
+        self.countLabel.hidden = YES;
+        
+    
+    }
     
     
     
