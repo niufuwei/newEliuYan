@@ -22,13 +22,13 @@
     
 }
 
-@property(nonatomic,retain)UIView *navView;
-@property(nonatomic,retain)UILabel *nameLabel;
-@property(nonatomic,retain)UIButton *returnBtn;
-@property(nonatomic,retain)UIView *orderView;
-@property(nonatomic,retain)UIButton *accountBtn;
-@property (nonatomic,retain)UILabel *priceLabel;
-@property(nonatomic,retain)UILabel *countLab;
+@property(nonatomic,strong)UIView *navView;
+@property(nonatomic,strong)UILabel *nameLabel;
+@property(nonatomic,strong)UIButton *returnBtn;
+@property(nonatomic,strong)UIView *orderView;
+@property(nonatomic,strong)UIButton *accountBtn;
+@property (nonatomic,strong)UILabel *priceLabel;
+@property(nonatomic,strong)UILabel *countLab;
 
 
 @end
