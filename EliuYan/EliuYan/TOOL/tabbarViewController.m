@@ -51,7 +51,7 @@
     homeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     homeBtn.tag = 0;
     homeBtn.frame = CGRectMake(0.0, 0.0, 106.5, 49.0);
-    [homeBtn setImage:[UIImage imageNamed:@"首页菜单栏-选中 (1).png"] forState:UIControlStateNormal];
+    [homeBtn setImage:[UIImage imageNamed:@"1.png"] forState:UIControlStateNormal];
 //    [homeBtn setTitle:@"社区购物" forState:UIControlStateNormal];
 //    [homeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     //[homeBtn setTitleColor:[UIColor colorWithRed:235.0/255.0 green:81.0/255.0 blue:17.0/255.0 alpha:1] forState:UIControlStateSelected];
@@ -176,7 +176,7 @@
         itemBG.frame = CGRectMake(0, 0, 80, 49);
         self.selectedIndex = button.tag;
         
-        [homeBtn setImage:[UIImage imageNamed:@"首页菜单栏-选中 (1).png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"1.png"] forState:UIControlStateNormal];
         [myTaobaoBtn setImage:[UIImage imageNamed:@"首页菜单栏-未选 (2).png"] forState:UIControlStateNormal];
         [_cartBtn setImage:[UIImage imageNamed:@"首页菜单栏-未选 (3).png"] forState:UIControlStateNormal];
     }

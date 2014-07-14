@@ -325,13 +325,16 @@ static NSString *selected_backImageName = @"back_selected.png";
     NSLog(@"我的出错信息:%@",str);
     [myActivily stop];
     //加载出错界面
-    LoadingView *loadView=[[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+      LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
     [loadView changeLabel:@"我尽力了，还是看不到"];
     [self.view addSubview:loadView];
-    
     [self.view bringSubviewToFront:loadView];
     [root removeFromSuperview];
     [pageCount removeFromSuperview];
+    [root removeFromSuperview];
+    [pageCount removeFromSuperview];
+    
+    
 
 }
 

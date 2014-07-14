@@ -236,7 +236,7 @@
     //初始化导航条
     navC = [[NavCustom alloc] init];
     [navC setNav:@"下单成功" mySelf:self];
-    [navC setNavRightBtnImage:@"主页.png" RightBtnSelectedImage:@"主页.png" mySelf:self width:36 height:26];
+    [navC setNavRightBtnImage:@"主页.png" RightBtnSelectedImage:@"主页.png" mySelf:self width:32 height:24];
     navC.NavDelegate = self;
     
     [self setLeftItem];

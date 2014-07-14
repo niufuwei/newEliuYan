@@ -225,6 +225,7 @@
 		EF5D93B1191A89C200CCD6B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		EF5D93B3191A89DF00CCD6B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		EF5D93B5191A8D0D00CCD6B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		EF5FB50119736F220087D5CD /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5FB50019736F220087D5CD /* 1.png */; };
 		EF6D4AD0194B04F700012777 /* CheckStandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6D4ACE194B04F700012777 /* CheckStandViewController.m */; };
 		EFA97B50191645CF00BACC9D /* Contact_no_select.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AE5191645CF00BACC9D /* Contact_no_select.png */; };
 		EFA97B51191645CF00BACC9D /* Contact_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AE6191645CF00BACC9D /* Contact_selected.png */; };
@@ -747,6 +748,7 @@
 		EF190B6D191B5D67000313A1 /* JCTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTopic.h; sourceTree = "<group>"; };
 		EF190B6E191B5D67000313A1 /* JCTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTopic.m; sourceTree = "<group>"; };
 		EF30CBF41971365100EEC7DC /* 首页-起送费.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-起送费.png"; sourceTree = "<group>"; };
+		EF5FB50019736F220087D5CD /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		EF6D4ACE194B04F700012777 /* CheckStandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckStandViewController.m; sourceTree = "<group>"; };
 		EF6D4ACF194B04F700012777 /* CheckStandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckStandViewController.h; sourceTree = "<group>"; };
 		EFA97AE5191645CF00BACC9D /* Contact_no_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contact_no_select.png; sourceTree = "<group>"; };
@@ -1593,6 +1595,7 @@
 		EFA97AE4191645CF00BACC9D /* 切图 */ = {
 			isa = PBXGroup;
 			children = (
+				EF5FB50019736F220087D5CD /* 1.png */,
 				EF30CBF41971365100EEC7DC /* 首页-起送费.png */,
 				1DBA41C619615C9100A5E47D /* alphaClean.png */,
 				1DBA41C119610B8100A5E47D /* chahao.png */,
@@ -1907,6 +1910,7 @@
 				71C2FB3E196E69DA007B99A7 /* 切图_76.png in Resources */,
 				EFA97B5E191645CF00BACC9D /* 分割线8-订单详情(订单被取消).png in Resources */,
 				EFA97B9F191645CF00BACC9D /* 联系卖家-未按 .png in Resources */,
+				EF5FB50119736F220087D5CD /* 1.png in Resources */,
 				7193B262196D3A1900070705 /* 订单被取消-背景#ababab.png in Resources */,
 				7193B25E196D3A1900070705 /* 缴费 物业费背景.png in Resources */,
 				7193B270196D3A1900070705 /* 选中#ffe8e8.png in Resources */,
