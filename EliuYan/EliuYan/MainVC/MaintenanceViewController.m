@@ -209,7 +209,7 @@
         
         //刷新表
         [ContentTable reloadData];
-        
+
     })];
     
 }
@@ -480,7 +480,8 @@
                 
             }
             selectMenuRow = indexPath.row;
-            
+            [ContentTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+
         }
         else
         {

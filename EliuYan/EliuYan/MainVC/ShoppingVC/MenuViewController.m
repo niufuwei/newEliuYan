@@ -893,7 +893,8 @@
 //           
 //           
 //           }
-           
+           [_displayTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+
            if ([self.storeType isEqualToString:@"水果店"])
            {
                [_fruitTableView setContentOffset:CGPointMake(0,0) animated:NO];
@@ -989,7 +990,7 @@
             
         }
         _temp__goodsArray  = [NSMutableArray arrayWithArray:_goodsArray] ;
-        
+
         //刷新表
         [_fruitTableView reloadData];
         [_displayTableView reloadData];

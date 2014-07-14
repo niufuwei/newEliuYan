@@ -11,24 +11,24 @@
 @interface GoodsTableViewCell : UITableViewCell
 
 
-@property (retain, nonatomic) IBOutlet UIImageView *logoImage;
-@property (retain, nonatomic) IBOutlet UILabel *contentLabel;
-@property (retain, nonatomic) IBOutlet UILabel *priceLabel;
-@property (retain, nonatomic) IBOutlet UILabel *countLabel;
-@property (retain, nonatomic) IBOutlet UIButton *minusBtn;
-@property (retain, nonatomic) IBOutlet UIButton *plaseBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *logoImage;
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
+@property (strong, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *countLabel;
+@property (strong, nonatomic) IBOutlet UIButton *minusBtn;
+@property (strong, nonatomic) IBOutlet UIButton *plaseBtn;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 
 
 
-@property (retain, nonatomic) IBOutlet UIButton *jinButton;
-@property (retain, nonatomic) IBOutlet UIButton *geButton;
+@property (strong, nonatomic) IBOutlet UIButton *jinButton;
+@property (strong, nonatomic) IBOutlet UIButton *geButton;
 
 
-@property (retain, nonatomic) IBOutlet UIImageView *detailImage;
+@property (strong, nonatomic) IBOutlet UIImageView *detailImage;
 
-@property (retain, nonatomic) IBOutlet UILabel *detailCount;
+@property (strong, nonatomic) IBOutlet UILabel *detailCount;
 
 
 

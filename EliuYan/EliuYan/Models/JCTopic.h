@@ -22,7 +22,7 @@
     id<JCTopicDelegate>_JCdelegate;
 }
 @property(nonatomic,strong)NSArray * pics;
-@property(nonatomic,retain)id<JCTopicDelegate> JCdelegate;
+@property(nonatomic,strong)id<JCTopicDelegate> JCdelegate;
 -(void)releaseTimer;
 -(void)upDate;
 @end
