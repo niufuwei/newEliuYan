@@ -244,6 +244,7 @@
     _menuTableView.delegate=self;
     _menuTableView.tag=100;
     _menuTableView.dataSource=self;
+    _menuTableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:_menuTableView];
     
     
@@ -263,6 +264,8 @@
         self.priceLabel.hidden=YES;
         _fruitTableView.delegate=self;
         _fruitTableView.dataSource=self;
+        _fruitTableView.showsVerticalScrollIndicator = NO;
+
         [self.view addSubview:_fruitTableView];
         
     }
@@ -280,6 +283,8 @@
         _displayTableView.tag=101;
         _displayTableView.delegate=self;
         _displayTableView.dataSource=self;
+        _displayTableView.showsVerticalScrollIndicator = NO;
+
         [self.view addSubview:_displayTableView];
 //        self.countLab.hidden=YES;
     }
