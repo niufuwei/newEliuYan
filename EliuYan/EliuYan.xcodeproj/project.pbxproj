@@ -104,7 +104,7 @@
 		711C9BB6196F7D6200832213 /* 主页.png in Resources */ = {isa = PBXBuildFile; fileRef = 711C9BB5196F7D6200832213 /* 主页.png */; };
 		711C9BB8196FB1A800832213 /* 切图_179.png in Resources */ = {isa = PBXBuildFile; fileRef = 711C9BB7196FB1A800832213 /* 切图_179.png */; };
 		711C9BBC196FEE9600832213 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C9BBB196FEE9600832213 /* AppDelegate.m */; };
-		711C9BBE196FEEAA00832213 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C9BBD196FEEAA00832213 /* MenuViewController.m */; };
+		711C9BBE196FEEAA00832213 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C9BBD196FEEAA00832213 /* MenuViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		711C9BC0196FEEC100832213 /* MaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C9BBF196FEEC100832213 /* MaintenanceViewController.m */; };
 		7149439F191A1A5A009E98D1 /* SecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7149439C191A1A5A009E98D1 /* SecretViewController.m */; };
 		7175D1EE196506F9000D2E89 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7175D1ED196506F9000D2E89 /* CommunityViewController.m */; };
@@ -2090,7 +2090,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3AE2EF14-3DF3-4541-B63C-51B7798B3FC6";
+				PROVISIONING_PROFILE = "53270D74-7CB0-4454-98B0-57C6ADF4496F";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
@@ -2120,7 +2120,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3AE2EF14-3DF3-4541-B63C-51B7798B3FC6";
+				PROVISIONING_PROFILE = "53270D74-7CB0-4454-98B0-57C6ADF4496F";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;

@@ -19,22 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EliuYan/MainVC/ShoppingVC/CheckStandViewController.m"
-            timestampString = "427014571.874129"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
-            landmarkName = "-onClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "EliuYan/MainVC/ShoppingVC/OldAddressViewController.m"
             timestampString = "427015049.44174"
             startingColumnNumber = "9223372036854775807"
@@ -43,36 +27,6 @@
             endingLineNumber = "279"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[OldAddressViewController tableView:commitEditingStyle:forRowAtIndexPath:]"
-                  moduleName = "EliuYan"
-                  urlString = "file:///Users/wangmh/Desktop/newEliuyan/EliuYan/EliuYan/MainVC/ShoppingVC/OldAddressViewController.m"
-                  timestampString = "427015245.565383"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "508">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__75-[OldAddressViewController tableView:commitEditingStyle:forRowAtIndexPath:]_block_invoke"
-                  moduleName = "EliuYan"
-                  urlString = "file:///Users/wangmh/Desktop/newEliuyan/EliuYan/EliuYan/MainVC/ShoppingVC/OldAddressViewController.m"
-                  timestampString = "427015245.565644"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

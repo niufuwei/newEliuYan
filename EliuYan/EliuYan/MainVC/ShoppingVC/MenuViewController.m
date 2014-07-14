@@ -881,7 +881,7 @@
     [_aView removeFromSuperview];
        if (tableView.tag==100)
        {
-           
+//           [_displayTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 //           if([[menuSelectOnly objectForKey:[NSString stringWithFormat:@"%d",indexPath.row]] isEqualToString:@"ok"])
 //           {
 //           ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).categoryLabel.textColor = [UIColor redColor];
@@ -989,7 +989,7 @@
             
         }
         _temp__goodsArray  = [NSMutableArray arrayWithArray:_goodsArray] ;
-        [_displayTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+        
 
         //刷新表
         [_fruitTableView reloadData];

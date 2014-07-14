@@ -368,26 +368,35 @@
                      /////////////
                      
                      //截取字符串
-                     NSRange range = [[dic objectForKey:@"Image"] rangeOfString:@"/"];
-                     NSString *image = [[dic objectForKey:@"Image"] substringFromIndex:range.location + range.length];//开始截取
                      
-                     NSRange range1 = [image rangeOfString:@"/"];
-                     NSString *image1 = [image substringFromIndex:range1.location + range1.length];//开始截取
-                     
-                     NSRange range2 = [image1 rangeOfString:@"/"];
-                     NSString *image2 = [image1 substringFromIndex:range2.location + range2.length];//开始截取
-                     
-                     
-                     NSString *image3=[NSString stringWithFormat:@"/%@",image2];
-                     NSLog(@"llllll=%@",image3);
+                     NSArray * imageArr=[[dic objectForKey:@"Image"] componentsSeparatedByString:@"/"];
+                     NSLog(@"<<<<%@",imageArr);
+                     if ([imageArr count] ==1) {
+                         NSString *image3=@"";
+                         [allDic setObject:image3 forKey:@"Image"];
+                     }
+                     else
+                     {
+                         //截取字符串
+                         NSRange range = [[dic objectForKey:@"Image"] rangeOfString:@"/"];
+                         NSString *image = [[dic objectForKey:@"Image"] substringFromIndex:range.location + range.length];//开始截取
+                         
+                         NSRange range1 = [image rangeOfString:@"/"];
+                         NSString *image1 = [image substringFromIndex:range1.location + range1.length];//开始截取
+                         
+                         NSRange range2 = [image1 rangeOfString:@"/"];
+                         NSString *image2 = [image1 substringFromIndex:range2.location + range2.length];//开始截取
+                         
+                         
+                         NSString *image3=[NSString stringWithFormat:@"/%@",image2];
+                         NSLog(@"llllll=%@",image3);                         [allDic setObject:image3 forKey:@"Image"];
+                     }
                      
                      
                      ///////////////////
                      
                      
                      [allDic setObject:[dic objectForKey:@"Price"] forKey:@"Price"];
-                     [allDic setObject:image3 forKey:@"Image"];
-                     
                      
                      
                      [allDic setObject:[countDic objectForKey:[NSString stringWithFormat:@"%d",i+1]] forKey:@"GoodsCount"];
@@ -471,25 +480,36 @@
                         /////////////
                         
                         //截取字符串
-                        NSRange range = [[dic objectForKey:@"Image"] rangeOfString:@"/"];
-                        NSString *image = [[dic objectForKey:@"Image"] substringFromIndex:range.location + range.length];//开始截取
                         
-                        NSRange range1 = [image rangeOfString:@"/"];
-                        NSString *image1 = [image substringFromIndex:range1.location + range1.length];//开始截取
-                        
-                        NSRange range2 = [image1 rangeOfString:@"/"];
-                        NSString *image2 = [image1 substringFromIndex:range2.location + range2.length];//开始截取
-                        
-                        
-                        NSString *image3=[NSString stringWithFormat:@"/%@",image2];
-                        NSLog(@"llllll=%@",image3);
-                        
-                        
+                        NSArray * imageArr=[[dic objectForKey:@"Image"] componentsSeparatedByString:@"/"];
+                        NSLog(@"<<<<%@",imageArr);
+                        if ([imageArr count] ==3) {
+                            NSString *image3=@"";
+                             [allDic setObject:image3 forKey:@"Image"];
+                        }
+                        else
+                        {
+                            //截取字符串
+                            NSRange range = [[dic objectForKey:@"Image"] rangeOfString:@"/"];
+                            NSString *image = [[dic objectForKey:@"Image"] substringFromIndex:range.location + range.length];//开始截取
+                            
+                            NSRange range1 = [image rangeOfString:@"/"];
+                            NSString *image1 = [image substringFromIndex:range1.location + range1.length];//开始截取
+                            
+                            NSRange range2 = [image1 rangeOfString:@"/"];
+                            NSString *image2 = [image1 substringFromIndex:range2.location + range2.length];//开始截取
+                            
+                            
+                            NSString *image3=[NSString stringWithFormat:@"/%@",image2];
+                            NSLog(@"llllll=%@",image3);                             [allDic setObject:image3 forKey:@"Image"];
+                        }
+    
+    
                         ///////////////////
                         
-                        
+                       
                         [allDic setObject:[dic objectForKey:@"Price"] forKey:@"Price"];
-                        [allDic setObject:image3 forKey:@"Image"];
+                        
                         
                         
                         
