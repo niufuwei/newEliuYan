@@ -100,7 +100,7 @@ static NSString *selected_backImageName = @"返回.png";
     
     self.navigationBar.translucent = NO;
     
-    if(self.topViewController != nil && self.topViewController.navigationItem.backBarButtonItem == nil && self.topViewController.navigationItem.leftBarButtonItem == nil
+    if(self.topViewController != nil && self.topViewController.navigationItem.backBarButtonItem == nil && self.topViewController.navigationItem.leftBarButtonItem ==  nil
        ){
         [self setLeftItem:self.topViewController];
     }

@@ -320,8 +320,8 @@
 -(void)findPswBtnClick:(id)sender
 {
     NSLog(@"找回密码按钮被点击了");
-    UIButton *btn = (UIButton *)sender;
-    [btn setBackgroundImage:[UIImage imageNamed:@"找回密码-按住"] forState:UIControlStateNormal];
+//    UIButton *btn = (UIButton *)sender;
+//    [btn setBackgroundImage:[UIImage imageNamed:@"找回密码-按住"] forState:UIControlStateNormal];
     FindPswViewController *findPswVC=[[FindPswViewController alloc] init];
     [self.navigationController pushViewController:findPswVC animated:YES];
     /////////////
@@ -330,8 +330,8 @@
 -(void)registBtnClick:(id)sender
 {
     NSLog(@"账号注册按钮被点击了");
-    UIButton *btn = (UIButton *)sender;
-    [btn setBackgroundImage:[UIImage imageNamed:@"账号注册-按住"] forState:UIControlStateNormal];
+//    UIButton *btn = (UIButton *)sender;
+//    [btn setBackgroundImage:[UIImage imageNamed:@"账号注册-按住"] forState:UIControlStateNormal];
     RegistViewController *registVC=[[RegistViewController alloc] init];
     [self.navigationController pushViewController:registVC animated:YES];
 }

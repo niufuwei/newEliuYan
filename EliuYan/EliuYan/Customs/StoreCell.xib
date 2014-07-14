@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vxF-VG-tG5">
-                        <rect key="frame" x="102" y="60" width="75" height="21"/>
+                        <rect key="frame" x="99" y="60" width="75" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,7 +72,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="首页-时间.png" width="16" height="16"/>
-        <image name="首页-起送费.png" width="16" height="16"/>
+        <image name="首页-时间.png" width="32" height="32"/>
+        <image name="首页-起送费.png" width="32" height="32"/>
     </resources>
 </document>
