@@ -48,6 +48,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+
+    
+    
     isRepeat = FALSE;
 
     NavCustom *nav=[[NavCustom alloc] init];
@@ -81,6 +86,7 @@
     
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.backgroundView = nil;
     _tableView.backgroundColor=eliuyan_color(0xf5f5f5);
     _tableView.showsVerticalScrollIndicator=NO;
     [self.view addSubview:_tableView];
