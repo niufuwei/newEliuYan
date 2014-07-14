@@ -462,6 +462,7 @@
                         [menuSelectDictionary removeObjectForKey:[[menuSelectDictionary allKeys] objectAtIndex:i]];
                         MenuCell * cell2 = (MenuCell*)[menuTable cellForRowAtIndexPath:index];
                         [cell2.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]]];
+                        
                          cell2.MenuName.textColor = [UIColor blackColor];
                     }
                 }
