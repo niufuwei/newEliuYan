@@ -214,8 +214,18 @@ static NSString *selected_backImageName = @"返回.png";
         OldAddressCell * aCell = (OldAddressCell*)[table cellForRowAtIndexPath:indexPath];
         
         UIButton * btn = (UIButton *)[aCell viewWithTag:indexPath.row+1];
+        OldAddressCell * AddressCell;
         
-        OldAddressCell * AddressCell = (OldAddressCell*)[[btn superview] superview];
+        if (IOS_VERSION < 7) {
+           AddressCell  = (OldAddressCell*)[btn superview] ;
+        }
+        else
+        {
+        
+          AddressCell = (OldAddressCell*)[[btn superview] superview];
+        
+        }
+        
         
         //记录下来你当前点击的是哪个cell
         
@@ -236,7 +246,7 @@ static NSString *selected_backImageName = @"返回.png";
         {
             NSLog(@"你已经选中");
         }
-        NSLog(@">>>%@>>>%@",AddressCell.Address.text,AddressCell.AddressInformation.text);
+       
         _myBlock([NSString stringWithFormat:@"%@%@",AddressCell.Address.text,AddressCell.AddressInformation.text]);
         
         [self.navigationController popViewControllerAnimated:YES];
@@ -353,8 +363,18 @@ static NSString *selected_backImageName = @"返回.png";
     if(isDelete)
     {
         UIButton * btn = (UIButton *)sender;
+        OldAddressCell * AddressCell;
+        if (IOS_VERSION < 7)
+        {
+          AddressCell  = (OldAddressCell*)[btn superview];
+        }
+        else
+        {
         
-        OldAddressCell * AddressCell = (OldAddressCell*)[[btn superview] superview];
+            AddressCell  = (OldAddressCell*)[[btn superview] superview];
+        
+        }
+        
         
         NSIndexPath *indexPath=[table indexPathForCell:AddressCell];
         //记录下来你当前点击的是哪个cell
