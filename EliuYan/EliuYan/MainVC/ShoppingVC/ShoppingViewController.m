@@ -321,7 +321,14 @@
     if(array.count==0)
     {
         [activity stop];
-        if (IOS_VERSION > 7) {
+        if (_loadViewHasAppear == YES) {
+            
+        }
+        else
+        {
+        if (IOS_VERSION > 7)
+        {
+            
             _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
         }
         else
@@ -329,9 +336,10 @@
         _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
             
         }
-        
+            _loadViewHasAppear = YES;
         [_loadView changeLabel:@"我尽力了，还是看不到"];
         [self.view addSubview:_loadView];
+        }
         
     }
     
@@ -393,7 +401,7 @@
             
         }
         //刷新表
-        
+        _loadViewHasAppear = NO;
         [_tableView reloadData];
         [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
        
@@ -413,6 +421,7 @@
         //判断数组是否为空
         if(allDict!=nil)
         {
+            _loadViewHasAppear = NO;
             NSArray *array=[allDict objectForKey:@"List"];
             NSLog(@"lll=%@",array);
             if([array count]!=0)
@@ -468,7 +477,14 @@
     NSLog(@"request tag is %d",request.tag);
     [activity stop];
     isRefresh = FALSE;
-    if (IOS_VERSION > 7) {
+    if (_loadViewHasAppear == YES)
+    {
+        
+    }
+    else
+    {
+    if (IOS_VERSION > 7)
+    {
         _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
     }
     else
@@ -476,8 +492,11 @@
         _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
         
     }
+        _loadViewHasAppear = YES;
+
     [_loadView changeLabel:@"我尽力了，还是看不到"];
     [self.view addSubview:_loadView];
+    }
 
 }
 
@@ -489,7 +508,7 @@
 -(void)refreshBtnClick:(id)sender
 {
     NSLog(@"刷新按钮被点击了");
-    [_loadView removeFromSuperview];
+    //[_loadView removeFromSuperview];
     if(!isRefresh)
     {
         isRefresh = TRUE;

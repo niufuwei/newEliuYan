@@ -155,7 +155,6 @@
     Video_OR_input_Button = [UIButton buttonWithType:UIButtonTypeCustom];
     Video_OR_input_Button.frame = CGRectMake(10, 7, 40, 35);
     [Video_OR_input_Button setBackgroundImage:[UIImage imageNamed:@"收银台_语音键-未按.png"] forState:UIControlStateNormal];
-    [Video_OR_input_Button setBackgroundImage:[UIImage imageNamed:@"收银台_语音键-按住.png"]  forState:UIControlStateHighlighted];
     
     [Video_OR_input_Button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     Video_OR_input_Button.tag = 101;
@@ -190,7 +189,6 @@
     VideoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     VideoButton.frame = CGRectMake(Video_OR_input_Button.frame.size.width+Video_OR_input_Button.frame.origin.x+10, 7, 320-Video_OR_input_Button.frame.origin.x-Video_OR_input_Button.frame.size.width-20, 35);
     [VideoButton setBackgroundImage:[UIImage imageNamed:@"收银台_语音-未按.png"] forState:UIControlStateNormal];
-    [VideoButton setBackgroundImage:[UIImage imageNamed:@"收银台_语音-按住.png"] forState:UIControlStateHighlighted];
     [VideoButton setHidden:YES];
     [VideoButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
     [VideoButton addTarget:self action:@selector(onClickRepeat:) forControlEvents:UIControlEventTouchUpInside];
@@ -201,8 +199,8 @@
     //初始化件数和金额
     statistical = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 220, 48)];
     statistical.backgroundColor=[UIColor clearColor];
-    statistical.textColor = [UIColor colorWithRed:246.0/255.0 green:88.0/255.0 blue:82.0/255.0 alpha:1];
-    statistical.font = [UIFont systemFontOfSize:16];
+    statistical.textColor = [UIColor redColor];
+//    statistical.font = [UIFont systemFontOfSize:16];
 
     [ButtomView addSubview:statistical];
     
@@ -272,7 +270,6 @@
              if(isVideo)
              {
                  [Video_OR_input_Button setBackgroundImage:[UIImage imageNamed:@"收银台_键盘键-未按.png"] forState:UIControlStateNormal];
-                 [Video_OR_input_Button setBackgroundImage:[UIImage imageNamed:@"收银台_键盘键-按住.png"] forState:UIControlStateHighlighted];
                  [VideoButton setHidden:NO];
                  [Message setHidden:YES];
                  isVideo = FALSE;
@@ -282,7 +279,6 @@
              else
              {
                  [Video_OR_input_Button setBackgroundImage:[UIImage imageNamed:@"收银台_语音键-未按.png"] forState:UIControlStateNormal];
-                 [Video_OR_input_Button setBackgroundImage:[UIImage imageNamed:@"收银台_语音键-按住.png"] forState:UIControlStateHighlighted];
                  [VideoButton setHidden:YES];
                  [VideoButtonPlayed setHidden:YES];
                  [Message setHidden:NO];
@@ -510,10 +506,10 @@
                        
                         [allDic setObject:[dic objectForKey:@"Price"] forKey:@"Price"];
                         
-                        
-                        NSLog(@".....%@",countDic);
-                        NSLog(@">>>>>%@",allDic);
-                        NSLog(@"``````````%d",i);
+//                        
+//                        NSLog(@".....%@",countDic);
+//                        NSLog(@">>>>>%@",allDic);
+//                        NSLog(@"``````````%d",i);
                         
                         [allDic setObject:[countDic objectForKey:[NSString stringWithFormat:@"%d",i+1]] forKey:@"GoodsCount"];
                         

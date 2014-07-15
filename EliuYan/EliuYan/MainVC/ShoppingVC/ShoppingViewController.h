@@ -42,6 +42,8 @@
     NSMutableArray *_activityIdArray;
     NSMutableArray *_titleArray;
     
+    
+    BOOL _loadViewHasAppear;
 }
 
 @property (nonatomic,strong) BMKUserLocation *userLocation;

@@ -53,21 +53,21 @@
     
     
     //初始化logo
-    UIImageView * imageLogo = [[UIImageView alloc] initWithFrame:CGRectMake(110, 40, 100, 90)];
-    [imageLogo setImage:[UIImage imageNamed:@"关于我们_03.png"]];
+    UIImageView * imageLogo = [[UIImageView alloc] initWithFrame:CGRectMake(120, 30, 80, 70)];
+    [imageLogo setImage:[UIImage imageNamed:@"关于我们-logo.png"]];
     [self.view addSubview:imageLogo];
     
     //初始化版本号
-    UILabel * versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, imageLogo.frame.origin.y+imageLogo.frame.size.height +10, 320, 20)];
+    UILabel * versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, imageLogo.frame.origin.y+imageLogo.frame.size.height+5, 320, 20)];
     NSString *localVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-
+    versionLabel.font=[UIFont systemFontOfSize:15.0];
     versionLabel.text = [NSString stringWithFormat:@"一溜烟%@版",localVersion];
     versionLabel.textAlignment = NSTextAlignmentCenter;
     versionLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:versionLabel];
     
     //初始化table
-    table = [[UITableView alloc ] initWithFrame:CGRectMake(5,versionLabel.frame.size.height+versionLabel.frame.origin.y+10 , 310, 150)];
+    table = [[UITableView alloc ] initWithFrame:CGRectMake(5,versionLabel.frame.size.height+versionLabel.frame.origin.y+30 , 310, 150)];
     table.delegate = self;
     table.dataSource =self;
     table.backgroundColor = [UIColor clearColor];
