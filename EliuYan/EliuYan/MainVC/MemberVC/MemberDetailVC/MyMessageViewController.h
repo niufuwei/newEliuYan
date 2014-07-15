@@ -27,7 +27,7 @@ typedef void(^block)(NSString*);
     UIView *_aView;
     BOOL _isRemove;
     
-    
+//    int _deleteCount;
     
 }
 @property (nonatomic,strong)UITableView *messageTableView;
