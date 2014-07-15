@@ -128,7 +128,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     Confirm=[UIButton buttonWithType:UIButtonTypeCustom];
     Confirm.frame=CGRectMake(320-80, 7, 80, 30);
 
-    [Confirm setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [Confirm setTitleColor: eliuyan_color(0xe94f4f) forState:UIControlStateNormal];
     [Confirm setTitle:@"确认收货" forState:UIControlStateNormal];
     Confirm.titleLabel.font=[UIFont systemFontOfSize:16.0];
 //    [Confirm setBackgroundColor:[UIColor blackColor]];

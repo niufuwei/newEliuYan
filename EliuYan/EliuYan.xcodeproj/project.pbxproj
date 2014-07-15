@@ -215,9 +215,7 @@
 		EFA97B54191645CF00BACC9D /* SHOP_ CARGO_ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AE9191645CF00BACC9D /* SHOP_ CARGO_ICON.png */; };
 		EFA97B55191645CF00BACC9D /* SHOP_APPLE_ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AEA191645CF00BACC9D /* SHOP_APPLE_ICON.png */; };
 		EFA97B56191645CF00BACC9D /* SHOP_SUPERMARKET_ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AEB191645CF00BACC9D /* SHOP_SUPERMARKET_ICON.png */; };
-		EFA97B57191645CF00BACC9D /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AEC191645CF00BACC9D /* video.png */; };
 		EFA97B58191645CF00BACC9D /* 会员中心_消息.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AED191645CF00BACC9D /* 会员中心_消息.png */; };
-		EFA97B59191645CF00BACC9D /* 关于我们_03.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AEE191645CF00BACC9D /* 关于我们_03.png */; };
 		EFA97B5A191645CF00BACC9D /* 关于我们_06.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AEF191645CF00BACC9D /* 关于我们_06.png */; };
 		EFA97B5B191645CF00BACC9D /* 分割线1 #e2dfc7.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AF1191645CF00BACC9D /* 分割线1 #e2dfc7.png */; };
 		EFA97B5C191645CF00BACC9D /* 分割线2.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AF2191645CF00BACC9D /* 分割线2.png */; };
@@ -230,25 +228,17 @@
 		EFA97B72191645CF00BACC9D /* 我的订单_02.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B09191645CF00BACC9D /* 我的订单_02.png */; };
 		EFA97B73191645CF00BACC9D /* 找回密码-按住.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B0A191645CF00BACC9D /* 找回密码-按住.png */; };
 		EFA97B74191645CF00BACC9D /* 找回密码-未按.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B0B191645CF00BACC9D /* 找回密码-未按.png */; };
-		EFA97B75191645CF00BACC9D /* contact_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B0D191645CF00BACC9D /* contact_shop.png */; };
-		EFA97B76191645CF00BACC9D /* contact_shop_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B0E191645CF00BACC9D /* contact_shop_selected.png */; };
 		EFA97B77191645CF00BACC9D /* 按钮背景-按下.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B0F191645CF00BACC9D /* 按钮背景-按下.png */; };
 		EFA97B78191645CF00BACC9D /* 按钮背景-未按.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B10191645CF00BACC9D /* 按钮背景-未按.png */; };
-		EFA97B7F191645CF00BACC9D /* 联系卖家-按下.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B17191645CF00BACC9D /* 联系卖家-按下.png */; };
-		EFA97B80191645CF00BACC9D /* 联系卖家-未按.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B18191645CF00BACC9D /* 联系卖家-未按.png */; };
-		EFA97B81191645CF00BACC9D /* 播放语音留言.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B19191645CF00BACC9D /* 播放语音留言.png */; };
 		EFA97B82191645CF00BACC9D /* 收银台-语音-播放.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B1A191645CF00BACC9D /* 收银台-语音-播放.png */; };
 		EFA97B83191645CF00BACC9D /* 收银台_语音-按住.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B1B191645CF00BACC9D /* 收银台_语音-按住.png */; };
 		EFA97B84191645CF00BACC9D /* 收银台_语音-未按.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B1C191645CF00BACC9D /* 收银台_语音-未按.png */; };
-		EFA97B85191645CF00BACC9D /* 收银台_语音键-按住 .png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B1D191645CF00BACC9D /* 收银台_语音键-按住 .png */; };
 		EFA97B86191645CF00BACC9D /* 收银台_语音键-未按.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B1E191645CF00BACC9D /* 收银台_语音键-未按.png */; };
-		EFA97B87191645CF00BACC9D /* 收银台_键盘键-按住.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B1F191645CF00BACC9D /* 收银台_键盘键-按住.png */; };
 		EFA97B88191645CF00BACC9D /* 收银台_键盘键-未按.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B20191645CF00BACC9D /* 收银台_键盘键-未按.png */; };
 		EFA97B89191645CF00BACC9D /* 显示密码-已选.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B21191645CF00BACC9D /* 显示密码-已选.png */; };
 		EFA97B8A191645CF00BACC9D /* 显示密码-未选.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B22191645CF00BACC9D /* 显示密码-未选.png */; };
 		EFA97B8B191645CF00BACC9D /* 暂无.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B23191645CF00BACC9D /* 暂无.png */; };
 		EFA97B8C191645CF00BACC9D /* 暂无图片90px.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B24191645CF00BACC9D /* 暂无图片90px.png */; };
-		EFA97B8D191645CF00BACC9D /* 曾用地址.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B25191645CF00BACC9D /* 曾用地址.png */; };
 		EFA97B8E191645CF00BACC9D /* 曾用地址_未选.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B26191645CF00BACC9D /* 曾用地址_未选.png */; };
 		EFA97B8F191645CF00BACC9D /* 曾用地址_选中.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B27191645CF00BACC9D /* 曾用地址_选中.png */; };
 		EFA97B90191645CF00BACC9D /* 最新订单_滑页.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B28191645CF00BACC9D /* 最新订单_滑页.png */; };
@@ -265,8 +255,6 @@
 		EFA97B9B191645CF00BACC9D /* 联华超市_10.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B33191645CF00BACC9D /* 联华超市_10.png */; };
 		EFA97B9C191645CF00BACC9D /* 联华超市_13.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B34191645CF00BACC9D /* 联华超市_13.png */; };
 		EFA97B9D191645CF00BACC9D /* 联华超市_18.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B35191645CF00BACC9D /* 联华超市_18.png */; };
-		EFA97B9E191645CF00BACC9D /* 联系卖家-按住.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B36191645CF00BACC9D /* 联系卖家-按住.png */; };
-		EFA97B9F191645CF00BACC9D /* 联系卖家-未按 .png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B37191645CF00BACC9D /* 联系卖家-未按 .png */; };
 		EFA97BA0191645CF00BACC9D /* 订单完成_15.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B38191645CF00BACC9D /* 订单完成_15.png */; };
 		EFA97BA2191645CF00BACC9D /* 详情介绍_杂货店图标.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B3A191645CF00BACC9D /* 详情介绍_杂货店图标.png */; };
 		EFA97BA3191645CF00BACC9D /* 详情介绍_水果店图标.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B3B191645CF00BACC9D /* 详情介绍_水果店图标.png */; };
@@ -280,7 +268,6 @@
 		EFA97BAE191645CF00BACC9D /* 闪页2.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B46191645CF00BACC9D /* 闪页2.png */; };
 		EFA97BAF191645CF00BACC9D /* 闪页3.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B47191645CF00BACC9D /* 闪页3.png */; };
 		EFA97BB0191645CF00BACC9D /* 闪页4.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B48191645CF00BACC9D /* 闪页4.png */; };
-		EFA97BB7191645CF00BACC9D /* 首页底部.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97B4F191645CF00BACC9D /* 首页底部.png */; };
 		EFA97BC11916823A00BACC9D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97BBF1916823A00BACC9D /* Icon.png */; };
 		EFA97BC21916823A00BACC9D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97BC01916823A00BACC9D /* Icon@2x.png */; };
 		EFCA74BA191BDBC9007F4BE5 /* 底色.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCA74B9191BDBC9007F4BE5 /* 底色.png */; };
@@ -694,9 +681,7 @@
 		EFA97AE9191645CF00BACC9D /* SHOP_ CARGO_ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SHOP_ CARGO_ICON.png"; sourceTree = "<group>"; };
 		EFA97AEA191645CF00BACC9D /* SHOP_APPLE_ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SHOP_APPLE_ICON.png; sourceTree = "<group>"; };
 		EFA97AEB191645CF00BACC9D /* SHOP_SUPERMARKET_ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SHOP_SUPERMARKET_ICON.png; sourceTree = "<group>"; };
-		EFA97AEC191645CF00BACC9D /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video.png; sourceTree = "<group>"; };
 		EFA97AED191645CF00BACC9D /* 会员中心_消息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "会员中心_消息.png"; sourceTree = "<group>"; };
-		EFA97AEE191645CF00BACC9D /* 关于我们_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于我们_03.png"; sourceTree = "<group>"; };
 		EFA97AEF191645CF00BACC9D /* 关于我们_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于我们_06.png"; sourceTree = "<group>"; };
 		EFA97AF1191645CF00BACC9D /* 分割线1 #e2dfc7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分割线1 #e2dfc7.png"; sourceTree = "<group>"; };
 		EFA97AF2191645CF00BACC9D /* 分割线2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分割线2.png"; sourceTree = "<group>"; };
@@ -709,25 +694,17 @@
 		EFA97B09191645CF00BACC9D /* 我的订单_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的订单_02.png"; sourceTree = "<group>"; };
 		EFA97B0A191645CF00BACC9D /* 找回密码-按住.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "找回密码-按住.png"; sourceTree = "<group>"; };
 		EFA97B0B191645CF00BACC9D /* 找回密码-未按.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "找回密码-未按.png"; sourceTree = "<group>"; };
-		EFA97B0D191645CF00BACC9D /* contact_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact_shop.png; sourceTree = "<group>"; };
-		EFA97B0E191645CF00BACC9D /* contact_shop_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact_shop_selected.png; sourceTree = "<group>"; };
 		EFA97B0F191645CF00BACC9D /* 按钮背景-按下.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "按钮背景-按下.png"; sourceTree = "<group>"; };
 		EFA97B10191645CF00BACC9D /* 按钮背景-未按.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "按钮背景-未按.png"; sourceTree = "<group>"; };
-		EFA97B17191645CF00BACC9D /* 联系卖家-按下.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联系卖家-按下.png"; sourceTree = "<group>"; };
-		EFA97B18191645CF00BACC9D /* 联系卖家-未按.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联系卖家-未按.png"; sourceTree = "<group>"; };
-		EFA97B19191645CF00BACC9D /* 播放语音留言.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "播放语音留言.png"; sourceTree = "<group>"; };
 		EFA97B1A191645CF00BACC9D /* 收银台-语音-播放.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "收银台-语音-播放.png"; sourceTree = "<group>"; };
 		EFA97B1B191645CF00BACC9D /* 收银台_语音-按住.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "收银台_语音-按住.png"; sourceTree = "<group>"; };
 		EFA97B1C191645CF00BACC9D /* 收银台_语音-未按.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "收银台_语音-未按.png"; sourceTree = "<group>"; };
-		EFA97B1D191645CF00BACC9D /* 收银台_语音键-按住 .png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "收银台_语音键-按住 .png"; sourceTree = "<group>"; };
 		EFA97B1E191645CF00BACC9D /* 收银台_语音键-未按.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "收银台_语音键-未按.png"; sourceTree = "<group>"; };
-		EFA97B1F191645CF00BACC9D /* 收银台_键盘键-按住.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "收银台_键盘键-按住.png"; sourceTree = "<group>"; };
 		EFA97B20191645CF00BACC9D /* 收银台_键盘键-未按.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "收银台_键盘键-未按.png"; sourceTree = "<group>"; };
 		EFA97B21191645CF00BACC9D /* 显示密码-已选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "显示密码-已选.png"; sourceTree = "<group>"; };
 		EFA97B22191645CF00BACC9D /* 显示密码-未选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "显示密码-未选.png"; sourceTree = "<group>"; };
 		EFA97B23191645CF00BACC9D /* 暂无.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "暂无.png"; sourceTree = "<group>"; };
 		EFA97B24191645CF00BACC9D /* 暂无图片90px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "暂无图片90px.png"; sourceTree = "<group>"; };
-		EFA97B25191645CF00BACC9D /* 曾用地址.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曾用地址.png"; sourceTree = "<group>"; };
 		EFA97B26191645CF00BACC9D /* 曾用地址_未选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曾用地址_未选.png"; sourceTree = "<group>"; };
 		EFA97B27191645CF00BACC9D /* 曾用地址_选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曾用地址_选中.png"; sourceTree = "<group>"; };
 		EFA97B28191645CF00BACC9D /* 最新订单_滑页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "最新订单_滑页.png"; sourceTree = "<group>"; };
@@ -744,8 +721,6 @@
 		EFA97B33191645CF00BACC9D /* 联华超市_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联华超市_10.png"; sourceTree = "<group>"; };
 		EFA97B34191645CF00BACC9D /* 联华超市_13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联华超市_13.png"; sourceTree = "<group>"; };
 		EFA97B35191645CF00BACC9D /* 联华超市_18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联华超市_18.png"; sourceTree = "<group>"; };
-		EFA97B36191645CF00BACC9D /* 联系卖家-按住.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联系卖家-按住.png"; sourceTree = "<group>"; };
-		EFA97B37191645CF00BACC9D /* 联系卖家-未按 .png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联系卖家-未按 .png"; sourceTree = "<group>"; };
 		EFA97B38191645CF00BACC9D /* 订单完成_15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单完成_15.png"; sourceTree = "<group>"; };
 		EFA97B3A191645CF00BACC9D /* 详情介绍_杂货店图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "详情介绍_杂货店图标.png"; sourceTree = "<group>"; };
 		EFA97B3B191645CF00BACC9D /* 详情介绍_水果店图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "详情介绍_水果店图标.png"; sourceTree = "<group>"; };
@@ -759,7 +734,6 @@
 		EFA97B46191645CF00BACC9D /* 闪页2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "闪页2.png"; sourceTree = "<group>"; };
 		EFA97B47191645CF00BACC9D /* 闪页3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "闪页3.png"; sourceTree = "<group>"; };
 		EFA97B48191645CF00BACC9D /* 闪页4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "闪页4.png"; sourceTree = "<group>"; };
-		EFA97B4F191645CF00BACC9D /* 首页底部.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页底部.png"; sourceTree = "<group>"; };
 		EFA97BBF1916823A00BACC9D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		EFA97BC01916823A00BACC9D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		EFCA74B9191BDBC9007F4BE5 /* 底色.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底色.png"; sourceTree = "<group>"; };
@@ -1503,9 +1477,7 @@
 				EFA97AE9191645CF00BACC9D /* SHOP_ CARGO_ICON.png */,
 				EFA97AEA191645CF00BACC9D /* SHOP_APPLE_ICON.png */,
 				EFA97AEB191645CF00BACC9D /* SHOP_SUPERMARKET_ICON.png */,
-				EFA97AEC191645CF00BACC9D /* video.png */,
 				EFA97AED191645CF00BACC9D /* 会员中心_消息.png */,
-				EFA97AEE191645CF00BACC9D /* 关于我们_03.png */,
 				EFA97AEF191645CF00BACC9D /* 关于我们_06.png */,
 				EFA97AF0191645CF00BACC9D /* 分割线 */,
 				EFA97B07191645CF00BACC9D /* 左侧栏选中 #ff3333.png */,
@@ -1514,19 +1486,15 @@
 				EFA97B0A191645CF00BACC9D /* 找回密码-按住.png */,
 				EFA97B0B191645CF00BACC9D /* 找回密码-未按.png */,
 				EFA97B0C191645CF00BACC9D /* 按钮 */,
-				EFA97B19191645CF00BACC9D /* 播放语音留言.png */,
 				EFA97B1A191645CF00BACC9D /* 收银台-语音-播放.png */,
 				EFA97B1B191645CF00BACC9D /* 收银台_语音-按住.png */,
 				EFA97B1C191645CF00BACC9D /* 收银台_语音-未按.png */,
-				EFA97B1D191645CF00BACC9D /* 收银台_语音键-按住 .png */,
 				EFA97B1E191645CF00BACC9D /* 收银台_语音键-未按.png */,
-				EFA97B1F191645CF00BACC9D /* 收银台_键盘键-按住.png */,
 				EFA97B20191645CF00BACC9D /* 收银台_键盘键-未按.png */,
 				EFA97B21191645CF00BACC9D /* 显示密码-已选.png */,
 				EFA97B22191645CF00BACC9D /* 显示密码-未选.png */,
 				EFA97B23191645CF00BACC9D /* 暂无.png */,
 				EFA97B24191645CF00BACC9D /* 暂无图片90px.png */,
-				EFA97B25191645CF00BACC9D /* 曾用地址.png */,
 				EFA97B26191645CF00BACC9D /* 曾用地址_未选.png */,
 				EFA97B27191645CF00BACC9D /* 曾用地址_选中.png */,
 				EFA97B28191645CF00BACC9D /* 最新订单_滑页.png */,
@@ -1543,8 +1511,6 @@
 				EFA97B33191645CF00BACC9D /* 联华超市_10.png */,
 				EFA97B34191645CF00BACC9D /* 联华超市_13.png */,
 				EFA97B35191645CF00BACC9D /* 联华超市_18.png */,
-				EFA97B36191645CF00BACC9D /* 联系卖家-按住.png */,
-				EFA97B37191645CF00BACC9D /* 联系卖家-未按 .png */,
 				EFA97B38191645CF00BACC9D /* 订单完成_15.png */,
 				EFA97B3A191645CF00BACC9D /* 详情介绍_杂货店图标.png */,
 				EFA97B3B191645CF00BACC9D /* 详情介绍_水果店图标.png */,
@@ -1558,7 +1524,6 @@
 				EFA97B46191645CF00BACC9D /* 闪页2.png */,
 				EFA97B47191645CF00BACC9D /* 闪页3.png */,
 				EFA97B48191645CF00BACC9D /* 闪页4.png */,
-				EFA97B4F191645CF00BACC9D /* 首页底部.png */,
 			);
 			path = "切图";
 			sourceTree = "<group>";
@@ -1579,12 +1544,8 @@
 		EFA97B0C191645CF00BACC9D /* 按钮 */ = {
 			isa = PBXGroup;
 			children = (
-				EFA97B0D191645CF00BACC9D /* contact_shop.png */,
-				EFA97B0E191645CF00BACC9D /* contact_shop_selected.png */,
 				EFA97B0F191645CF00BACC9D /* 按钮背景-按下.png */,
 				EFA97B10191645CF00BACC9D /* 按钮背景-未按.png */,
-				EFA97B17191645CF00BACC9D /* 联系卖家-按下.png */,
-				EFA97B18191645CF00BACC9D /* 联系卖家-未按.png */,
 			);
 			path = "按钮";
 			sourceTree = "<group>";
@@ -1696,10 +1657,8 @@
 				EFA97B88191645CF00BACC9D /* 收银台_键盘键-未按.png in Resources */,
 				180CC7F1191B677100985416 /* wave70x117@2x.png in Resources */,
 				7193B274196D3A1900070705 /* 键盘-按住.png in Resources */,
-				EFA97B85191645CF00BACC9D /* 收银台_语音键-按住 .png in Resources */,
 				711C9BB4196F7D4800832213 /* 搜索.png in Resources */,
 				EFA97B72191645CF00BACC9D /* 我的订单_02.png in Resources */,
-				EFA97B8D191645CF00BACC9D /* 曾用地址.png in Resources */,
 				EFA97B5A191645CF00BACC9D /* 关于我们_06.png in Resources */,
 				7193B236196D3A1900070705 /* 上门维修-滚动背景-图标.png in Resources */,
 				711C9BB2196F7D3A00832213 /* 返回.png in Resources */,
@@ -1713,7 +1672,6 @@
 				71C2FB40196E6A44007B99A7 /* 切图_03.png in Resources */,
 				7193B276196D3A1900070705 /* 首页 背景.png in Resources */,
 				EFA97B58191645CF00BACC9D /* 会员中心_消息.png in Resources */,
-				EFA97B9E191645CF00BACC9D /* 联系卖家-按住.png in Resources */,
 				EFA97BA3191645CF00BACC9D /* 详情介绍_水果店图标.png in Resources */,
 				71C2FB4D196E8DE3007B99A7 /* 首页菜单栏-未选 (1).png in Resources */,
 				EFA97B55191645CF00BACC9D /* SHOP_APPLE_ICON.png in Resources */,
@@ -1727,7 +1685,6 @@
 				7112559419163435003F7D63 /* MJRefresh.bundle in Resources */,
 				EFA97B70191645CF00BACC9D /* 左侧栏选中 #ff3333.png in Resources */,
 				7193B253196D3A1900070705 /* 电话拨号.png in Resources */,
-				EFA97B57191645CF00BACC9D /* video.png in Resources */,
 				EFA97B5F191645CF00BACC9D /* 线4.png in Resources */,
 				18BDDCE91921FAF200B48451 /* Icon-120.png in Resources */,
 				EFA97BAD191645CF00BACC9D /* 闪页1.png in Resources */,
@@ -1743,7 +1700,6 @@
 				EFA97BB0191645CF00BACC9D /* 闪页4.png in Resources */,
 				EFA97BAE191645CF00BACC9D /* 闪页2.png in Resources */,
 				7193B25B196D3A1900070705 /* 立即缴费-未按.png in Resources */,
-				EFA97B81191645CF00BACC9D /* 播放语音留言.png in Resources */,
 				7193B263196D3A1900070705 /* 订单详情、最近订单-备注信息背景.png in Resources */,
 				7193B240196D3A1900070705 /* 单选-未选中 .png in Resources */,
 				7193B25F196D3A1900070705 /* 背景#f2f2f2.png in Resources */,
@@ -1752,7 +1708,6 @@
 				EFA97BAA191645CF00BACC9D /* 选择店铺_水果店.png in Resources */,
 				7193B24D196D3A1900070705 /* 无信息页面.png in Resources */,
 				EFA97B5E191645CF00BACC9D /* 分割线8-订单详情(订单被取消).png in Resources */,
-				EFA97B9F191645CF00BACC9D /* 联系卖家-未按 .png in Resources */,
 				7193B262196D3A1900070705 /* 订单被取消-背景#ababab.png in Resources */,
 				7193B25E196D3A1900070705 /* 缴费 物业费背景.png in Resources */,
 				7193B270196D3A1900070705 /* 选中#ffe8e8.png in Resources */,
@@ -1764,7 +1719,6 @@
 				EFA97B8F191645CF00BACC9D /* 曾用地址_选中.png in Resources */,
 				7193B277196D3A1900070705 /* 首页-时间.png in Resources */,
 				EFA97B98191645CF00BACC9D /* 水果店_切换按钮 (7).png in Resources */,
-				EFA97B87191645CF00BACC9D /* 收银台_键盘键-按住.png in Resources */,
 				EFA97B9D191645CF00BACC9D /* 联华超市_18.png in Resources */,
 				7193B279196D3A1900070705 /* 首页-起送费.png in Resources */,
 				180CC7EF191B677100985416 /* mic_normal_358x358@2x.png in Resources */,
@@ -1775,9 +1729,7 @@
 				7193B26A196D3A1900070705 /* 货到付款.png in Resources */,
 				7193B24E196D3A1900070705 /* 无服务.png in Resources */,
 				7112559C19163435003F7D63 /* GoodsTableViewCell.xib in Resources */,
-				EFA97B7F191645CF00BACC9D /* 联系卖家-按下.png in Resources */,
 				7193B264196D3A1900070705 /* 记住密码-未选.png in Resources */,
-				EFA97B80191645CF00BACC9D /* 联系卖家-未按.png in Resources */,
 				7193B265196D3A1900070705 /* 记住密码-选中.png in Resources */,
 				7193B251196D3A1900070705 /* 物业费 缴费 叠加背景.png in Resources */,
 				EFA97BC21916823A00BACC9D /* Icon@2x.png in Resources */,
@@ -1797,8 +1749,6 @@
 				7193B23F196D3A1900070705 /* 刷新.png in Resources */,
 				711C9BB6196F7D6200832213 /* 主页.png in Resources */,
 				7193B259196D3A1900070705 /* 社区服务 更换小区背景.png in Resources */,
-				EFA97B76191645CF00BACC9D /* contact_shop_selected.png in Resources */,
-				EFA97BB7191645CF00BACC9D /* 首页底部.png in Resources */,
 				EFA97B9A191645CF00BACC9D /* 消息中心_05.png in Resources */,
 				EFA97B89191645CF00BACC9D /* 显示密码-已选.png in Resources */,
 				7112542A191632A8003F7D63 /* Images.xcassets in Resources */,
@@ -1813,7 +1763,6 @@
 				7193B254196D3A1900070705 /* 留言.png in Resources */,
 				7193B242196D3A1900070705 /* 多选-未选 .png in Resources */,
 				EFA97BA0191645CF00BACC9D /* 订单完成_15.png in Resources */,
-				EFA97B59191645CF00BACC9D /* 关于我们_03.png in Resources */,
 				EFA97B5B191645CF00BACC9D /* 分割线1 #e2dfc7.png in Resources */,
 				EFA97B95191645CF00BACC9D /* 水果店_切换按钮 (4).png in Resources */,
 				7193B249196D3A1900070705 /* 确认收货.png in Resources */,
@@ -1824,7 +1773,6 @@
 				EFA97BAF191645CF00BACC9D /* 闪页3.png in Resources */,
 				EFA97B91191645CF00BACC9D /* 未标题-3_12.png in Resources */,
 				EFA97B71191645CF00BACC9D /* 左侧栏选中2 #ffffff.png in Resources */,
-				EFA97B75191645CF00BACC9D /* contact_shop.png in Resources */,
 				7193B241196D3A1900070705 /* 单选-选中 .png in Resources */,
 				7193B23B196D3A1900070705 /* 关于我们-logo.png in Resources */,
 				EFA97B96191645CF00BACC9D /* 水果店_切换按钮 (5).png in Resources */,
@@ -2090,7 +2038,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3AE2EF14-3DF3-4541-B63C-51B7798B3FC6";
+				PROVISIONING_PROFILE = "53270D74-7CB0-4454-98B0-57C6ADF4496F";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
@@ -2120,7 +2068,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3AE2EF14-3DF3-4541-B63C-51B7798B3FC6";
+				PROVISIONING_PROFILE = "53270D74-7CB0-4454-98B0-57C6ADF4496F";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
