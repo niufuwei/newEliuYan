@@ -126,11 +126,6 @@
     
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
-
-    
-    
-    
-    
     
     
 }

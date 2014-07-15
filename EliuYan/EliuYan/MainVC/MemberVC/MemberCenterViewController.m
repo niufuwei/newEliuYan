@@ -87,7 +87,6 @@
     if (IOS_VERSION < 7.0)
     {
         
-        
         lineImageView1.frame=CGRectMake(20, 20+24, 280, 1);
     }
     else

@@ -189,6 +189,7 @@
     VideoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     VideoButton.frame = CGRectMake(Video_OR_input_Button.frame.size.width+Video_OR_input_Button.frame.origin.x+10, 7, 320-Video_OR_input_Button.frame.origin.x-Video_OR_input_Button.frame.size.width-20, 35);
     [VideoButton setBackgroundImage:[UIImage imageNamed:@"收银台_语音-未按.png"] forState:UIControlStateNormal];
+    [VideoButton setBackgroundImage:[UIImage imageNamed:@"收银台_语音-按住.png"] forState:UIControlStateHighlighted];
     [VideoButton setHidden:YES];
     [VideoButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
     [VideoButton addTarget:self action:@selector(onClickRepeat:) forControlEvents:UIControlEventTouchUpInside];
