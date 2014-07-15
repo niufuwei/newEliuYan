@@ -303,7 +303,7 @@
             Time =[Time stringByReplacingOccurrencesOfString:@"T" withString:@" "];
             OrderTime.text = [NSString stringWithFormat:@"下单时间  %@",Time];
             
-//            NSString *oredrReason=[arrayDetail objectForKey:@"OrderReason"];
+            NSString *oredrReason=[arrayDetail objectForKey:@"OrderReason"];
         
             int status=[[arrayDetail objectForKey:@"Status" ] intValue];
             
@@ -339,7 +339,7 @@
             {
                 _statusLabel.text = @"订单取消";
 //                statusLabel.textColor = eliuyan_color(0xff5d51);
-                
+                alarmLabel.text = oredrReason;
                 
                
             }
