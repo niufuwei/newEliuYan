@@ -296,6 +296,7 @@
     
     NSString *regex;
     
+    
     regex = [NSString stringWithFormat:@"%@", @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,2,3,5-9]))\\d{8}[xX]{0,1}$"];
     
     

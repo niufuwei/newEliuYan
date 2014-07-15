@@ -100,7 +100,7 @@
         search.delegate = self;
         
         //添加当前位置的View
-        locationView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 80, 320, 32)];
+        locationView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 80, 320, 40)];
         locationView.image = [UIImage imageNamed:@"首页 背景.png"];
         locationView.userInteractionEnabled = YES;
         
@@ -112,7 +112,7 @@
         
         
         
-        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(10, 1, 50, 30)];
+        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(10, 1, 50, 38)];
         label.font=[UIFont systemFontOfSize:15];
         label.backgroundColor=[UIColor clearColor];
         label.text=@"当前:";
@@ -120,7 +120,7 @@
         [locationView addSubview:label];
         
         //显示位置的label
-        _locationLabel=[[UILabel alloc] initWithFrame:CGRectMake(55, 0, 200, 30)];
+        _locationLabel=[[UILabel alloc] initWithFrame:CGRectMake(55, 1, 200, 38)];
         _locationLabel.backgroundColor=[UIColor clearColor];
         _locationLabel.textColor=[UIColor whiteColor];
         [locationView addSubview:_locationLabel];
@@ -134,7 +134,7 @@
         
         //添加刷新按钮
         UIButton *refreshBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-        refreshBtn.frame=CGRectMake(280, 3, 24, 24);
+        refreshBtn.frame=CGRectMake(280, 5, 30, 30);
         [refreshBtn setBackgroundImage:[UIImage imageNamed:@"刷新.png"] forState:UIControlStateNormal];
         [refreshBtn addTarget:self action:@selector(refreshBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [locationView addSubview:refreshBtn];
@@ -145,11 +145,11 @@
         
         //添加表
         if (IOS_VERSION >=7.0) {
-            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-64-113-49) style:UITableViewStylePlain];
+            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-64-121-49) style:UITableViewStylePlain];
         }
         else
         {
-            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 113, 320, self.view.frame.size.height-64-113+20-49) style:UITableViewStylePlain];
+            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-64-121+20-49) style:UITableViewStylePlain];
         }
         
         _tableView.delegate=self;

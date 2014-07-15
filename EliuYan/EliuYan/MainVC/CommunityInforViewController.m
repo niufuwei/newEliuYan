@@ -64,10 +64,10 @@
         search.delegate = self;
         
         //添加当前位置的View
-        UIView *locationView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 32)];
+        UIView *locationView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
         [locationView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"缴费 物业费背景.png"]]];
         
-        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 30)];
+        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 40)];
         label.font=[UIFont systemFontOfSize:15];
         label.backgroundColor=[UIColor clearColor];
         label.text=@"当前位置：";
@@ -75,7 +75,7 @@
         [locationView addSubview:label];
         
         //显示位置的label
-        _locationLabel=[[UILabel alloc] initWithFrame:CGRectMake(80, 0, 220, 30)];
+        _locationLabel=[[UILabel alloc] initWithFrame:CGRectMake(80, 0, 220, 40)];
         _locationLabel.backgroundColor=[UIColor clearColor];
         _locationLabel.textColor=[UIColor whiteColor];
         [locationView addSubview:_locationLabel];
@@ -89,7 +89,7 @@
         
         //添加刷新按钮
         UIButton *refreshBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-        refreshBtn.frame=CGRectMake(280, 2.5, 25, 25);
+        refreshBtn.frame=CGRectMake(280, 5, 30, 30);
         [refreshBtn setBackgroundImage:[UIImage imageNamed:@"刷新.png"] forState:UIControlStateNormal];
         [refreshBtn addTarget:self action:@selector(refreshBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [locationView addSubview:refreshBtn];
