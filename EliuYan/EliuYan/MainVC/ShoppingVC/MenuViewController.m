@@ -74,6 +74,7 @@
     //发送请求
 //    NSLog(@"????????=%@",[appDelegate.appDefault objectForKey:@"UserId"]);
     httpRequest *request=[[httpRequest alloc] init];
+    request.httpDelegate=self;
     //判断userId 是否为空
 //    NSLog(@"...%@",UserId);
     

@@ -162,6 +162,7 @@
             else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"99"])
             {
                 [activity stop];
+                _pageIndex--;
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"系统异常" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
             }
@@ -463,11 +464,18 @@
             if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
             {
                 NSLog(@"删除成功");
-                //_pageIndex = 0;
-                //[self loadUI];
+                _pageIndex = 0;
+                [self loadUI];
                 int row = indexPath.row;
                 [_messageArray removeObjectAtIndex:row];
-                
+//                _deleteCount++;
+//                if (_deleteCount== 8)
+//                {
+//                    _pageIndex--;
+//                    
+//                    _deleteCount = 0;
+//                    _totalMessageCount--;
+//                }
                 // Delete the row from the data source.
                 [_messageTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 
