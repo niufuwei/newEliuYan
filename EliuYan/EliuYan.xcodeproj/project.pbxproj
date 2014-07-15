@@ -210,8 +210,6 @@
 		EF5FB5041973A4230087D5CD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5FB5021973A4230087D5CD /* Default@2x.png */; };
 		EF5FB5051973A4230087D5CD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5FB5031973A4230087D5CD /* Default-568h@2x.png */; };
 		EF6D4AD0194B04F700012777 /* CheckStandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6D4ACE194B04F700012777 /* CheckStandViewController.m */; };
-		EFA97B50191645CF00BACC9D /* Contact_no_select.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AE5191645CF00BACC9D /* Contact_no_select.png */; };
-		EFA97B51191645CF00BACC9D /* Contact_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AE6191645CF00BACC9D /* Contact_selected.png */; };
 		EFA97B54191645CF00BACC9D /* SHOP_ CARGO_ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AE9191645CF00BACC9D /* SHOP_ CARGO_ICON.png */; };
 		EFA97B55191645CF00BACC9D /* SHOP_APPLE_ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AEA191645CF00BACC9D /* SHOP_APPLE_ICON.png */; };
 		EFA97B56191645CF00BACC9D /* SHOP_SUPERMARKET_ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA97AEB191645CF00BACC9D /* SHOP_SUPERMARKET_ICON.png */; };
@@ -676,8 +674,6 @@
 		EF5FB5031973A4230087D5CD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EF6D4ACE194B04F700012777 /* CheckStandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckStandViewController.m; sourceTree = "<group>"; };
 		EF6D4ACF194B04F700012777 /* CheckStandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckStandViewController.h; sourceTree = "<group>"; };
-		EFA97AE5191645CF00BACC9D /* Contact_no_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contact_no_select.png; sourceTree = "<group>"; };
-		EFA97AE6191645CF00BACC9D /* Contact_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contact_selected.png; sourceTree = "<group>"; };
 		EFA97AE9191645CF00BACC9D /* SHOP_ CARGO_ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SHOP_ CARGO_ICON.png"; sourceTree = "<group>"; };
 		EFA97AEA191645CF00BACC9D /* SHOP_APPLE_ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SHOP_APPLE_ICON.png; sourceTree = "<group>"; };
 		EFA97AEB191645CF00BACC9D /* SHOP_SUPERMARKET_ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SHOP_SUPERMARKET_ICON.png; sourceTree = "<group>"; };
@@ -1472,8 +1468,6 @@
 				EFEE41E51918D98C002D270F /* 水果店_分隔条.png */,
 				EFA97BBF1916823A00BACC9D /* Icon.png */,
 				EFA97BC01916823A00BACC9D /* Icon@2x.png */,
-				EFA97AE5191645CF00BACC9D /* Contact_no_select.png */,
-				EFA97AE6191645CF00BACC9D /* Contact_selected.png */,
 				EFA97AE9191645CF00BACC9D /* SHOP_ CARGO_ICON.png */,
 				EFA97AEA191645CF00BACC9D /* SHOP_APPLE_ICON.png */,
 				EFA97AEB191645CF00BACC9D /* SHOP_SUPERMARKET_ICON.png */,
@@ -1692,7 +1686,6 @@
 				71C2FB4E196E8DE3007B99A7 /* 首页菜单栏-未选 (2).png in Resources */,
 				EFA97B8C191645CF00BACC9D /* 暂无图片90px.png in Resources */,
 				EFA97B5C191645CF00BACC9D /* 分割线2.png in Resources */,
-				EFA97B51191645CF00BACC9D /* Contact_selected.png in Resources */,
 				EFA97BA2191645CF00BACC9D /* 详情介绍_杂货店图标.png in Resources */,
 				7193B272196D3A1900070705 /* 选择产品-添加.png in Resources */,
 				7193B261196D3A1900070705 /* 订单完成.png in Resources */,
@@ -1742,7 +1735,6 @@
 				7193B23E196D3A1900070705 /* 切图_68.png in Resources */,
 				1DCAF0CB196FCCE50098203F /* nav_ios6_ios5.png in Resources */,
 				71125422191632A8003F7D63 /* InfoPlist.strings in Resources */,
-				EFA97B50191645CF00BACC9D /* Contact_no_select.png in Resources */,
 				EFA97B60191645CF00BACC9D /* 线5.png in Resources */,
 				7193B25C196D3A1900070705 /* 等待送货 下单完成背景.png in Resources */,
 				711C9BB8196FB1A800832213 /* 切图_179.png in Resources */,
@@ -1976,7 +1968,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PROVISIONING_PROFILE = "343E5FD1-7F5C-42E2-9F3C-5A74588B023C";
+				PROVISIONING_PROFILE = "53270D74-7CB0-4454-98B0-57C6ADF4496F";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2009,7 +2001,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PROVISIONING_PROFILE = "343E5FD1-7F5C-42E2-9F3C-5A74588B023C";
+				PROVISIONING_PROFILE = "53270D74-7CB0-4454-98B0-57C6ADF4496F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2038,7 +2030,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
+				PROVISIONING_PROFILE = "53270D74-7CB0-4454-98B0-57C6ADF4496F";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
@@ -2068,7 +2060,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
+				PROVISIONING_PROFILE = "53270D74-7CB0-4454-98B0-57C6ADF4496F";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
