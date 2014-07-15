@@ -580,7 +580,7 @@
                 cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
                 
                 
-                cell.countLabel.font = [UIFont systemFontOfSize:10.0];
+                cell.countLabel.font = [UIFont systemFontOfSize:14];
                 cell.countLabel.text=[_countDic objectForKey:goodsDetail.goodsId];
                 if([cell.countLabel.text intValue] ==0)
                 {
@@ -641,7 +641,7 @@
                     [jingeDic setObject:@"ge" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
                     
 //                }
-                cell.countLabel.font = [UIFont systemFontOfSize:10.0];
+                cell.countLabel.font = [UIFont systemFontOfSize:14];
                 cell.countLabel.text=[_countDic objectForKey:goodsDet.goodsId];
                 if([cell.countLabel.text intValue] ==0)
                 {
