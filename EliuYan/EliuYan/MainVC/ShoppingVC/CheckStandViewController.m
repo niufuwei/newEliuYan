@@ -511,7 +511,9 @@
                         [allDic setObject:[dic objectForKey:@"Price"] forKey:@"Price"];
                         
                         
-                        
+                        NSLog(@".....%@",countDic);
+                        NSLog(@">>>>>%@",allDic);
+                        NSLog(@"``````````%d",i);
                         
                         [allDic setObject:[countDic objectForKey:[NSString stringWithFormat:@"%d",i+1]] forKey:@"GoodsCount"];
                         

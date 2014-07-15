@@ -210,7 +210,7 @@
         //刷新表
         [ContentTable reloadData];
 
-        [ContentTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+//        [ContentTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 
     })];
     
@@ -453,6 +453,9 @@
 
         if(tableView.tag==101)
         {
+            [ContentTable setContentOffset:CGPointMake(0, 0) animated:NO];
+            
+            
             BOOL isSelected = FALSE;
             for(int i=0;i<[[menuSelectDictionary allKeys] count];i++)
             {
