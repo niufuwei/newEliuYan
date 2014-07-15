@@ -1285,7 +1285,6 @@
                 }
             else
             {
-
                 NSString *sumPr=[NSString stringWithFormat:@"%.2f",sumPrice];
                 sumPrice = [sumPr floatValue];
                 if (sumPrice<[[[NSUserDefaults standardUserDefaults] objectForKey:@"MinBuy"] floatValue]) {
@@ -1314,9 +1313,8 @@
 //                        }
                         
                         [dataMutableArray addObject:dataArr];
-                        
+
                     }
-                    
                     //记录所点击的单元格 保存商品名称，价格，图片
                     CheckStandViewController * check= [[CheckStandViewController alloc] init];
                     check.dataMutableArray = dataMutableArray;
@@ -1337,7 +1335,6 @@
         }
         
     }else{
-        
         //给一个返回对应的界面的状态
         [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"isBack"];
 
@@ -1348,6 +1345,7 @@
         [alert show];
         
     }
+    
     
 }
 

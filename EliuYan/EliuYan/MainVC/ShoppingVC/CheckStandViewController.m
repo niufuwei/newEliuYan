@@ -102,7 +102,7 @@
 //  dataMutableArray = [[NSMutableArray alloc] init];
     
     //创建表
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320,10000)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320,100000)];
 //    _tableView.backgroundColor=eliuyan_color(0xf6f4ef);
     _tableView.delegate=self;
      _tableView.dataSource=self;
@@ -1058,7 +1058,7 @@
 -(IBAction)plaseClick:(id)sender
 {
     CGRect hh = _tableView.frame;
-    hh.size.height = 10000;
+    hh.size.height = 100000;
     _tableView.frame = hh;
     
     
@@ -1109,7 +1109,7 @@
 -(IBAction)minClick:(id)sender
 {
     CGRect hh = _tableView.frame;
-    hh.size.height = 10000;
+    hh.size.height = 100000;
     _tableView.frame = hh;
     isTouch = TRUE;
     
@@ -1201,7 +1201,7 @@
 -(void)jinClick:(id)sender
 {
     CGRect hh = _tableView.frame;
-    hh.size.height = 10000;
+    hh.size.height = 100000;
     _tableView.frame = hh;
     
     UIButton *btn=(UIButton *)sender;
@@ -1230,7 +1230,7 @@
 -(void)geClick:(id)sender
 {
     CGRect hh = _tableView.frame;
-    hh.size.height = 10000;
+    hh.size.height = 100000;
     _tableView.frame = hh;
     UIButton *btn=(UIButton *)sender;
     GoodsTableViewCell *cell;
