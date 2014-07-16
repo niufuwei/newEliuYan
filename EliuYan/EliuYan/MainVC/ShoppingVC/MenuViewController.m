@@ -636,8 +636,8 @@
 //                }
 //                else
 //                {
-                    [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (6).png"] forState:UIControlStateNormal];
-                    [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (5).png"] forState:UIControlStateNormal];
+                    [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
+                    [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
                     
                     [jingeDic setObject:@"ge" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
                     
@@ -827,8 +827,8 @@
 //                }
 //                else
 //                {
-                    [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (6).png"] forState:UIControlStateNormal];
-                    [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (5).png"] forState:UIControlStateNormal];
+                    [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
+                    [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
                     
                     [jingeDic setObject:@"ge" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
                     

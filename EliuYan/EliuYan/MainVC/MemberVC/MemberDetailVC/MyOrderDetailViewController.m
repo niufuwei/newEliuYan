@@ -227,7 +227,7 @@ static NSString *selected_backImageName = @"back_selected.png";
 
     
     
-    _label9 = [[UILabel alloc] initWithFrame:CGRectMake(10, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + 10, 80, 20)];
+    _label9 = [[UILabel alloc] initWithFrame:CGRectMake(10, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + 5, 80, 20)];
     _label9.text = @"购买商品";
     _label9.font = [UIFont systemFontOfSize:14.0];
     _label9.backgroundColor = [UIColor clearColor];
@@ -239,7 +239,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     lineImageView1.frame=CGRectMake(0, _label9.frame.origin.y + _label9.frame.size.height + 5, 320, 1);
     [self.view addSubview:lineImageView1];
     
-    _label10 = [[UILabel alloc] initWithFrame:CGRectMake(260, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + 10, 80, 20)];
+    _label10 = [[UILabel alloc] initWithFrame:CGRectMake(260, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + 5, 80, 20)];
     _label10.text = @"共  件";
     _label10.textColor = [UIColor grayColor];
     _label10.font = [UIFont systemFontOfSize:15.0];
@@ -250,13 +250,13 @@ static NSString *selected_backImageName = @"back_selected.png";
     {
         
         if (IOS_VERSION < 7.0) {
-            _goodsListTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, lineImageView1.frame.origin.y + lineImageView1.frame.size.height + 5, 320, self.view.frame.size.height - (lineImageView1.frame.origin.y + lineImageView1.frame.size.height + 5) - 44)];
+            _goodsListTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, lineImageView1.frame.origin.y + lineImageView1.frame.size.height, 320, self.view.frame.size.height - (lineImageView1.frame.origin.y + lineImageView1.frame.size.height + 5) - 42)];
             
         }
         else
         {
             
-            _goodsListTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, lineImageView1.frame.origin.y + lineImageView1.frame.size.height + 5, 320, self.view.frame.size.height - (lineImageView1.frame.origin.y + lineImageView1.frame.size.height + 5) - 64)];
+            _goodsListTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, lineImageView1.frame.origin.y + lineImageView1.frame.size.height, 320, self.view.frame.size.height - (lineImageView1.frame.origin.y + lineImageView1.frame.size.height + 5) - 62)];
             
             
         }

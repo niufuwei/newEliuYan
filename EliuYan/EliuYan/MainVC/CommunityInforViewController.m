@@ -177,13 +177,14 @@
     if([_dataArray count]==0)
     {
     
-        loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+        loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 40, 320, self.view.frame.size.height) image:@"无信息页面.png"];
         [loadView changeLabel:@"抱歉,没有搜到附近的小区"];
         [self.view addSubview:loadView];
         
     }
     else
     {
+        [loadView removeFromSuperview];
         [_tabel reloadData];
     }
 
@@ -192,11 +193,12 @@
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
     NSLog(@"请求失败");
+    isRefresh = FALSE;
     //加载出错界面
-    LoadingView *aLloadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无服务.png"];
-    [aLloadView changeLabel:@"您的网络出小差了哦"];
-    [self.view addSubview:aLloadView];
-    [self.view bringSubviewToFront:aLloadView];
+    loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 40, 320, self.view.frame.size.height) image:@"无服务.png"];
+    [loadView changeLabel:@"您的网络出小差了哦"];
+    [self.view addSubview:loadView];
+    [self.view bringSubviewToFront:loadView];
 }
 
 #pragma mark_

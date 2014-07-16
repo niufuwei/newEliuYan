@@ -403,18 +403,31 @@
     
     
     cell.contentLabel.text = [[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Content"];
+    cell.contentLabel.tag = 1000 + indexPath.row;
     
     
     
     cell.timeLabel.text = [[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"CreateTime"];
+    cell.timeLabel.tag = 10000 + indexPath.row;
     
     
     
     
     
     if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"IsRead"] isEqualToString:@"1"]) {
-        cell.contentLabel.textColor = [UIColor grayColor];
-        cell.timeLabel.textColor = [UIColor grayColor];
+        ((UILabel *)[cell viewWithTag:1000 + indexPath.row ]).textColor = [UIColor grayColor];
+        ((UILabel *)[cell viewWithTag:10000 + indexPath.row ]).textColor = [UIColor grayColor];
+
+//        cell.contentLabel.textColor = [UIColor grayColor];
+//        cell.timeLabel.textColor = [UIColor grayColor];
+    }
+    else
+    {
+    
+        ((UILabel *)[cell viewWithTag:1000 + indexPath.row ]).textColor = [UIColor blackColor];
+        ((UILabel *)[cell viewWithTag:10000 + indexPath.row ]).textColor = [UIColor blackColor];
+
+    
     }
     
     
@@ -524,6 +537,12 @@
         {
             ((MessageCell *)[_messageTableView cellForRowAtIndexPath:indexPath]).timeLabel.textColor = [UIColor grayColor];
             ((MessageCell *)[_messageTableView cellForRowAtIndexPath:indexPath]).contentLabel.textColor = [UIColor grayColor];
+            
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[self.messageArray objectAtIndex:indexPath.row]];
+            [dic setObject:@"1" forKey:@"IsRead"];
+            [self.messageArray replaceObjectAtIndex:indexPath.row withObject:dic];
+            
+            
         }
         
         else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
