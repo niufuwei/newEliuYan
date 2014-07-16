@@ -78,9 +78,12 @@
     //判断userId 是否为空
 //    NSLog(@"...%@",UserId);
     
+//    NSLog(@">>>>>>%@",[appDelegate.appDefault objectForKey:@"UserId"]);
+//    NSLog(@"》》》》》%@",self.storeId);
+    
     
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetCategoryList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&StoreId=%@",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId] backBlock:(^(NSDictionary *dic){
-        //解析数据
+        //解析数据self.storeId
         
         dataArray=[dic objectForKey:@"List"];
 //        NSLog(@">>>>%@",dataArray);
@@ -955,7 +958,16 @@
 {
     httpRequest *request=[[httpRequest alloc] init];
     request.httpDelegate=self;
+    
+    
+    NSLog(@">>>>>%@",[appDelegate.appDefault objectForKey:@"UserId"]);
+    NSLog(@">>>>>%@",self.storeId);
+    NSLog(@">>>>>%@",[_goodsCategoryIdArray objectAtIndex:indexPath]);
+    NSLog(@">>>>>%d",aPage);
+    
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetGoodsList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&StoreId=%@&GoodsCategoryId=%@&PageIndex=%d",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId,[_goodsCategoryIdArray objectAtIndex:indexPath] ,aPage] backBlock:(^(NSDictionary *dic){
+        
+        NSLog(@".....%@",dic);
         //解析数据
         //总页数
         totalPage=[dic objectForKey:@"TotalPage"];
