@@ -911,12 +911,12 @@
         cell.contentLabel.lineBreakMode=0;
         
     
-        cell.jinButton.frame=CGRectMake(110, 70, 30, 30);
-        cell.geButton.frame=CGRectMake(110+30, 70, 30, 30);
-        cell.minusBtn.frame=CGRectMake(110+30+50+30, 70, 30, 30);
-        cell.countLabel.frame=CGRectMake(110+30+50+30+35, 70, 30, 30);
-        cell.plaseBtn.frame=CGRectMake(110+30+100+50, 70, 30, 30);
-        cell.priceLabel.frame=CGRectMake(110, 70, 70, 24);
+        cell.jinButton.frame=CGRectMake(110, 75, 25, 25);
+        cell.geButton.frame=CGRectMake(110+25, 75, 25, 25);
+        cell.minusBtn.frame=CGRectMake(110+25+50+30, 75, 25, 25);
+        cell.countLabel.frame=CGRectMake(110+27+50+25+30, 72, 30, 30);
+        cell.plaseBtn.frame=CGRectMake(110+25+100+40, 75, 25, 25);
+        cell.priceLabel.frame=CGRectMake(110, 75, 70, 24);
        
         [cell.plaseBtn addTarget:self action:@selector(plaseClick:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -965,8 +965,8 @@
 //            else
 //            {
                 [jingeDic setObject:@"2" forKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]];
-                [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (6).png"] forState:UIControlStateNormal];
-                [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (5).png"] forState:UIControlStateNormal];
+                [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
+                [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
 //            }
 
 //        }
@@ -997,6 +997,8 @@
         
         NSDictionary *dic=[[dataMutableArray objectAtIndex:indexPath.row] objectAtIndex:1];
         cell.contentLabel.text=[dic objectForKey:@"GoodsName"];
+        cell.priceLabel.font=[UIFont systemFontOfSize:15.0];
+        cell.priceLabel.textColor=[UIColor redColor];
         cell.priceLabel.text=[NSString stringWithFormat:@"￥:%@",[dic objectForKey:@"Price"]];
         
         [cell.logoImage setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"Image"]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];

@@ -35,7 +35,7 @@
         money = [[UILabel alloc] initWithFrame:CGRectMake(ICON.frame.size.width+ICON.frame.origin.x+18, title.frame.size.height+title.frame.origin.y+3, 100, 17)] ;
         money.backgroundColor = [UIColor clearColor];
         money.font = [UIFont systemFontOfSize:14];
-        money.textColor=eliuyan_color(0xff5d51);
+        money.textColor=[UIColor redColor];
         [self addSubview:money];
         
         num = [[UILabel alloc] initWithFrame:CGRectMake(money.frame.size.width+money.frame.origin.x+100, title.frame.size.height+title.frame.origin.y+3, 50, 17)] ;
