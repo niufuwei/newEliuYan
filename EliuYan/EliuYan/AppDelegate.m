@@ -306,14 +306,9 @@
     
 }
 
-
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
-    
-
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCount" object:nil userInfo:userInfo];
-    
     
     NSString *count = [[userInfo objectForKey:@"aps"] objectForKey:@"badge"];
     
@@ -325,7 +320,6 @@
     if (application.applicationState == UIApplicationStateActive) {
         AudioServicesPlaySystemSound(1007);
     }
-    
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -333,7 +327,6 @@
     
     
     NSLog(@"Regist fail%@",error);
-    
     
 }
 

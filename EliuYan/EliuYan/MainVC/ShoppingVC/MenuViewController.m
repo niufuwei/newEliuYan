@@ -875,7 +875,6 @@
     
 }
 
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //移除提示商品没有的view
