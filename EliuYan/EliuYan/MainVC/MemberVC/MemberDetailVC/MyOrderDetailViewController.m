@@ -528,7 +528,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     else
     {
     
-         _label6.text = [NSString stringWithFormat:@"订单金额  ——"];
+         _label6.text = [NSString stringWithFormat:@"订单金额  0.00元"];
     
     }
     
