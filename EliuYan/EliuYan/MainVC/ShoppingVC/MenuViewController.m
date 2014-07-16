@@ -346,13 +346,14 @@
     searchBar.placeholder = @"请输入要搜索的内容...";
     searchBar.delegate = self;
     searchBar.keyboardType = UIReturnKeyDone;
-    [searchBar becomeFirstResponder];
     [searchBar addTarget:self action:@selector(onChange) forControlEvents:UIControlEventEditingChanged];
     searchBar.backgroundColor = [UIColor clearColor];
     
     [searchView setBackgroundColor:[UIColor clearColor]];
     
     [searchView addSubview:searchBar];
+    [searchBar becomeFirstResponder];
+
     
     UIButton * commit = [UIButton buttonWithType:UIButtonTypeCustom];
     commit.frame= CGRectMake(searchBar.frame.size.width+searchBar.frame.origin.x+5, 10, 60, 25);

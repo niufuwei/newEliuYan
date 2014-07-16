@@ -336,7 +336,7 @@
         _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
             
         }
-            _loadViewHasAppear = YES;
+         _loadViewHasAppear = YES;
         [_loadView changeLabel:@"我尽力了，还是看不到"];
         [self.view addSubview:_loadView];
         }
