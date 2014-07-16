@@ -544,16 +544,16 @@
     
     if ([buyShop.storeTypeName isEqualToString:@"超市"])
     {
-        [cell.logoImage setImage:[UIImage imageNamed:@"选择店铺_超市.png"]];
+        [cell.logoImage setImage:[UIImage imageNamed:@"SHOP_SUPERMARKET_ICON.png"]];
     }
     else if ([buyShop.storeTypeName isEqualToString:@"水果店"])
     {
-        [cell.logoImage setImage:[UIImage imageNamed:@"选择店铺_水果店.png"]];
+        [cell.logoImage setImage:[UIImage imageNamed:@"SHOP_APPLE_ICON.png"]];
 
     }
     else
     {
-        [cell.logoImage setImage:[UIImage imageNamed:@"选择店铺_杂货店.png"]];
+        [cell.logoImage setImage:[UIImage imageNamed:@"SHOP_ CARGO_ICON.png"]];
     }
     
     cell.descriptionLabel.text=buyShop.description;
