@@ -49,7 +49,6 @@
     }
     self.pics = Nil;
     self.pics = tempImageArray;
-   
     int i = 0;
     for (id obj in self.pics) {
         pic= Nil;
@@ -61,6 +60,7 @@
         [tempImage setClipsToBounds:YES];
         if ([[obj objectForKey:@"isLoc"]boolValue]) {
             [tempImage setImage:[obj objectForKey:@"pic"]];
+
         }else{
             if ([obj objectForKey:@"placeholderImage"]) {
                 [tempImage setImage:[obj objectForKey:@"placeholderImage"]];
@@ -78,6 +78,15 @@
                                                        }
                                                    }
                                                }];
+        }
+        
+        if([[obj objectForKey:@"enable"] boolValue])
+        {
+            pic.enabled = YES;
+        }
+        else
+        {
+            pic.enabled = NO;
         }
         [pic addSubview:tempImage];
         [pic setBackgroundColor:[UIColor grayColor]];

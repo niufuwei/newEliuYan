@@ -241,7 +241,19 @@
     [pageControl addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:pageControl];
     
-    
+    NSMutableArray * tempArray = [[NSMutableArray alloc] initWithObjects:[NSDictionary dictionaryWithObjects:@[[UIImage imageNamed:@"首页_02.png"],@"",@"",@YES,[UIImage imageNamed:@"底色.png"],@NO] forKeys:@[@"pic",@"html",@"title",@"isLoc",@"placeholderImage",@"enable"]], nil];
+     
+    _Topic.pics = tempArray;
+    [_Topic upDate];
+    pageControl.numberOfPages = 1;
+    if(pageControl.numberOfPages == 1)
+    {
+        [pageControl setHidden:YES];
+    }
+    else
+    {
+        [pageControl setHidden:NO];
+    }
 }
 - (IBAction)pageTurn:(UIPageControl *)sender
 {
@@ -329,11 +341,11 @@
         if (IOS_VERSION > 7)
         {
             
-            _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
+            _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 131, 320, self.view.frame.size.height-131-49) image:@"无信息页面.png"];
         }
         else
         {
-        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 131, 320, self.view.frame.size.height-131-49) image:@"无信息页面.png"];
             
         }
          _loadViewHasAppear = YES;
@@ -449,7 +461,7 @@
                 NSMutableArray * tempArray = [[NSMutableArray alloc] init];
                 for(int i =0;i<_urlArray.count;i++)
                 {
-                    [tempArray addObject:[NSDictionary dictionaryWithObjects:@[[_urlArray objectAtIndex:i],[_activityIdArray objectAtIndex:i],[_titleArray objectAtIndex:i],@NO,[UIImage imageNamed:@"底色.png"]] forKeys:@[@"pic",@"html",@"title",@"isLoc",@"placeholderImage"]]];
+                    [tempArray addObject:[NSDictionary dictionaryWithObjects:@[[_urlArray objectAtIndex:i],[_activityIdArray objectAtIndex:i],[_titleArray objectAtIndex:i],@NO,[UIImage imageNamed:@"底色.png"],@YES] forKeys:@[@"pic",@"html",@"title",@"isLoc",@"placeholderImage",@"enable"]]];
                 }
                     
                 _Topic.pics = tempArray;
@@ -485,11 +497,11 @@
     {
     if (IOS_VERSION > 7)
     {
-        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 131, 320, self.view.frame.size.height-131-49) image:@"无信息页面.png"];
     }
     else
     {
-        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-121-49) image:@"无信息页面.png"];
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 131, 320, self.view.frame.size.height-131-49) image:@"无信息页面.png"];
         
     }
         _loadViewHasAppear = YES;

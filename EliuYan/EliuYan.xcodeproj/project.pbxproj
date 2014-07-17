@@ -15,6 +15,7 @@
 		180CC7F1191B677100985416 /* wave70x117@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180CC7ED191B677100985416 /* wave70x117@2x.png */; };
 		18BDDCE91921FAF200B48451 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDDCE81921FAF200B48451 /* Icon-120.png */; };
 		18F828BE19331E340071F40D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F828BC19331E340071F40D /* InfoPlist.strings */; };
+		1D1888A61977BE070045224A /* 首页_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1888A51977BE070045224A /* 首页_02.png */; };
 		1D1AA278193DC6BE00258134 /* newVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AA277193DC6BE00258134 /* newVersion.m */; };
 		1D2043DB19664E8D00476FF9 /* PayCostInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2043DA19664E8D00476FF9 /* PayCostInforViewController.m */; };
 		1D2043E519666EBA00476FF9 /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2043E419666EBA00476FF9 /* ContentCell.m */; };
@@ -359,6 +360,7 @@
 		18BDDCE81921FAF200B48451 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		18F828BA193308A70071F40D /* EliuYanTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EliuYanTests-Info.plist"; sourceTree = "<group>"; };
 		18F828BD19331E340071F40D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1D1888A51977BE070045224A /* 首页_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页_02.png"; sourceTree = "<group>"; };
 		1D1AA276193DC6BE00258134 /* newVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newVersion.h; sourceTree = "<group>"; };
 		1D1AA277193DC6BE00258134 /* newVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newVersion.m; sourceTree = "<group>"; };
 		1D2043D919664E8D00476FF9 /* PayCostInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCostInforViewController.h; sourceTree = "<group>"; };
@@ -1224,6 +1226,7 @@
 		7193B1E7196D3A1900070705 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1D1888A51977BE070045224A /* 首页_02.png */,
 				EF5FB5021973A4230087D5CD /* Default@2x.png */,
 				EF5FB5031973A4230087D5CD /* Default-568h@2x.png */,
 				1DCAF0C9196FCCE50098203F /* nav_ios6_ios5.png */,
@@ -1656,6 +1659,7 @@
 				7193B279196D3A1900070705 /* 首页-起送费.png in Resources */,
 				180CC7EF191B677100985416 /* mic_normal_358x358@2x.png in Resources */,
 				EFA97B9C191645CF00BACC9D /* 联华超市_13.png in Resources */,
+				1D1888A61977BE070045224A /* 首页_02.png in Resources */,
 				EFA97B97191645CF00BACC9D /* 水果店_切换按钮 (6).png in Resources */,
 				7193B246196D3A1900070705 /* 保存.png in Resources */,
 				EFA97B93191645CF00BACC9D /* 水果店_切换按钮 (2).png in Resources */,
