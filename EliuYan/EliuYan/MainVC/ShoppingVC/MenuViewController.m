@@ -214,7 +214,7 @@
     {
         self.storeName = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"StoreDescription"] substringToIndex:8] stringByAppendingString:@"..."];
     }
-    [nav setNav:[[NSUserDefaults standardUserDefaults] objectForKey:@"StoreDescription"] mySelf:self];
+    [nav setNav:self.storeName mySelf:self];
     
     //  添加结账点击事件
     
