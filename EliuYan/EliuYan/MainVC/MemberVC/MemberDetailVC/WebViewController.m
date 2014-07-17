@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad
 {
+    
+    [appDelegate hidenTabbar];
+    
     NavCustom *nav=[[NavCustom alloc] init];
     [nav setNav:_name mySelf:self];
     

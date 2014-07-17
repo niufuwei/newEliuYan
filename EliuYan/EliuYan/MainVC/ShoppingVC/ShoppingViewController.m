@@ -100,7 +100,7 @@
         search.delegate = self;
         
         //添加当前位置的View
-        locationView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 80, 320, 40)];
+        locationView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 90, 320, 40)];
         locationView.image = [UIImage imageNamed:@"首页 背景.png"];
         locationView.userInteractionEnabled = YES;
         
@@ -145,11 +145,11 @@
         
         //添加表
         if (IOS_VERSION >=7.0) {
-            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-64-121-49) style:UITableViewStylePlain];
+            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 131, 320, self.view.frame.size.height-74-121-49) style:UITableViewStylePlain];
         }
         else
         {
-            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, self.view.frame.size.height-64-121+20-49) style:UITableViewStylePlain];
+            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 131, 320, self.view.frame.size.height-74-121+20-49) style:UITableViewStylePlain];
         }
         
         _tableView.delegate=self;
@@ -213,11 +213,11 @@
     
     
     if (!iPhone5) {
-        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(10, 0, 300, 80)];
+        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
     }
     else
     {
-        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(10, 0, 300, 80)];
+        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
     }
     
     [_Topic setBackgroundColor:eliuyan_color(0xf5f5f5)];
