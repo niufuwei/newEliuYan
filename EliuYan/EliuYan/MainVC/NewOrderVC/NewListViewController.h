@@ -40,6 +40,8 @@ typedef void (^block)(NSString *str);
     BOOL isFirstRequest;
     NSMutableDictionary *_currentPageDic;
     
+    BOOL _comeBackFromBackground;
+    
     
 }
 @property(nonatomic, strong) id<RootViewDelegate> rootDelegate;

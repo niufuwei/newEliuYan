@@ -47,10 +47,19 @@ static NSString *selected_backImageName = @"back_selected.png";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becameActive:) name:@"becameActive" object:nil];
     }
     return self;
 }
+-(void)becameActive:(NSNotification *)nitification
+{
+if ([self.view window] != nil)
+{
+    backScrollview.userInteractionEnabled = YES;
+    _comeBackFromBackground = YES;
+}
 
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
@@ -253,7 +262,11 @@ static NSString *selected_backImageName = @"back_selected.png";
             [myActivily stop];
             
             backScrollview.userInteractionEnabled = YES;
-            [newOrderRecord addObject:dic];
+            if (![newOrderRecord containsObject:dic])
+            {
+                [newOrderRecord addObject:dic];
+            }
+            
 //            totalPage=[dic objectForKey:@"TotalPage"];
             _backOrder1(totalPage);
             if (isAccount==TRUE) {
@@ -583,7 +596,15 @@ static NSString *selected_backImageName = @"back_selected.png";
 //        <#statements#>
 //    }
     
+    if (_comeBackFromBackground)
+    {
+        backScrollview.userInteractionEnabled = YES;
+        _comeBackFromBackground = NO;
+    }
+    else
+    {
     backScrollview.userInteractionEnabled = NO;
+    }
 
    
     NSLog(@"contentfoset is %f",scrollView.contentOffset.x);
