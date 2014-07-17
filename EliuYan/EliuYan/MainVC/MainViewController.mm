@@ -216,6 +216,10 @@
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
     NSLog(@"请求失败。。。。。。%@",request.error);
+    
+    
+    
+    
 }
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
