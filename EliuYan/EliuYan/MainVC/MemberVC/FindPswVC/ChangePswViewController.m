@@ -92,7 +92,7 @@
     
     
     
-    UILabel *showLabel = [[UILabel alloc] initWithFrame:CGRectMake(225, 150, 70, 30)];
+    UILabel *showLabel = [[UILabel alloc] initWithFrame:CGRectMake(225+20, 150+22, 70, 30)];
     showLabel.text = @"显示密码";
     showLabel.font=[UIFont systemFontOfSize:14.0];
     showLabel.textColor = [UIColor redColor];
@@ -100,7 +100,7 @@
     [self.view addSubview:showLabel];
     
     
-    UIButton *showBtn = [[UIButton alloc] initWithFrame:CGRectMake(285, 158, 15, 15)];
+    UIButton *showBtn = [[UIButton alloc] initWithFrame:CGRectMake(215, 158+20, 20, 20)];
     [showBtn setBackgroundImage:[UIImage imageNamed:@"显示密码-未选.png"] forState:UIControlStateNormal];
     [showBtn addTarget:self action:@selector(showBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showBtn];
