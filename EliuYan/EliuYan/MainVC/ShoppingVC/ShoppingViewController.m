@@ -478,10 +478,7 @@
                 
             }
         }
-        
-        
     }
-
 }
 
 -(void)requestFailed:(ASIHTTPRequest *)request
