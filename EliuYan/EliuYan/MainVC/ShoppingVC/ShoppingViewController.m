@@ -164,6 +164,32 @@
         isRefresh = TRUE;
         
         
+        if (!iPhone5) {
+            _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
+        }
+        else
+        {
+            _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
+        }
+        
+        [_Topic setBackgroundColor:eliuyan_color(0xf5f5f5)];
+        _Topic.JCdelegate = self;
+        
+        [self.view addSubview:_Topic];
+        
+        
+        //pagecontrol 的初始化
+        if(!iPhone5)
+        {
+            pageControl= [[UIPageControl alloc] initWithFrame:CGRectMake(0, 70, 320, 20)];
+        }
+        else
+        {
+            pageControl= [[UIPageControl alloc] initWithFrame:CGRectMake(0,70, 320, 20)];
+        }
+        
+        pageControl.currentPage=0;
+        
         
         [self createScrollerView];
         
@@ -212,31 +238,7 @@
     [request startAsynchronous];
     
     
-    if (!iPhone5) {
-        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
-    }
-    else
-    {
-        _Topic = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
-    }
     
-    [_Topic setBackgroundColor:eliuyan_color(0xf5f5f5)];
-    _Topic.JCdelegate = self;
-    
-    [self.view addSubview:_Topic];
-    
-    
-    //pagecontrol 的初始化
-    if(!iPhone5)
-    {
-        pageControl= [[UIPageControl alloc] initWithFrame:CGRectMake(0, 70, 320, 20)];
-    }
-    else
-    {
-        pageControl= [[UIPageControl alloc] initWithFrame:CGRectMake(0,70, 320, 20)];
-    }
-    
-    pageControl.currentPage=0;
     
     [pageControl addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:pageControl];
@@ -434,6 +436,7 @@
         if(allDict!=nil)
         {
             _loadViewHasAppear = NO;
+            _topViewHasNotLoad = NO;
             NSArray *array=[allDict objectForKey:@"List"];
             NSLog(@"lll=%@",array);
             if([array count]!=0)
@@ -486,6 +489,9 @@
     NSLog(@"request tag is %d",request.tag);
     [activity stop];
     isRefresh = FALSE;
+    
+    if (request.tag == 10086) {
+       
     if (_loadViewHasAppear == YES)
     {
         
@@ -506,6 +512,14 @@
     [_loadView changeLabel:@"我尽力了，还是看不到"];
     [self.view addSubview:_loadView];
     }
+    }
+    else
+    {
+    
+        _topViewHasNotLoad = YES;
+        
+    
+    }
 
 }
 
@@ -525,6 +539,17 @@
         //获取当前位置坐标
         //    [_mapView setShowsUserLocation:YES];
         [self.userLocation startUserLocationService];
+        
+        if (_topViewHasNotLoad == YES)
+        {
+            [self createScrollerView];
+        }
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"networkError"] isEqualToString:@"1"])
+        {
+            [self createScrollerView];
+            [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"networkError"];
+        }
+        
     }
 }
 

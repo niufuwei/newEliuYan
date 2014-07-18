@@ -181,7 +181,7 @@
     {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"网络异常！" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-        
+        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"networkError"];
         return;
         
     }
