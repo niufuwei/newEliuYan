@@ -216,7 +216,8 @@ if ([self.view window] != nil)
     [http httpRequestSend:[NSString stringWithFormat:@"%@order/MyNewsOdersDetails",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&OrderId=%@&Token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"UserId"],OrderId,[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
         
         //解析数据
-        
+        NSLog(@"idc %@",dic);
+
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
         {
              [myActivily stop];
@@ -238,7 +239,7 @@ if ([self.view window] != nil)
             [pageCount removeFromSuperview];
         }
         
-        else
+        else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
             
             //取出数组
@@ -302,6 +303,18 @@ if ([self.view window] != nil)
 
             }
             
+        }
+        else
+        {
+        
+            [myActivily stop];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"系统异常" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            alert.tag = 606;
+            [alert show];
+
+            
+        
         }
         
 })];
@@ -388,6 +401,8 @@ if ([self.view window] != nil)
             NSInteger currentPage = backScrollview.contentOffset.x/320;
             httpRequest * http = [[httpRequest alloc] init];
             [http httpRequestSend:[NSString stringWithFormat:@"%@order/GainGoods",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&Token=%@",[_orderIdArray objectAtIndex:currentPage],[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
+                
+                NSLog(@"idc %@",dic);
 //                [_currentPageDic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"isCurrentPage"];
                 if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
                 {
@@ -462,6 +477,12 @@ if ([self.view window] != nil)
         
         }
         
+    }
+    else if(alertView.tag == 606)
+    {
+    
+        [self.navigationController popViewControllerAnimated:YES];
+    
     }
     
 }

@@ -258,6 +258,7 @@
     
     //        //解析数据
     NSMutableDictionary *arrayDetail=[allDic objectForKey:@"List"];
+    NSLog(@"array is %@",arrayDetail);
 //    totalPage=[allDic objectForKey:@"TotalPage"];
     
     if ([arrayDetail count]==0) {
