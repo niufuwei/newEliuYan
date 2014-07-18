@@ -497,7 +497,6 @@
                             NSRange range2 = [image1 rangeOfString:@"/"];
                             NSString *image2 = [image1 substringFromIndex:range2.location + range2.length];//开始截取
                             
-                            
                             NSString *image3=[NSString stringWithFormat:@"/%@",image2];
                             [allDic setObject:image3 forKey:@"Image"];
                         }

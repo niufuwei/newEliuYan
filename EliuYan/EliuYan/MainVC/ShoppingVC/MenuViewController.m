@@ -24,7 +24,7 @@
     BOOL isFirstSelected;
     NSMutableDictionary * jingeDic;
     NSMutableDictionary * menuSelectOnly;
-
+    UIButton * commit;
     UITableView * searchTable;
 }
 
@@ -315,6 +315,9 @@
 //    [self.navigationController pushViewController:detailVC animated:YES];
     if(!isSearchButtonPressed)
     {
+        
+        self.navigationController.navigationBarHidden = YES;
+        
         searchView = [UIButton buttonWithType:UIButtonTypeCustom];
         searchView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         searchView.tag = 101;
@@ -332,20 +335,20 @@
 
 -(void)showInView
 {
-    UIView * myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
+    UIView * myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65)];
     [myview setBackgroundColor:[UIColor whiteColor]];
     [searchView addSubview:myview];
     
-    UIView * textfieldBG = [[UIView alloc] initWithFrame:CGRectMake(10, 7.5, searchView.frame.size.width-80, 30)];
+    UIView * textfieldBG = [[UIView alloc] initWithFrame:CGRectMake(10, 20+7.5, searchView.frame.size.width-80, 30)];
     [textfieldBG.layer setCornerRadius:3];
     [textfieldBG setBackgroundColor:[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1]];
     [searchView addSubview:textfieldBG];
     
-    UIImageView * imgSearch = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 20, 15)];
+    UIImageView * imgSearch = [[UIImageView alloc] initWithFrame:CGRectMake(15, 20+15, 20, 15)];
     [imgSearch setImage:[UIImage imageNamed:@"搜索.png"]];
     [searchView addSubview:imgSearch];
     
-    searchBar = [[UITextField alloc] initWithFrame:CGRectMake(40, 7.5, searchView.frame.size.width-110, 30)];
+    searchBar = [[UITextField alloc] initWithFrame:CGRectMake(40, 20+7.5, searchView.frame.size.width-110, 30)];
     searchBar.placeholder = @"请输入要搜索的内容...";
     searchBar.delegate = self;
     searchBar.keyboardType = UIReturnKeyDone;
@@ -358,9 +361,9 @@
     [searchBar becomeFirstResponder];
 
     
-    UIButton * commit = [UIButton buttonWithType:UIButtonTypeCustom];
-    commit.frame= CGRectMake(searchBar.frame.size.width+searchBar.frame.origin.x+5, 10, 60, 25);
-    [commit setTitle:@"完成" forState:UIControlStateNormal];
+    commit = [UIButton buttonWithType:UIButtonTypeCustom];
+    commit.frame= CGRectMake(searchBar.frame.size.width+searchBar.frame.origin.x+5, 20+10, 60, 25);
+    [commit setTitle:@"取消" forState:UIControlStateNormal];
     [commit addTarget:self action:@selector(onClickSearch:) forControlEvents:UIControlEventTouchUpInside];
     commit.tag = 102;
     [commit setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -385,7 +388,7 @@
     }
     searchTable.hidden = YES;
     
-    _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 45, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+    _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 45+20, 320, self.view.frame.size.height) image:@"无信息页面.png"];
     [_loadView changeLabel:@"没有搜索到数据"];
     [self.view addSubview:_loadView];
     _loadView.hidden = YES;
@@ -402,6 +405,7 @@
     [_goodsArray removeAllObjects];
     if([searchBar.text length]!=0 && ![searchBar.text isEqualToString:@" "])
     {
+        [commit setTitle:@"完成" forState:UIControlStateNormal];
         [self searchData:searchBar.text pageindex:_pageIndex];
     }
     if([searchBar.text isEqualToString:@" "]&& [searchBar.text length] ==1)
@@ -431,6 +435,9 @@
 #pragma mark 点击完成按钮
 -(void)onClickSearch:(id)sender
 {
+    
+    self.navigationController.navigationBarHidden = NO;
+
     [_goodsArray removeAllObjects];
     isSearchButtonPressed = FALSE;
     [searchView removeFromSuperview];
