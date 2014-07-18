@@ -44,13 +44,11 @@
 
 }
 -(void)currentPage:(int)page total:(NSUInteger)total{
-//    NSLog(@"当前页：%@",[NSString stringWithFormat:@"Current Page %d",page+1]);
     
     [pageControl setCurrentPage:page];
 }
 -(void)didClick:(id)data
 {
-    NSLog(@"data=%@",(NSDictionary *)data);
     //请求webView
     //加载菊花
     
@@ -228,12 +226,10 @@
     //解析数据
         SBJSON *json=[[SBJSON alloc] init];
         NSDictionary *allDict=[json objectWithString:request.responseString error:nil];
-        NSLog(@"%@",allDict);
-            //判断数组是否为空
+        //判断数组是否为空
         if(allDict!=nil)
         {
             NSArray *array=[allDict objectForKey:@"List"];
-            NSLog(@"lll=%@",array);
             if([array count]!=0)
             {
                 _urlArray = [[NSMutableArray alloc] init];
@@ -286,7 +282,6 @@
 {
     NSLog(@"最新订单按钮被点击了");
     
-    NSLog(@"llllllllllll%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]);
     //判断用户是否登录
 
     if (![[appDelegate.appDefault objectForKey:@"hasLogIn"] isEqualToString:@"1"]) {
@@ -306,8 +301,6 @@
 }
 -(void)ownBtnClick:(id)sender
 {
-    
-    NSLog(@"个人中心按钮被点击了");
     if ([[appDelegate.appDefault objectForKey:@"hasLogIn"] isEqualToString:@"1"])
     {
         
@@ -328,8 +321,6 @@
 }
 -(void)centerBtnClick:(id)sender
 {
-    
-    NSLog(@"便捷购物按钮被点击了");
     ShoppingViewController *shoppingVC=[[ShoppingViewController alloc] init];
     [self.navigationController pushViewController:shoppingVC animated:YES];
 

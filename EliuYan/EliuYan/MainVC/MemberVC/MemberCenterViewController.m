@@ -210,10 +210,8 @@
     request.httpDelegate = self;
     [request httpRequestSend:[NSString stringWithFormat:@"%@user/UserLogin",SERVICE_ADD] parameter:[NSString stringWithFormat:@"LoginName=%@&PassWord=%@&DeviceName=%@&DeviceVersion=%@&SystemType=%@&DeviceToken=%@",_numberTF.text,_pswTF.text,[[UIDevice currentDevice] name],[NSString stringWithFormat:@"%f" ,IOS_VERSION],@"ios",[appDelegate.appDefault objectForKey:@"DeviceToken"]] backBlock:(^(NSDictionary * dic) {
         
-        NSLog(@"return values is %@",[dic objectForKey:@"ReturnValues"]);
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
-            NSLog(@"///////>>>>>>>%@",dic);
             [cativity stop];
             //登陆成功
             btn.userInteractionEnabled = YES;
@@ -238,8 +236,6 @@
 
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isBack"] isEqualToString:@"0"])
             {
-                NSLog(@"》》》》》%@",[appDelegate.appDefault objectForKey:@"ReallyName"]);
-                
                 if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isBackToDelivery"] isEqualToString:@"0"])
                 {
                     self.backBlock([NSString stringWithFormat:@"%@,%@",[appDelegate.appDefault objectForKey:@"LoginName"],[appDelegate.appDefault objectForKey:@"ReallyName"]]);
@@ -310,7 +306,6 @@
 }
 -(void)httpRequestError:(NSString *)str
 {
-    NSLog(@"我的出错信息:%@",str);
     ((UIButton *)[self.view viewWithTag:1111]).userInteractionEnabled = YES;
     [cativity stop];
     
@@ -318,7 +313,6 @@
 //找回密码
 -(void)findPswBtnClick:(id)sender
 {
-    NSLog(@"找回密码按钮被点击了");
 //    UIButton *btn = (UIButton *)sender;
 //    [btn setBackgroundImage:[UIImage imageNamed:@"找回密码-按住"] forState:UIControlStateNormal];
     FindPswViewController *findPswVC=[[FindPswViewController alloc] init];
@@ -328,7 +322,6 @@
 //账号注册
 -(void)registBtnClick:(id)sender
 {
-    NSLog(@"账号注册按钮被点击了");
 //    UIButton *btn = (UIButton *)sender;
 //    [btn setBackgroundImage:[UIImage imageNamed:@"账号注册-按住"] forState:UIControlStateNormal];
     RegistViewController *registVC=[[RegistViewController alloc] init];

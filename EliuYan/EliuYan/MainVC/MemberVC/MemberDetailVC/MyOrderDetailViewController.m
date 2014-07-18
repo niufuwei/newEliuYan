@@ -359,7 +359,6 @@ static NSString *selected_backImageName = @"back_selected.png";
             
 //            NSLog(@">>>>%@",dic);
             self.myOrderDic = [dic objectForKey:@"List"] ;
-            NSLog(@"订单详情是%@",self.myOrderDic);
             
             self.storeName = [self.myOrderDic objectForKey:@"StoreName"];
             
@@ -581,7 +580,6 @@ static NSString *selected_backImageName = @"back_selected.png";
             _descriptionLabel.text = [NSString stringWithFormat:@"备注信息   %@",self.description ];
         }
         
-        NSLog(@"%@",self.description);
     }
     else if([self.descriptionType isEqualToString:@"2"])
     {
@@ -602,10 +600,6 @@ static NSString *selected_backImageName = @"back_selected.png";
         timeLabel.backgroundColor = [UIColor clearColor];
         [voiceBtn addSubview:timeLabel];
         timeLabel.hidden = YES;
-    
-        
-        NSLog(@"description is %@",self.description);
-        
         [self downLoadVoice];
     }
     
@@ -773,7 +767,6 @@ static NSString *selected_backImageName = @"back_selected.png";
 {
 //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.telNumber]]];
 
-    NSLog(@"打电话");
     UIWebView *callWebView = [[UIWebView alloc] init];
     NSURL *telUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",self.telNumber]];
     [callWebView loadRequest:[NSURLRequest requestWithURL:telUrl]];
@@ -800,7 +793,6 @@ static NSString *selected_backImageName = @"back_selected.png";
         
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
-            NSLog(@"修改成功");
             [_activity stop];
             
             _backOrder(@"1");
@@ -866,12 +858,8 @@ static NSString *selected_backImageName = @"back_selected.png";
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    NSLog(@"tableviewcell de fang fa diao yong1");
-
     
     return [self.detailsList count];
-    
 
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -883,10 +871,6 @@ static NSString *selected_backImageName = @"back_selected.png";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSLog(@"tableviewcell de fang fa diao yong");
-
-    
     
     static NSString *identifier = @"identifier";
     OrderDetalCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];

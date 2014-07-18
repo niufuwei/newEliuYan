@@ -406,7 +406,6 @@
             
             NSMutableArray * allarr =[[NSMutableArray alloc] init];
             
-            NSLog(@"%@",_dataMutableArray);
             for(int i=0 ;i<[_dataMutableArray count];i++)
             {
                 NSMutableDictionary *  dic = [[NSMutableDictionary alloc] initWithDictionary:[_dataMutableArray objectAtIndex:i]];
@@ -436,7 +435,6 @@
                 
                 
                 NSString *image3=[NSString stringWithFormat:@"/%@",image2];
-                NSLog(@"llllll=%@",image3);
                 
                 
                 ///////////////////
@@ -611,7 +609,6 @@
     [_conFirm setEnabled:YES];
     
     [ac stop];
-    NSLog(@"asi得到的数据＝%@",request.responseString);
     [[NSUserDefaults standardUserDefaults] setObject:@"2" forKey:@"DescriptonType"];
     [[NSUserDefaults standardUserDefaults] setObject:request.responseString forKey:@"Descripton"];
     //进入下单界面
@@ -623,7 +620,6 @@
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
     [ac stop];
-    NSLog(@"请求错误＝＝＝＝＝＝》》》》%@",request.error);
     [_conFirm setEnabled:YES];
     
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"语音上传失败，请重新上传" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

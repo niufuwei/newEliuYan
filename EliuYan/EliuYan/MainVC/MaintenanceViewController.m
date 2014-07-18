@@ -21,6 +21,7 @@
     NavCustom * customNav;
     Activity * activity;
     UILabel * advert;
+    UIView * advertView;
 }
 @property (nonatomic,strong) MJRefreshFooterView * footer;
 
@@ -41,6 +42,34 @@
     return self;
 }
 
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    [advertView removeFromSuperview];
+    advertView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+    [advertView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"上门维修-滚动背景-#ff9d9d.png"]]];
+    [self.view addSubview:advertView];
+    
+    advert = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, self.view.frame.size.width-60, 40)];
+    advert.textAlignment = NSTextAlignmentCenter;
+    advert.text = @"正在加载社区通知...";
+    //开始动画
+    advert.backgroundColor = [UIColor clearColor];
+    advert.font = [UIFont systemFontOfSize:15];
+    advert.text = advertisement;
+    [advertView addSubview:advert];
+    
+    
+    UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [image1 setImage:[UIImage imageNamed:@"上门维修-滚动背景-#ff9d9d.png"]];
+    [advertView addSubview:image1];
+    
+    UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    [image setImage:[UIImage imageNamed:@"上门维修-滚动背景-图标.png"]];
+    [advertView addSubview:image];
+
+    [self startAnimationIfNeeded];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -75,9 +104,9 @@
    
     
     //滚动广告视图设计
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-    [view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"上门维修-滚动背景-#ff9d9d.png"]]];
-    [self.view addSubview:view];
+    advertView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+    [advertView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"上门维修-滚动背景-#ff9d9d.png"]]];
+    [self.view addSubview:advertView];
     
     advert = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, self.view.frame.size.width-60, 40)];
     advert.textAlignment = NSTextAlignmentCenter;
@@ -85,16 +114,16 @@
     //开始动画
     advert.backgroundColor = [UIColor clearColor];
     advert.font = [UIFont systemFontOfSize:15];
-    [view addSubview:advert];
+    [advertView addSubview:advert];
 
     
     UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     [image1 setImage:[UIImage imageNamed:@"上门维修-滚动背景-#ff9d9d.png"]];
-    [view addSubview:image1];
+    [advertView addSubview:image1];
     
     UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
     [image setImage:[UIImage imageNamed:@"上门维修-滚动背景-图标.png"]];
-    [view addSubview:image];
+    [advertView addSubview:image];
     
     
     //初始化table
@@ -131,11 +160,11 @@
     //    NSLog(@"????????=%@",[appDelegate.appDefault objectForKey:@"UserId"]);
     httpRequest *request=[[httpRequest alloc] init];
     //判断userId 是否为空
-    //    NSLog(@"...%@",UserId);
     request.httpDelegate = self;
     
     [request httpRequestSend:[NSString stringWithFormat:@"%@store/CommunityNotice",SERVICE_ADD] parameter:[NSString stringWithFormat:@"StoreId=%@",_storeID] backBlock:^(NSDictionary *str) {
        advert.text = [str objectForKey:@"Notice"];
+        advertisement  = [str objectForKey:@"Notice"];
        [self startAnimationIfNeeded];
 
     }];
@@ -144,7 +173,8 @@
     //异步获取内容页面
     [self addFooter];
 
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil]; //监听是否重新进入程序程序.
        // Do any additional setup after loading the view.
 }
 
@@ -156,7 +186,6 @@
         //解析数据
         
         NSMutableArray * menuArr =[dic objectForKey:@"List"];
-        //        NSLog(@">>>>%@",dataArray);
         if(menuArr.count==0)
         {
            LoadingView * _loadView2 = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
@@ -487,6 +516,7 @@
                 [menuSelectDictionary setObject:@"ok" forKey:[_menuIdArray objectAtIndex:indexPath.row]];
                 
                 [_ContentArray removeAllObjects];
+                _pageIndex = 0;
                 [self request:indexPath.row :0];
                 
             }
@@ -561,12 +591,7 @@
 
 -(void)setMenuNumber:(NSInteger)number row:(NSInteger)row
 {
-    NSLog(@"%@",contentSelectDictionary);
-    NSLog(@"%@",_menuIdArray);
-
-    NSLog(@"%@",[[_ContentArray objectAtIndex:row] objectForKey:@"GoodsCategoryId"]);
     NSIndexPath * index = [NSIndexPath indexPathForItem: [_menuIdArray indexOfObject:[[_ContentArray objectAtIndex:row] objectForKey:@"GoodsCategoryId"]] inSection:0];
-    NSLog(@"%d", [_menuIdArray indexOfObject:[[_ContentArray objectAtIndex:row] objectForKey:@"GoodsCategoryId"]]);
     MenuCell * cell = (MenuCell*)[menuTable cellForRowAtIndexPath:index];
     cell.number.hidden = NO;
 
@@ -664,7 +689,6 @@
                 numberPrice.hidden = NO;
                 numberService.hidden = NO;
                 numberService.text = [NSString stringWithFormat:@"%d项服务",mCountService];
-                NSLog(@"%@",contentSelectDictionary);
             }
             else
             {
@@ -863,7 +887,6 @@
     //    NSLog(@"...%@",UserId);
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetSearchGoodsList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"StoreId=%@&GoodsValue=%@&PageIndex=%d",_storeID,searchBar.text,pageindex] backBlock:(^(NSDictionary *dic){
         
-        NSLog(@"%@?%@",SERVICE_ADD,[NSString stringWithFormat:@"StoreId=%@&GoodsValue=%@&PageIndex=%d",_storeID,searchBar.text,pageindex]);
         //总页数
         totalPage=[dic objectForKey:@"TotalPage"];
         NSArray * listArray = [[NSArray alloc] init];

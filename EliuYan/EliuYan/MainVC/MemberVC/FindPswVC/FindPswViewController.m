@@ -115,10 +115,7 @@
 //下一步按钮
 -(void)nextBtnClick:(id)sender
 {
-    NSLog(@"找回密码下一步按钮被点击了");
     //跳转到修改密码界面
-    
-    NSLog(@"numeber is %@",_numberTF.text);
     if ([self checkTel:_numberTF.text])
     {
         activity = [[Activity alloc] initWithActivity:self.view];

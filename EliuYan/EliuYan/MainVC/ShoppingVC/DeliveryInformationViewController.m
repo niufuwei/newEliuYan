@@ -56,11 +56,6 @@
     
     ASIFormDataRequest *request=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:strUrl]];
     
-//    NSLog(@"////%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]);
-//    NSLog(@"////%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"UserId"]);
-//    NSLog(@"////%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"lat"]);
-//    NSLog(@"////%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"lng"]);
-    
     [request addPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserId"] forKey:@"UserId"];
     [request addPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"lat"] forKey:@"Lat"];
     [request addPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"lng"] forKey:@"Lng"];
@@ -199,8 +194,6 @@
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSLog(@">>>>>%@",request.responseString);
-    
     self.view.userInteractionEnabled = NO;
     SBJSON *aJson=[[SBJSON alloc] init];
     NSDictionary *allDic=[aJson objectWithString:request.responseString error:nil];
@@ -373,15 +366,9 @@
                         [alldataDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"GoodsList"] forKey:@"GoodsList"];
                         
                       
-                        NSLog(@">>>>>>>>>>>>%@",alldataDic);
-                        NSLog(@"....%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]);
-                        
-                        NSLog(@">>>>>%@",[self DICTOJSON:alldataDic]);
                         httpRequest * http =[[httpRequest alloc] init];
                         http.httpDelegate = self;
                         [http httpRequestSend:[NSString stringWithFormat:@"%@order/CreareOrder",SERVICE_ADD] parameter:[NSString stringWithFormat:@"StrJson=%@&Token=%@",[self DICTOJSON:alldataDic],[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
-                            
-                            NSLog(@"]]]]]]]]]]]%@",dic);
                             
                             [ac stop];
                             if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
@@ -398,7 +385,6 @@
                                 
                                 [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"orderDate"];
                                 
-                                NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"ReallyName"]);
                                 if (![[NSUserDefaults standardUserDefaults] objectForKey:@"ReallyName"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"ReallyName"] isEqualToString:@""])
                                 {
                                     [self changeAppel];
@@ -533,7 +519,6 @@
         UINavigationController *nav = [[NavViewController alloc] initWithRootViewController:memberVC];
         [memberVC getBackBlock:^(NSString * str) {
             
-            NSLog(@"电话号码和昵称是%@",str);
             NSArray *arr = [str componentsSeparatedByString:@","];
             self.phoneField.text = [arr objectAtIndex:0];
             self.nameField.text = [arr objectAtIndex:1];
@@ -573,8 +558,6 @@
         json =[json stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
     }
     
-    
-    NSLog(@"JSON String = %@", json);
     return json;
 }
 

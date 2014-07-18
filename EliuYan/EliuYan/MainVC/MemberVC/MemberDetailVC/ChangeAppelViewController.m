@@ -113,7 +113,6 @@
     http.httpDelegate = self;
     [http httpRequestSend:[NSString stringWithFormat:@"%@user/UpdateReallyName",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&ReallyName=%@&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],_numberTF.text,[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
         
-        NSLog(@"return values is %@",[dic objectForKey:@"ReturnValues"]);
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
             [activity stop];

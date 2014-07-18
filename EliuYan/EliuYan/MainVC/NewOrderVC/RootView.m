@@ -193,7 +193,6 @@
         else
         {
             
-            NSLog(@"self view is %f",self.frame.size.height);
              _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,255, 320, self.frame.size.height-255) style:UITableViewStylePlain];
         }
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
@@ -253,19 +252,14 @@
     _statusLabel.tag = tag;
     alarmLabel.tag = 1000 + tag;
     
-    NSLog(@"statuslabel tag is %d",_statusLabel.tag);
     //初始化数组
     _goodsArray = [[NSMutableArray alloc] initWithCapacity:0];
-    
-    NSLog(@"=======>%@",allDic);
-    NSLog(@"++++++%@",array);
+
     
     //        //解析数据
     NSMutableDictionary *arrayDetail=[allDic objectForKey:@"List"];
 //    totalPage=[allDic objectForKey:@"TotalPage"];
-
-    NSLog(@">>>>>%@",arrayDetail);
-     
+    
     if ([arrayDetail count]==0) {
         LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height) image:@"无信息页面.png"];
         [loadView changeLabel:@"我尽力了，还是看不到"];
@@ -296,8 +290,7 @@
             payWay.text = [NSString stringWithFormat:@"付款方式  货到付款"];
             NSString *orderId=[arrayDetail objectForKey:@"Id"];
             self.oredrId=orderId;
-            NSLog(@"++++++%@",self.oredrId);
-            
+        
             NSString *Time=[arrayDetail objectForKey:@"CreateTime"];
             
             Time =[Time stringByReplacingOccurrencesOfString:@"T" withString:@" "];
@@ -346,7 +339,6 @@
             
             int descriptonType=[[arrayDetail objectForKey:@"DescriptonType" ] intValue];
             NSString *descripton=[arrayDetail objectForKey:@"Descripton"];
-            NSLog(@",,,,,,,,,,,,,,,%@",descripton);
             if (descriptonType==1)
             {   //文字信息
                 _VoiceBtn.hidden=YES;//隐藏语音按钮
@@ -436,7 +428,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"............%d",_goodsArray.count);
     if (_goodsArray.count==0) {
         return 10;
     }
@@ -534,7 +525,6 @@
 -(void)callPhone:(id)sender
 {
     
-    NSLog(@"telNumber is %@",telNum);
     UIWebView*callWebview =[[UIWebView alloc] init];
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",telNum]];
     if ( !callWebview ) {
@@ -569,9 +559,7 @@
         {
             _Back(@"确认订单");
             if (buttonIndex==0) {
-            NSLog(@"确定");
             //调用接口9
-            NSLog(@">>>>>>>%@",self.oredrId);
             //隐藏btn
             Confirm.hidden=YES;
             //标题改变
@@ -581,10 +569,8 @@
 
             httpRequest * http = [[httpRequest alloc] init];
             [http httpRequestSend:[NSString stringWithFormat:@"%@order/GainGoods",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&Token=%@",_oredrId,[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
-                NSLog(@"===>%@",dic);
                 
                 self.values=[dic objectForKey:@"ReturnValues"];
-                NSLog(@"values=%@",self.values);
                 
             })];
                 
@@ -628,7 +614,6 @@
                                      error:nil];
     }
     
-    NSLog(@"%@",avadioURL);
     NSString *filePath =[NSString stringWithFormat:@"%@%@",DOWNLOAD_FILE,avadioURL] ;
     //初始化下载路径
     NSURL *url = [NSURL URLWithString:filePath];
@@ -688,7 +673,6 @@
     [activity stop];
     
     NSURL *fileUrl = [NSURL URLWithString:_savePath];
-    NSLog(@"path is %@",fileUrl);
     self.Player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
     [self.Player prepareToPlay];
     [self.Player setDelegate:self];

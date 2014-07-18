@@ -143,7 +143,6 @@
      httpRequest *http = [[httpRequest alloc] init];
     [http httpRequestSend:[NSString stringWithFormat:@"%@user/SenderCode",SERVICE_ADD] parameter:[NSString stringWithFormat:@"TelPhoneNum=%@&CodeType=%@",_phone,@"0"] backBlock:(^(NSDictionary * dic) {
         
-        NSLog(@"%@",dic);
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
             authReturnData = dic;
@@ -335,10 +334,8 @@
     httpRequest *request = [[httpRequest alloc] init];
     [request httpRequestSend:[NSString stringWithFormat:@"%@user/UserLogin",SERVICE_ADD] parameter:[NSString stringWithFormat:@"LoginName=%@&PassWord=%@&DeviceName=%@&DeviceVersion=%@&SystemType=%@",_phone,_codeTF.text,[[UIDevice currentDevice] name],[NSString stringWithFormat:@"%f" ,IOS_VERSION],@"ios"] backBlock:(^(NSDictionary * dic) {
         
-        NSLog(@"return values is %@",[dic objectForKey:@"ReturnValues"]);
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
-            NSLog(@"dic is %@",dic);
             [cativity stop];
             //登陆成功
             [appDelegate.appDefault setObject:[dic objectForKey:@"UserId"] forKey:@"UserId"];

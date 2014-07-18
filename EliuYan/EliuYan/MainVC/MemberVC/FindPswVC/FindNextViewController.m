@@ -41,9 +41,6 @@
     
     //self.navigationItem.title = @"找回密码";
 
-    
-    NSLog(@"初始化的时候humber is %@",_phone1);
-    
     UILabel * headerLabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 250, 44)];
     headerLabel.text=@"请填写您收到的验证码及密码";
     headerLabel.textColor=[UIColor grayColor];
@@ -178,8 +175,6 @@
     
     if (btn.tag == 1000)
     {
-        NSLog(@"phone number is %@",self.phone1);
-
     
         Activity *activity = [[Activity alloc] initWithActivity:self.view];
         [activity start];
@@ -189,11 +184,9 @@
     httpRequest *http = [[httpRequest alloc] init];
     [http httpRequestSend:[NSString stringWithFormat:@"%@user/SenderCode",SERVICE_ADD] parameter:[NSString stringWithFormat:@"TelPhoneNum=%@&CodeType=%@",self.phone1,@"1"] backBlock:(^(NSDictionary * dic) {
         
-        NSLog(@"%@",dic);
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
             self.authReturnData1 = dic;
-            NSLog(@"返回的数据是%@",self.authReturnData1);
             [self.getAuth1 setTitle:@"重新获取" forState:UIControlStateNormal];
             [activity stop];
             
@@ -252,7 +245,6 @@
 -(void)nextBtnClick:(UIButton *)btn
 {
 
-    NSLog(@"返回的验证码数据是%@",_authReturnData1);
     if (![self.authTF1.text isEqualToString:[self.authReturnData1 objectForKey:@"Code"]])
     {
         UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"验证码不正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -333,16 +325,12 @@
     
     [cativity start];
     
-    
-     NSLog(@"找回密码里面的登陆参数是%@",[NSString stringWithFormat:@"LoginName=%@&PassWord=%@&DeviceName=%@&DeviceVersion=%@&SystemType=%@",self.phone1,self.codeTF1.text,[[UIDevice currentDevice] name],[NSString stringWithFormat:@"%f" ,IOS_VERSION],@"2"]);
     httpRequest *request = [[httpRequest alloc] init];
     
     [request httpRequestSend:[NSString stringWithFormat:@"%@user/UserLogin",SERVICE_ADD] parameter:[NSString stringWithFormat:@"LoginName=%@&PassWord=%@&DeviceName=%@&DeviceVersion=%@&SystemType=%@",self.phone1,self.codeTF1.text,[[UIDevice currentDevice] name],[NSString stringWithFormat:@"%f" ,IOS_VERSION],@"ios"] backBlock:(^(NSDictionary * dic) {
         
-        NSLog(@"return values is %@",[dic objectForKey:@"ReturnValues"]);
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
-            NSLog(@"dic is %@",dic);
             [cativity stop];
             //登陆成功
             [appDelegate.appDefault setObject:[dic objectForKey:@"UserId"] forKey:@"UserId"];

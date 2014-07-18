@@ -222,10 +222,6 @@
 //保存按钮
 -(void)saveBtnClick:(id)sender
 {
-    
-  
-    NSLog(@"保存按钮被点击了");
-    
 //    UIButton *btn1 = (UIButton *)sender;
 
     _numberTF.text = [_numberTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -240,9 +236,7 @@
         NSString *subString = [_newPswTF.text substringWithRange:range];
         const char *cString = [subString UTF8String];
         if (strlen(cString) == 3)
-        {
-            NSLog(@"汉字:%s", cString);
-            
+        {            
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:nil message:@"对不起密码格式错误，请输入数字或英文字符" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
             return;

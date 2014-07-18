@@ -103,14 +103,9 @@
     __unsafe_unretained MyMessageViewController *vc = self;
     MJRefreshFooterView *footer = [MJRefreshFooterView footer];
     footer.scrollView = self.messageTableView;
-    NSLog(@"footer x is %f,y is %f",_footer.frame.origin.x,_footer.frame.origin.y);
     
     footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
-        
-        
-
-        
-        NSLog(@"回调方法%d",_pageIndex);
+       
         if (_pageIndex >= _totalMessagePage - 1)
         {
             [refreshView endRefreshing];
@@ -141,7 +136,6 @@
        
         [activity start];
         
-        NSLog(@"pagecount is %d",_pageIndex);
         httpRequest *http = [[httpRequest alloc] init];
         http.httpDelegate = self;
 
@@ -149,10 +143,8 @@
             
             if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
             {
-                NSLog(@"我的订单数据是%@",dic);
                 
                 [_messageArray addObjectsFromArray:[dic objectForKey:@"List"]];
-                NSLog(@"消息个数是%d",[_messageArray count]);
                 [self.messageTableView reloadData];
 
                 [activity stop];
@@ -246,8 +238,6 @@
                 return ;
             }
 
-            
-            NSLog(@"消息信息是%@",dic);
             self.totalMessageCount = [[dic objectForKey:@"TotalCount"] intValue];
             self.totalMessagePage = [[dic objectForKey:@"TotalPage"] intValue];
             self.messageArray =[NSMutableArray arrayWithArray:[dic objectForKey:@"List"]];
@@ -452,8 +442,6 @@
     
         
         [((MessageCell*)[tableView cellForRowAtIndexPath:indexPath]) viewWithTag:100 + indexPath.row].hidden = NO;
-            NSLog(@"wwwwwwwwwwwwww");
-    
 
 
 
@@ -462,17 +450,8 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
- 
-        NSLog(@"%@",[NSString stringWithFormat:@"%@user/DeleteMsg",SERVICE_ADD]);
-        NSLog(@"%@",[NSString stringWithFormat:@"MsgId=%@&Token=%@",[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Id"],[appDelegate.appDefault objectForKey:@"Token"]]);
-        
-        
         httpRequest *http = [[httpRequest alloc] init];
         [http httpRequestSend:[NSString stringWithFormat:@"%@user/DeleteMsg",SERVICE_ADD] parameter:[NSString stringWithFormat:@"MsgId=%@&Token=%@",[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Id"],[appDelegate.appDefault objectForKey:@"Token"]]  backBlock:^(NSDictionary * dic) {
-            
-            
-            NSLog(@"删除的返回值%@",dic);
-            
             
             if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
             {
@@ -523,15 +502,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    
-    NSLog(@"%@",[NSString stringWithFormat:@"%@user/SetRead",SERVICE_ADD]);
-    NSLog(@"%@",[NSString stringWithFormat:@"Id=%@&Token=%@",[[_messageArray objectAtIndex:indexPath.row] objectForKey:@"Id"],[appDelegate.appDefault objectForKey:@"Token"]]);
     httpRequest *http = [[httpRequest alloc] init];
     [http httpRequestSend:[NSString stringWithFormat:@"%@user/SetRead",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&Token=%@",[[_messageArray objectAtIndex:indexPath.row] objectForKey:@"Id"],[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
-        
-        
-        NSLog(@"设置已读的返回参数是%@",dic);
-        
         
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
@@ -609,26 +581,16 @@
             [noReadArr addObject:obj];
         }
     }
-    
-    NSLog(@"未读消息的数组是%@",noReadArr);
-    
 
     if ([noReadArr count] > 0)
     {
         
-   
-    
-    NSLog(@"%@",[NSString stringWithFormat:@"%@user/SetAllRead",SERVICE_ADD]);
-        NSLog(@"canshushi %@",[NSString stringWithFormat:@"UserId=%@&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],[appDelegate.appDefault objectForKey:@"Token"]]);
-    
-    
     [activity start];
         httpRequest *http1 = [[httpRequest alloc] init];
         [http1 httpRequestSend:[NSString stringWithFormat:@"%@user/SetAllRead",SERVICE_ADD]  parameter:[NSString stringWithFormat:@"UserId=%@&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
             
             if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
             {
-                NSLog(@"改变多条消息成功");
                 [activity stop];
 
                 _backName(@"0");
@@ -643,8 +605,6 @@
             else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"99"])
             {
                 [activity stop];
-
-                NSLog(@"改变多条消息失败");
                 
             }
             else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
@@ -677,9 +637,7 @@
 
     
     
-    }
-    NSLog(@"方法执行完了吗");
-    
+    }    
 
 }
 - (void)didReceiveMemoryWarning

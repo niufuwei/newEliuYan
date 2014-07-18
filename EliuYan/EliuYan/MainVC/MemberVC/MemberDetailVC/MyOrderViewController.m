@@ -115,9 +115,6 @@
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
         {
             
-            
-            
-            NSLog(@"我的订单数据是%@",dic);
             _totalCount = [[dic objectForKey:@"TotalCount"] intValue];
             isRepeat = TRUE;
             if ([[dic objectForKey:@"TotalCount"] intValue] == 0)
@@ -195,12 +192,10 @@
     __unsafe_unretained MyOrderViewController *vc = self;
     MJRefreshFooterView *footer = [MJRefreshFooterView footer];
     footer.scrollView = self.myOrderTableView;
-    NSLog(@"footer x is %f,y is %f",_footer.frame.origin.x,_footer.frame.origin.y);
     footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
     
   
         _pageIndex++;
-        NSLog(@"回调方法");
         if (_pageIndex >= _totalPage)
         {
             [refreshView endRefreshing];
@@ -228,16 +223,11 @@
         
         [activity start];
         
-        
-        NSLog(@"pagecount is %d",_pageIndex);
-        
         httpRequest *http = [[httpRequest alloc] init];
         [http httpRequestSend:[NSString stringWithFormat:@"%@order/GetMyOrderList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&PageIndex=%d&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],_pageIndex,[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
             
             if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
-            {
-                NSLog(@"我的订单数据是%@",dic);
-                
+            {                
                 [_list addObjectsFromArray:[dic objectForKey:@"List"]];
                 [self.myOrderTableView reloadData];
                 [activity stop];
