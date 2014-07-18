@@ -387,6 +387,8 @@
                          
                          
                          NSString *image3=[NSString stringWithFormat:@"/%@",image2];
+                         
+                         [allDic setObject:image3 forKey:@"Image"];
                      }
                      
                      
@@ -497,6 +499,7 @@
                             
                             
                             NSString *image3=[NSString stringWithFormat:@"/%@",image2];
+                            [allDic setObject:image3 forKey:@"Image"];
                         }
     
     
