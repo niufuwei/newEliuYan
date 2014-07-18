@@ -72,6 +72,18 @@
 
     [self startAnimationIfNeeded];
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+
+    detailStoreBtn.hidden = YES;
+
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+
+    detailStoreBtn.hidden = NO;
+
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -82,7 +94,19 @@
     [customNav setNav:@"上门维修" mySelf:self];
     customNav.NavDelegate = self;
 
-    [customNav setNavRightBtnImage:@"搜索.png" RightBtnSelectedImage:@"" mySelf:self width:27 height:20];
+    //[customNav setNavRightBtnImage:@"搜索.png" RightBtnSelectedImage:@"" mySelf:self width:27 height:20];
+    
+    
+    detailStoreBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    detailStoreBtn.frame=CGRectMake(320-100, 7, 100, 26);
+    detailStoreBtn.backgroundColor = [UIColor clearColor];
+    [detailStoreBtn setHighlighted:NO];
+    UIImageView *searchImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"搜索.png"]];
+    searchImage.frame = CGRectMake(60, 4, 26, 20);
+    [detailStoreBtn addSubview:searchImage];
+    //[detailStoreBtn setBackgroundImage:[UIImage imageNamed:@"搜索.png"] forState:UIControlStateNormal];
+    [detailStoreBtn addTarget:self action:@selector(detailStoreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:detailStoreBtn];
     
     //加载导航栏左边按钮
     [self setLeftItem];
@@ -727,7 +751,7 @@
 }
 
 //点击导航栏右按钮触发
--(void)NavRightButtononClick
+-(void)detailStoreBtnClick:(id)sender
 {
     //    StoreDetailViewController *detailVC=[[StoreDetailViewController alloc] init];
     //    detailVC.type = self.storeType;
@@ -1099,6 +1123,7 @@
 -(void)popself
 {
     [advert removeFromSuperview];
+    [detailStoreBtn removeFromSuperview];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -33,6 +33,8 @@
     
     NSString * advertisement;
     BOOL isAddFooter;
+    
+    UIButton *detailStoreBtn;
 
 }
 

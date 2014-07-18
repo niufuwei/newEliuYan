@@ -216,6 +216,8 @@
     }
     [nav setNav:self.storeName mySelf:self];
     
+    [self setLeftItem];
+    
     //  添加结账点击事件
     
     [self.accountBtn addTarget:self action:@selector(accountBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -229,8 +231,13 @@
     //[self.accountBtn setBackgroundImage:[UIImage imageNamed:@"切图_100.png"] forState:UIControlStateHighlighted];
     //店铺详情
     detailStoreBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    detailStoreBtn.frame=CGRectMake(320-40, 10, 27, 20);
-    [detailStoreBtn setBackgroundImage:[UIImage imageNamed:@"搜索.png"] forState:UIControlStateNormal];
+    detailStoreBtn.frame=CGRectMake(320-100, 7, 100, 26);
+    detailStoreBtn.backgroundColor = [UIColor clearColor];
+    [detailStoreBtn setHighlighted:NO];
+    UIImageView *searchImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"搜索.png"]];
+    searchImage.frame = CGRectMake(60, 4, 26, 20);
+    [detailStoreBtn addSubview:searchImage];
+    //[detailStoreBtn setBackgroundImage:[UIImage imageNamed:@"搜索.png"] forState:UIControlStateNormal];
     [detailStoreBtn addTarget:self action:@selector(detailStoreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:detailStoreBtn];
     
@@ -295,6 +302,36 @@
     
    
 }
+-(void) setLeftItem{
+    
+    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"返回.png"];
+    
+    backButton.backgroundColor=[UIColor clearColor];
+    backButton.frame = CGRectMake(-20, 0, 12, 18);
+    [backButton setBackgroundImage:image forState:UIControlStateNormal];
+    [backButton setBackgroundImage: [UIImage imageNamed:@"返回.png"] forState:UIControlStateHighlighted];
+    
+    [backButton addTarget:self action:@selector(popself) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    if([UIDevice currentDevice].systemVersion.floatValue >= 7.0f){
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                           target:nil action:nil];
+        negativeSpacer.width = -7.5;
+        self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftButtonItem];
+    }
+    else{
+        self.navigationItem.leftBarButtonItem = leftButtonItem;
+    }
+}
+
+-(void)popself
+{
+    [detailStoreBtn removeFromSuperview];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -307,7 +344,6 @@
     [appDelegate hidenTabbar];
 
 }
-
 -(void)detailStoreBtnClick:(id)sender;
 {
 //    StoreDetailViewController *detailVC=[[StoreDetailViewController alloc] init];

@@ -141,6 +141,13 @@
 //        }
 //        colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1
         
+        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 220, 40)];
+        nameLabel.backgroundColor = [UIColor clearColor];
+        nameLabel.textAlignment = NSTextAlignmentRight;
+        nameLabel.tag = 606;
+        nameLabel.textColor = [UIColor whiteColor];
+        [cell addSubview:nameLabel];
+        
     }
     if(indexPath.section ==0)
     {
@@ -149,7 +156,13 @@
         cell.backgroundView =image;
         
 
-        cell.textLabel.text =[NSString stringWithFormat:@"%@             %@",@"小区",_CommunityName];
+        cell.textLabel.text = @"小区";
+        
+       
+       ((UILabel *)[cell viewWithTag:606]).text = _CommunityName;
+        
+        
+        
         
         UIImageView * image2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 10, 15)];
         [image2 setImage:[UIImage imageNamed:@"进入2.png"]];

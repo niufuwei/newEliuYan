@@ -51,6 +51,7 @@
     int _pageIndex;
     NSString *totalPage;
     UIButton *detailStoreBtn;
+    UIButton *underSearchBtn;
     
     
     UIView *_aView;

@@ -728,13 +728,13 @@
 //    }
 //    return 0;
     if (IOS_VERSION < 7) {
-        return 0;
+        return 20;
     }
-    return 1;
+    return 20;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *aView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+    UIView *aView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
     if (IOS_VERSION < 7) {
         aView.backgroundColor = [UIColor clearColor];
         return aView;
@@ -745,7 +745,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 0;
+    return 1;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
