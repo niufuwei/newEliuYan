@@ -368,7 +368,7 @@
                      
                      NSArray * imageArr=[[dic objectForKey:@"Image"] componentsSeparatedByString:@"/"];
                      NSLog(@"<<<<%@",imageArr);
-                     if ([imageArr count] ==1) {
+                     if ([imageArr count] ==3) {
                          NSString *image3=@"";
                          [allDic setObject:image3 forKey:@"Image"];
                      }
