@@ -150,6 +150,21 @@
             [activity stop];
             
             
+            [_authTF resignFirstResponder];
+            
+            
+            MBProgressHUD *indicator = [[MBProgressHUD alloc] initWithView:self.view];
+            indicator.labelText = @"发送成功";
+            indicator.mode = MBProgressHUDModeText;
+            [self.view addSubview:indicator];
+            [indicator showAnimated:YES whileExecutingBlock:^{
+                sleep(1.2);
+            } completionBlock:^{
+                [indicator removeFromSuperview];
+                
+            }];
+            
+            
         }
         else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"1"])
         {

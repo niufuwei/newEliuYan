@@ -189,6 +189,7 @@
 		71B8FCD71938125A008B4CE4 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B8FCCD1938125A008B4CE4 /* SDWebImagePrefetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B8FCD81938125A008B4CE4 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B8FCCF1938125A008B4CE4 /* UIButton+WebCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B8FCD91938125A008B4CE4 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B8FCD11938125A008B4CE4 /* UIImageView+WebCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		71BA57D11978B51F008D0326 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BA57D01978B51F008D0326 /* MBProgressHUD.m */; };
 		71C2FB3C196E2C2D007B99A7 /* 切图_116.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C2FB3B196E2C2D007B99A7 /* 切图_116.png */; };
 		71C2FB4D196E8DE3007B99A7 /* 首页菜单栏-未选 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 71C2FB47196E8DE3007B99A7 /* 首页菜单栏-未选 (1).png */; };
 		71C2FB4E196E8DE3007B99A7 /* 首页菜单栏-未选 (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 71C2FB48196E8DE3007B99A7 /* 首页菜单栏-未选 (2).png */; };
@@ -640,6 +641,8 @@
 		71B8FCCF1938125A008B4CE4 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
 		71B8FCD01938125A008B4CE4 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		71B8FCD11938125A008B4CE4 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		71BA57CF1978B51F008D0326 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		71BA57D01978B51F008D0326 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		71C2FB3B196E2C2D007B99A7 /* 切图_116.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "切图_116.png"; sourceTree = "<group>"; };
 		71C2FB47196E8DE3007B99A7 /* 首页菜单栏-未选 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页菜单栏-未选 (1).png"; sourceTree = "<group>"; };
 		71C2FB48196E8DE3007B99A7 /* 首页菜单栏-未选 (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页菜单栏-未选 (2).png"; sourceTree = "<group>"; };
@@ -957,6 +960,7 @@
 		7112541D191632A8003F7D63 /* EliuYan */ = {
 			isa = PBXGroup;
 			children = (
+				71BA57CE1978B51F008D0326 /* Mbhud */,
 				7193B1E7196D3A1900070705 /* images */,
 				EFA97BB819164A3400BACC9D /* Vendos */,
 				71125426191632A8003F7D63 /* AppDelegate.h */,
@@ -1421,6 +1425,15 @@
 			path = SDWebImage_;
 			sourceTree = "<group>";
 		};
+		71BA57CE1978B51F008D0326 /* Mbhud */ = {
+			isa = PBXGroup;
+			children = (
+				71BA57CF1978B51F008D0326 /* MBProgressHUD.h */,
+				71BA57D01978B51F008D0326 /* MBProgressHUD.m */,
+			);
+			path = Mbhud;
+			sourceTree = "<group>";
+		};
 		EFA97AE4191645CF00BACC9D /* 切图 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1815,6 +1828,7 @@
 				71B8FCB91938124E008B4CE4 /* ASIS3BucketRequest.m in Sources */,
 				711255AD19163435003F7D63 /* NavViewController.m in Sources */,
 				71B8FCAC1938124E008B4CE4 /* ASIInputStream.m in Sources */,
+				71BA57D11978B51F008D0326 /* MBProgressHUD.m in Sources */,
 				71B8FCD91938125A008B4CE4 /* UIImageView+WebCache.m in Sources */,
 				71125424191632A8003F7D63 /* main.m in Sources */,
 				71B8FCB01938124E008B4CE4 /* ASICloudFilesContainer.m in Sources */,
@@ -1968,7 +1982,6 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
@@ -1998,7 +2011,6 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;

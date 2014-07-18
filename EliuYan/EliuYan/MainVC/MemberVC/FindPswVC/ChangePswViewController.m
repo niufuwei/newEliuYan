@@ -12,6 +12,7 @@
 #import "MemberDetailViewController.h"
 #import "MemberCenterViewController.h"
 #import "NavViewController.h"
+#import "MBProgressHUD.h"
 //#import <CommonCrypto/CommonDigest.h>
 @interface ChangePswViewController ()
 
@@ -267,8 +268,20 @@
             
             
             [[self.navigationController.navigationBar viewWithTag:2049] removeFromSuperview];
+            
+            [_newPswTF resignFirstResponder];
+            MBProgressHUD *indicator = [[MBProgressHUD alloc] initWithView:self.view];
+            indicator.labelText = @"修改成功";
+            indicator.mode = MBProgressHUDModeText;
+            [self.view addSubview:indicator];
+            [indicator showAnimated:YES whileExecutingBlock:^{
+                sleep(1.2);
+            } completionBlock:^{
+                [indicator removeFromSuperview];
+                [self.navigationController popViewControllerAnimated:YES];
 
-            [self.navigationController popViewControllerAnimated:YES];
+            }];
+
             
             
         }
