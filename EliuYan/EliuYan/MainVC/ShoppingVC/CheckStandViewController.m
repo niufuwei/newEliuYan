@@ -367,7 +367,6 @@
                      //截取字符串
                      
                      NSArray * imageArr=[[dic objectForKey:@"Image"] componentsSeparatedByString:@"/"];
-                     NSLog(@"<<<<%@",imageArr);
                      if ([imageArr count] ==1) {
                          NSString *image3=@"";
                          [allDic setObject:image3 forKey:@"Image"];
@@ -386,7 +385,6 @@
                          
                          
                          NSString *image3=[NSString stringWithFormat:@"/%@",image2];
-                         NSLog(@"llllll=%@",image3);                         [allDic setObject:image3 forKey:@"Image"];
                      }
                      
                      
@@ -479,7 +477,6 @@
                         //截取字符串
                         
                         NSArray * imageArr=[[dic objectForKey:@"Image"] componentsSeparatedByString:@"/"];
-                        NSLog(@"<<<<%@",imageArr);
                         if ([imageArr count] ==3) {
                             NSString *image3=@"";
                              [allDic setObject:image3 forKey:@"Image"];
@@ -498,7 +495,6 @@
                             
                             
                             NSString *image3=[NSString stringWithFormat:@"/%@",image2];
-                            NSLog(@"llllll=%@",image3);                             [allDic setObject:image3 forKey:@"Image"];
                         }
     
     
@@ -506,11 +502,6 @@
                         
                        
                         [allDic setObject:[dic objectForKey:@"Price"] forKey:@"Price"];
-                        
-//                        
-//                        NSLog(@".....%@",countDic);
-//                        NSLog(@">>>>>%@",allDic);
-//                        NSLog(@"``````````%d",i);
                         
                         [allDic setObject:[countDic objectForKey:[NSString stringWithFormat:@"%d",i+1]] forKey:@"GoodsCount"];
                         
@@ -680,7 +671,6 @@
     [conFirm setEnabled:YES];
 
     [ac stop];
-    NSLog(@"asi得到的数据＝%@",request.responseString);
     [[NSUserDefaults standardUserDefaults] setObject:@"2" forKey:@"DescriptonType"];
     [[NSUserDefaults standardUserDefaults] setObject:request.responseString forKey:@"Descripton"];
     //进入下单界面

@@ -58,7 +58,6 @@
 {
     //    NSHTTPURLResponse *res=(NSHTTPURLResponse *)response;
     //
-    //     NSLog(@"接收dddddd到响应->%@",res);
 	
 	buffer = [[NSMutableData alloc] init];
     

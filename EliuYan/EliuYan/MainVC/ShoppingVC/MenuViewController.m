@@ -959,15 +959,8 @@
     httpRequest *request=[[httpRequest alloc] init];
     request.httpDelegate=self;
     
-    
-    NSLog(@">>>>>%@",[appDelegate.appDefault objectForKey:@"UserId"]);
-    NSLog(@">>>>>%@",self.storeId);
-    NSLog(@">>>>>%@",[_goodsCategoryIdArray objectAtIndex:indexPath]);
-    NSLog(@">>>>>%d",aPage);
-    
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetGoodsList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&StoreId=%@&GoodsCategoryId=%@&PageIndex=%d",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId,[_goodsCategoryIdArray objectAtIndex:indexPath] ,aPage] backBlock:(^(NSDictionary *dic){
         
-        NSLog(@".....%@",dic);
         //解析数据
         //总页数
         totalPage=[dic objectForKey:@"TotalPage"];
@@ -1164,8 +1157,6 @@
  
     }
     
-    
-    NSLog(@"before plase totalCount is %d",totalCount);
 }
 
 //减号按钮
@@ -1256,7 +1247,6 @@
     }
     self.priceLabel.text = [NSString stringWithFormat:@"%.2f元",sumPrice];
     
-    NSLog(@" after min totalCount is %d",totalCount);
 }
 //结账按钮
 -(void)accountBtnClick:(id)sender

@@ -102,22 +102,14 @@
             
             [self.view viewWithTag:60].userInteractionEnabled = NO;
             
-            NSLog(@"canshu is %@",[NSString stringWithFormat:@"LoginName=%@&SystemType=%@",[appDelegate.appDefault objectForKey:@"LoginName"],@"ios"]);
-            NSLog(@"jiekou is %@",[NSString stringWithFormat:@"%@user/UserLogout",SERVICE_ADD ]);
-            
             httpRequest *http = [[httpRequest alloc] init];
             http.httpDelegate = self;
             [http httpRequestSend:[NSString stringWithFormat:@"%@user/UserLogout",SERVICE_ADD ] parameter:[NSString stringWithFormat:@"LoginName=%@&SystemType=%@",[appDelegate.appDefault objectForKey:@"LoginName"],@"ios"] backBlock:^(NSDictionary * dic) {
-                
-                
-                NSLog(@"tuichudeshihou  %@",dic);
-                
+              
                 
                 if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
                 {
-                    
-                    NSLog(@"退出成功");
-                    
+                                        
                     [appDelegate.appDefault setObject:@"" forKey:@"Token"];
                     [appDelegate.appDefault setObject:@"" forKey:@"LoginName"];
                     [appDelegate.appDefault setObject:@"" forKey:@"hasLogIn"];

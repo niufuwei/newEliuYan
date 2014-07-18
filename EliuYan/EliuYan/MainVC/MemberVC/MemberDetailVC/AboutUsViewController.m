@@ -49,9 +49,6 @@
     //初始化数组
     dataArray = [[NSArray alloc] initWithObjects:@"去评分",@"欢迎页",@"使用条款", nil];
     
-    NSLog(@"self view frame height is %f",self.view.frame.size.height);
-    
-    
     //初始化logo
     UIImageView * imageLogo = [[UIImageView alloc] initWithFrame:CGRectMake(120, 30, 80, 70)];
     [imageLogo setImage:[UIImage imageNamed:@"关于我们-logo.png"]];

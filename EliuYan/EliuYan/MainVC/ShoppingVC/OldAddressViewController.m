@@ -279,16 +279,11 @@ static NSString *selected_backImageName = @"返回.png";
      if (editingStyle == UITableViewCellEditingStyleDelete)
      {
          isDelete = TRUE;
-         NSLog(@"%@",_dataArray);
-         
         
-         NSLog(@"token is %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]);
          [ac start];
          httpRequest *http = [[httpRequest alloc] init];
          http.httpDelegate = self;
          [http httpRequestSend:[NSString stringWithFormat:@"%@user/DeleteAddress",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&Token=%@",[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"Id"],[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
-             
-//             NSLog(@">>>>%@",dic);
              
              if([[dic allKeys] count]==0)
              {
@@ -460,7 +455,6 @@ static NSString *selected_backImageName = @"返回.png";
         
         else
         {
-            NSLog(@"%@",dic);
             table.hidden=NO;
             
             if ([[dic objectForKey:@"List"] count]==0) {

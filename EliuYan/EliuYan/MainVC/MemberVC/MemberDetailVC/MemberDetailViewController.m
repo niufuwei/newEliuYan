@@ -173,7 +173,6 @@
             
             
             int count = [[dic objectForKey:@"unMsgCount"] intValue];
-            NSLog(@"消息的数量是%@",[NSString stringWithFormat:@"%d",count]);
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",count] forKey:@"unMsgCount"];
             [_tableView reloadData];
             
@@ -183,7 +182,6 @@
             
             
             _memberInfo = [NSMutableDictionary dictionaryWithDictionary:dic];
-            NSLog(@"memberinfo is %@",_memberInfo);
             //[[NSUserDefaults standardUserDefaults] setObject:[_memberInfo objectForKey:@"newOrders"] forKey:@"newOrders"];
             [[NSUserDefaults standardUserDefaults] setObject:[_memberInfo objectForKey:@"unMsgCount"] forKey:@"unMsgCount"];
             [_tableView reloadData];
@@ -309,16 +307,9 @@
             
             [self.view viewWithTag:60].userInteractionEnabled = NO;
             
-            NSLog(@"canshu is %@",[NSString stringWithFormat:@"LoginName=%@&SystemType=%@",[appDelegate.appDefault objectForKey:@"LoginName"],@"ios"]);
-            NSLog(@"jiekou is %@",[NSString stringWithFormat:@"%@user/UserLogout",SERVICE_ADD ]);
-            
             httpRequest *http = [[httpRequest alloc] init];
             http.httpDelegate = self;
             [http httpRequestSend:[NSString stringWithFormat:@"%@user/UserLogout",SERVICE_ADD ] parameter:[NSString stringWithFormat:@"LoginName=%@&SystemType=%@",[appDelegate.appDefault objectForKey:@"LoginName"],@"ios"] backBlock:^(NSDictionary * dic) {
-                
-                
-                NSLog(@"tuichudeshihou  %@",dic);
-                
                 
                 if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
                 {
@@ -330,10 +321,6 @@
                     [appDelegate.appDefault setObject:@"" forKey:@"hasLogIn"];
                     [appDelegate.appDefault setObject:@"" forKey:@"UserId"];
                     [appDelegate.appDefault setObject:@"" forKey:@"ReallyName"];
-                    
-                    
-                    NSLog(@"haslogin is %@",[appDelegate.appDefault objectForKey:@"hasLogIn"]);
-                    
                     
                     [cativity stop];
                     [self.view viewWithTag:60].userInteractionEnabled = YES;
@@ -521,7 +508,6 @@
     if (indexPath.section == 0)
     {
         cell.textLabel.text=[_array objectAtIndex:indexPath.row];
-        NSLog(@">>>>%d",indexPath.row);
         if (indexPath.row == 0)
         {
             ((UILabel *)[cell viewWithTag:111  + indexPath.row]).text = [[NSUserDefaults standardUserDefaults] objectForKey:@"LoginName"];
@@ -635,7 +621,6 @@
         
         if (indexPath.row == 0)
         {
-            NSLog(@"关于我们");
             AboutUsViewController *aboutUsVC=[[AboutUsViewController alloc] init];
             [self.navigationController pushViewController:aboutUsVC animated:YES];
             
@@ -670,11 +655,9 @@
                 }
                 else if(indexPath.row == 1)
                 {
-                    NSLog(@"修改昵称");
                     ChangeAppelViewController *changeAppel = [[ChangeAppelViewController alloc] init];
                     [changeAppel getBackName:(^(NSString *str)
                                               {
-                                                  NSLog(@"=====>%@",str);
                                                   ((UILabel *)[tableView viewWithTag:222]).text = str;
                                                   
                                               })];
@@ -683,8 +666,6 @@
                 }
                 else if (indexPath.row == 2)
                 {
-                    
-                    NSLog(@"修改密码");
                     ChangePswViewController *changeVC=[[ChangePswViewController alloc] init];
                     [self.navigationController pushViewController:changeVC animated:YES];
                     
@@ -709,8 +690,6 @@
                 }
                 else if(indexPath.row == 1)
                 {
-                    
-                    NSLog(@"我的消息");
                     MyMessageViewController *myMessage = [[MyMessageViewController alloc] init];
                     [myMessage getBackName:(^(NSString *str)
                                             {
@@ -726,8 +705,6 @@
                 else if(indexPath.row == 2)
                 {
                     
-                    
-                    NSLog(@"我的订单");
                     MyOrderViewController *myOrderVC=[[MyOrderViewController alloc] init];
                     
                     [self.navigationController pushViewController:myOrderVC animated:YES];

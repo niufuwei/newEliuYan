@@ -201,9 +201,7 @@ if ([self.view window] != nil)
 //    })];
     
     self.rootDelegate=root;
-    NSLog(@"backscrollview enable is %hhd",backScrollview.userInteractionEnabled);
     [backScrollview addSubview:root];
-    NSLog(@"root enable is %hhd",root.userInteractionEnabled);
     //初始化菊花
     myActivily = [[Activity alloc] initWithActivity:self.view];
    
@@ -214,11 +212,8 @@ if ([self.view window] != nil)
     httpRequest * http = [[httpRequest alloc] init];
     http.httpDelegate = self;
     
-    NSLog(@"...%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"UserId"]);
-    
      [myActivily start];
     [http httpRequestSend:[NSString stringWithFormat:@"%@order/MyNewsOdersDetails",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&OrderId=%@&Token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"UserId"],OrderId,[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
-        NSLog(@"得到的数据===>%@",dic);
         
         //解析数据
         
@@ -276,8 +271,6 @@ if ([self.view window] != nil)
             
             [backScrollview setContentSize:CGSizeMake(320*[isTotalPage intValue], self.view.frame.size.height-44)];
             
-            NSLog(@"......%@",[dic objectForKey:@"OrderIds"]);
-                       
             if ([[dic objectForKey:@"List"] isKindOfClass:[NSString class]] )
             {
                 //提示没有最新订单
@@ -293,14 +286,8 @@ if ([self.view window] != nil)
                 NSInteger currentPage = backScrollview.contentOffset.x/320  ;
                 [self.rootDelegate sendRequest:dic orderIdArray:_orderIdArray withTag:currentPage + 1];
                 
-                
-                
-                
-                //            NSLog(@"....%@",[dic objectForKey:@"List"]);
                 int status=[[[dic objectForKey:@"List"] objectForKey:@"Status" ] intValue];
                 orderId = [[dic objectForKey:@"List"] objectForKey:@"Id"];
-                
-                NSLog(@"status is %d,order id is %@ ",status,orderId);
                 
                 if (status == 2 || status == 3)
                 {
@@ -335,7 +322,6 @@ if ([self.view window] != nil)
 
 -(void)httpRequestError:(NSString *)str
 {
-    NSLog(@"我的出错信息:%@",str);
     [myActivily stop];
     //加载出错界面
       LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无服务.png"];
@@ -400,10 +386,8 @@ if ([self.view window] != nil)
             
             
             NSInteger currentPage = backScrollview.contentOffset.x/320;
-            NSLog(@"当前页的编号是%@",[_orderIdArray objectAtIndex:currentPage]);
             httpRequest * http = [[httpRequest alloc] init];
             [http httpRequestSend:[NSString stringWithFormat:@"%@order/GainGoods",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&Token=%@",[_orderIdArray objectAtIndex:currentPage],[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]] backBlock:(^(NSDictionary * dic){
-                NSLog(@"===>%@",dic);
 //                [_currentPageDic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"isCurrentPage"];
                 if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
                 {
@@ -413,7 +397,6 @@ if ([self.view window] != nil)
                     
                  NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary: [[newOrderRecord objectAtIndex:currentPage] objectForKey:@"List"]];
                     [dic setObject:@"5" forKey:@"Status"];
-                 NSLog(@"当前页的订单详情是%@",[newOrderRecord objectAtIndex:currentPage]);
                     [newOrderRecord replaceObjectAtIndex:currentPage withObject:dic];
                     
                     Confirm.hidden=YES;
@@ -422,7 +405,6 @@ if ([self.view window] != nil)
                     
                     
                     //标题改变
-                    NSLog(@"jjjjjjjjjjjjjjj%d",((UILabel*)[backScrollview viewWithTag:currentPage + 1]).tag);
                     ((UILabel*)[backScrollview viewWithTag:currentPage +1]).textColor =[UIColor whiteColor];
                     ((UILabel*)[backScrollview viewWithTag:currentPage +1]).text = @"订单完成";
                     
@@ -489,7 +471,6 @@ if ([self.view window] != nil)
 
 -(void)NavRightButtononClick
 {
-    NSLog(@"sdsdsdsd");
 }
 
 
@@ -498,7 +479,6 @@ if ([self.view window] != nil)
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
    
-    NSLog(@"结束dragging.......................................");
     contentOfSet1 = scrollView.contentOffset.x;
     
     NSInteger currentPage1 = scrollView.contentOffset.x/320;
@@ -507,8 +487,6 @@ if ([self.view window] != nil)
         backScrollview.userInteractionEnabled = YES;
     }
     
-    
-    NSLog(@"开始和结束的时候 %f.......%f",(contentOfSet1/320),(contentOfSet/320));
     if (contentOfSet1/320 == contentOfSet/320)
     {
 
@@ -606,8 +584,6 @@ if ([self.view window] != nil)
     backScrollview.userInteractionEnabled = NO;
     }
 
-   
-    NSLog(@"contentfoset is %f",scrollView.contentOffset.x);
     if (!contentHasSaved)
     {
         contentOfSet = scrollView.contentOffset.x;
@@ -620,15 +596,12 @@ if ([self.view window] != nil)
         NSInteger xx = scrollView.contentOffset.x;
         if(xx % 320 ==0)
         {
-//            NSLog(@">>>>%f",scrollView.contentOffset.x);
             NSInteger currentPage = scrollView.contentOffset.x/320;
             tempIndex = currentPage;
-            NSLog(@"///////%d",currentPage);
             
             
             if(![[mutableDic objectForKey:[NSString stringWithFormat:@"%d",currentPage]] isEqualToString:@"ok"])
             {
-                NSLog(@"....%@",_orderIdArray);
             [self startRequest:[_orderIdArray objectAtIndex:currentPage]];
                             if (IOS_VERSION>=7.0)
                             {

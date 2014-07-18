@@ -56,7 +56,6 @@
 
     httpRequest * http = [[httpRequest alloc] init];
     http.httpDelegate = self;
-    NSLog(@"%@store/GetRecentCommunity%@",SERVICE_ADD,[NSString stringWithFormat:@"Lng=%@&Lat=%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"lng"],[[NSUserDefaults standardUserDefaults]objectForKey:@"lat"]]);
     [http httpRequestSend:[NSString stringWithFormat:@"%@store/GetRecentCommunity",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Lng=%@&Lat=%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"lng"],[[NSUserDefaults standardUserDefaults]objectForKey:@"lat"]] backBlock:^(NSDictionary *str) {
         [myActivity stop];
         _CommunityName = [[str objectForKey:@"StoreName"] length]==0?@"请选择":[str objectForKey:@"StoreName"];

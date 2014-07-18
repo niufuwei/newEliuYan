@@ -133,7 +133,6 @@
 
 -(void)viewDidGetLocatingUser:(CLLocationCoordinate2D)userLoc
 {
-    NSLog(@"取得的经纬度是%f   %f",userLoc.latitude,userLoc.longitude);
     NSString *lat=[NSString stringWithFormat:@"%f",userLoc.latitude];
     NSString *lng=[NSString stringWithFormat:@"%f",userLoc.longitude];
     //存到本地
@@ -173,7 +172,6 @@
     _locationLabel.text=[[NSString alloc] initWithFormat:@"%@",substring];
 
     _dataArray = [dic objectForKey:@"List"];
-    NSLog(@"%@",_dataArray);
     if([_dataArray count]==0)
     {
     

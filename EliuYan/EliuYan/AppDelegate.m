@@ -220,7 +220,6 @@
 -(void)changeImage
 {
     num++;
-    NSLog(@"num=%d",num);
     if (_scrollView.contentOffset.x>=320*3) {
         // 移除_scrollView 停止定时器
         [_timer invalidate];
@@ -247,6 +246,8 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    
+   // [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationDidBecomeActiveNotification object:nil];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -289,7 +290,6 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     num=scrollView.contentOffset.x/320;
-    NSLog(@"num=======%d",num);
     if (scrollView.contentOffset.x==320*3) {
         NSLog(@"最后一张");
         [_scrollView removeFromSuperview];
@@ -314,7 +314,6 @@
     NSString *count = [[userInfo objectForKey:@"aps"] objectForKey:@"badge"];
     
     int i = [count intValue];
-    NSLog(@"i is %d",i);
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"allCount"];
       [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAllCount" object:nil];
     

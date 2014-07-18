@@ -255,7 +255,6 @@
     [UIView setAnimationDuration:0.35];
     _tabbarBG.frame = CGRectMake(0, self.view.frame.size.height-49, 320, 49);
     [UIView commitAnimations];
-    NSLog(@"显示TabBar");
 }
 - (void)hideTabBar
 {
@@ -265,12 +264,7 @@
     [UIView setAnimationDuration:0.35];
     _tabbarBG.frame = CGRectMake(0, self.view.frame.size.height, 320, 49);
     [UIView commitAnimations];
-    NSLog(@"隐藏TabBar");
     
-  
-    
-    
-
 }
 - (void)didReceiveMemoryWarning
 {

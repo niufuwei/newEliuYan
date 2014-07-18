@@ -213,7 +213,6 @@
 }
 -(void)didClick:(id)data
 {
-    NSLog(@"data=%@",(NSDictionary *)data);
     //请求webView
     //加载菊花
     
@@ -277,7 +276,6 @@
 {
     
 
-    NSLog(@"取得的经纬度是%f   %f",userLoc.latitude,userLoc.longitude);
     NSString *lat=[NSString stringWithFormat:@"%f",userLoc.latitude];
     NSString *lng=[NSString stringWithFormat:@"%f",userLoc.longitude];
     //存到本地
@@ -331,7 +329,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:substring forKey:@"searchAddress"];
     //保存具体信息的数组
     NSMutableArray *array=[dic objectForKey:@"List"];
-    NSLog(@"%@",array);
     if(array.count==0)
     {
         [activity stop];
@@ -431,14 +428,12 @@
        //解析数据
         SBJSON *json=[[SBJSON alloc] init];
         NSDictionary *allDict=[json objectWithString:request.responseString error:nil];
-        NSLog(@"公告栏数据是%@",allDict);
         //判断数组是否为空
         if(allDict!=nil)
         {
             _loadViewHasAppear = NO;
             _topViewHasNotLoad = NO;
             NSArray *array=[allDict objectForKey:@"List"];
-            NSLog(@"lll=%@",array);
             if([array count]!=0)
             {
                 _urlArray = [[NSMutableArray alloc] init];
@@ -530,7 +525,6 @@
 //刷新按钮
 -(void)refreshBtnClick:(id)sender
 {
-    NSLog(@"刷新按钮被点击了");
     //[_loadView removeFromSuperview];
     if(!isRefresh)
     {
