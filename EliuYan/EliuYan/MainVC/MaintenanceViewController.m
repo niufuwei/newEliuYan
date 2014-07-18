@@ -58,6 +58,7 @@
     advert.backgroundColor = [UIColor clearColor];
     advert.font = [UIFont systemFontOfSize:15];
     advert.text = advertisement;
+    advert.textColor =[ UIColor whiteColor];
     [advertView addSubview:advert];
     
     
