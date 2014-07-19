@@ -31,7 +31,6 @@
     BOOL isFirstRun;
     NSInteger selectMenuRow;
     
-    NSInteger addDataCount;
     NSString * advertisement;
     BOOL isAddFooter;
     

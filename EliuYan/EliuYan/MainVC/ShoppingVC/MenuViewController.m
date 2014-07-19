@@ -55,7 +55,6 @@
     
     isSearchButtonPressed = FALSE;
     //初始化可变数组
-    addDataCount = -1;
     leftMenuID = [[NSMutableDictionary alloc] init];
     menuSelectOnly = [[NSMutableDictionary alloc] init];
     [menuSelectOnly setObject:@"ok" forKey:[NSString stringWithFormat:@"%d",0]];
@@ -135,7 +134,6 @@
 }
 -(void)loadMore{
     // Load some data here, it may take some time
-    addDataCount = -1;
     [self performSelector:@selector(loadFinish) withObject:nil afterDelay:0.0];
     
     //    [self performSelectorOnMainThread:@selector(loadFinish) withObject:nil waitUntilDone:YES];
@@ -150,26 +148,17 @@
         //添加一个提示view  提示商品加载完成了
         if (!_isRemove) {
             _isRemove=TRUE;
-            addDataCount = 0;
-            _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
-            _aView.backgroundColor=[UIColor blackColor];
-            UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
-            aLabel.font=[UIFont systemFontOfSize:13];
-            aLabel.textAlignment=YES;
-            aLabel.textColor=[UIColor whiteColor];
-            aLabel.backgroundColor = [UIColor clearColor];
-            aLabel.text=@"没有更多商品";
-            [_aView addSubview:aLabel];
-            [self.view addSubview:_aView];
-//            if(isSearchButtonPressed)
-//            {
-//                [searchTable reloadData];
-//            }
-//            else
-//            {
-//                [_fruitTableView reloadData];
-//                [_displayTableView reloadData];
-//            }
+//            _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
+//            _aView.backgroundColor=[UIColor blackColor];
+//            UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
+//            aLabel.font=[UIFont systemFontOfSize:13];
+//            aLabel.textAlignment=YES;
+//            aLabel.textColor=[UIColor whiteColor];
+//            aLabel.backgroundColor = [UIColor clearColor];
+//            aLabel.text=@"没有更多商品";
+//            [_aView addSubview:aLabel];
+//            [self.view addSubview:_aView];
+
             //1秒后消失
             [self performSelector:@selector(removeView) withObject:self afterDelay:1];
             
@@ -194,7 +183,7 @@
 
 -(void)removeView
 {
-    [_aView removeFromSuperview];
+//    [_aView removeFromSuperview];
     _isRemove=FALSE;
   
 }
@@ -344,7 +333,6 @@
 //    [self.navigationController pushViewController:detailVC animated:YES];
     if(!isSearchButtonPressed)
     {
-        addDataCount = -1;
 
         self.navigationController.navigationBarHidden = YES;
         
@@ -432,7 +420,6 @@
     isAddFooter = FALSE;
     searchTable.hidden = NO;
     _pageIndex =0;
-    addDataCount = -1;
 
     [_goodsArray removeAllObjects];
     if([searchBar.text length]!=0 && ![searchBar.text isEqualToString:@" "])
@@ -467,7 +454,6 @@
 #pragma mark 点击完成按钮
 -(void)onClickSearch:(id)sender
 {
-    addDataCount = -1;
     self.navigationController.navigationBarHidden = NO;
 
     [_goodsArray removeAllObjects];
@@ -575,7 +561,7 @@
         {
             return _goodsArray.count;
         }
-        if([totalPage intValue] >1 && addDataCount !=0 )
+        if([totalPage intValue] >1)
         {
             return _goodsArray.count+1;
         }
@@ -1015,7 +1001,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //移除提示商品没有的view
-    [_aView removeFromSuperview];
+//    [_aView removeFromSuperview];
        if (tableView.tag==100)
        {
 //           [_displayTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
@@ -1074,7 +1060,7 @@
                 ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[[[menuSelectOnly allKeys] objectAtIndex:i] intValue] inSection:0]]).categoryLabel.textColor = [UIColor blackColor];
                  ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[[[menuSelectOnly allKeys] objectAtIndex:i] intValue] inSection:0]]).contentView.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
             }
-            addDataCount = -1;
+
             ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).categoryLabel.textColor = eliuyan_color(0xe94f4f);
             [menuSelectOnly setObject:@"ok" forKey:[NSString stringWithFormat:@"%d",indexPath.row]];
             ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).contentView.backgroundColor = [UIColor whiteColor];

@@ -53,8 +53,7 @@
     UIButton *detailStoreBtn;
     UIButton *underSearchBtn;
     
-    NSInteger addDataCount;
-    UIView *_aView;
+//    UIView *_aView;
     NSMutableDictionary * id_and_tag;
     BOOL isSearchButtonPressed;
     BOOL _isRemove;

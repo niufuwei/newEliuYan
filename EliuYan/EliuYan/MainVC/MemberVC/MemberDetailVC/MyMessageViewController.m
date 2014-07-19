@@ -85,6 +85,7 @@
     _messageTableView.delegate = self;
     _messageTableView.dataSource = self;
     _messageTableView.backgroundColor=eliuyan_color(0xf5f5f5);
+    _messageTableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:_messageTableView];
    activity = [[Activity alloc] initWithActivity:self.view];
 
@@ -367,26 +368,6 @@
     
     if(indexPath.row < _messageArray.count)
     {
-        if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Type"] isEqualToString:@"0"])
-        {
-            UIImageView *imageLine = [[UIImageView alloc] initWithFrame:CGRectMake(314, 0, 6, 90.0)];
-            [cell addSubview:imageLine];
-            
-            [imageLine setImage:[UIImage imageNamed:@"消息中心_03.png"]];
-            imageLine.tag = 100 +indexPath.row;
-            
-        }
-        else
-        {   UIImageView *imageLine = [[UIImageView alloc] initWithFrame:CGRectMake(314, 0, 6, 90.0)];
-            [cell addSubview:imageLine];
-            
-
-            [imageLine setImage:[UIImage imageNamed:@"消息中心_05.png"]];
-            imageLine.tag = 100 +indexPath.row;
-            
-            
-        }
-    
     
         cell.timeLabel.hidden = NO;
 

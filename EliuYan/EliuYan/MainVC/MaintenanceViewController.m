@@ -114,7 +114,6 @@
     //初始化数据变量
     _allData = [[NSMutableArray alloc] init];
     _pageIndex = 0;
-    addDataCount = -1;
     isFirstRun = TRUE;
     mCountService = 0;
     _IDDictionary = [[NSMutableDictionary alloc] init];
@@ -141,6 +140,7 @@
     //开始动画
     advert.backgroundColor = [UIColor clearColor];
     advert.font = [UIFont systemFontOfSize:15];
+    advert.textColor = [UIColor whiteColor];
     [advertView addSubview:advert];
 
     
@@ -372,12 +372,12 @@
     }
     else
     {
-        if (_pageIndex >= [totalPage intValue])
+        if (_pageIndex+1 >= [totalPage intValue])
         {
             return [_ContentArray count];
 
         }
-        if([totalPage intValue] >1 && addDataCount !=0 )
+        if([totalPage intValue] >1)
         {
             return [_ContentArray count]+1;
         }
@@ -572,7 +572,6 @@
                 cell.contentView.backgroundColor = [UIColor whiteColor];
                 cell.MenuName.textColor = [UIColor colorWithRed:233.0/255.0 green:79.0/255.0 blue:79.0/255.0 alpha:1];
                 [menuSelectDictionary setObject:@"ok" forKey:[_menuIdArray objectAtIndex:indexPath.row]];
-                addDataCount = -1;
                 [_ContentArray removeAllObjects];
                 _pageIndex = 0;
                 [self request:indexPath.row :0];
@@ -792,7 +791,6 @@
     {
         self.navigationController.navigationBarHidden = YES;
         advertView.hidden = YES;
-        addDataCount = -1;
         searchView = [UIButton buttonWithType:UIButtonTypeCustom];
         searchView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         searchView.tag = 101;
@@ -869,7 +867,6 @@
     [_ContentArray removeAllObjects];
     searchTable.hidden = NO;
     _pageIndex =0;
-    addDataCount = -1;
     if([searchBar.text length]!=0 && ![searchBar.text isEqualToString:@" "])
     {
         [commit setTitle:@"完成" forState:UIControlStateNormal];
@@ -936,7 +933,6 @@
     [searchView removeFromSuperview];
     _ContentArray = [NSMutableArray arrayWithArray:_temp__goodsArray];
     _pageIndex =0;
-    addDataCount =-1;
     
     [ContentTable reloadData];
     _footer.scrollView = ContentTable;
@@ -993,7 +989,6 @@
 
 -(void)loadMore{
     // Load some data here, it may take some time
-    addDataCount = -1;
     [self performSelector:@selector(loadFinish) withObject:nil afterDelay:0.0];
     
     //    [self performSelectorOnMainThread:@selector(loadFinish) withObject:nil waitUntilDone:YES];
@@ -1007,7 +1002,6 @@
     {
         //添加一个提示view  提示商品加载完成了
         if (!_isRemove) {
-            addDataCount = 0;
             _isRemove=TRUE;
             _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
             _aView.backgroundColor=[UIColor blackColor];
@@ -1037,8 +1031,6 @@
         [self request:[menuTable indexPathForSelectedRow].row :_pageIndex];
         //
     }
-
-    [ContentTable reloadData];
 }
 
 
