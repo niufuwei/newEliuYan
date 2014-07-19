@@ -55,6 +55,7 @@
     
     isSearchButtonPressed = FALSE;
     //初始化可变数组
+    addDataCount = -1;
     leftMenuID = [[NSMutableDictionary alloc] init];
     menuSelectOnly = [[NSMutableDictionary alloc] init];
     [menuSelectOnly setObject:@"ok" forKey:[NSString stringWithFormat:@"%d",0]];
@@ -124,7 +125,7 @@
         }
     }
 )];
-    [self addFooter];
+
     isFirstSelected = TRUE;
     //初始化字典
     _countDic = [[NSMutableDictionary alloc] init];
@@ -132,80 +133,72 @@
    
        
 }
+-(void)loadMore{
+    // Load some data here, it may take some time
+    addDataCount = -1;
+    [self performSelector:@selector(loadFinish) withObject:nil afterDelay:0.0];
+    
+    //    [self performSelectorOnMainThread:@selector(loadFinish) withObject:nil waitUntilDone:YES];
+}
 
--(void)addFooter{
-    __unsafe_unretained MenuViewController *vc = self;
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-    if ([self.storeType isEqualToString:@"水果店"]) {
-        footer.scrollView = _fruitTableView;
+-(void)loadFinish{
+    
+    _pageIndex++;
+    
+    if (_pageIndex >= [totalPage intValue])
+    {
+        //添加一个提示view  提示商品加载完成了
+        if (!_isRemove) {
+            _isRemove=TRUE;
+            addDataCount = 0;
+            _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
+            _aView.backgroundColor=[UIColor blackColor];
+            UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
+            aLabel.font=[UIFont systemFontOfSize:13];
+            aLabel.textAlignment=YES;
+            aLabel.textColor=[UIColor whiteColor];
+            aLabel.backgroundColor = [UIColor clearColor];
+            aLabel.text=@"没有更多商品";
+            [_aView addSubview:aLabel];
+            [self.view addSubview:_aView];
+//            if(isSearchButtonPressed)
+//            {
+//                [searchTable reloadData];
+//            }
+//            else
+//            {
+//                [_fruitTableView reloadData];
+//                [_displayTableView reloadData];
+//            }
+            //1秒后消失
+            [self performSelector:@selector(removeView) withObject:self afterDelay:1];
+            
+        }
+        
+        
+        return;
+    }
+    
+    if(isSearchButtonPressed)
+    {
+        isAddFooter = TRUE;
+        [self searchData:searchBar.text pageindex:_pageIndex];
+        
     }
     else
     {
-        footer.scrollView = _displayTableView;
+        [self request:mCount :_pageIndex];
+        
     }
-    
-    footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
-        
-        
-        _pageIndex++;
-        
-        if (_pageIndex >= [totalPage intValue])
-        {
-            [refreshView endRefreshing];
-    
-            //添加一个提示view  提示商品加载完成了
-            if (!_isRemove) {
-                _isRemove=TRUE;
-                _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
-                _aView.backgroundColor=[UIColor blackColor];
-                UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
-                aLabel.font=[UIFont systemFontOfSize:13];
-                aLabel.textAlignment=YES;
-                aLabel.textColor=[UIColor whiteColor];
-                aLabel.backgroundColor = [UIColor clearColor];
-                aLabel.text=@"没有更多商品";
-                [_aView addSubview:aLabel];
-                [self.view addSubview:_aView];
-                //1秒后消失
-                [self performSelector:@selector(removeView) withObject:self afterDelay:1];
-
-            }
-            
-            
-            return;
-        }
-        
-        if(isSearchButtonPressed)
-        {
-            isAddFooter = TRUE;
-            [self searchData:searchBar.text pageindex:_pageIndex];
-
-        }
-        else
-        {
-            [self request:mCount :_pageIndex];
-
-        }
-        [vc performSelector:@selector(doneWithView:) withObject:refreshView];
-    };
-
-    _footer = footer;
-    
 }
 
 -(void)removeView
 {
     [_aView removeFromSuperview];
     _isRemove=FALSE;
+  
 }
 
-
--(void)doneWithView:(MJRefreshBaseView *)refreshView
-{
-    
-    [refreshView endRefreshing];
-    
-}
 
 -(void)createUI
 {
@@ -351,7 +344,8 @@
 //    [self.navigationController pushViewController:detailVC animated:YES];
     if(!isSearchButtonPressed)
     {
-        
+        addDataCount = -1;
+
         self.navigationController.navigationBarHidden = YES;
         
         searchView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -438,6 +432,8 @@
     isAddFooter = FALSE;
     searchTable.hidden = NO;
     _pageIndex =0;
+    addDataCount = -1;
+
     [_goodsArray removeAllObjects];
     if([searchBar.text length]!=0 && ![searchBar.text isEqualToString:@" "])
     {
@@ -471,12 +467,15 @@
 #pragma mark 点击完成按钮
 -(void)onClickSearch:(id)sender
 {
-    
+    addDataCount = -1;
     self.navigationController.navigationBarHidden = NO;
 
     [_goodsArray removeAllObjects];
     isSearchButtonPressed = FALSE;
     [searchView removeFromSuperview];
+    
+    NSLog(@"%@",_temp__goodsArray);
+    
     _goodsArray = [NSMutableArray arrayWithArray:_temp__goodsArray];
     _pageIndex =0;
     
@@ -571,7 +570,20 @@
         return _categoryArray.count;
     }
     else
-    return _goodsArray.count;
+    {
+        if(_pageIndex+1 >= [totalPage intValue])
+        {
+            return _goodsArray.count;
+        }
+        if([totalPage intValue] >1 && addDataCount !=0 )
+        {
+            return _goodsArray.count+1;
+        }
+        else
+        {
+            return _goodsArray.count;
+        }
+    }
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -611,105 +623,143 @@
         }
         else
         {
-            if (tableView.tag==103) {//超市列表
-                cell.backgroundColor=[UIColor whiteColor];
-                cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                GoodsDetail *goodsDetail=[_goodsArray objectAtIndex:indexPath.row];
-                cell.contentLabel.font = [UIFont systemFontOfSize:14.0];
+          
+            if(indexPath.row <[_goodsArray count])
+            {
+                if (tableView.tag==103) {//超市列表
+                    cell.backgroundColor=[UIColor whiteColor];
+                    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                    GoodsDetail *goodsDetail=[_goodsArray objectAtIndex:indexPath.row];
+                    cell.contentLabel.font = [UIFont systemFontOfSize:14.0];
+                    
+                    cell.contentLabel.text=goodsDetail.goodsName;
+                    [cell.logoImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",goodsDetail.logoImage]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
+                    cell.priceLabel.font = [UIFont systemFontOfSize:12.0];
+                    cell.priceLabel.text=[NSString stringWithFormat:@"￥:%@",goodsDetail.price];
+                    
+                    
+                    cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
+                    cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
+                    
+                    cell.minusBtn.hidden = NO;
+                    cell.plaseBtn.hidden= NO;
+                    cell.priceLabel.hidden = NO;
+                    cell.logoImage.hidden = NO;
 
-                cell.contentLabel.text=goodsDetail.goodsName;
-                [cell.logoImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",goodsDetail.logoImage]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
-                cell.priceLabel.font = [UIFont systemFontOfSize:12.0];
-                cell.priceLabel.text=[NSString stringWithFormat:@"￥:%@",goodsDetail.price];
-                
-                
-                cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
-                cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
-                
-                
-                cell.countLabel.font = [UIFont systemFontOfSize:14];
-                cell.countLabel.text=[_countDic objectForKey:goodsDetail.goodsId];
-                if([cell.countLabel.text intValue] ==0)
-                {
-                    cell.minusBtn.hidden=YES;
-                    cell.countLabel.hidden=YES;
-                    [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_10.png"] forState:UIControlStateNormal];
+                    
+                    cell.countLabel.font = [UIFont systemFontOfSize:14];
+                    cell.countLabel.text=[_countDic objectForKey:goodsDetail.goodsId];
+                    if([cell.countLabel.text intValue] ==0)
+                    {
+                        cell.minusBtn.hidden=YES;
+                        cell.countLabel.hidden=YES;
+                        [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_10.png"] forState:UIControlStateNormal];
+                    }
+                    else
+                    {
+                        cell.minusBtn.hidden=NO;
+                        cell.countLabel.hidden=NO;
+                        [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_18.png"] forState:UIControlStateNormal];
+                    }
+                    
+                    [cell.plaseBtn addTarget:self action:@selector(plaseBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.minusBtn addTarget:self action:@selector(minusBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    
+                    //        cell.jinButton.tag=10000+indexPath.row;
+                    //        cell.geButton.tag=10001+indexPath.row;
+                    [cell.jinButton addTarget:self action:@selector(jinBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.geButton addTarget:self action:@selector(geBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    
                 }
-                else
-                {
-                    cell.minusBtn.hidden=NO;
-                    cell.countLabel.hidden=NO;
-                    [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_18.png"] forState:UIControlStateNormal];
-                }
                 
-                [cell.plaseBtn addTarget:self action:@selector(plaseBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.minusBtn addTarget:self action:@selector(minusBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                
-                //        cell.jinButton.tag=10000+indexPath.row;
-                //        cell.geButton.tag=10001+indexPath.row;
-                [cell.jinButton addTarget:self action:@selector(jinBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.geButton addTarget:self action:@selector(geBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                
-            }
-            
-            if (tableView.tag==104) {//水果列表
-                cell.backgroundColor=[UIColor whiteColor];
-                cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                GoodsDetail *goodsDet=[_goodsArray objectAtIndex:indexPath.row];
-                cell.contentLabel.font = [UIFont systemFontOfSize:14.0];
-                cell.contentLabel.text=goodsDet.goodsName;
-                cell.logoImage.frame=CGRectMake(10, 10, 60, 60);
-                [cell.logoImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",goodsDet.logoImage]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
-                cell.priceLabel.font = [UIFont systemFontOfSize:12.0];
+                if (tableView.tag==104) {//水果列表
+                    cell.backgroundColor=[UIColor whiteColor];
+                    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                    GoodsDetail *goodsDet=[_goodsArray objectAtIndex:indexPath.row];
+                    cell.contentLabel.font = [UIFont systemFontOfSize:14.0];
+                    cell.contentLabel.text=goodsDet.goodsName;
+                    cell.logoImage.frame=CGRectMake(10, 10, 60, 60);
+                    [cell.logoImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",goodsDet.logoImage]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
+                    cell.priceLabel.font = [UIFont systemFontOfSize:12.0];
+                    
+                    cell.priceLabel.text=[NSString stringWithFormat:@"%@/斤",goodsDet.price];
+                    cell.priceLabel.frame=CGRectMake(10, 65, 60, 30);
+                    
+                    cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
+                    cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
+                    
+                    cell.jinButton.tag =((indexPath.row+1)+((mCount+1)*1000))+1;
+                    cell.geButton.tag =((indexPath.row+1)+((mCount+1)*1000))+1;
+                    
+                    cell.minusBtn.hidden = NO;
+                    cell.plaseBtn.hidden= NO;
+                    cell.jinButton.hidden = NO;
+                    cell.geButton.hidden = NO;
+                    cell.logoImage.hidden = NO;
+                    cell.priceLabel.hidden = NO;
 
-                cell.priceLabel.text=[NSString stringWithFormat:@"%@/斤",goodsDet.price];
-                cell.priceLabel.frame=CGRectMake(10, 65, 60, 30);
-                
-                cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
-                cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
-                
-                cell.jinButton.tag =((indexPath.row+1)+((mCount+1)*1000))+1;
-                cell.geButton.tag =((indexPath.row+1)+((mCount+1)*1000))+1;
-                
-                
-//                if([[jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]] isEqualToString:@"jin"] || ![jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]])
-//                {
-//                    [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
-//                    [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
-//                    
-//                    [jingeDic setObject:@"jin" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
-//                    
-//                }
-//                else
-//                {
+                    
+                    //                if([[jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]] isEqualToString:@"jin"] || ![jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]])
+                    //                {
+                    //                    [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
+                    //                    [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
+                    //
+                    //                    [jingeDic setObject:@"jin" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
+                    //
+                    //                }
+                    //                else
+                    //                {
                     [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
                     [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
                     
                     [jingeDic setObject:@"ge" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
                     
-//                }
-                cell.countLabel.font = [UIFont systemFontOfSize:14];
-                cell.countLabel.text=[_countDic objectForKey:goodsDet.goodsId];
-                if([cell.countLabel.text intValue] ==0)
-                {
-                    cell.minusBtn.hidden=YES;
-                    cell.countLabel.hidden=YES;
-                    [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_10.png"] forState:UIControlStateNormal];
+                    //                }
+                    cell.countLabel.font = [UIFont systemFontOfSize:14];
+                    cell.countLabel.text=[_countDic objectForKey:goodsDet.goodsId];
+                    if([cell.countLabel.text intValue] ==0)
+                    {
+                        cell.minusBtn.hidden=YES;
+                        cell.countLabel.hidden=YES;
+                        [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_10.png"] forState:UIControlStateNormal];
+                    }
+                    else{
+                        cell.minusBtn.hidden=NO;
+                        cell.countLabel.hidden=NO;
+                        [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_18.png"] forState:UIControlStateNormal];
+                    }
+                    
+                    [cell.plaseBtn addTarget:self action:@selector(plaseBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.minusBtn addTarget:self action:@selector(minusBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    
+                    //                [cell.jinButton addTarget:self action:@selector(jinBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    //                [cell.geButton addTarget:self action:@selector(geBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    
                 }
-                else{
-                    cell.minusBtn.hidden=NO;
-                    cell.countLabel.hidden=NO;
-                    [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_18.png"] forState:UIControlStateNormal];
-                }
-                
-                [cell.plaseBtn addTarget:self action:@selector(plaseBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.minusBtn addTarget:self action:@selector(minusBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                
-//                [cell.jinButton addTarget:self action:@selector(jinBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//                [cell.geButton addTarget:self action:@selector(geBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                
+
+
             }
-            
+            else
+            {
+                if(tableView.tag == 103)
+                {
+                    cell.minusBtn.hidden = YES;
+                    cell.plaseBtn.hidden= YES;
+                    cell.priceLabel.hidden = YES;
+                    cell.logoImage.hidden = YES;
+                }
+                if(tableView.tag ==104)
+                {
+                    cell.minusBtn.hidden = YES;
+                    cell.plaseBtn.hidden= YES;
+                    cell.jinButton.hidden = YES;
+                    cell.geButton.hidden = YES;
+                    cell.logoImage.hidden = YES;
+                    cell.priceLabel.hidden = YES;
+                }
+                cell.contentLabel.text = @"正在加载中...";
+                [self loadMore];
+            }
         }
         tableView.backgroundColor=[UIColor whiteColor];
         return cell;
@@ -811,94 +861,134 @@
         }
         else
         {
-            if (tableView.tag==101) {//超市列表
-                cell.backgroundColor=[UIColor whiteColor];
-                cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                GoodsDetail *goodsDetail=[_goodsArray objectAtIndex:indexPath.row];
-                cell.contentLabel.text=goodsDetail.goodsName;
-                [cell.logoImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",goodsDetail.logoImage]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
-                cell.priceLabel.text=[NSString stringWithFormat:@"￥:%@",goodsDetail.price];
-                
-                cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
-                cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
-                
-                cell.countLabel.text=[_countDic objectForKey:goodsDetail.goodsId];
-                if([cell.countLabel.text intValue] ==0)
-                {
-                    cell.minusBtn.hidden=YES;
-                    cell.countLabel.hidden=YES;
-                    [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_10.png"] forState:UIControlStateNormal];
+            if(indexPath.row < _goodsArray.count)
+            {
+                if (tableView.tag==101) {//超市列表
+                    cell.backgroundColor=[UIColor whiteColor];
+                    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                    GoodsDetail *goodsDetail=[_goodsArray objectAtIndex:indexPath.row];
+                    cell.contentLabel.text=goodsDetail.goodsName;
+                    [cell.logoImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",goodsDetail.logoImage]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
+                    cell.priceLabel.text=[NSString stringWithFormat:@"￥:%@",goodsDetail.price];
+                    
+                    cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
+                    cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
+                    
+                    cell.countLabel.text=[_countDic objectForKey:goodsDetail.goodsId];
+                    
+                    cell.minusBtn.hidden = NO;
+                    cell.plaseBtn.hidden= NO;
+                    cell.priceLabel.hidden = NO;
+                    cell.logoImage.hidden = NO;
+
+                    
+                    if([cell.countLabel.text intValue] ==0)
+                    {
+                        cell.minusBtn.hidden=YES;
+                        cell.countLabel.hidden=YES;
+                        [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_10.png"] forState:UIControlStateNormal];
+                    }
+                    else
+                    {
+                        cell.minusBtn.hidden=NO;
+                        cell.countLabel.hidden=NO;
+                        [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_18.png"] forState:UIControlStateNormal];
+                    }
+                    
+                    [cell.plaseBtn addTarget:self action:@selector(plaseBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.minusBtn addTarget:self action:@selector(minusBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    
+                    //        cell.jinButton.tag=10000+indexPath.row;
+                    //        cell.geButton.tag=10001+indexPath.row;
+                    [cell.jinButton addTarget:self action:@selector(jinBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.geButton addTarget:self action:@selector(geBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    
                 }
-                else
-                {
-                    cell.minusBtn.hidden=NO;
-                    cell.countLabel.hidden=NO;
-                    [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_18.png"] forState:UIControlStateNormal];
-                }
                 
-                [cell.plaseBtn addTarget:self action:@selector(plaseBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.minusBtn addTarget:self action:@selector(minusBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                
-                //        cell.jinButton.tag=10000+indexPath.row;
-                //        cell.geButton.tag=10001+indexPath.row;
-                [cell.jinButton addTarget:self action:@selector(jinBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.geButton addTarget:self action:@selector(geBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                
-            }
-            
-            if (tableView.tag==102) {//水果列表
-                cell.backgroundColor=[UIColor whiteColor];
-                cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                GoodsDetail *goodsDet=[_goodsArray objectAtIndex:indexPath.row];
-                cell.contentLabel.text=goodsDet.goodsName;
-                cell.logoImage.frame=CGRectMake(10, 10, 60, 60);
-                [cell.logoImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",goodsDet.logoImage]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
-                cell.priceLabel.text=[NSString stringWithFormat:@"%@/斤",goodsDet.price];
-                cell.priceLabel.frame=CGRectMake(10, 65, 60, 30);
-                
-                cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
-                cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
-                
-                cell.jinButton.tag =((indexPath.row+1)+((mCount+1)*1000))+1;
-                cell.geButton.tag =((indexPath.row+1)+((mCount+1)*1000))+1;
-                
-//                
-//                if([[jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]] isEqualToString:@"jin"] || ![jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]])
-//                {
-//                    [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
-//                    [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
-//                    
-//                    [jingeDic setObject:@"jin" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
-//                    
-//                }
-//                else
-//                {
+                if (tableView.tag==102) {//水果列表
+                    cell.backgroundColor=[UIColor whiteColor];
+                    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                    GoodsDetail *goodsDet=[_goodsArray objectAtIndex:indexPath.row];
+                    cell.contentLabel.text=goodsDet.goodsName;
+                    cell.logoImage.frame=CGRectMake(10, 10, 60, 60);
+                    [cell.logoImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",goodsDet.logoImage]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
+                    cell.priceLabel.text=[NSString stringWithFormat:@"%@/斤",goodsDet.price];
+                    cell.priceLabel.frame=CGRectMake(10, 65, 60, 30);
+                    
+                    cell.plaseBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
+                    cell.minusBtn.tag=(indexPath.row+1)+((mCount+1)*1000);
+                    
+                    cell.jinButton.tag =((indexPath.row+1)+((mCount+1)*1000))+1;
+                    cell.geButton.tag =((indexPath.row+1)+((mCount+1)*1000))+1;
+                    
+                    cell.minusBtn.hidden = NO;
+                    cell.plaseBtn.hidden= NO;
+                    cell.jinButton.hidden = NO;
+                    cell.geButton.hidden = NO;
+                    cell.logoImage.hidden = NO;
+                    cell.priceLabel.hidden = NO;
+                    
+                    //
+                    //                if([[jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]] isEqualToString:@"jin"] || ![jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]])
+                    //                {
+                    //                    [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
+                    //                    [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
+                    //
+                    //                    [jingeDic setObject:@"jin" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
+                    //
+                    //                }
+                    //                else
+                    //                {
                     [cell.jinButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (1).png"] forState:UIControlStateNormal];
                     [cell.geButton setBackgroundImage:[UIImage imageNamed:@"水果店_切换按钮 (2).png"] forState:UIControlStateNormal];
                     
                     [jingeDic setObject:@"ge" forKey:[NSString stringWithFormat:@"%d",cell.geButton.tag]];
                     
-//                }
-                
-                cell.countLabel.text=[_countDic objectForKey:goodsDet.goodsId];
-                if([cell.countLabel.text intValue] ==0)
+                    //                }
+                    
+                    cell.countLabel.text=[_countDic objectForKey:goodsDet.goodsId];
+                    if([cell.countLabel.text intValue] ==0)
+                    {
+                        cell.minusBtn.hidden=YES;
+                        cell.countLabel.hidden=YES;
+                        [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_10.png"] forState:UIControlStateNormal];
+                    }
+                    else{
+                        cell.minusBtn.hidden=NO;
+                        cell.countLabel.hidden=NO;
+                        [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_18.png"] forState:UIControlStateNormal];
+                    }
+                    
+                    [cell.plaseBtn addTarget:self action:@selector(plaseBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.minusBtn addTarget:self action:@selector(minusBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    //                
+                    //                [cell.jinButton addTarget:self action:@selector(jinBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    //                [cell.geButton addTarget:self action:@selector(geBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+                    //                
+                }
+
+            }
+            else
+            {
+                if(tableView.tag == 101)
                 {
-                    cell.minusBtn.hidden=YES;
-                    cell.countLabel.hidden=YES;
-                    [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_10.png"] forState:UIControlStateNormal];
+                    cell.minusBtn.hidden = YES;
+                    cell.plaseBtn.hidden= YES;
+                    cell.priceLabel.hidden = YES;
+                    cell.logoImage.hidden = YES;
                 }
-                else{
-                    cell.minusBtn.hidden=NO;
-                    cell.countLabel.hidden=NO;
-                    [cell.plaseBtn setBackgroundImage:[UIImage imageNamed:@"联华超市_18.png"] forState:UIControlStateNormal];
+                if(tableView.tag ==102)
+                {
+                    cell.minusBtn.hidden = YES;
+                    cell.plaseBtn.hidden= YES;
+                    cell.jinButton.hidden = YES;
+                    cell.geButton.hidden = YES;
+                    cell.logoImage.hidden = YES;
+                    cell.priceLabel.hidden = YES;
                 }
-                
-                [cell.plaseBtn addTarget:self action:@selector(plaseBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.minusBtn addTarget:self action:@selector(minusBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//                
-//                [cell.jinButton addTarget:self action:@selector(jinBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//                [cell.geButton addTarget:self action:@selector(geBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//                
+                cell.contentLabel.text = @"正在加载中...";
+                [self loadMore];
+
             }
             
         }
@@ -984,6 +1074,7 @@
                 ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[[[menuSelectOnly allKeys] objectAtIndex:i] intValue] inSection:0]]).categoryLabel.textColor = [UIColor blackColor];
                  ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[[[menuSelectOnly allKeys] objectAtIndex:i] intValue] inSection:0]]).contentView.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"超市、物业左边栏背景.png"]];
             }
+            addDataCount = -1;
             ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).categoryLabel.textColor = eliuyan_color(0xe94f4f);
             [menuSelectOnly setObject:@"ok" forKey:[NSString stringWithFormat:@"%d",indexPath.row]];
             ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).contentView.backgroundColor = [UIColor whiteColor];

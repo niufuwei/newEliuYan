@@ -114,6 +114,7 @@
     //初始化数据变量
     _allData = [[NSMutableArray alloc] init];
     _pageIndex = 0;
+    addDataCount = -1;
     isFirstRun = TRUE;
     mCountService = 0;
     _IDDictionary = [[NSMutableDictionary alloc] init];
@@ -197,7 +198,6 @@
     
     [self loadRequestData];
     //异步获取内容页面
-    [self addFooter];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil]; //监听是否重新进入程序程序.
@@ -372,7 +372,20 @@
     }
     else
     {
-        return [_ContentArray count];
+        if (_pageIndex >= [totalPage intValue])
+        {
+            return [_ContentArray count];
+
+        }
+        if([totalPage intValue] >1 && addDataCount !=0 )
+        {
+            return [_ContentArray count]+1;
+        }
+        else
+        {
+            return [_ContentArray count];
+        }
+
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -438,6 +451,7 @@
     }
     else
     {
+        
         static NSString * strID = @"cell_content";
         ContentCell * cell = [tableView dequeueReusableCellWithIdentifier:strID];
         if(cell == nil)
@@ -445,51 +459,69 @@
             cell = [[ContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strID];
         }
 
+        cell.textLabel.text = @"";
         if([_ContentArray count]==0)
         {
             return cell;
         }
-        else
-        {
+        else{
             
-            [cell.logoImage setImageWithURL:[NSURL URLWithString:[[_ContentArray objectAtIndex:indexPath.row] objectForKey:@"Image"]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
-            cell.title.text = [[_ContentArray objectAtIndex:indexPath.row] objectForKey:@"GoodsName"];
-            cell.money.text  = [NSString stringWithFormat:@"￥%@",[[_ContentArray objectAtIndex:indexPath.row] objectForKey:@"Price"]];
+            cell.logoImage.hidden = NO;
+            cell.money.hidden=  NO;
+            cell.selectButton.hidden= NO;
             
-            cell.selectButton.tag = indexPath.row+1;
-            [cell.selectButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
-            [cell setBackgroundColor:[UIColor clearColor]];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            
-            
-            //判断如果是第一次进入的话默认第一个地址是选中的状态，否则 根据用户点击的地址 为选中的状态
-            
-            if([[contentSelectDictionary objectForKey:[[_ContentArray objectAtIndex:indexPath.row] objectForKey:@"Id"]] isEqualToString:@"isChoose"])
+            if(indexPath.row <[_ContentArray count])
             {
-                [cell.selectButton setBackgroundImage:[UIImage imageNamed:@"多选-选择.png"] forState:UIControlStateNormal];
+                cell.textLabel.textAlignment = NSTextAlignmentLeft;
+                
+                [cell.logoImage setImageWithURL:[NSURL URLWithString:[[_ContentArray objectAtIndex:indexPath.row] objectForKey:@"Image"]] placeholderImage:[UIImage imageNamed:@"暂无.png"]];
+                cell.title.text = [[_ContentArray objectAtIndex:indexPath.row] objectForKey:@"GoodsName"];
+                cell.money.text  = [NSString stringWithFormat:@"￥%@",[[_ContentArray objectAtIndex:indexPath.row] objectForKey:@"Price"]];
+                
+                cell.selectButton.tag = indexPath.row+1;
+                [cell.selectButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+                [cell setBackgroundColor:[UIColor clearColor]];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                
+                
+                //判断如果是第一次进入的话默认第一个地址是选中的状态，否则 根据用户点击的地址 为选中的状态
+                
+                if([[contentSelectDictionary objectForKey:[[_ContentArray objectAtIndex:indexPath.row] objectForKey:@"Id"]] isEqualToString:@"isChoose"])
+                {
+                    [cell.selectButton setBackgroundImage:[UIImage imageNamed:@"多选-选择.png"] forState:UIControlStateNormal];
+                    
+                }
+                else
+                {
+                    [cell.selectButton setBackgroundImage:[UIImage imageNamed:@"多选-未选 .png"] forState:UIControlStateNormal];
+                    
+                }
+                
+                //根据搜索按钮按下与否来决定table的cell的frame
+                if(isSearchButtonPressed)
+                {
+                    cell.title.frame= CGRectMake(cell.logoImage.frame.size.width+cell.logoImage.frame.origin.x+5, 15, 180, 40);
+                    cell.selectButton.frame = CGRectMake(self.view.frame.size.width -50, 30, 30, 30);
+                    
+                }
+                else
+                {
+                    
+                }
                 
             }
             else
             {
-                [cell.selectButton setBackgroundImage:[UIImage imageNamed:@"多选-未选 .png"] forState:UIControlStateNormal];
-                
-            }
-            
-            //根据搜索按钮按下与否来决定table的cell的frame
-            if(isSearchButtonPressed)
-            {
-                cell.title.frame= CGRectMake(cell.logoImage.frame.size.width+cell.logoImage.frame.origin.x+5, 15, 180, 40);
-                cell.selectButton.frame = CGRectMake(self.view.frame.size.width -50, 30, 30, 30);
-                
-            }
-            else
-            {
+                cell.title.text = @"正在加载...";
+                cell.logoImage.hidden = YES;
+                cell.money.hidden=  YES;
+                cell.selectButton.hidden= YES;
+                [self loadMore];
                 
             }
 
         }
-        
         return cell;
     }
 }
@@ -540,7 +572,7 @@
                 cell.contentView.backgroundColor = [UIColor whiteColor];
                 cell.MenuName.textColor = [UIColor colorWithRed:233.0/255.0 green:79.0/255.0 blue:79.0/255.0 alpha:1];
                 [menuSelectDictionary setObject:@"ok" forKey:[_menuIdArray objectAtIndex:indexPath.row]];
-                
+                addDataCount = -1;
                 [_ContentArray removeAllObjects];
                 _pageIndex = 0;
                 [self request:indexPath.row :0];
@@ -760,7 +792,7 @@
     {
         self.navigationController.navigationBarHidden = YES;
         advertView.hidden = YES;
-        
+        addDataCount = -1;
         searchView = [UIButton buttonWithType:UIButtonTypeCustom];
         searchView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         searchView.tag = 101;
@@ -837,6 +869,7 @@
     [_ContentArray removeAllObjects];
     searchTable.hidden = NO;
     _pageIndex =0;
+    addDataCount = -1;
     if([searchBar.text length]!=0 && ![searchBar.text isEqualToString:@" "])
     {
         [commit setTitle:@"完成" forState:UIControlStateNormal];
@@ -903,7 +936,7 @@
     [searchView removeFromSuperview];
     _ContentArray = [NSMutableArray arrayWithArray:_temp__goodsArray];
     _pageIndex =0;
-
+    addDataCount =-1;
     
     [ContentTable reloadData];
     _footer.scrollView = ContentTable;
@@ -934,6 +967,7 @@
             [_ContentArray addObject:[listArray objectAtIndex:i]];
         }
         
+        NSLog(@"%d",[_ContentArray count]);
         //刷新表
         if([_ContentArray count]!=0)
         {
@@ -954,122 +988,65 @@
 {
     [_aView removeFromSuperview];
     _isRemove=FALSE;
+  
 }
 
+-(void)loadMore{
+    // Load some data here, it may take some time
+    addDataCount = -1;
+    [self performSelector:@selector(loadFinish) withObject:nil afterDelay:0.0];
+    
+    //    [self performSelectorOnMainThread:@selector(loadFinish) withObject:nil waitUntilDone:YES];
+}
 
--(void)addFooter{
-    __unsafe_unretained MaintenanceViewController *vc = self;
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-   
-    footer.scrollView = ContentTable;
-    footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
-        
-        _pageIndex++;
-        
-        if (_pageIndex >= [totalPage intValue])
-        {
-            [refreshView endRefreshing];
+-(void)loadFinish{
+    
+    _pageIndex++;
+    
+    if (_pageIndex >= [totalPage intValue])
+    {
+        //添加一个提示view  提示商品加载完成了
+        if (!_isRemove) {
+            addDataCount = 0;
+            _isRemove=TRUE;
+            _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
+            _aView.backgroundColor=[UIColor blackColor];
+            UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
+            aLabel.font=[UIFont systemFontOfSize:13];
+            aLabel.textAlignment=YES;
+            aLabel.textColor=[UIColor whiteColor];
+            aLabel.backgroundColor = [UIColor clearColor];
+            aLabel.text=@"没有更多商品";
+            [_aView addSubview:aLabel];
+            [self.view addSubview:_aView];
+            //1秒后消失
+            [self performSelector:@selector(removeView) withObject:self afterDelay:1];
             
-            //添加一个提示view  提示商品加载完成了
-            if (!_isRemove) {
-                _isRemove=TRUE;
-                _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
-                _aView.backgroundColor=[UIColor blackColor];
-                UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
-                aLabel.font=[UIFont systemFontOfSize:13];
-                aLabel.textAlignment=YES;
-                aLabel.textColor=[UIColor whiteColor];
-                aLabel.backgroundColor = [UIColor clearColor];
-                aLabel.text=@"没有更多商品";
-                [_aView addSubview:aLabel];
-                [self.view addSubview:_aView];
-                //1秒后消失
-                [self performSelector:@selector(removeView) withObject:self afterDelay:1];
-                
-            }
-            
-            
+        }
             return;
-        }
+    }
+    
+    if(isSearchButtonPressed)
+    {
+        isAddFooter = TRUE;
+        [self searchData:searchBar.text pageindex:_pageIndex];
+        
+    }
+    else
+    {
+        [self request:[menuTable indexPathForSelectedRow].row :_pageIndex];
+        //
+    }
 
-        if(isSearchButtonPressed)
-        {
-            isAddFooter = TRUE;
-            [self searchData:searchBar.text pageindex:_pageIndex];
-            
-        }
-        else
-        {
-            [self request:[menuTable indexPathForSelectedRow].row :_pageIndex];
-//
-        }
-        [vc performSelector:@selector(doneWithView:) withObject:refreshView];
-        
-        
-    };
-    
-    _footer = footer;
-    
+    [ContentTable reloadData];
 }
+
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [searchBar resignFirstResponder];
 }
 
--(void)doneWithView:(MJRefreshBaseView *)refreshView
-{
-    
-    [refreshView endRefreshing];
-    
-}
-
--(BOOL)insertCoreData:(NSString*)storeID menuID:(NSString*)menuID content:(NSString*)content
-{
-    CoreDataModel * coredata = (CoreDataModel*)[NSEntityDescription insertNewObjectForEntityForName:@"CoreDataModel" inManagedObjectContext:appDelegate.managedObjectContext];
-    [coredata setStoreID:storeID];
-    [coredata setMenuID:menuID];
-    [coredata setContent:content];
-    
-    NSError * error;
-    BOOL isSaveSuccess = [appDelegate.managedObjectContext save:&error];
-    if(!isSaveSuccess)
-    {
-        NSLog(@"ERROR==>%@",error);
-        return FALSE;
-    }
-    else
-    {
-         NSLog(@"Save Successful!!");
-        return TRUE;
-    }
-}
-
--(NSArray *)searchCoreData:(NSString*)searchSrc searchDes:(NSString *)searchDes
-{
-    NSFetchRequest * request = [[NSFetchRequest alloc] init];
-    NSEntityDescription * user = [NSEntityDescription entityForName:@"CoreDataModel" inManagedObjectContext:appDelegate.managedObjectContext];
-    [request setEntity:user];
-    
-    NSString * str = [NSString stringWithFormat:@"%@ == '%@'",searchSrc,searchDes];
-    
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:str];
-    [request setPredicate:predicate];
-    
-    NSError * error;
-    NSArray * mutableFetchRequestl = [appDelegate.managedObjectContext executeFetchRequest:request error:&error];
-                                      
-    if(!mutableFetchRequestl)
-    {
-        NSLog(@"Error===>%@",error);
-    }
-    else
-    {
-        return mutableFetchRequestl;
-    }
-    [appDelegate.managedObjectContext save:&error];
-    
-    return nil;
-}
 -(void)startAnimationIfNeeded{
     //取消、停止所有的动画
     [advert.layer removeAllAnimations];
