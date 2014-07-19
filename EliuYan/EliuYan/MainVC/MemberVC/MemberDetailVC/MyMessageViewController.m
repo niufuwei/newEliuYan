@@ -446,20 +446,10 @@
             if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
             {
                 NSLog(@"删除成功");
-                _pageIndex = 0;
-                [self loadUI];
                 int row = indexPath.row;
                 [_messageArray removeObjectAtIndex:row];
-//                _deleteCount++;
-//                if (_deleteCount== 8)
-//                {
-//                    _pageIndex--;
-//                    
-//                    _deleteCount = 0;
-//                    _totalMessageCount--;
-//                }
-                // Delete the row from the data source.
-                [_messageTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+                [ _messageTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 
             }
             else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
