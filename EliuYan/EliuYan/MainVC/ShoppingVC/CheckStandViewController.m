@@ -106,6 +106,7 @@
 //    _tableView.backgroundColor=eliuyan_color(0xf6f4ef);
     _tableView.delegate=self;
      _tableView.dataSource=self;
+    [self setExtraCellLineHidden:_tableView];
     [self.view addSubview:_tableView];
     
     //默认文字输入
@@ -855,6 +856,8 @@
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+    
+    [self.view endEditing:YES];
     CGRect hh = _tableView.frame;
     hh.size.height = self.view.frame.size.height-98;
     _tableView.frame = hh;
@@ -1302,6 +1305,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setExtraCellLineHidden: (UITableView *)tableView
+{
+    UIView *view =[ [UIView alloc]init];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString*)text

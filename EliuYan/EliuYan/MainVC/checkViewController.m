@@ -62,6 +62,7 @@
     myTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-20-98)];
     myTable.delegate = self;
     myTable.dataSource =self;
+    [self setExtraCellLineHidden:myTable];
     [self.view addSubview:myTable];
     
     //默认文字输入
@@ -788,6 +789,8 @@
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+    [self.view endEditing:YES];
+
     CGRect hh = myTable.frame;
     hh.size.height = self.view.frame.size.height-98;
     myTable.frame = hh;
@@ -810,6 +813,12 @@
     }
     
     return YES;
+}
+- (void)setExtraCellLineHidden: (UITableView *)tableView
+{
+    UIView *view =[ [UIView alloc]init];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
 }
 
 - (void)didReceiveMemoryWarning

@@ -84,7 +84,7 @@
     
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetCategoryList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&StoreId=%@",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId] backBlock:(^(NSDictionary *dic){
         //解析数据self.storeId
-        
+
         dataArray=[dic objectForKey:@"List"];
 //        NSLog(@">>>>%@",dataArray);
         if(dataArray.count==0)
@@ -130,6 +130,10 @@
     _countDic = [[NSMutableDictionary alloc] init];
     _cellDict = [[NSMutableDictionary alloc] init];
    
+    
+    [self setExtraCellLineHidden:_menuTableView];
+    [self setExtraCellLineHidden:_fruitTableView];
+    [self setExtraCellLineHidden:_displayTableView];
        
 }
 -(void)loadMore{
@@ -393,7 +397,8 @@
     [searchView addSubview:searchTable];
     searchTable.delegate = self;
     searchTable.dataSource = self;
-    
+    [self setExtraCellLineHidden:searchTable];
+
     _footer.scrollView = searchTable;
     
     if (![self.storeType isEqualToString:@"水果店"])
@@ -1618,7 +1623,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)setExtraCellLineHidden: (UITableView *)tableView
+{
+    UIView *view =[ [UIView alloc]init];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+}
 /*
 #pragma mark - Navigation
 

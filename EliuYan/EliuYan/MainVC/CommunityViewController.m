@@ -45,11 +45,10 @@
     _CommunityName = @"请选择";
     _dataArray = [NSArray arrayWithObjects:@"上门维修", nil];
     
-    table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     table.delegate = self;
     table.dataSource = self;
     table.backgroundColor =[UIColor clearColor];
-    table.scrollEnabled= NO;
     [self.view addSubview:table];
     myActivity = [[Activity alloc] initWithActivity:self.view];
     [myActivity start];

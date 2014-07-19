@@ -161,6 +161,7 @@
     menuTable.tag = 101;
     [menuTable setBackgroundColor:[UIColor clearColor]];
     menuTable.showsVerticalScrollIndicator = NO;
+    [self setExtraCellLineHidden:menuTable];
 
     [self.view addSubview:menuTable];
     
@@ -171,6 +172,7 @@
     ContentTable.tag = 102;
     [ContentTable setBackgroundColor:[UIColor clearColor]];
     ContentTable.showsVerticalScrollIndicator = NO;
+    [self setExtraCellLineHidden:ContentTable];
     [self.view addSubview:ContentTable];
     
     
@@ -849,12 +851,13 @@
     searchTable.delegate = self;
     searchTable.dataSource = self;
     searchTable.showsVerticalScrollIndicator = NO;
+    [self setExtraCellLineHidden:searchTable];
     _footer.scrollView = searchTable;
     searchTable.tag = 103;
     
     searchTable.hidden = YES;
     
-    _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, myview.frame.size.height+myview.frame.origin.y+20, 320, self.view.frame.size.height) image:@"无信息页面.png"];
+     _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 45+20, 320, self.view.frame.size.height) image:@"无信息页面.png"];
     [_loadView changeLabel:@"没有搜索到数据"];
     [self.view addSubview:_loadView];
     _loadView.hidden = YES;
@@ -1101,7 +1104,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)setExtraCellLineHidden: (UITableView *)tableView
+{
+    UIView *view =[ [UIView alloc]init];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+}
 /*
 #pragma mark - Navigation
 
