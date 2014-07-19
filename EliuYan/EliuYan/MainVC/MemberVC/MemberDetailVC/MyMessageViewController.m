@@ -88,100 +88,89 @@
     [self.view addSubview:_messageTableView];
    activity = [[Activity alloc] initWithActivity:self.view];
 
-    
-    [self addFooter];
-    
     [self setLeftItem];
     
     
 
     
 }
--(void)addFooter
-{
 
-    __unsafe_unretained MyMessageViewController *vc = self;
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-    footer.scrollView = self.messageTableView;
+
+-(void)loadMore{
+    // Load some data here, it may take some time
+    [self performSelector:@selector(loadFinish) withObject:nil afterDelay:0.0];
     
-    footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
-       
-        if (_pageIndex >= _totalMessagePage - 1)
-        {
-            [refreshView endRefreshing];
-            
-            if (!_isRemove) {
-                _isRemove=TRUE;
-                _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
-                _aView.backgroundColor=[UIColor blackColor];
-                UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
-                aLabel.font=[UIFont systemFontOfSize:13];
-                aLabel.textAlignment=YES;
-                aLabel.textColor=[UIColor whiteColor];
-                aLabel.backgroundColor = [UIColor clearColor];
-                aLabel.text=@"没有更多消息";
-                [_aView addSubview:aLabel];
-                [self.view addSubview:_aView];
-                //1秒后消失
-                [self performSelector:@selector(removeView) withObject:self afterDelay:1];
-                
-            }
+    //    [self performSelectorOnMainThread:@selector(loadFinish) withObject:nil waitUntilDone:YES];
+}
 
+-(void)loadFinish{
+    
+    if (_pageIndex >= _totalMessagePage - 1)
+    {
+        if (!_isRemove) {
+            _isRemove=TRUE;
+            _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
+            _aView.backgroundColor=[UIColor blackColor];
+            UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
+            aLabel.font=[UIFont systemFontOfSize:13];
+            aLabel.textAlignment=YES;
+            aLabel.textColor=[UIColor whiteColor];
+            aLabel.backgroundColor = [UIColor clearColor];
+            aLabel.text=@"没有更多消息";
+            [_aView addSubview:aLabel];
+            [self.view addSubview:_aView];
+            //1秒后消失
+            [self performSelector:@selector(removeView) withObject:self afterDelay:1];
             
-            
-            return;
         }
         
-        _pageIndex++;
-       
-        [activity start];
         
-        httpRequest *http = [[httpRequest alloc] init];
-        http.httpDelegate = self;
-
-        [http httpRequestSend:[NSString stringWithFormat:@"%@user/GetMyMessageList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&PageIndex=%d&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],_pageIndex,[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
+        
+        return;
+    }
+    
+    _pageIndex++;
+    
+    [activity start];
+    
+    httpRequest *http = [[httpRequest alloc] init];
+    http.httpDelegate = self;
+    
+    [http httpRequestSend:[NSString stringWithFormat:@"%@user/GetMyMessageList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&PageIndex=%d&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],_pageIndex,[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
+        
+        if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
+        {
             
-            if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
-            {
-                
-                [_messageArray addObjectsFromArray:[dic objectForKey:@"List"]];
-                [self.messageTableView reloadData];
-
-                [activity stop];
-
-                
-            }
-            else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"99"])
-            {
-                [activity stop];
-                _pageIndex--;
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"系统异常" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                [alert show];
-            }
-            else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
-            {
-                [activity stop];
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的账号在别处登录,请重新登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-                alert.tag = 1;
-                alert.delegate = self;
-                [alert show];
-                _pageIndex = 0;
-                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"LoginName"];
-                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"ReallyName"];
-                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"hasLogIn"];
-                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"Token"];
-                
-            }
-        }];
-        
-        [vc performSelector:@selector(doneWithView:) withObject:refreshView];
-
-    };
-    
-    _footer = footer;
-    
-
+            [_messageArray addObjectsFromArray:[dic objectForKey:@"List"]];
+            [self.messageTableView reloadData];
+            
+            [activity stop];
+            
+            
+        }
+        else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"99"])
+        {
+            [activity stop];
+            _pageIndex--;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"系统异常" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+        else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
+        {
+            [activity stop];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的账号在别处登录,请重新登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+            alert.tag = 1;
+            alert.delegate = self;
+            [alert show];
+            _pageIndex = 0;
+            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"LoginName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"ReallyName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"hasLogIn"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"Token"];
+            
+        }
+    }];
 
 }
 
@@ -189,15 +178,6 @@
 {
     [_aView removeFromSuperview];
     _isRemove=FALSE;
-}
-
-
--(void)doneWithView:(MJRefreshBaseView *)refreshView
-{
-    
-    [refreshView endRefreshing];
-    
-    
 }
 
 -(void)loadUI
@@ -240,6 +220,7 @@
 
             self.totalMessageCount = [[dic objectForKey:@"TotalCount"] intValue];
             self.totalMessagePage = [[dic objectForKey:@"TotalPage"] intValue];
+            NSLog(@"%d",_totalMessagePage);
             self.messageArray =[NSMutableArray arrayWithArray:[dic objectForKey:@"List"]];
             [self.messageTableView reloadData];
             [activity stop];
@@ -332,7 +313,25 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return [self.messageArray count];
+    if (_pageIndex+1 >= _totalMessagePage)
+    {
+        return [self.messageArray count];
+        
+    }
+    else
+    {
+        if(_totalMessagePage >1)
+        {
+            return [self.messageArray count]+1;
+            
+        }
+        else
+        {
+            return [self.messageArray count];
+            
+        }
+    }
+
 
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -365,64 +364,74 @@
         }
         
     }
-
     
-    if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Type"] isEqualToString:@"0"])
+    if(indexPath.row < _messageArray.count)
     {
-        UIImageView *imageLine = [[UIImageView alloc] initWithFrame:CGRectMake(314, 0, 6, 90.0)];
-        [cell addSubview:imageLine];
+        if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Type"] isEqualToString:@"0"])
+        {
+            UIImageView *imageLine = [[UIImageView alloc] initWithFrame:CGRectMake(314, 0, 6, 90.0)];
+            [cell addSubview:imageLine];
+            
+            [imageLine setImage:[UIImage imageNamed:@"消息中心_03.png"]];
+            imageLine.tag = 100 +indexPath.row;
+            
+        }
+        else
+        {   UIImageView *imageLine = [[UIImageView alloc] initWithFrame:CGRectMake(314, 0, 6, 90.0)];
+            [cell addSubview:imageLine];
+            
+
+            [imageLine setImage:[UIImage imageNamed:@"消息中心_05.png"]];
+            imageLine.tag = 100 +indexPath.row;
+            
+            
+        }
+    
+    
+        cell.timeLabel.hidden = NO;
+
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
-        [imageLine setImage:[UIImage imageNamed:@"消息中心_03.png"]];
-        imageLine.tag = 100 +indexPath.row;
         
+        
+        cell.contentLabel.text = [[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Content"];
+        cell.contentLabel.tag = 1000 + indexPath.row;
+        cell.contentLabel.textAlignment = NSTextAlignmentLeft;
+        
+        
+        
+        cell.timeLabel.text = [[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"CreateTime"];
+        cell.timeLabel.tag = 10000 + indexPath.row;
+        
+        
+        
+        
+        
+        if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"IsRead"] isEqualToString:@"1"]) {
+            ((UILabel *)[cell viewWithTag:1000 + indexPath.row ]).textColor = [UIColor grayColor];
+            ((UILabel *)[cell viewWithTag:10000 + indexPath.row ]).textColor = [UIColor grayColor];
+            
+            //        cell.contentLabel.textColor = [UIColor grayColor];
+            //        cell.timeLabel.textColor = [UIColor grayColor];
+        }
+        else
+        {
+            
+            ((UILabel *)[cell viewWithTag:1000 + indexPath.row ]).textColor = [UIColor blackColor];
+            ((UILabel *)[cell viewWithTag:10000 + indexPath.row ]).textColor = [UIColor blackColor];
+            
+            
+        }
+
     }
     else
-    {   UIImageView *imageLine = [[UIImageView alloc] initWithFrame:CGRectMake(314, 0, 6, 90.0)];
-        [cell addSubview:imageLine];
-        
-
-        [imageLine setImage:[UIImage imageNamed:@"消息中心_05.png"]];
-        imageLine.tag = 100 +indexPath.row;
-        
-        
-    }
-    
-
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    
-    
-    
-    cell.contentLabel.text = [[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"Content"];
-    cell.contentLabel.tag = 1000 + indexPath.row;
-    
-    
-    
-    cell.timeLabel.text = [[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"CreateTime"];
-    cell.timeLabel.tag = 10000 + indexPath.row;
-    
-    
-    
-    
-    
-    if ([[[self.messageArray objectAtIndex:indexPath.row] objectForKey:@"IsRead"] isEqualToString:@"1"]) {
-        ((UILabel *)[cell viewWithTag:1000 + indexPath.row ]).textColor = [UIColor grayColor];
-        ((UILabel *)[cell viewWithTag:10000 + indexPath.row ]).textColor = [UIColor grayColor];
-
-//        cell.contentLabel.textColor = [UIColor grayColor];
-//        cell.timeLabel.textColor = [UIColor grayColor];
-    }
-    else
     {
-    
-        ((UILabel *)[cell viewWithTag:1000 + indexPath.row ]).textColor = [UIColor blackColor];
-        ((UILabel *)[cell viewWithTag:10000 + indexPath.row ]).textColor = [UIColor blackColor];
-
-    
+        cell.timeLabel.hidden = YES;
+        cell.contentLabel.text = @"正在加载...";
+        cell.contentLabel.textAlignment = NSTextAlignmentCenter;
+        [self loadMore];
     }
     
-    
-    
-
     
     return cell;
 }

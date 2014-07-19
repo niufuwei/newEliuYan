@@ -86,9 +86,8 @@
         [self.view addSubview:_myOrderTableView];
         
         [self loadUI];
-        [self addFooter];
     }
-    }
+}
 
 
 }
@@ -186,98 +185,80 @@
 
 
 }
--(void)addFooter
-{
 
-    __unsafe_unretained MyOrderViewController *vc = self;
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-    footer.scrollView = self.myOrderTableView;
-    footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
+
+-(void)loadMore{
+    // Load some data here, it may take some time
+    [self performSelector:@selector(loadFinish) withObject:nil afterDelay:0.0];
     
-  
-        _pageIndex++;
-        if (_pageIndex >= _totalPage)
-        {
-            [refreshView endRefreshing];
+    //    [self performSelectorOnMainThread:@selector(loadFinish) withObject:nil waitUntilDone:YES];
+}
+
+-(void)loadFinish{
+    
+    _pageIndex++;
+    if (_pageIndex >= _totalPage)
+    {
+        if (!_isRemove) {
+            _isRemove=TRUE;
+            _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
+            _aView.backgroundColor=[UIColor blackColor];
+            UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
+            aLabel.font=[UIFont systemFontOfSize:13];
+            aLabel.textAlignment=YES;
+            aLabel.textColor=[UIColor whiteColor];
+            aLabel.backgroundColor = [UIColor clearColor];
+            aLabel.text=@"没有更多订单";
+            [_aView addSubview:aLabel];
+            [self.view addSubview:_aView];
+            //1秒后消失
+            [self performSelector:@selector(removeView) withObject:self afterDelay:1];
             
-            if (!_isRemove) {
-                _isRemove=TRUE;
-                _aView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height-65, 100, 25)];
-                _aView.backgroundColor=[UIColor blackColor];
-                UILabel *aLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, _aView.frame.size.width, _aView.frame.size.height)];
-                aLabel.font=[UIFont systemFontOfSize:13];
-                aLabel.textAlignment=YES;
-                aLabel.textColor=[UIColor whiteColor];
-                aLabel.backgroundColor = [UIColor clearColor];
-                aLabel.text=@"没有更多订单";
-                [_aView addSubview:aLabel];
-                [self.view addSubview:_aView];
-                //1秒后消失
-                [self performSelector:@selector(removeView) withObject:self afterDelay:1];
-                
-            }
- 
-            return;
-        
         }
         
-        [activity start];
+        return;
         
-        httpRequest *http = [[httpRequest alloc] init];
-        [http httpRequestSend:[NSString stringWithFormat:@"%@order/GetMyOrderList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&PageIndex=%d&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],_pageIndex,[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
-            
-            if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
-            {                
-                [_list addObjectsFromArray:[dic objectForKey:@"List"]];
-                [self.myOrderTableView reloadData];
-                [activity stop];
-                
-            }
-            else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"99"])
-            {
-                 [activity stop];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"系统异常" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                [alert show];
-            }
-            else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
-            {
-                [activity stop];
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的账号在别处登录,请重新登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-                alert.tag = 1;
-                alert.delegate = self;
-                [alert show];
-                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"hasLogIn"];
-                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"Token"];
-                
-            }
-        }];
-        
-        [vc performSelector:@selector(doneWithView:) withObject:refreshView];
-        
-      };
-
-    _footer = footer;
+    }
     
-
-
+    [activity start];
+    
+    httpRequest *http = [[httpRequest alloc] init];
+    [http httpRequestSend:[NSString stringWithFormat:@"%@order/GetMyOrderList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Id=%@&PageIndex=%d&Token=%@",[appDelegate.appDefault objectForKey:@"UserId"],_pageIndex,[appDelegate.appDefault objectForKey:@"Token"]] backBlock:^(NSDictionary * dic) {
+        
+        if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
+        {
+            [_list addObjectsFromArray:[dic objectForKey:@"List"]];
+            [self.myOrderTableView reloadData];
+            [activity stop];
+            
+        }
+        else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"99"])
+        {
+            [activity stop];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"系统异常" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+        else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
+        {
+            [activity stop];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的账号在别处登录,请重新登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+            alert.tag = 1;
+            alert.delegate = self;
+            [alert show];
+            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"hasLogIn"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"Token"];
+            
+        }
+    }];
 
 }
+
 
 -(void)removeView
 {
     [_aView removeFromSuperview];
     _isRemove=FALSE;
-}
-
-
-
--(void)doneWithView:(MJRefreshBaseView *)refreshView
-{
-
-    [refreshView endRefreshing];
-
-
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -329,7 +310,24 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return [self.list count];
+    if (_pageIndex+1 >= _totalPage)
+    {
+        return [self.list count];
+
+    }
+    else
+    {
+        if(_totalPage >1)
+        {
+            return [self.list count]+1;
+
+        }
+        else
+        {
+            return [self.list count];
+
+        }
+    }
 
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -349,57 +347,80 @@
         cell.backgroundColor = eliuyan_color(0xf5f5f5);
         
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.orderNumberLabel.text = [[self.list objectAtIndex:indexPath.row] objectForKey:@"OrderNumber"];
-    if ([[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==1  || [[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==3)
+    if(indexPath.row < self.list.count)
     {
-        //超市
-        cell.orderMoneyLabel.text =[NSString stringWithFormat:@"%@元",[[self.list objectAtIndex:indexPath.row] objectForKey:@"OrderPrice"]];
-        cell.orderMoneyLabel.textColor=[UIColor blackColor];
+        cell.label1.hidden= NO;
+        cell.label2.hidden= NO;
+        cell.label3.hidden= NO;
+        cell.orderNumberLabel.hidden = NO;
+        cell.orderStateLabel.hidden=  NO;
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.orderNumberLabel.text = [[self.list objectAtIndex:indexPath.row] objectForKey:@"OrderNumber"];
+        if ([[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==1  || [[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==3)
+        {
+            //超市
+            cell.orderMoneyLabel.text =[NSString stringWithFormat:@"%@元",[[self.list objectAtIndex:indexPath.row] objectForKey:@"OrderPrice"]];
+            cell.orderMoneyLabel.textColor=[UIColor blackColor];
+        }
+        else
+        {
+            cell.orderMoneyLabel.text =@"——";
+            cell.orderMoneyLabel.textColor=[UIColor grayColor];
+        }
+        
+        
+        
+        if ([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"1"])
+        {
+            cell.orderStateLabel.text = @"等待送货";
+            cell.orderStateLabel.textColor = [UIColor redColor];
+        }
+        else if([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"2"])
+        {
+            
+            cell.orderStateLabel.text = @"送货中";
+            cell.orderStateLabel.textColor = [UIColor redColor];
+            
+        }
+        else if([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"3"])
+        {
+            
+            cell.orderStateLabel.text = @"送货中";
+            cell.orderStateLabel.textColor = [UIColor redColor];
+        }
+        else if ([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"4"])
+        {
+            cell.orderStateLabel.text = @"订单完成";
+            cell.orderStateLabel.textColor = [UIColor blackColor];
+            
+            
+        }
+        else if ([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"5"])
+        {
+            cell.orderStateLabel.text = @"订单取消";
+            cell.orderStateLabel.textColor = [UIColor blackColor];
+            
+        }
+        
+        //cell.accessoryType = UITableViewCellStyleValue1;
+        cell.accessoryView = (UIView *)[[UIImageView alloc ] initWithImage:[UIImage imageNamed:@"未标题-3_12.png"]];
+        [cell.accessoryView setFrame:CGRectMake(290, 12, 10, 10)];
     }
     else
     {
-        cell.orderMoneyLabel.text =@"——";
-        cell.orderMoneyLabel.textColor=[UIColor grayColor];
+        
+        cell.accessoryView = (UIView *)[[UIImageView alloc ] initWithImage:[UIImage imageNamed:@"tm.png"]];
+        
+        cell.label1.hidden= YES;
+        cell.label2.hidden= YES;
+        cell.label3.hidden= YES;
+        cell.orderNumberLabel.hidden = YES;
+        cell.orderStateLabel.hidden=  YES;
+        cell.orderMoneyLabel.text = @"正在加载...";
+        [self loadMore];
     }
-    
    
- 
-    if ([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"1"])
-    {
-        cell.orderStateLabel.text = @"等待送货";
-        cell.orderStateLabel.textColor = [UIColor redColor];
-    }
-    else if([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"2"])
-    {
-    
-        cell.orderStateLabel.text = @"送货中";
-        cell.orderStateLabel.textColor = [UIColor redColor];
-    
-    }
-    else if([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"3"])
-    {
-    
-        cell.orderStateLabel.text = @"送货中";
-        cell.orderStateLabel.textColor = [UIColor redColor];
-    }
-    else if ([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"4"])
-    {
-        cell.orderStateLabel.text = @"订单完成";
-        cell.orderStateLabel.textColor = [UIColor blackColor];
-    
-    
-    }
-    else if ([[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] objectForKey:@"Status"]] isEqualToString:@"5"])
-    {
-        cell.orderStateLabel.text = @"订单取消";
-        cell.orderStateLabel.textColor = [UIColor blackColor];
-
-    }
-      
-    //cell.accessoryType = UITableViewCellStyleValue1;
-    cell.accessoryView = (UIView *)[[UIImageView alloc ] initWithImage:[UIImage imageNamed:@"未标题-3_12.png"]];
-    [cell.accessoryView setFrame:CGRectMake(290, 12, 10, 10)];
     return cell;
 
 

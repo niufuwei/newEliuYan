@@ -15,12 +15,12 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 80, 20)];
-        label1.text = @"订单编号:";
-        label1.backgroundColor = [UIColor clearColor];
-        label1.font = [UIFont systemFontOfSize:15.0];
-        label1.textColor = [UIColor grayColor];
-        [self addSubview:label1];
+        _label1 = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 80, 20)];
+        _label1.text = @"订单编号:";
+        _label1.backgroundColor = [UIColor clearColor];
+        _label1.font = [UIFont systemFontOfSize:15.0];
+        _label1.textColor = [UIColor grayColor];
+        [self addSubview:_label1];
         
         
         _orderNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 200, 20)];
@@ -29,13 +29,13 @@
         [self addSubview:_orderNumberLabel];
         
         
-        UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(5, 25, 80, 20)];
-        label2.text = @"订单金额:";
-        label2.backgroundColor = [UIColor clearColor];
-        label2.font = [UIFont systemFontOfSize:15.0];
-        label2.textColor = [UIColor grayColor];
+        _label2 = [[UILabel alloc] initWithFrame:CGRectMake(5, 25, 80, 20)];
+        _label2.text = @"订单金额:";
+        _label2.backgroundColor = [UIColor clearColor];
+        _label2.font = [UIFont systemFontOfSize:15.0];
+        _label2.textColor = [UIColor grayColor];
 
-        [self addSubview:label2];
+        [self addSubview:_label2];
         
         _orderMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 25, 120, 20)];
         _orderMoneyLabel.font = [UIFont systemFontOfSize:15.0];
@@ -44,13 +44,13 @@
         
         
         
-        UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 80, 20)];
-        label3.text = @"订单状态:";
-        label3.backgroundColor = [UIColor clearColor];
-        label3.font = [UIFont systemFontOfSize:15.0];
-        label3.textColor = [UIColor grayColor];
+        _label3 = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 80, 20)];
+        _label3.text = @"订单状态:";
+        _label3.backgroundColor = [UIColor clearColor];
+        _label3.font = [UIFont systemFontOfSize:15.0];
+        _label3.textColor = [UIColor grayColor];
 
-        [self addSubview:label3];
+        [self addSubview:_label3];
         
         _orderStateLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 50, 120, 20)];
         _orderStateLabel.font = [UIFont systemFontOfSize:15.0];

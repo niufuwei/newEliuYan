@@ -19,5 +19,8 @@
 @property (nonatomic,strong)UILabel *orderNumberLabel;
 @property (nonatomic,strong)UILabel *orderMoneyLabel;
 @property (nonatomic,strong)UILabel *orderStateLabel;
+@property (nonatomic,strong) UILabel *label3;
+@property (nonatomic,strong) UILabel *label2;
+@property (nonatomic,strong) UILabel *label1;
 
 @end
