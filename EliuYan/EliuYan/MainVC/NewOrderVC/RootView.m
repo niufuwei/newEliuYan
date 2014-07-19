@@ -261,7 +261,8 @@
     NSLog(@"array is %@",arrayDetail);
 //    totalPage=[allDic objectForKey:@"TotalPage"];
     
-    if ([arrayDetail count]==0) {
+    if ([arrayDetail count]==0)
+    {
         LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height) image:@"无信息页面.png"];
         [loadView changeLabel:@"我尽力了，还是看不到"];
         [self addSubview:loadView];
