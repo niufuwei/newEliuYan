@@ -116,6 +116,10 @@
     if ([self.pics count]>3) {
         scrollTimer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(scrollTopic) userInfo:nil repeats:YES];
     }
+    else
+    {
+        [self setContentSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
+    }
 }
 -(void)click:(id)sender{
    
