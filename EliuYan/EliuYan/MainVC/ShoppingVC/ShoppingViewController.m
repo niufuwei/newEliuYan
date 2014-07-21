@@ -120,20 +120,20 @@
     _location = [[CLLocationManager alloc] init];
     _location.delegate = self;
     [_location startUpdatingLocation];
-    if(![CLLocationManager locationServicesEnabled]) {
-        NSLog(@"没有开启");
-       if([[[NSUserDefaults standardUserDefaults] objectForKey:@"isCLLocationFirst"] isEqualToString:@"no"])
-        {
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"定位服务未开启" message:@"请在系统设置中开启定位服务（设置->隐私->定位服务->开启一溜烟）" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
-        }
-        else
-        {
-            [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isCLLocationFirst"];
-        }
-        
-    }
-    else
+//    if(![CLLocationManager locationServicesEnabled]) {
+//        NSLog(@"没有开启");
+//       if([[[NSUserDefaults standardUserDefaults] objectForKey:@"isCLLocationFirst"] isEqualToString:@"no"])
+//        {
+//            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"定位服务未开启" message:@"请在系统设置中开启定位服务（设置->隐私->定位服务->开启一溜烟）" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [alert show];
+//        }
+//        else
+//        {
+//            [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isCLLocationFirst"];
+//        }
+//        
+//    }
+//    else
     {
         
         //NavCustom *nav=[[NavCustom alloc] init];
