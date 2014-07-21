@@ -211,7 +211,7 @@
     conFirm.frame = CGRectMake(320-100+10+10, 10+49, 70, 30);
 //    [conFirm setBackgroundColor:[UIColor redColor]];
     conFirm.titleLabel.font=[UIFont systemFontOfSize:15];
-    [conFirm setTitle:@"确认下单" forState:UIControlStateNormal];
+    [conFirm setTitle:@"下一步" forState:UIControlStateNormal];
 //    [conFirm setTintColor:[UIColor whiteColor]];
     [conFirm setBackgroundColor:eliuyan_color(0xe94f4f)];
     //[conFirm setBackgroundImage:[UIImage imageNamed:@"确认收货-按下.png"] forState:UIControlStateHighlighted];

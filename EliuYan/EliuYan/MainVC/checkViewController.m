@@ -284,7 +284,7 @@
     _conFirm.frame = CGRectMake(320-100+10+10, 10+49, 70, 30);
     [_conFirm setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:79.0/255.0 blue:79.0/255.0 alpha:1]];
     _conFirm.titleLabel.font=[UIFont systemFontOfSize:15];
-    [_conFirm setTitle:@"确认下单" forState:UIControlStateNormal];
+    [_conFirm setTitle:@"下一步" forState:UIControlStateNormal];
     [_conFirm setTintColor:[UIColor whiteColor]];
     _conFirm.tag=104;
     [_conFirm addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
