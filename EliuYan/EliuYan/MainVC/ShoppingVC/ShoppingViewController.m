@@ -541,6 +541,11 @@
 
             }
         }
+        else
+        {
+            _topViewHasNotLoad = YES;
+
+        }
     }
 }
 
