@@ -432,10 +432,12 @@
         if(allDict!=nil)
         {
             _loadViewHasAppear = NO;
-            _topViewHasNotLoad = NO;
+            NSLog(@"alldic is %@",allDict);
             NSArray *array=[allDict objectForKey:@"List"];
+            NSLog(@"array is %@",array);
             if([array count]!=0)
             {
+                _topViewHasNotLoad = NO;
                 _urlArray = [[NSMutableArray alloc] init];
                 _activityIdArray = [[NSMutableArray alloc] init];
                 _titleArray = [[NSMutableArray alloc] init];
@@ -474,6 +476,12 @@
                     [pageControl setHidden:NO];
                 }
                 
+            }
+            else
+            {
+            
+                _topViewHasNotLoad = YES;
+
             }
         }
     }
