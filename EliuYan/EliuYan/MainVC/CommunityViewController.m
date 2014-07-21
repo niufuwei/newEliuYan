@@ -11,7 +11,6 @@
 #import "PropertyCostViewController.h"
 #import "NavCustom.h"
 #import "MaintenanceViewController.h"
-#import "LoadingView.h"
 
 @interface CommunityViewController ()
 {
@@ -53,10 +52,24 @@
     myActivity = [[Activity alloc] initWithActivity:self.view];
     [myActivity start];
 
+    //请求服务器
+    [self httpRequest];
+    
+    
+    // Do any additional setup after loading the view.
+}
+
+-(void)httpRequest
+{
     httpRequest * http = [[httpRequest alloc] init];
     http.httpDelegate = self;
     [http httpRequestSend:[NSString stringWithFormat:@"%@store/GetRecentCommunity",SERVICE_ADD] parameter:[NSString stringWithFormat:@"Lng=%@&Lat=%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"lng"],[[NSUserDefaults standardUserDefaults]objectForKey:@"lat"]] backBlock:^(NSDictionary *str) {
         [myActivity stop];
+       
+        [reFresh removeFromSuperview];
+        
+        [_loadView removeFromSuperview];
+        
         _CommunityName = [[str objectForKey:@"StoreName"] length]==0?@"请选择":[str objectForKey:@"StoreName"];
         _stroeID = [str objectForKey:@"StoreId"];
         _telPhone = [str objectForKey:@"TelPhone"];
@@ -64,24 +77,55 @@
         
         if([[str objectForKey:@"StoreName"] length]==0)
         {
-            LoadingView* _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+            [_loadView removeFromSuperview];
+            _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
             _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) image:@"无服务.png"];
             [_loadView changeLabel:@"喔哦,社区服务暂未覆盖您的小区"];
-            [self.view addSubview:_loadView];        }
-    }];
-   
-    
-    // Do any additional setup after loading the view.
-}
+            [self.view addSubview:_loadView];
+            
+            [reFresh removeFromSuperview];
+            reFresh = [UIButton buttonWithType:UIButtonTypeCustom];
+            reFresh.frame=  CGRectMake(self.view.frame.size.width/2-100, 250, 200, 100);
+            [reFresh setTitle:@"刷新" forState:UIControlStateNormal];
+            [reFresh setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            [reFresh addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventTouchUpInside];
+            [self.view addSubview:reFresh];
 
+        }
+    }];
+
+}
 -(void)httpRequestError:(NSString *)str
 {
     [myActivity stop];
-   LoadingView* _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    [_loadView removeFromSuperview];
     _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) image:@"无服务.png"];
     [_loadView changeLabel:@"喔哦,社区服务暂未覆盖您的小区"];
+    
     [self.view addSubview:_loadView];
+    
+    [reFresh removeFromSuperview];
+    reFresh = [UIButton buttonWithType:UIButtonTypeCustom];
+    reFresh.frame=  CGRectMake(self.view.frame.size.width/2-100, 250, 200, 100);
+    [reFresh setTitle:@"刷新" forState:UIControlStateNormal];
+    [reFresh setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [reFresh addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:reFresh];
 
+}
+
+-(void)onRefresh:(id)sender
+{
+    if([reFresh.titleLabel.text isEqualToString:@"正在刷新，请稍等..."])
+    {
+        
+    }
+    else
+    {
+        [reFresh setTitle:@"正在刷新，请稍等..." forState:UIControlStateNormal];
+        [self httpRequest];
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

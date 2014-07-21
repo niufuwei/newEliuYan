@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "httpRequest.h"
 #import "Activity.h"
+#import "LoadingView.h"
 
 @interface CommunityViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,httpRequestDelegate>
 {
     Activity * myActivity;
+    LoadingView* _loadView;
+    UIButton * reFresh;
 }
 
 @property (nonatomic,strong) UITableView * table;

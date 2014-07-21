@@ -670,8 +670,6 @@
 }
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    
-    
     [activity stop];
     
     NSURL *fileUrl = [NSURL URLWithString:_savePath];
@@ -679,9 +677,6 @@
     [self.Player prepareToPlay];
     [self.Player setDelegate:self];
     //self.player.numberOfLoops = 1;
-    
-    
-    
 }
 //播放音频
 -(void)play:(UIButton *)sender
