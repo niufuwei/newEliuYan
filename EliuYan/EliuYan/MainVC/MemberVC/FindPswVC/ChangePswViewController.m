@@ -103,7 +103,7 @@
     
     UIButton *showBtn = [[UIButton alloc] initWithFrame:CGRectMake(215, 158+20, 20, 20)];
     [showBtn setBackgroundImage:[UIImage imageNamed:@"显示密码-未选.png"] forState:UIControlStateNormal];
-    [showBtn addTarget:self action:@selector(showBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [showBtn addTarget:self action:@selector(showBtn1:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showBtn];
     
     
@@ -160,8 +160,10 @@
     }
 
 }
--(void)showBtn:(UIButton *)btn
+-(void)showBtn1:(UIButton *)btn
 {
+    [_numberTF resignFirstResponder];
+    [_newPswTF resignFirstResponder];
     
     _isShow = !_isShow;
     
