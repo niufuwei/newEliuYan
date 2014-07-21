@@ -46,6 +46,59 @@
     }
     return self;
 }
+- (void)locationManager: (CLLocationManager *)manager
+       didFailWithError: (NSError *)error {
+    
+    NSString *errorString;
+    [manager stopUpdatingLocation];
+    [activity stop];
+    
+    [_loadView removeFromSuperview];
+    if (IOS_VERSION > 7)
+    {
+        
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 131, 320, self.view.frame.size.height-131-49) image:@"无信息页面.png"];
+    }
+    else
+    {
+        _loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 131, 320, self.view.frame.size.height-131-49) image:@"无信息页面.png"];
+        
+    }
+    _loadViewHasAppear = YES;
+    [_loadView changeLabel:@"我尽力了，还是看不到"];
+    [self.view addSubview:_loadView];
+
+    NSLog(@"Error: %@",[error localizedDescription]);
+    switch([error code]) {
+        case kCLErrorDenied:
+            //Access denied by user
+        {
+            errorString = @"请在系统设置中开启定位服务（设置->隐私->定位服务->开启一溜烟）";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"定位服务未开启" message:errorString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+
+        }
+            //Do something...
+            break;
+        case kCLErrorLocationUnknown:
+            //Probably temporary...
+        {
+            errorString = @"Location data unavailable";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            //Do something else...
+            break;
+        default:
+        {
+            errorString = @"An unknown error has occurred";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            break;
+    }
+}
+
 
 - (void)viewDidLoad
 {
@@ -64,6 +117,9 @@
     
     self.view.backgroundColor=eliuyan_color(0xf5f5f5);
 
+    _location = [[CLLocationManager alloc] init];
+    _location.delegate = self;
+    [_location startUpdatingLocation];
     if(![CLLocationManager locationServicesEnabled]) {
         NSLog(@"没有开启");
        if([[[NSUserDefaults standardUserDefaults] objectForKey:@"isCLLocationFirst"] isEqualToString:@"no"])
@@ -275,6 +331,7 @@
 -(void)viewDidGetLocatingUser:(CLLocationCoordinate2D)userLoc
 {
     
+    [_location stopUpdatingLocation];
 
     NSString *lat=[NSString stringWithFormat:@"%f",userLoc.latitude];
     NSString *lng=[NSString stringWithFormat:@"%f",userLoc.longitude];
@@ -518,10 +575,7 @@
     }
     else
     {
-    
         _topViewHasNotLoad = YES;
-        
-    
     }
 
 }
