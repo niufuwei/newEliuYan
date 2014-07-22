@@ -354,7 +354,8 @@
         cell.label3.hidden= NO;
         cell.orderNumberLabel.hidden = NO;
         cell.orderStateLabel.hidden=  NO;
-        
+        cell.orderMoneyLabel.textAlignment = NSTextAlignmentLeft;
+
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.orderNumberLabel.text = [[self.list objectAtIndex:indexPath.row] objectForKey:@"OrderNumber"];
         if ([[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==1  || [[[self.list objectAtIndex:indexPath.row] objectForKey:@"StoreType"] intValue]==3)
@@ -418,6 +419,7 @@
         cell.orderNumberLabel.hidden = YES;
         cell.orderStateLabel.hidden=  YES;
         cell.orderMoneyLabel.text = @"正在加载中...";
+        cell.orderMoneyLabel.textAlignment = NSTextAlignmentCenter;
         [self loadMore];
     }
    
