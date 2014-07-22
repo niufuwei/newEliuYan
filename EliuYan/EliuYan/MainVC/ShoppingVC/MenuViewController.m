@@ -617,6 +617,8 @@
           
             if(indexPath.row <[_goodsArray count])
             {
+                cell.contentLabel.textAlignment = NSTextAlignmentLeft;
+
                 if (tableView.tag==103) {//超市列表
                     cell.backgroundColor=[UIColor whiteColor];
                     cell.selectionStyle=UITableViewCellSelectionStyleNone;
@@ -754,6 +756,7 @@
 
                 }
                 cell.contentLabel.text = @"正在加载中...";
+                cell.contentLabel.textAlignment = NSTextAlignmentCenter;
                 [self loadMore];
             }
         }
