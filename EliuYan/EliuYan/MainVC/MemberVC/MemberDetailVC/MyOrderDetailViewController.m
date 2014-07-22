@@ -189,7 +189,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     
     //付款方式
     _label8 = [[UILabel alloc ]initWithFrame:CGRectMake(10, _label7.frame.origin.y+_label7.frame.size.height+5, 300, 15)];
-    _label8.text = @"付款方式 货到付款";
+    _label8.text = @"付款方式  货到付款";
     _label8.font = [UIFont systemFontOfSize:13];
     _label8.backgroundColor = [UIColor clearColor];
     [aView addSubview:_label8];
