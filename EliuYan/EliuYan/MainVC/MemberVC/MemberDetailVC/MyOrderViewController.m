@@ -417,7 +417,7 @@
         cell.label3.hidden= YES;
         cell.orderNumberLabel.hidden = YES;
         cell.orderStateLabel.hidden=  YES;
-        cell.orderMoneyLabel.text = @"正在加载...";
+        cell.orderMoneyLabel.text = @"正在加载中...";
         [self loadMore];
     }
    

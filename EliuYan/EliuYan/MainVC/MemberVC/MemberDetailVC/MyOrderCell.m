@@ -38,6 +38,8 @@
         [self addSubview:_label2];
         
         _orderMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 25, 120, 20)];
+//        _orderMoneyLabel.textColor=[UIColor grayColor];
+//        _orderMoneyLabel.textAlignment=YES;
         _orderMoneyLabel.font = [UIFont systemFontOfSize:15.0];
         _orderMoneyLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_orderMoneyLabel];

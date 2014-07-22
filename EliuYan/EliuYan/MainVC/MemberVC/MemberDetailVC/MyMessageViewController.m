@@ -408,7 +408,7 @@
     else
     {
         cell.timeLabel.hidden = YES;
-        cell.contentLabel.text = @"正在加载...";
+        cell.contentLabel.text = @"正在加载中...";
         cell.contentLabel.textAlignment = NSTextAlignmentCenter;
         [self loadMore];
     }
