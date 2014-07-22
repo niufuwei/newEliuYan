@@ -145,7 +145,7 @@
                 numberService.text = [NSString stringWithFormat:@"%d项服务",mCountService];
                 
                 [_dataMutableArray removeObjectAtIndex:currentRow];
-                [myTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForItem:currentRow inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [myTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForItem:currentRow inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
                 
                 [myTable reloadData];
             }

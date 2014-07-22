@@ -515,7 +515,7 @@
             }
             else
             {
-                cell.title.text = @"正在加载...";
+                cell.title.text = @"正在加载中...";
                 cell.logoImage.hidden = YES;
                 cell.money.hidden=  YES;
                 cell.selectButton.hidden= YES;

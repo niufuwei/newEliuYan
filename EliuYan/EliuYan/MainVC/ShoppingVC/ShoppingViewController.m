@@ -381,7 +381,16 @@
     
     NSRange range = [aLocation rangeOfString:@"市"];
     NSString *substring = [aLocation substringFromIndex:NSMaxRange(range)];
-    _locationLabel.text=[[NSString alloc] initWithFormat:@"%@",substring];
+        if (substring) {
+            _locationLabel.text=[[NSString alloc] initWithFormat:@"%@",substring];
+        }
+        else
+        {
+        
+            _locationLabel.text=@"";
+        
+        }
+    
 
     [[NSUserDefaults standardUserDefaults] setObject:substring forKey:@"searchAddress"];
     //保存具体信息的数组
@@ -702,6 +711,7 @@
         
         
         CGFloat min = [buyShop.minBuy floatValue];
+        cell.minBuy.font = [UIFont systemFontOfSize:12.0];
         cell.minBuy.text =[NSString stringWithFormat:@"%.f元起送",min];
         
         
