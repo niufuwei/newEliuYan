@@ -468,6 +468,8 @@
         }
         else{
             
+            cell.title.textAlignment = NSTextAlignmentLeft;
+
             cell.logoImage.hidden = NO;
             cell.money.hidden=  NO;
             cell.selectButton.hidden= NO;
@@ -515,7 +517,9 @@
             }
             else
             {
+
                 cell.title.text = @"正在加载中...";
+                cell.title.textAlignment = NSTextAlignmentCenter;
                 cell.logoImage.hidden = YES;
                 cell.money.hidden=  YES;
                 cell.selectButton.hidden= YES;

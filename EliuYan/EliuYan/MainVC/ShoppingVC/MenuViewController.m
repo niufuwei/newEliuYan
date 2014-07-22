@@ -636,7 +636,7 @@
                     cell.plaseBtn.hidden= NO;
                     cell.priceLabel.hidden = NO;
                     cell.logoImage.hidden = NO;
-
+                    cell.countLabel.hidden = NO;
                     
                     cell.countLabel.font = [UIFont systemFontOfSize:14];
                     cell.countLabel.text=[_countDic objectForKey:goodsDetail.goodsId];
@@ -688,6 +688,8 @@
                     cell.geButton.hidden = NO;
                     cell.logoImage.hidden = NO;
                     cell.priceLabel.hidden = NO;
+                    cell.countLabel.hidden= NO;
+
 
                     
                     //                if([[jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]] isEqualToString:@"jin"] || ![jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]])
@@ -737,6 +739,7 @@
                     cell.minusBtn.hidden = YES;
                     cell.plaseBtn.hidden= YES;
                     cell.priceLabel.hidden = YES;
+                    cell.countLabel.hidden= YES;
                     cell.logoImage.hidden = YES;
                 }
                 if(tableView.tag ==104)
@@ -747,6 +750,8 @@
                     cell.geButton.hidden = YES;
                     cell.logoImage.hidden = YES;
                     cell.priceLabel.hidden = YES;
+                    cell.countLabel.hidden= YES;
+
                 }
                 cell.contentLabel.text = @"正在加载中...";
                 [self loadMore];
@@ -871,6 +876,7 @@
                     cell.plaseBtn.hidden= NO;
                     cell.priceLabel.hidden = NO;
                     cell.logoImage.hidden = NO;
+                    cell.countLabel.hidden = NO;
 
                     
                     if([cell.countLabel.text intValue] ==0)
@@ -918,7 +924,8 @@
                     cell.geButton.hidden = NO;
                     cell.logoImage.hidden = NO;
                     cell.priceLabel.hidden = NO;
-                    
+                    cell.countLabel.hidden = NO;
+
                     //
                     //                if([[jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]] isEqualToString:@"jin"] || ![jingeDic objectForKey:[NSString stringWithFormat:@"%d",cell.jinButton.tag]])
                     //                {
@@ -967,6 +974,8 @@
                     cell.plaseBtn.hidden= YES;
                     cell.priceLabel.hidden = YES;
                     cell.logoImage.hidden = YES;
+                    cell.countLabel.hidden = YES;
+
                 }
                 if(tableView.tag ==102)
                 {
@@ -976,6 +985,8 @@
                     cell.geButton.hidden = YES;
                     cell.logoImage.hidden = YES;
                     cell.priceLabel.hidden = YES;
+                    cell.countLabel.hidden = YES;
+
                 }
                 cell.contentLabel.text = @"正在加载中...";
                 [self loadMore];
