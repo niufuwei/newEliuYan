@@ -216,13 +216,7 @@
             //登陆成功
             btn.userInteractionEnabled = YES;
 
-            if([[[NSUserDefaults standardUserDefaults] objectForKey:@"isBack"] isEqualToString:@"gerenzhongxin"])
-            {
-                _backBlock(@"1");
-//                [self.navigationController popViewControllerAnimated:YES];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isBack"];
-
-            }
+            
             
             [appDelegate.appDefault setObject:[dic objectForKey:@"UserId"] forKey:@"UserId"];
             [appDelegate.appDefault setObject:[dic objectForKey:@"LoginName"] forKey:@"LoginName"];
@@ -241,17 +235,10 @@
                     self.backBlock([NSString stringWithFormat:@"%@,%@",[appDelegate.appDefault objectForKey:@"LoginName"],[appDelegate.appDefault objectForKey:@"ReallyName"]]);
                 }
                 
-//                [self.navigationController popViewControllerAnimated:YES];
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isBackToDelivery"];
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isBack"];
             }
-            else
-            {
-                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"buttonHidden" object:nil];
-//                MemberDetailViewController *memberDetailVC=[[MemberDetailViewController alloc] init];
-//                [self.navigationController pushViewController:memberDetailVC animated:YES];
-            }
+            
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];
