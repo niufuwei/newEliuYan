@@ -123,7 +123,7 @@ static NSString *selected_backImageName = @"back_selected.png";
     
     
     
-    _label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, _label2.frame.origin.y +_label2.frame.size.height+10, 240, 15)];
+    _label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, _label2.frame.origin.y +_label2.frame.size.height-5, 300, 40)];
 //    _label1.text = @"您可以直接通过电话给商户取消订单";
     _label1.textColor=[UIColor whiteColor];
     _label1.backgroundColor = [UIColor clearColor];
@@ -499,7 +499,9 @@ static NSString *selected_backImageName = @"back_selected.png";
     else if([self.status isEqualToString:@"5"])
     {
         _label2.text = @"订单取消";
-        _label1.text = [NSString stringWithFormat:@"%@",[self.myOrderDic objectForKey:@"OrderReason"]];
+        _label1.lineBreakMode=NSLineBreakByWordWrapping;
+        _label1.numberOfLines=2;
+        _label1.text = [NSString stringWithFormat:@"取消原因：%@",[self.myOrderDic objectForKey:@"OrderReason"]];
         [_lineImageView setImage:[UIImage imageNamed:@"线5.png"]];
         [self.view viewWithTag:2500].hidden = YES;
         

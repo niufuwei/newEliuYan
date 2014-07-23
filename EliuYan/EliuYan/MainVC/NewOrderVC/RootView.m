@@ -65,7 +65,7 @@
         _statusLabel.textColor = [UIColor whiteColor];
         [backImage addSubview:_statusLabel];
         
-        alarmLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, _statusLabel.frame.origin.y +_statusLabel.frame.size.height+10, 240, 15)];
+        alarmLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, _statusLabel.frame.origin.y +_statusLabel.frame.size.height-5, 300, 40)];
 //        alarmLabel.text = @"您可以直接通过电话给商户取消订单";
         alarmLabel.textColor=[UIColor whiteColor];
         alarmLabel.backgroundColor = [UIColor clearColor];
@@ -334,7 +334,9 @@
             {
                 _statusLabel.text = @"订单取消";
 //                statusLabel.textColor = eliuyan_color(0xff5d51);
-                alarmLabel.text = oredrReason;
+                alarmLabel.lineBreakMode=NSLineBreakByWordWrapping;
+                alarmLabel.numberOfLines=2;
+                alarmLabel.text = [NSString stringWithFormat:@"取消原因：%@",oredrReason];
                 
                
             }

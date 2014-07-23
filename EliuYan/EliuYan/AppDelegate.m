@@ -213,7 +213,7 @@
     [self.window addSubview:_scrollView];
     
     //定时器
-    _timer =  [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(changeImage) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(changeImage) userInfo:nil repeats:YES];
     
 }
 
