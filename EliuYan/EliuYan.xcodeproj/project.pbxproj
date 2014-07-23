@@ -1908,8 +1908,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1928,7 +1928,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PROVISIONING_PROFILE = "343E5FD1-7F5C-42E2-9F3C-5A74588B023C";
+				PROVISIONING_PROFILE = "46792AE3-FFA6-4D47-A8D1-CA4A1E2E7376";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1949,8 +1949,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1961,7 +1961,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PROVISIONING_PROFILE = "343E5FD1-7F5C-42E2-9F3C-5A74588B023C";
+				PROVISIONING_PROFILE = "46792AE3-FFA6-4D47-A8D1-CA4A1E2E7376";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1970,8 +1970,8 @@
 		71125441191632A8003F7D63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EliuYan/EliuYan-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1990,6 +1990,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "46792AE3-FFA6-4D47-A8D1-CA4A1E2E7376";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
@@ -1999,8 +2000,8 @@
 		71125442191632A8003F7D63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EliuYan/EliuYan-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2019,6 +2020,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "46792AE3-FFA6-4D47-A8D1-CA4A1E2E7376";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv64";
 				WRAPPER_EXTENSION = app;
