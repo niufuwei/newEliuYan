@@ -58,7 +58,7 @@
     BOOL isSearchButtonPressed;
     BOOL _isRemove;
     UIButton * searchView;
-    
+    UIView *aView;
 }
 
 @property (nonatomic,strong) UITextField * searchBar;

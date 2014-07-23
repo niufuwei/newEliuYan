@@ -14,6 +14,9 @@
 #import "Activity.h"
 #import "MJRefresh.h"
 #import "CoreDataModel.h"
+#import "NavViewController.h"
+#import "MemberCenterViewController.h"
+
 
 @interface MaintenanceViewController ()
 {
@@ -191,7 +194,9 @@
     //判断userId 是否为空
     request.httpDelegate = self;
     
+//    NSLog(@".......%@",_storeID);
     [request httpRequestSend:[NSString stringWithFormat:@"%@store/CommunityNotice",SERVICE_ADD] parameter:[NSString stringWithFormat:@"StoreId=%@",_storeID] backBlock:^(NSDictionary *str) {
+//        NSLog(@">>>>>>>%@",str);
        advert.text = [str objectForKey:@"Notice"];
         advertisement  = [str objectForKey:@"Notice"];
        [self startAnimationIfNeeded];
@@ -266,7 +271,8 @@
         
         //刷新表
         [ContentTable reloadData];
-
+        
+        ContentTable.userInteractionEnabled=YES;
 //        [ContentTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 
     })];
@@ -546,6 +552,10 @@
 
         if(tableView.tag==101)
         {
+            
+            
+            ContentTable.userInteractionEnabled=NO;
+            
             [ContentTable setContentOffset:CGPointMake(0, 0) animated:NO];
             
             
@@ -692,6 +702,9 @@
     UIButton * btn = (UIButton *)sender;
     if(btn.tag ==103)
     {
+//        if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"hasLogIn"] isEqualToString:@"1"]) {
+//
+        
         if(mCountService ==0||!mCountService)
         {
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"请购买商品" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
@@ -722,7 +735,20 @@
             check.contentDictionary = typeDic;
             [self.navigationController pushViewController:check animated:YES];
         }
-       
+      
+        
+//        else{
+//            //给一个返回对应的界面的状态
+//            [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"isBack"];
+//            
+//            //提示框
+//            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您还没有登录，请登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+//            alert.delegate=self;
+//            alert.tag=111;
+//            [alert show];
+//            
+//        }
+
     }
     else
     {
@@ -786,6 +812,27 @@
         
     }
 }
+
+
+//#pragma mark -
+//#pragma mark -UIAlertViewDelegate
+//-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (alertView.tag==111) {
+//        if (buttonIndex==0) {
+//            //跳转到登录界面
+//            [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"isBack"];
+//            MemberCenterViewController *memberVC=[[MemberCenterViewController alloc] init];
+//            UINavigationController *nav1 = [[NavViewController alloc] initWithRootViewController:memberVC];
+//            [self presentViewController:nav1 animated:YES completion:^{
+//                
+//            }];
+//        }
+//
+//    }
+//    
+//}
+
 
 //点击导航栏右按钮触发
 -(void)detailStoreBtnClick:(id)sender
@@ -1017,7 +1064,7 @@
             aLabel.textAlignment=YES;
             aLabel.textColor=[UIColor whiteColor];
             aLabel.backgroundColor = [UIColor clearColor];
-            aLabel.text=@"没有更多商品";
+            aLabel.text=@"没有更多服务";
             [_aView addSubview:aLabel];
             [self.view addSubview:_aView];
             //1秒后消失

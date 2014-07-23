@@ -103,6 +103,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    [[NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(freshSelf) name:@"freshMainVC" object:nil];
+    
+    
+    
      [self hideTabBar:YES];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
         
@@ -260,6 +266,14 @@
     }
     
 }
+
+
+-(void)freshSelf
+{
+    _topViewHasNotLoad = YES;
+    
+    [self refreshBtnClick:self];
+}
 #pragma mark--
 #pragma mark ----JCTopicDelegate
 -(void)currentPage:(int)page total:(NSUInteger)total{
@@ -365,7 +379,7 @@
     //初始化数组
     if (request.tag == 10086)
     {
-     
+//     NSLog(@"....%@",request.responseString);
     _storeDetailArray = [[NSMutableArray alloc] initWithCapacity:0];
     isRefresh = FALSE;
 
@@ -500,7 +514,7 @@
             _loadViewHasAppear = NO;
             NSLog(@"alldic is %@",allDict);
             NSArray *array=[allDict objectForKey:@"List"];
-            NSLog(@"array is %@",array);
+//            NSLog(@"array is %@",array);
             if([array count]!=0)
             {
                 _topViewHasNotLoad = NO;

@@ -84,7 +84,8 @@
     
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetCategoryList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&StoreId=%@",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId] backBlock:(^(NSDictionary *dic){
         //解析数据self.storeId
-
+        
+        NSLog(@">>>>>>>%@",dic);
         dataArray=[dic objectForKey:@"List"];
 //        NSLog(@">>>>%@",dataArray);
         if(dataArray.count==0)
@@ -196,10 +197,6 @@
 -(void)createUI
 {
     nav=[[NavCustom alloc] init];
-    if(self.storeName.length >8)
-    {
-        self.storeName = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"StoreDescription"] substringToIndex:8] stringByAppendingString:@"..."];
-    }
     [nav setNav:self.storeName mySelf:self];
     
     [self setLeftItem];
@@ -285,6 +282,8 @@
         [self.view addSubview:_displayTableView];
 //        self.countLab.hidden=YES;
     }
+    
+    activity=[[Activity alloc] initWithActivity:self.view];
     
    
 }
@@ -1023,6 +1022,11 @@
 //    [_aView removeFromSuperview];
        if (tableView.tag==100)
        {
+           
+           _displayTableView.userInteractionEnabled=NO;
+           _fruitTableView.userInteractionEnabled=NO;
+           
+           
 //           [_displayTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 //           if([[menuSelectOnly objectForKey:[NSString stringWithFormat:@"%d",indexPath.row]] isEqualToString:@"ok"])
 //           {
@@ -1035,7 +1039,12 @@
 //           
 //           
 //           }
-
+           
+//           aView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+//           aView.backgroundColor=[UIColor blackColor];
+//           aView.alpha=0.5;
+//           [self.view addSubview:aView];
+           
            if ([self.storeType isEqualToString:@"水果店"])
            {
                [_fruitTableView setContentOffset:CGPointMake(0,0) animated:NO];
@@ -1049,7 +1058,7 @@
         if(![[menuSelectOnly objectForKey:[NSString stringWithFormat:@"%d",indexPath.row]] isEqualToString:@"ok"])
         {
             
-            
+            [activity start];
             
             _goodsArray = [[NSMutableArray alloc] initWithCapacity:0];
 //            GoodsTableViewCell *cell=(GoodsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
@@ -1084,6 +1093,7 @@
             [menuSelectOnly setObject:@"ok" forKey:[NSString stringWithFormat:@"%d",indexPath.row]];
             ((GoodsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath]).contentView.backgroundColor = [UIColor whiteColor];
             
+            [activity stop];
         }
         else
         {
@@ -1095,10 +1105,17 @@
 }
 -(void)request:(int)indexPath :(int)aPage
 {
+    
     httpRequest *request=[[httpRequest alloc] init];
     request.httpDelegate=self;
-    
+//    NSLog(@"<><><><><><%@",[appDelegate.appDefault objectForKey:@"UserId"]);
+//    NSLog(@"<><><><><>%@",self.storeId);
+//    NSLog(@"<><><><><><>%@",[_goodsCategoryIdArray objectAtIndex:0]);
+//    NSLog(@"<><><><><%d",aPage);
     [request httpRequestSend:[NSString stringWithFormat:@"%@goods/GetGoodsList",SERVICE_ADD] parameter:[NSString stringWithFormat:@"UserId=%@&StoreId=%@&GoodsCategoryId=%@&PageIndex=%d",[appDelegate.appDefault objectForKey:@"UserId"],self.storeId,[_goodsCategoryIdArray objectAtIndex:indexPath] ,aPage] backBlock:(^(NSDictionary *dic){
+        
+//        NSLog(@">>>>><<<<<<<%@",dic);
+        
         
         //解析数据
         //总页数
@@ -1139,7 +1156,11 @@
         //刷新表
         [_fruitTableView reloadData];
         [_displayTableView reloadData];
-       
+        _displayTableView.userInteractionEnabled=YES;
+        _fruitTableView.userInteractionEnabled=YES;
+
+//        [aView removeFromSuperview];
+        
     })];
     
 }

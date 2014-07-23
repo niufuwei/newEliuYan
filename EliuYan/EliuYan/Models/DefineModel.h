@@ -24,18 +24,17 @@
 
 ///////////////////////////////////
 //正式服务器
-
-//#define SERVICE_ADD @"http://www.chaoyongwenhua.com:8081/eliuyanservice/ely/"
-//#define aboutUsHtml @"http://www.chaoyongwenhua.com:9999/Protocol/eliuyanProtocol.html"
-//#define UPLOAD_FILE  @"http://www.chaoyongwenhua.com:9999/UploadAudio.ashx"
-//#define DOWNLOAD_FILE @"http://www.chaoyongwenhua.com:9999"
+#define SERVICE_ADD @"http://www.chaoyongwenhua.com:8081/eliuyanserviceNew/ely/"
+#define aboutUsHtml @"http://www.chaoyongwenhua.com:9999/Protocol/eliuyanProtocol.html"
+#define UPLOAD_FILE  @"http://www.chaoyongwenhua.com:9999/UploadAudio.ashx"
+#define DOWNLOAD_FILE @"http://www.chaoyongwenhua.com:9999"
 
 
 //测试服务器
-#define SERVICE_ADD @"http://192.168.18.159:8081/eliuyanservice/ely/"
-#define aboutUsHtml @"http://192.168.18.159:9999/Protocol/eliuyanProtocol.html"
-#define UPLOAD_FILE  @"http://192.168.18.159:9999/UploadAudio.ashx"
-#define DOWNLOAD_FILE @"http://192.168.18.159:9999"
+//#define SERVICE_ADD @"http://192.168.18.159:8081/eliuyanservice/ely/"
+//#define aboutUsHtml @"http://192.168.18.159:9999/Protocol/eliuyanProtocol.html"
+//#define UPLOAD_FILE  @"http://192.168.18.159:9999/UploadAudio.ashx"
+//#define DOWNLOAD_FILE @"http://192.168.18.159:9999"
 
 
 ///////////////////////////////////
