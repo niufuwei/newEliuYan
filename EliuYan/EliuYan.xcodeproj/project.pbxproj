@@ -1908,8 +1908,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1949,8 +1949,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1970,8 +1970,8 @@
 		71125441191632A8003F7D63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EliuYan/EliuYan-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2000,8 +2000,8 @@
 		71125442191632A8003F7D63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lingjuan chen (Q665WLAGRE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: lingjuan chen (WF7976Z973)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lingjuan chen (WF7976Z973)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EliuYan/EliuYan-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
