@@ -695,14 +695,7 @@ static NSString *selected_backImageName = @"back_selected.png";
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
 
-    
     [_activity stop];
-    
-    
-    
-    
-    
-    
     
     NSURL *fileUrl = [NSURL URLWithString:_savePath];
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
@@ -727,7 +720,6 @@ static NSString *selected_backImageName = @"back_selected.png";
     {
         
         [self.player play];
-        
 
     }
     

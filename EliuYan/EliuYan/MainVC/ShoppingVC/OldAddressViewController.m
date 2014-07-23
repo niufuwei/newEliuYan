@@ -465,7 +465,7 @@ static NSString *selected_backImageName = @"返回.png";
             }
             else
             {
-                //                NSLog(@">>>>>>>%@",[dic objectForKey:@"List"]);
+                NSLog(@">>>>>>>%@",[dic objectForKey:@"List"]);
                 for(int i=0;i<[[dic objectForKey:@"List"] count];i++)
                 {
                     [_dataArray addObject:[[dic objectForKey:@"List"] objectAtIndex:i]];

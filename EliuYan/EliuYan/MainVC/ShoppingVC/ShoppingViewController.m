@@ -83,16 +83,16 @@
         case kCLErrorLocationUnknown:
             //Probably temporary...
         {
-            errorString = @"Location data unavailable";
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            errorString = @"定位服务不可用";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:errorString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
         }
             //Do something else...
             break;
         default:
         {
-            errorString = @"An unknown error has occurred";
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            errorString = @"定位服务不可用";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:errorString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
         }
             break;
@@ -103,6 +103,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    [[NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(freshSelf) name:@"freshMainVC" object:nil];
+    
+    
+    
      [self hideTabBar:YES];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
         
@@ -260,6 +266,14 @@
     }
     
 }
+
+
+-(void)freshSelf
+{
+    _topViewHasNotLoad = YES;
+    
+    [self refreshBtnClick:self];
+}
 #pragma mark--
 #pragma mark ----JCTopicDelegate
 -(void)currentPage:(int)page total:(NSUInteger)total{
@@ -365,7 +379,7 @@
     //初始化数组
     if (request.tag == 10086)
     {
-     
+//     NSLog(@"....%@",request.responseString);
     _storeDetailArray = [[NSMutableArray alloc] initWithCapacity:0];
     isRefresh = FALSE;
 
@@ -500,7 +514,7 @@
             _loadViewHasAppear = NO;
             NSLog(@"alldic is %@",allDict);
             NSArray *array=[allDict objectForKey:@"List"];
-            NSLog(@"array is %@",array);
+//            NSLog(@"array is %@",array);
             if([array count]!=0)
             {
                 _topViewHasNotLoad = NO;

@@ -264,6 +264,10 @@
     //进入程序的时候图标的信息数量设置为0
     [[NSNotificationCenter defaultCenter] postNotificationName:@"becameActive" object:nil];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    //发送通知 刷新第一个界面
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"freshMainVC" object:nil];
+    
 }
 - (void)applicationWillTerminate:(UIApplication *)application
 {
