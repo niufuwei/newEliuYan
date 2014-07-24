@@ -143,6 +143,8 @@
 {
     if (buttonIndex==1)
     {
+        [[NSUserDefaults standardUserDefaults] setObject:@"0000" forKey:@"isNewVersion"];
+        
         UIApplication *application = [UIApplication sharedApplication];
         [application openURL:[NSURL URLWithString:trackViewURL]];
     }

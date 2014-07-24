@@ -81,6 +81,7 @@
     
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
 
+
     _mapManager = [[BMKMapManager alloc]init];
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
     BOOL ret = [_mapManager start:@"G27D5UzyGSfHP98tKMQOIpnH"  generalDelegate:nil];
@@ -179,7 +180,7 @@
     if(status == NotReachable)
         
     {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"网络异常！" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"网络断了，请重新连接" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"networkError"];
         return;

@@ -145,7 +145,7 @@
 {
 
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登陆吗?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"退出后您将无法下单确定退出吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
     alert.tag = 11;
     [alert show];
  
@@ -205,7 +205,6 @@
         else if([[dic objectForKey:@"ReturnValues"] isEqualToString:@"88"])
         {
             [cativity stop];
-            
             
             
             

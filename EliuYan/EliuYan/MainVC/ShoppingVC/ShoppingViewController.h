@@ -46,6 +46,7 @@
     BOOL _loadViewHasAppear;
     
     BOOL _topViewHasNotLoad;
+    
 }
 
 @property (nonatomic,strong) BMKUserLocation *userLocation;

@@ -276,7 +276,7 @@ if ([self.view window] != nil)
             {
                 //提示没有最新订单
                 LoadingView *loadView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) image:@"无信息页面.png"];
-                [loadView changeLabel:@"您还没有最新订单，赶快去购物吧"];
+                [loadView changeLabel:@"您还没有下单，赶快去购物吧"];
                 [self.view addSubview:loadView];
                 [root removeFromSuperview];
                 [pageCount removeFromSuperview];
