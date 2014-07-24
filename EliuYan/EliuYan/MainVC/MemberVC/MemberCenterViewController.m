@@ -158,7 +158,7 @@
     
     if ([tel length] == 0)
     {
-       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"号码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入手机号码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
         return NO;
     }
@@ -208,6 +208,7 @@
 
     httpRequest *request = [[httpRequest alloc] init];
     request.httpDelegate = self;
+   
     [request httpRequestSend:[NSString stringWithFormat:@"%@user/UserLogin",SERVICE_ADD] parameter:[NSString stringWithFormat:@"LoginName=%@&PassWord=%@&DeviceName=%@&DeviceVersion=%@&SystemType=%@&DeviceToken=%@",_numberTF.text,_pswTF.text,[[UIDevice currentDevice] name],[NSString stringWithFormat:@"%f" ,IOS_VERSION],@"ios",[appDelegate.appDefault objectForKey:@"DeviceToken"]] backBlock:(^(NSDictionary * dic) {
         
         if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
@@ -216,6 +217,11 @@
             //登陆成功
             btn.userInteractionEnabled = YES;
 
+            //保存用户名和密码，token 值到本地
+            
+            [[NSUserDefaults standardUserDefaults] setObject:_numberTF.text forKey:@"aLoginName"];
+            [[NSUserDefaults standardUserDefaults] setObject:_pswTF.text forKey:@"aPassWord"];
+            [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"Token"] forKey:@"aToken"];
             
             
             [appDelegate.appDefault setObject:[dic objectForKey:@"UserId"] forKey:@"UserId"];

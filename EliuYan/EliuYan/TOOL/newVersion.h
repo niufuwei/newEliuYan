@@ -10,5 +10,6 @@
 
 @interface newVersion : NSObject<UITextFieldDelegate>
 
+
 -(void)begin:(NSString * )urlStr boolBegin:(BOOL)NoVersion;
 @end

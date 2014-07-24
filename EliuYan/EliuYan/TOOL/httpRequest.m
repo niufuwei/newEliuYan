@@ -121,7 +121,7 @@
     NSLog(@"请求错误");
     
     [_httpDelegate httpRequestError:@"出错啦"];
-    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求错误,请重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"网络断了，请重新连接" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
 
