@@ -307,8 +307,6 @@
     [request startAsynchronous];
     
     
-    
-    
     [pageControl addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:pageControl];
     
@@ -326,6 +324,7 @@
         [pageControl setHidden:NO];
     }
 }
+
 - (IBAction)pageTurn:(UIPageControl *)sender
 {
     
