@@ -705,37 +705,54 @@
 //        if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"hasLogIn"] isEqualToString:@"1"]) {
 //
         
-        if(mCountService ==0||!mCountService)
-        {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"请购买商品" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
-            [alert show];
-        }
-        else
-        {
-            NSMutableArray * tempArray = [[NSMutableArray alloc] init];
-            for(NSString * str in [contentSelectDictionary allKeys])
+        //判断是否有购买的商品和是否登录
+        if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"hasLogIn"] isEqualToString:@"1"]) {
+            if(mCountService ==0||!mCountService)
             {
-                if([[contentSelectDictionary objectForKey:str] isEqualToString:@"isChoose"])
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"请购买商品" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+                [alert show];
+            }
+            else
+            {
+                NSMutableArray * tempArray = [[NSMutableArray alloc] init];
+                for(NSString * str in [contentSelectDictionary allKeys])
                 {
-                    for(int i=0;i<[_allData count] ;i++)
+                    if([[contentSelectDictionary objectForKey:str] isEqualToString:@"isChoose"])
                     {
-                        if([[[_allData objectAtIndex:i] objectForKey:@"Id"] isEqualToString:str])
+                        for(int i=0;i<[_allData count] ;i++)
                         {
-                            [tempArray addObject:[_allData objectAtIndex:i]];
-                            break;
+                            if([[[_allData objectAtIndex:i] objectForKey:@"Id"] isEqualToString:str])
+                            {
+                                [tempArray addObject:[_allData objectAtIndex:i]];
+                                break;
+                            }
                         }
                     }
                 }
+                NSString * numSer = [NSString stringWithFormat:@"%d",mCountService];
+                
+                NSMutableDictionary * typeDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:Price.text,@"price",numSer,@"service",tempArray,@"data",nil];
+                
+                checkViewController * check = [[checkViewController alloc] init];
+                check.contentDictionary = typeDic;
+                [self.navigationController pushViewController:check animated:YES];
             }
-            NSString * numSer = [NSString stringWithFormat:@"%d",mCountService];
-            
-            NSMutableDictionary * typeDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:Price.text,@"price",numSer,@"service",tempArray,@"data",nil];
-            
-            checkViewController * check = [[checkViewController alloc] init];
-            check.contentDictionary = typeDic;
-            [self.navigationController pushViewController:check animated:YES];
+
         }
-      
+        else
+        {
+            //给一个返回对应的界面的状态
+            [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"isBack"];
+            
+            //提示框
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您还没有登录，请登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+            alert.delegate=self;
+            alert.tag=111;
+            [alert show];
+
+            
+        }
+
         
 //        else{
 //            //给一个返回对应的界面的状态
@@ -811,6 +828,24 @@
         }
         
     }
+}
+#pragma mark -
+#pragma mark -UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (buttonIndex==0) {
+        //跳转到登录界面
+        MemberCenterViewController *memberVC=[[MemberCenterViewController alloc] init];
+        UINavigationController *nav1 = [[NavViewController alloc] initWithRootViewController:memberVC];
+        [self presentViewController:nav1 animated:YES completion:^{
+            
+        }];
+    }
+    
+    else
+        return;
+    
 }
 
 

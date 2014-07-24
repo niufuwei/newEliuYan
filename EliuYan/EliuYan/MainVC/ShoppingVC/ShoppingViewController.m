@@ -117,20 +117,20 @@
         
     }
     
-    //判断是否是最新版本 如果是就自动登录
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isNewVersion"] isEqualToString:@"0000"]) {
-        //调用登录接口
-        
-        httpRequest *request = [[httpRequest alloc] init];
-//        request.httpDelegate = self;
-        [request httpRequestSend:[NSString stringWithFormat:@"%@user/UserLogin",SERVICE_ADD] parameter:[NSString stringWithFormat:@"LoginName=%@&PassWord=%@&DeviceName=%@&DeviceVersion=%@&SystemType=%@&DeviceToken=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"aLoginName"],[[NSUserDefaults standardUserDefaults] objectForKey:@"aPassWord"],[[UIDevice currentDevice] name],[NSString stringWithFormat:@"%f" ,IOS_VERSION],@"ios",[[NSUserDefaults standardUserDefaults] objectForKey:@"aToken"]] backBlock:(^(NSDictionary * dic) {
-            
-            if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
-            {
-                //登录成功
-            }
-        })];
-    }
+//    //判断是否是最新版本 如果是就自动登录
+//    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isNewVersion"] isEqualToString:@"0000"]) {
+//        //调用登录接口
+//        
+//        httpRequest *request = [[httpRequest alloc] init];
+////        request.httpDelegate = self;
+//        [request httpRequestSend:[NSString stringWithFormat:@"%@user/UserLogin",SERVICE_ADD] parameter:[NSString stringWithFormat:@"LoginName=%@&PassWord=%@&DeviceName=%@&DeviceVersion=%@&SystemType=%@&DeviceToken=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"aLoginName"],[[NSUserDefaults standardUserDefaults] objectForKey:@"aPassWord"],[[UIDevice currentDevice] name],[NSString stringWithFormat:@"%f" ,IOS_VERSION],@"ios",[[NSUserDefaults standardUserDefaults] objectForKey:@"aToken"]] backBlock:(^(NSDictionary * dic) {
+//            
+//            if ([[dic objectForKey:@"ReturnValues"] isEqualToString:@"0"])
+//            {
+//                //登录成功
+//            }
+//        })];
+//    }
 
 
     //self.title = @"购物";
