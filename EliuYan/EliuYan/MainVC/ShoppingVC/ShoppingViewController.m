@@ -65,7 +65,7 @@
         
     }
     _loadViewHasAppear = YES;
-    [_loadView changeLabel:@"我尽力了，还是看不到"];
+    [_loadView changeLabel:@"我尽力了，还是找不到店铺"];
     [self.view addSubview:_loadView];
 
     NSLog(@"Error: %@",[error localizedDescription]);
@@ -160,10 +160,6 @@
         
         //NavCustom *nav=[[NavCustom alloc] init];
         //[nav setNav:@"一溜烟" mySelf:self];
-        
-       
-        
-        
         
         pageIndex = 0;
         
@@ -443,7 +439,7 @@
             
         }
          _loadViewHasAppear = YES;
-        [_loadView changeLabel:@"我尽力了，还是看不到"];
+        [_loadView changeLabel:@"我尽力了，还是找不到店铺"];
         [self.view addSubview:_loadView];
         }
         
@@ -612,7 +608,7 @@
     }
         _loadViewHasAppear = YES;
 
-    [_loadView changeLabel:@"我尽力了，还是看不到"];
+    [_loadView changeLabel:@"我尽力了，还是找不到店铺"];
     [self.view addSubview:_loadView];
     }
     }
